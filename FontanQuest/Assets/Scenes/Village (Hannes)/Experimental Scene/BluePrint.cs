@@ -7,12 +7,14 @@ public class BluePrint : MonoBehaviour
     RaycastHit hit;
     Vector3 movePoint;
     public GameObject prefab;
+    public GameObject Canvas;
+
     // Start is called before the first frame update
     void Start()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, 50000.0f, (1 << 8)))
+        if (Physics.Raycast(ray, out hit, 50000.0f, (1 << 9)))
         {
             transform.position = hit.point;
         }
@@ -23,7 +25,7 @@ public class BluePrint : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, 50000.0f, (1 << 8)))
+        if (Physics.Raycast(ray, out hit, 50000.0f, (1 << 9)))
         {
             transform.position = hit.point;
         }
@@ -31,6 +33,13 @@ public class BluePrint : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Instantiate(prefab, transform.position, transform.rotation);
+            Destroy(gameObject);
+            GameObject.FindGameObjectWithTag("Menubuttons").SetActive(false);
+            GameObject.Find("Canvas").GetComponent<Build_Woodcutter>().Finalize_built();
+        }
+
+        if (Input.GetMouseButton(1))
+        {
             Destroy(gameObject);
         }
     }

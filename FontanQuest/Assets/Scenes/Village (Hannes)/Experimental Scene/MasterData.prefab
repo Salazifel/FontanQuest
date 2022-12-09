@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8746357171049651781}
-  - component: {fileID: 5250623416941337976}
   - component: {fileID: 3700988818000807264}
   - component: {fileID: -8189597785600838289}
+  - component: {fileID: -6724735478113971972}
   m_Layer: 0
   m_Name: MasterData
   m_TagString: Untagged
@@ -34,18 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5250623416941337976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8462198242180828443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98f69042783fdaa47ba9eba251b8e2dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3700988818000807264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac32e0aa3a5f06419c0c0f7d90b1421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wood: 30
+  wood: 50
   stone: 10
   food: 0
   gold: 0
@@ -72,5 +60,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28023dde2cf47f042bdf7f6a99c73c9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6724735478113971972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462198242180828443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6dd9ef389046c43bb219b07d896871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

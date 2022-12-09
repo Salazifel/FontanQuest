@@ -7,7 +7,6 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 public class WorkerControl : MonoBehaviour
 {
-
     public Camera cam;
     public NavMeshSurface surface;
     public NavMeshAgent agent;

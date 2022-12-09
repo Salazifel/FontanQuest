@@ -35,7 +35,6 @@ public class Build_Woodcutter : MonoBehaviour
 
     public void SendToDo()
     {
-        
 // MasterData.GetComponent<ToDoList>().IncomingToDo();
     }
 }

@@ -10,7 +10,7 @@ public class UIControlChopping : MonoBehaviour
     public TextMeshProUGUI FinalTreeCounter;
     public TextMeshProUGUI FinalReward;
     public TextMeshProUGUI FeedBack;
-    public TextMeshProUGUI GetReadyText;
+    public GameObject GetReadyText;
 
     public Canvas StartCanvas;
     public Canvas GamingCanvas;

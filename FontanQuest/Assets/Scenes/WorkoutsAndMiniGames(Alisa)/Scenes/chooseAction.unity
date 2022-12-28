@@ -1580,7 +1580,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1659497476}
   - component: {fileID: 1659497478}
-  - component: {fileID: 1659497477}
+  - component: {fileID: 1659497479}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -1605,10 +1605,18 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035, y: 0}
-  m_SizeDelta: {x: 1138, y: 459}
+  m_AnchoredPosition: {x: -0.000038862, y: 0}
+  m_SizeDelta: {x: 1153, y: 533}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1659497477
+--- !u!222 &1659497478
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659497475}
+  m_CullTransparentMesh: 1
+--- !u!114 &1659497479
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1621,7 +1629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4056604, g: 0.036994144, b: 0.036994144, a: 1}
+  m_Color: {r: 0.4339623, g: 0.0020469967, b: 0.0020469967, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1638,14 +1646,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!222 &1659497478
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1659497475}
-  m_CullTransparentMesh: 1
 --- !u!1001 &1663540313
 PrefabInstance:
   m_ObjectHideFlags: 0

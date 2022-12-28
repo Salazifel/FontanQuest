@@ -2414,7 +2414,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1043523921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2972,7 +2972,6 @@ MonoBehaviour:
   CompletedCanvas: {fileID: 1043523923}
   TreeAnimator: {fileID: 1998834028}
   AxeAnimator: {fileID: 469135950}
-  TreeHit: {fileID: 0}
 --- !u!114 &1721046554
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,7 +11,6 @@ public class HikkingStoryControll : MonoBehaviour
     public Button StartNextChallengeButton;
     public TextMeshProUGUI StepsText;
     public TextMeshProUGUI StepsToUnlockSceneText;
-    public TextMeshProUGUI Title =
     public static int currentIndex = 0;
     
         // Start is called before the first frame update
@@ -20,7 +19,7 @@ public class HikkingStoryControll : MonoBehaviour
         StartNextChallengeButton.gameObject.SetActive(false);
         StepsToUnlockSceneText.text = "Walk " + StepsToUnlockScene[currentIndex].ToString() + "Steps: ";
         StepsText.text = "0";
-        Title.text =  "Cure the villagers";
+        //Title.text =  "Cure the villagers";
     }
 
 

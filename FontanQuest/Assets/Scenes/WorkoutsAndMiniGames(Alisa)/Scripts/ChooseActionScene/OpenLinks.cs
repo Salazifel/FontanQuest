@@ -9,11 +9,21 @@ public class OpenLinks : MonoBehaviour
 
     public void SuperMarioWorkoutKlick()
     {
-        Application.OpenURL(SuperMarioWorkout); 
+        Application.OpenURL(SuperMarioWorkout);
     }
 
     public void DanceWorkoutKlick()
     {
         Application.OpenURL(DisneyDanceWorkout);
+    }
+
+    public void LoadChoppingGame()
+    {
+        SceneManager.Load(SceneManager.Scene.WoodChopping);
+    }
+
+    public void LoadGameSelection()
+    {
+        SceneManager.Load(SceneManager.Scene.chooseAction);
     }
 }

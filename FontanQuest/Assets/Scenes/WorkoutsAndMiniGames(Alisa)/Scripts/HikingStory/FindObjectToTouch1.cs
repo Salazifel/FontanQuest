@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class FindObjectToTouch1 : MonoBehaviour
 {
     private Camera mainCamera;
+    public TextMeshProUGUI TextMesh;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,12 +33,12 @@ public class FindObjectToTouch1 : MonoBehaviour
                         Stone stone = hittedObject.GetComponent<Stone>();
                         if (stone != null)
                         {
-                            Debug.Log(stone.TextToStone());
+                            TextMesh.text = stone.TextToStone();
                         }
                         Mushroom mushroom = hittedObject.GetComponent<Mushroom>();
                         if (mushroom != null)
                         {
-                            Debug.Log(mushroom.TextToMushroomKind());
+                            TextMesh.text = mushroom.TextToMushroomKind();
                         }
                     }
                 }

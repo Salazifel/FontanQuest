@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ActionWoodCutter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject MasterData;
+
+    void Awake()
     {
-        
+        MasterData = GameObject.Find("MasterData");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void give_BuildingType()
     {
-        
+        // MasterData.GetComponent<SavingGameData>().receive_buildingType("WoodCutterLvl1");
     }
 }

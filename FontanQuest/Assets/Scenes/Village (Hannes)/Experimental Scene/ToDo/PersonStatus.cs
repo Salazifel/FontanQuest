@@ -5,6 +5,29 @@ using UnityEngine;
 public class PersonStatus : MonoBehaviour
 {
     public bool busy;
+    public GameObject MasterData;
+    public Material[] material;
+    private Renderer rend;
+
+    public void SetIdle()
+    {
+        busy = false;
+        rend.sharedMaterial = material[0]; // change to red
+        // MasterData.SendMessage("CheckToDoList");
+    }
+
+    public void SetBusy()
+    {
+        busy = true;
+        rend.sharedMaterial = material[1]; // change to green
+    }
+
+    void Awake()
+    {
+        // tutorial for material change: https://www.youtube.com/watch?v=dJB07ZSiW7k
+        rend = GetComponent<Renderer>();
+        rend.enabled = true;
+    }
 }
 
 /* System explained

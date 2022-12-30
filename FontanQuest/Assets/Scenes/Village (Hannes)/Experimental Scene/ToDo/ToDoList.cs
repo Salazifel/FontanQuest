@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using TMPro;
 
 public class Task
@@ -10,44 +11,51 @@ public class Task
         public int failedAttemps;
         public Vector3 pos;
         public float time;
-        public string emitter; // the one triggering the task
+        public GameObject emitter; // the one triggering the task
+        public GameObject SelectedPerson;
     }
 
 public class ToDoList : MonoBehaviour
-{
-    private GameObject SelectedPerson;
-    Queue ToDoListQu = new Queue();
-    Queue FailedToListQu = new Queue();
+{    //public Queue ToDoListQu = new Queue();
+    // Queue ToDoListQu = new Queue();
+    // Queue FailedToListQu = new Queue();
+    public GameObject TaskContainer;
+    public GameObject[] tasks;
+
+    private float timerTargetTime = 0.0f;
+
     private TextMeshProUGUI ToDoListText; // Label to display the current ToDoList
+    
+    public static ToDoList current; // event system once an agent reaches something
 
-    public void NewTask(string PersonTag, string capability, int failedAttempts, Vector3 pos, float time, string emitter)
+    public void NewTask(string PersonTag, string capability, int failedAttemps, Vector3 pos, float time, GameObject emitter)
     {
-        Task task = new Task();
-        task.PersonTag = PersonTag;
-        task.capability = capability;
-        task.failedAttemps = failedAttempts;
-        task.pos = pos;
-        task.time = time;
-        task.emitter = emitter;
-
-        QueueTask(task);
-    }
-
-    IEnumerator StartToListChecking()
-    {
-        while (true)
+        if (failedAttemps < 5)
         {
-            yield return new WaitForSeconds(1);
-            CheckToDoList();
+            Task task = new Task();
+            task.PersonTag = PersonTag;
+            task.capability = capability;
+            task.failedAttemps = failedAttemps;
+            task.pos = pos;
+            task.time = time;
+            task.emitter = emitter;
+
+            GameObject CurrentTask;
+            CurrentTask = Instantiate(TaskContainer);
+            CurrentTask.SendMessage("SetValues", task);
+        }
+        else
+        {
+            Debug.Log("Task failed more than 5 times and is cancelled");
+            emitter.SendMessage("OnCancellation");
         }
     }
 
-    bool GetPerson(string tag)
+    Task GetPerson(Task task)
     { // Function explanation: searches for a person with that tag and returns one, if he/she is not busy
-
         // searches the scene for all "people" with a specific tag
         GameObject[] people;
-        people = GameObject.FindGameObjectsWithTag(tag);
+        people = GameObject.FindGameObjectsWithTag(task.PersonTag);
         // goes through the list of people with that tag to find a non-busy one
         for (int i = 0; i < people.Length; i++)
         {
@@ -55,112 +63,139 @@ public class ToDoList : MonoBehaviour
             if (status == false)
             {
                 // an idle person with the given tag was found and the private variable SelectedPerson is updated
-                SelectedPerson = people[i];
+                task.SelectedPerson = people[i];
                 // the function returns true and the task distribution can continue
                 Debug.Log("A free worker was found!");
-                return true;
+                return task;
             }
         }
         Debug.Log("No free worker could be found");
         // no idle person with the given tag was found so the function returns false
-        return false;
+        return task;
     }
 
     void CheckToDoList()
     {
-        Debug.Log(ToDoListQu.Count);
-        if (ToDoListQu.Count > 0)
-        {
-            Task task = (Task) ToDoListQu.Peek();
-            if (GetPerson(task.PersonTag) == true)
-            {
-                DequeueTask(task);
-            }
-        }
+        tasks = GameObject.FindGameObjectsWithTag("Task");
+        // Debug.Log("ToDoList is being checked: " + tasks.Length);
 
-        if (FailedToListQu.Count > 0)
+        if (tasks.Length > 0)
         {
-            Task task = (Task)FailedToListQu.Peek();
-            if (GetPerson(task.PersonTag) == true)
+            Task task = new Task(); 
+
+            for (int i = 0; i < tasks.Length; i ++)
             {
-                DequeueTask(task);
+                if (tasks[i].GetComponent<TaskContainer>().SelectedPerson == null)
+                {
+                    task = assignTask(tasks[i]);
+                    if (GetPerson(task).SelectedPerson != null) // means that an idle person of the task's nametag was found
+                    {
+                        tasks[i].GetComponent<TaskContainer>().SelectedPerson = task.SelectedPerson;
+                        DequeueTask(task, tasks[i]);
+                    }
+                    //return;
+                }
             }
+            
+
         }
         // Debug.Log("2doListChecked");
     }
 
-    void QueueTask(Task task)
+    Task assignTask(GameObject TaskContainer)
     {
-        if (task.failedAttemps > 5)
+        Task task = new Task();
+        task.PersonTag      = TaskContainer.GetComponent<TaskContainer>().PersonTag;
+        task.capability     = TaskContainer.GetComponent<TaskContainer>().capability;
+        task.failedAttemps  = TaskContainer.GetComponent<TaskContainer>().failedAttemps;
+        task.pos            = TaskContainer.GetComponent<TaskContainer>().pos;
+        task.time           = TaskContainer.GetComponent<TaskContainer>().time;
+        task.emitter        = TaskContainer.GetComponent<TaskContainer>().emitter;
+
+        return task;
+    }
+
+    void DequeueTask(Task task, GameObject CurrentTaskContainer)
+    {
+        // Gets the emitter of the current task in question
+        // GameObject emitter = GameObject.Find(task.emitter);
+
+
+        task.SelectedPerson.SendMessage("SetBusy");
+        task.emitter.BroadcastMessage("Set_DesignatedWorker", CurrentTaskContainer.GetComponent<TaskContainer>().SelectedPerson);
+        Debug.Log("Designated worker for " + task.capability + " is " + task.SelectedPerson);
+
+        if (task.SelectedPerson.GetComponent<MoveTo>().GoTo(task.pos) == false)
         {
-            FailedToListQu.Enqueue(task);
-            Debug.Log("Task failed more than 5 times");
-            return;
+            Debug.Log("Not reachable target");
+            task.failedAttemps++;
+            task.SelectedPerson.SendMessage("SetIdle");
+            NewTask(task.PersonTag, task.capability, task.failedAttemps, task.pos, task.time, task.emitter);
+            // the target point is not reachable
         }
-        ToDoListQu.Enqueue(task);
-        CheckToDoList();
 
-        // helpers
-        // Task tmp = (Task)ToDoListQu.Peek();
-        // Debug.Log(tmp.capability);
-        // Debug.Log(ToDoListQu.Count);
-    }
+        Destroy(CurrentTaskContainer);
 
-    void DequeueTask(Task task)
-    {
-        if (task.failedAttemps > 50)
-        {
-            FailedToListQu.Dequeue();
-            // task.emitter.GetComponent<main>().OnCancellation();
-            return;
-        }
-        GameObject person = SelectedPerson;
-        person.GetComponent<PersonStatus>().busy = true;
-        person.GetComponent<MoveTo>().GoTo(task.pos);
-
-        // Vector3 stuckpos;
-
-        /*
-        while ((person.transform.position.x != task.pos.x) && (person.transform.position.y != task.pos.y))
-        {
-            stuckpos = person.transform.position;
-            yield return new WaitForSeconds(1);
-            if (person.transform.position == stuckpos)
-            {
-                person.GetComponent<PersonStatus>().busy = false;
-                task.failedAttemps += 1;
-                QueueTask(task);
-                break;
-            }
-        }*/
-        //person.GetComponent<task.capability>().Execute(task.time);
-        GameObject.Find(task.emitter).GetComponent<ConstrWoodCutter>().OnTaskCompletion();
-        ToDoListQu.Dequeue();
-    }
-
-    void Awake()
-    {
-        ToDoListText = GameObject.Find("ToDoList").GetComponent<TextMeshProUGUI>();
-    }
-
-    void Start()
-    {
-        // StartCoroutine(StartToListChecking());
+        // StartCoroutine(CheckAgentStatus(1, 1, SelectedPerson, task)); // relict from the timer approach 13.12.2022
     }
 
     void Update()
     {
-        try
+        timerTargetTime -= Time.deltaTime;
+
+        if (timerTargetTime <= 0.0f)
         {
-            Task task = (Task) ToDoListQu.Peek();
-            ToDoListText.text = task.capability;
+            timerTargetTime = 1.0f;
+            CheckToDoList();
         }
-        catch
-        {
-
-        }
-
-
     }
 }
+
+/*
+ * 
+    // ########################## TIMER ###########################
+    Timer AgentStatusCountOneDown(Timer timer, int length, int reducer, GameObject person, Task task)
+    {
+        if (timer.currentSecondsLeft > 0)
+        {
+            Debug.Log(timer.currentSecondsLeft);
+            timer.currentSecondsLeft--;
+        }
+        else
+        {
+            timer.run = false;
+            AgentStatusResult(length, reducer, person, task);
+        }
+        return timer;
+    }
+
+    IEnumerator CheckAgentStatus(int length, int reducer, GameObject person, Task task)
+    {
+        Timer timer = new Timer();
+        timer.run = true;
+        timer.currentSecondsLeft = length;
+
+        while (timer.run)
+        {
+            timer = AgentStatusCountOneDown(timer, length, reducer, person, task);
+            yield return new WaitForSeconds(reducer);
+        }
+    }
+
+    void AgentStatusResult(int length, int reducer, GameObject person, Task task)
+    {
+        if (person.GetComponent<UnityEngine.AI.NavMeshAgent>().remainingDistance > 0)
+        {
+            // Gets the emitter of the current task in question
+            GameObject emitter = GameObject.Find(task.emitter);
+            emitter.SendMessage("OnTaskCompletion");
+        }
+        else
+        {
+            StartCoroutine(CheckAgentStatus(length, reducer, person, task));
+        }
+    }
+
+    // ########################## END ###########################
+*/
 

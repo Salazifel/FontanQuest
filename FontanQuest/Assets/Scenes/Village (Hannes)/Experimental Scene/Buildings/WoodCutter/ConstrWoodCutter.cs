@@ -10,40 +10,48 @@ public class ConstrWoodCutter : MonoBehaviour
     // once the GameObject is initiated, a new task for building is created
     public void Start()
     {
+        // MasterData.GetComponent<SavingGameData>().set_newObject(gameObject);
+
         Debug.Log("New Task should be created");
         Vector3 GoToPos = transform.Find("GoToPos").transform.position; // gets the transform.position of the cild "GoToPos", an invisible realworld position
         // creates a new task in the ToDoList, which is queued in the end
-        MasterData.GetComponent<ToDoList>().NewTask("Worker", "build", 0, GoToPos, 3, transform.name);
+        MasterData.GetComponent<ToDoList>().NewTask("Worker", "build", 0, GoToPos, 3, gameObject);
         // string PersonTag, string capability, int failedAttempts, Vector3 pos, float time, string emitter
     }
 
     // defines what happens if the task stops midway
     public void OnCancellation()
     {
-
+        MasterData.GetComponent<Ressources>().ChangeRessources(10, 10, 0, 0);
+        // MasterData.GetComponent<SavingGameData>().remove_Object(gameObject);
+        Destroy(gameObject);
     }
 
     // defines what happens during the time of execution
     public void OnExecution()
     {
         Debug.Log("House is being build");
+        OnTaskCompletion();
     }
 
     // defines what happens once the task is done
     public void OnTaskCompletion()
     {
-        Instantiate(FinalBuilding, transform.position, transform.rotation);
-        
+        // MasterData.GetComponent<SavingGameData>().remove_Object(gameObject);
+        Destroy(gameObject);
+        GameObject newBuilding = Instantiate(FinalBuilding, transform.position, transform.rotation);
+
+        // needed for the game to save and load:
+        gameObject.GetComponent<buildingDataSys>().set_BuildingType("WoodCutterLvl1");
+        gameObject.GetComponent<buildingDataSys>().set_WearDown(0);
+
+        // MasterData.GetComponent<SavingGameData>().set_newObject(newBuilding);
+        BroadcastMessage("Free_Worker");
     }
 
-    IEnumerator WaitABit()
+    public void give_BuildingType()
     {
-        Debug.Log("Built");
-        Instantiate(FinalBuilding, transform.position, transform.rotation);
-        yield return new WaitForSeconds(3);
-        Debug.Log("Built");
-        
+        // MasterData.GetComponent<SavingGameData>().receive_buildingType("WoodCutterLvl1ConstructionSite");
     }
 
-    // Update is called once per frame
 }

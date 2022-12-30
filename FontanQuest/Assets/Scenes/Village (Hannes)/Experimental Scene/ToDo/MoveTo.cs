@@ -10,9 +10,28 @@ public class MoveTo : MonoBehaviour
     private Vector3 destination;
     // Start is called before the first frame update
     
-    public void GoTo(Vector3 pos)
+    public bool GoTo(Vector3 pos)
     {
-        destination = pos;
-        agent.SetDestination(destination);
+        // GetComponent<RandomWalking>().enabled = false;
+        agent.SetDestination(transform.position);
+        NavMeshPath path = new NavMeshPath();
+        if (agent.CalculatePath(pos, path))
+        {
+            agent.ResetPath();
+            agent.SetDestination(pos);
+            return true;
+        }
+        return false;
+    }
+
+    public void StopPath()
+    {
+        agent.SetDestination(transform.position);
+        // IdleWalking();
+    }
+
+    public void IdleWalking()
+    {
+        GetComponent<RandomWalking>().enabled = true;
     }
 }

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3700988818000807264}
   - component: {fileID: -8189597785600838289}
   - component: {fileID: -6724735478113971972}
+  - component: {fileID: 1501697474752048606}
+  - component: {fileID: -1970733274700571700}
   m_Layer: 0
   m_Name: MasterData
   m_TagString: Untagged
@@ -46,10 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac32e0aa3a5f06419c0c0f7d90b1421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wood: 50
-  stone: 10
+  wood: 450
+  stone: 450
   food: 0
   gold: 0
+  maxWood: 100
+  maxStone: 100
+  maxFood: 100
 --- !u!114 &-8189597785600838289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28023dde2cf47f042bdf7f6a99c73c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TaskContainer: {fileID: 8790668465838832174, guid: 177847c4e54cc36468782bc3262aa50f,
+    type: 3}
+  tasks: []
 --- !u!114 &-6724735478113971972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,3 +82,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6dd9ef389046c43bb219b07d896871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1501697474752048606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462198242180828443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ee24ae7f6372d4e9eb0f15f800bedd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1970733274700571700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462198242180828443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c66d1803af96747b1b0cbba29465d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surface: {fileID: 281624684988809292, guid: 83ba5544e4edd044a85f9eebc2ba9326, type: 3}

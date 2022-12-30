@@ -116,8 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a1b05258873b54ca42eacea4abee82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  surface: {fileID: 0}
+  cam: {fileID: 2630680812058842269, guid: 497e3c118620eaf41aaf947be19ed554, type: 3}
+  surface: {fileID: 281624684988809292, guid: 83ba5544e4edd044a85f9eebc2ba9326, type: 3}
   agent: {fileID: 3768803054702429260}
   character: {fileID: 3768803054702429259}
 --- !u!195 &3768803054702429260

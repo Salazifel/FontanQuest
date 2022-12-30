@@ -2,45 +2,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public class CounterTim
+{
+    public bool run;
+    public int currentSecondsLeft;
+}
+
 public class Counter : MonoBehaviour
 {
-    private bool run;
     private int currentSecondsLeft;
-    public delegate void FinishedEvent();
-    public event FinishedEvent Finished;
+    //public delegate void FinishedEvent();
+    //public event FinishedEvent Finished;
     // Start is called before the first frame update
     void Start()
     {
-        run = true;
-        currentSecondsLeft = 5;
-        StartCoroutine(timer());
+         // StartCoroutine(CheckAgentStatus(5, 1));
+        // StartCoroutine(Countdown(6, 2));
     }
 
-    void CountOneDown()
+
+
+    CounterTim AgentStatusCountOneDown(CounterTim counter)
     {
-        if (currentSecondsLeft > 0)
+        if (counter.currentSecondsLeft > 0)
         {
-            Debug.Log(currentSecondsLeft);
-            currentSecondsLeft--;
+            Debug.Log(counter.currentSecondsLeft);
+            counter.currentSecondsLeft--;
         }
         else
         {
-            run = false;
-            Finished? Invoke;
-            Event();
+            counter.run = false;
+            AgentStatusResult();
         }
+        return counter;
     }
 
-    IEnumerator timer()
+    IEnumerator CheckAgentStatus(int length, int reducer)
     {
-        while (run)
+        CounterTim counter = new CounterTim();
+        counter.run = true;
+        counter.currentSecondsLeft = length;
+
+        while (counter.run)
         {
-            CountOneDown();
-            yield return new WaitForSeconds(1);
+            counter = AgentStatusCountOneDown(counter);
+            yield return new WaitForSeconds(reducer);
         }
     }
 
-    void Event()
+    void AgentStatusResult()
     {
         Debug.Log("Done");
     }

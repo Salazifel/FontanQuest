@@ -9,7 +9,7 @@ public class OpenLinks : MonoBehaviour
 
     public void SuperMarioWorkoutKlick()
     {
-        Application.OpenURL(SuperMarioWorkout);
+         Application.OpenURL(SuperMarioWorkout);
     }
 
     public void DanceWorkoutKlick()

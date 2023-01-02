@@ -4,8 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - BlackMushroom
-  - NormalMushroom
+  - Menubuttons
+  - RessourceDisplay
+  - Worker
+  - Task
+  - Tree
+  - Building
+
   layers:
   - Default
   - TransparentFX
@@ -16,7 +21,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Ground
   - Player
   - 
   - 

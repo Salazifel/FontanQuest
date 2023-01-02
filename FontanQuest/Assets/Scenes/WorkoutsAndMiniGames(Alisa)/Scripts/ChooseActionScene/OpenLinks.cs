@@ -26,4 +26,9 @@ public class OpenLinks : MonoBehaviour
     {
         SceneManager.Load(SceneManager.Scene.chooseAction);
     }
+
+    public void LoadStoneMiningGame()
+    {
+        SceneManager.Load(SceneManager.Scene.StoneCrushing);
+    }
 }

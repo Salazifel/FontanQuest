@@ -8,7 +8,8 @@ public static class SceneManager
     public enum Scene
     {
         WoodChopping,
-        chooseAction
+        chooseAction,
+        StoneCrushing
     }
 
     public static void Load(Scene scene)

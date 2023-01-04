@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class FindObjectToTouch1 : MonoBehaviour
 {
     private Camera mainCamera;
+    private HikkingStoryPartCanvasManager _manager;
     public TextMeshProUGUI TextMesh;
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = Camera.main;
+        _manager = GetComponent<HikkingStoryPartCanvasManager>();
     }
 
     // Update is called once per frame
@@ -34,11 +37,20 @@ public class FindObjectToTouch1 : MonoBehaviour
                         if (stone != null)
                         {
                             TextMesh.text = stone.TextToStone();
+                            if (stone.StoneName.ToString().Equals(Stone.StoneKind.IronOre.ToString()))
+                            {
+                                _manager.ActivateNextChapterButton();
+                            }
                         }
                         Mushroom mushroom = hittedObject.GetComponent<Mushroom>();
                         if (mushroom != null)
                         {
                             TextMesh.text = mushroom.TextToMushroomKind();
+                            if (mushroom.Kind.ToString().Equals(Mushroom.MushroomKind.Violaceus.ToString()))
+                            {
+                                _manager.ActivateNextChapterButton();
+
+                            }
                         }
                     }
                 }

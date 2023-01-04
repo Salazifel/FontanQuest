@@ -3219,6 +3219,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2079027810}
     m_Modifications:
+    - target: {fileID: 4409023651093790805, guid: cb2a24f0b6ab49b4589b1df1bb0218a7,
+        type: 3}
+      propertyPath: m_text
+      value: 'Trees cut:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409023651448082744, guid: cb2a24f0b6ab49b4589b1df1bb0218a7,
+        type: 3}
+      propertyPath: m_Name
+      value: Cut Trees
+      objectReference: {fileID: 0}
     - target: {fileID: 4409023652237064929, guid: cb2a24f0b6ab49b4589b1df1bb0218a7,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3328,6 +3338,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409023652237064941, guid: cb2a24f0b6ab49b4589b1df1bb0218a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2a24f0b6ab49b4589b1df1bb0218a7, type: 3}
@@ -3456,7 +3471,13 @@ PrefabInstance:
     - target: {fileID: 7356704519962924249, guid: 611f28ef8f289bd479fff7184cdd67a3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7356704521429707759, guid: 611f28ef8f289bd479fff7184cdd67a3,
+        type: 3}
+      propertyPath: m_text
+      value: Hold your phone like an axe. Make fast and large chop movements to cut
+        as many trees as possible in 30 seconds.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 611f28ef8f289bd479fff7184cdd67a3, type: 3}
@@ -3472,6 +3493,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1721046556}
+    - target: {fileID: 9122186094116974819, guid: 3d38affef05ded44a8a4b4ac976de1d4,
+        type: 3}
+      propertyPath: m_text
+      value: 'Trees cut:'
+      objectReference: {fileID: 0}
     - target: {fileID: 9122186094662692361, guid: 3d38affef05ded44a8a4b4ac976de1d4,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3585,7 +3611,7 @@ PrefabInstance:
     - target: {fileID: 9122186094662692365, guid: 3d38affef05ded44a8a4b4ac976de1d4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d38affef05ded44a8a4b4ac976de1d4, type: 3}

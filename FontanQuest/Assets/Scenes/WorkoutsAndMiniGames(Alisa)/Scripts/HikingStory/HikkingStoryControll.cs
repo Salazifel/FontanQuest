@@ -31,6 +31,7 @@ public class HikkingStoryControll : MonoBehaviour
     private static StoryPart FindTheIronOre = new StoryPart(SceneManager.Scene.FindIronOre.ToString(), StoryPart.IronOreSceneIntroText);
     private static StoryPart FindTheVioleteMushroom = new StoryPart(SceneManager.Scene.FindMushroom.ToString(), StoryPart.MushroomSceneIntroText);
     private static StoryPart FindTheButterFly = new StoryPart(SceneManager.Scene.FindTheButterFly.ToString(), StoryPart.FindTheButterflyText);
+    private static string completedText = "Healer: Oh thank you so much for gathering the ingridients. I will start to make the cure imeadiatly!!";
     #endregion
 
 

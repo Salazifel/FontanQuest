@@ -16,12 +16,14 @@ public class HikkingStoryPartCanvasManager : MonoBehaviour
         QuitCanvas.gameObject.SetActive(false);
         if (NextChapterButton != null)
         {
-            NextChapterButton.gameObject.SetActive(true);
+            Debug.Log("deactivate Button");
+            NextChapterButton.gameObject.SetActive(false);
         }
     }
 
     public void ActivateNextChapterButton()
     {
+        Debug.Log("activate button");
         NextChapterButton.gameObject.SetActive(true);
     }
     public void ContinueGame()

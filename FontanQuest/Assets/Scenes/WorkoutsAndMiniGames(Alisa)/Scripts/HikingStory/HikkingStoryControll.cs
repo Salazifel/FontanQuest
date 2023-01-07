@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,27 +43,34 @@ public class HikkingStoryControll : MonoBehaviour
     {
         StartNextChallengeButton.gameObject.SetActive(true);
         CompletedStoryButton.gameObject.SetActive(false);
+        Debug.Log(currentIndex);
         // start a new story
         if (currentIndex == 0)
         {
             SetStory();
             SetLevelCanvas.gameObject.SetActive(true);
         }
-        // load the next scene in the story
-        else if (currentIndex < Story.Parts.Count)
-        {
-            SetLevelCanvas.gameObject.SetActive(false);
-            StepsToUnlockSceneText.text = "Walk " + Story.Steps[currentIndex].ToString() + " Steps: ";
-            StoryPartText.text = Story.Parts[currentIndex].PreviewText;
-            StepsText.text = "0";
-        }
-        // show the completed text in the HikkingStoryManager scene
         else
-        {
-            StoryPartText.text = completedText;
-            CompletedStoryButton.gameObject.SetActive(true);
-            StepsText.gameObject.SetActive(false);
-            StepsToUnlockSceneText.gameObject.SetActive(false);
+        {        // load the next scene in the story
+
+            if (currentIndex < Story.Parts.Count && currentIndex != 0)
+            {
+                SetLevelCanvas.gameObject.SetActive(false);
+                StepsToUnlockSceneText.text = "Walk " + Story.Steps[currentIndex].ToString() + " Steps: ";
+                StoryPartText.text = Story.Parts[currentIndex].PreviewText;
+                StepsText.text = "0";
+                CompletedStoryButton.gameObject.SetActive(false);
+            }
+            // show the completed text in the HikkingStoryManager scene
+            else
+            {
+                Debug.Log("final scene");
+                StoryPartText.text = completedText;
+                StepsText.gameObject.SetActive(false);
+                StartNextChallengeButton.gameObject.SetActive(false);
+                StepsToUnlockSceneText.gameObject.SetActive(false);
+                CompletedStoryButton.gameObject.SetActive(true);
+            }
         }
     }
 

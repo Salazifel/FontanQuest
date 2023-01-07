@@ -24,7 +24,7 @@ public class Mushroom : MonoBehaviour
             case MushroomKind.Boletus:
                 return "No there are way to many of this kind in this meadow";
             case MushroomKind.GreenToadStool:
-                return "Mhm they grow in groups, the wizard said that they are very rare";
+                return "Mhm they grow in groups, the healer said that they are very rare";
             case MushroomKind.ToadStool:
                 return "I am pretty sure that that is an Toadstool";
             default:

@@ -663,8 +663,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 993954671}
-  - component: {fileID: 993954670}
   - component: {fileID: 993954672}
+  - component: {fileID: 993954670}
   m_Layer: 0
   m_Name: StoryController
   m_TagString: Untagged
@@ -720,7 +720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameCanvas: {fileID: 2139916508}
   QuitCanvas: {fileID: 635410108}
-  NextChapterButton: {fileID: 1158798231}
+  NextChapterButton: {fileID: 0}
 --- !u!1001 &1112412235
 PrefabInstance:
   m_ObjectHideFlags: 0

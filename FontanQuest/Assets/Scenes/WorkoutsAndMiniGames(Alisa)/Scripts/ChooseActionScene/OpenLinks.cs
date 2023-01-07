@@ -34,6 +34,6 @@ public class OpenLinks : MonoBehaviour
     
     public void LoadHikkingStory()
     {
-        SceneManager.Load(SceneManager.Scene.UnlockNextStoryPart);
+        SceneManager.Load(SceneManager.Scene.HikkingStoryManager);
     }
 }

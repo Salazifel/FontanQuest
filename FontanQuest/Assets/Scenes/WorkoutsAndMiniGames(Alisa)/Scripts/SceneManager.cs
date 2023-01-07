@@ -14,10 +14,11 @@ public static class SceneManager
         WoodChopping,
 
         // Hikking Story Scenes
-        UnlockNextStoryPart,
+        HikkingStoryManager,
         FindIronOre,
         FindMushroom,
-        FindTheButterFly
+        FindTheButterFly,
+        SolveTheRiddle
     }
 
     /// <summary>

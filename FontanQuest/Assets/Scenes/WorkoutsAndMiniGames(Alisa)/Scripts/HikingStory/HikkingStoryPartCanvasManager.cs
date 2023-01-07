@@ -33,6 +33,10 @@ public class HikkingStoryPartCanvasManager : MonoBehaviour
     {
         HikkingStoryControll.currentIndex++;
         var links = GetComponent<OpenLinks>();
+        if (links == null)
+        {
+            links = this.gameObject.AddComponent<OpenLinks>();
+        }
         links.LoadHikkingStory();
     }
 

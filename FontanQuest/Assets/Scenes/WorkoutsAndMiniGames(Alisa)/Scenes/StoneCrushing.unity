@@ -1180,6 +1180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49748c8f23ebb884783d55bfffb0301d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WhatGame: 1
   _prepairingPhaseLengthInSeconds: 3
   _chopingPhaseLengthInSeconds: 10
 --- !u!114 &2090012170

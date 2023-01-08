@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ControlChoppingGame : MonoBehaviour
 {
+    public Game WhatGame;
     private DetectChopping _choppingDetect;
     private CountDownManager _countdown;
     private UIControlChopping _ui;
@@ -14,10 +15,14 @@ public class ControlChoppingGame : MonoBehaviour
     private int _chopingPhaseLengthInSeconds = 10;
     private List<TrainingsInterval> _countdownIntervals;
 
+    public enum Game
+    {
+        WoodChopping,
+        StoneMining
+    }
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("start controller");
         _countdown = GetComponent<CountDownManager>();
         _choppingDetect = GetComponent<DetectChopping>();
         _ui = GetComponent<UIControlChopping>();
@@ -47,8 +52,6 @@ public class ControlChoppingGame : MonoBehaviour
         }
         else
         {
-            Debug.Log("start first round");
-
             _firstRound = false;
             _countdown.StartCountDown();
             _ui.Restart();
@@ -63,6 +66,7 @@ public class ControlChoppingGame : MonoBehaviour
     {
         _choppingDetect.StopChopping();
         int cutDownTrees = _choppingDetect.CuttedTrees();
+        Reward(cutDownTrees);
         _ui.Completed(cutDownTrees, cutDownTrees);
     }
 
@@ -77,6 +81,19 @@ public class ControlChoppingGame : MonoBehaviour
         {
             _choppingDetect.StartChoping();
             _ui.ActivePhaseStarts();
+        }
+    }
+
+    private void Reward(int amount)
+    {
+        switch (WhatGame)
+        {
+            case Game.WoodChopping:
+                ResourceContainer.changeRes(wood: amount);
+                break;
+            case Game.StoneMining:
+                ResourceContainer.changeRes(stone: amount);
+                break;
         }
     }
 }

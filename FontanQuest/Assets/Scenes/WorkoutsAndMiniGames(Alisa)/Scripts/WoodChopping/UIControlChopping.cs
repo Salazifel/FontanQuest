@@ -6,6 +6,7 @@ using TMPro;
 
 public class UIControlChopping : MonoBehaviour
 {
+
     public TextMeshProUGUI TreeCounter;
     public TextMeshProUGUI FinalTreeCounter;
     public TextMeshProUGUI FinalReward;
@@ -18,6 +19,7 @@ public class UIControlChopping : MonoBehaviour
 
     public Animator TreeAnimator;
     public Animator AxeAnimator;
+
 
     private string _hitTrigger = "Hit";
     private string _fallTrigger = "Fall";

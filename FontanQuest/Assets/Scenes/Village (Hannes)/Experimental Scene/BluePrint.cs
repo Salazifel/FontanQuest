@@ -6,9 +6,13 @@ public class BluePrint : MonoBehaviour
 {
     RaycastHit hit;
     Vector3 movePoint;
-    public GameObject prefab;
-    public GameObject MasterData;
-    public GameObject Canvas;
+    private GameObject prefab;
+
+    private int ObjectLvl;
+    private string ObjectType;
+    private string ObjectFolder;
+    private GameObject MasterData;
+    private GameObject Canvas;
     private bool placable;
 
     // Start is called before the first frame update
@@ -43,15 +47,18 @@ public class BluePrint : MonoBehaviour
         {
             if (placable == true)
             {
+                Debug.Log(ObjectFolder + " " + ObjectType);
+                prefab = Resources.Load("Buildings/"+ ObjectFolder + "/" + "Constr" + ObjectFolder + "Lvl" + ObjectLvl) as GameObject;
                 GameObject newBuilding = Instantiate(prefab, transform.position, transform.rotation);
                 Destroy(gameObject);
 
                 // needed to save and load the game
-                newBuilding.GetComponent<buildingDataSys>().set_BuildingType("WoodCutterLvl1ConstrSite");
+                name = "Constr" + ObjectFolder + "Lvl" + ObjectLvl;
+                newBuilding.GetComponent<buildingDataSys>().set_BuildingType(name);
                 newBuilding.GetComponent<buildingDataSys>().set_WearDown(0);
 
-                GameObject.FindGameObjectWithTag("Menubuttons").SetActive(false);
-                GameObject.Find("Canvas").GetComponent<Build_Woodcutter>().Finalize_built();
+                GameObject.Find("Canvas").GetComponent<build>().hide_all_Buttons();
+                GameObject.Find("Canvas").GetComponent<BuildButton>().Finalize_built();
             }
         }
 
@@ -64,5 +71,12 @@ public class BluePrint : MonoBehaviour
     void set_placeable(bool b)
     {
         placable = b;
+    }
+
+    public void set_Level(int lvl, string type, string folder)
+    {
+        ObjectLvl = lvl;
+        ObjectType = type;
+        ObjectFolder = folder;
     }
 }

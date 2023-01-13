@@ -13,12 +13,14 @@ public class PersonStatus : MonoBehaviour
     {
         busy = false;
         rend.sharedMaterial = material[0]; // change to red
+        SendMessage("set_wander", true);
         // MasterData.SendMessage("CheckToDoList");
     }
 
     public void SetBusy()
     {
         busy = true;
+        SendMessage("set_wander", false);
         rend.sharedMaterial = material[1]; // change to green
     }
 

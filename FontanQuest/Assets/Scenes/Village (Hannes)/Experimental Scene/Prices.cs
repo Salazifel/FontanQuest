@@ -32,36 +32,37 @@ public class Prices : MonoBehaviour
     }
 
         // HOUSING
-            Building HouseLvl1;
-            Building HouseLvl2;
-            Building HouseLvl3;
+            Building HouseLvl1 = new Building();
+            Building HouseLvl2 = new Building();    
+            Building HouseLvl3 = new Building();
         // TAVERN
-            Building TavernLvl1;
-            Building TavernLvl2;
-            Building TavernLvl3;
+            Building TavernLvl1 = new Building();
+            Building TavernLvl2 = new Building();
+            Building TavernLvl3 = new Building();
         // WOODCUTTER
-            Building WoodCutterLvl1;
-            Building WoodCutterLvl2;
-            Building WoodCutterLvl3;
+            Building WoodCutterLvl1 = new Building();
+            Building WoodCutterLvl2 = new Building();
+            Building WoodCutterLvl3 = new Building();
         // STONEMINE
-            Building StoneMineLvl1;
-            Building StoneMineLvl2;
-            Building StoneMineLvl3;
+            Building StoneMineLvl1 = new Building();
+            Building StoneMineLvl2 = new Building();
+            Building StoneMineLvl3 = new Building();
         // FARM
-            Building FarmLvl1;
-            Building FarmLvl2;
-            Building FarmLvl3;
+            Building FarmLvl1 = new Building();
+            Building FarmLvl2 = new Building();
+            Building FarmLvl3 = new Building();
         // MAINBUILDING
-            Building MainBuildingLvl1;
-            Building MainBuildingLvl2;
-            Building MainBuildingLvl3;
+            Building MainBuildingLvl1 = new Building();
+            Building MainBuildingLvl2 = new Building(); 
+            Building MainBuildingLvl3 = new Building();
         // STABLES
-            Building StablesLvl1;
-            Building StablesLvl2;
-            Building StablesLvl3;
+            Building StablesLvl1 = new Building();
+            Building StablesLvl2 = new Building();
+            Building StablesLvl3 = new Building();
 
     void Awake()
     {
+        /*
         // Initializing the GameObjects
 
         // HOUSING
@@ -92,7 +93,7 @@ public class Prices : MonoBehaviour
             Building StablesLvl1 = new Building();
             Building StablesLvl2 = new Building();
             Building StablesLvl3 = new Building();
-
+        */
 
         // Initializing the actual values for each building
 
@@ -257,6 +258,306 @@ public class Prices : MonoBehaviour
                 StablesLvl3.foodBoost = 30;
                 StablesLvl3.goldUpkeep = 35;
     }
+
+    public string[] ReturnUpkeep(string buildingName, int buildingLevel)
+    {
+        string[] upkeep = new string[2];
+        switch(buildingName)
+        {
+            case "House":
+                switch(buildingLevel)
+                {
+                    case 1:
+                        upkeep[0] = HouseLvl1.foodBoost.ToString();
+                        upkeep[1] = HouseLvl1.goldUpkeep.ToString();
+                        break;
+                    case 2:
+                        upkeep[0] = HouseLvl2.foodBoost.ToString();
+                        upkeep[1] = HouseLvl2.goldUpkeep.ToString();
+                        break;
+                    case 3:
+                        upkeep[0] = HouseLvl3.foodBoost.ToString();
+                        upkeep[1] = HouseLvl3.goldUpkeep.ToString();
+                        break;
+                }
+            break;
+            case "WoodCutter":
+                switch (buildingLevel)
+                {
+                    case 1:
+                        upkeep[0] = WoodCutterLvl1.foodBoost.ToString();
+                        upkeep[1] = WoodCutterLvl1.goldUpkeep.ToString();
+                        break;
+                    case 2:
+                        upkeep[0] = WoodCutterLvl2.foodBoost.ToString();
+                        upkeep[1] = WoodCutterLvl2.goldUpkeep.ToString();
+                        break;
+                    case 3:
+                        upkeep[0] = WoodCutterLvl3.foodBoost.ToString();
+                        upkeep[1] = WoodCutterLvl3.goldUpkeep.ToString();
+                        break;
+                }
+            break;
+            case "StoneMine":
+                switch (buildingLevel)
+                {
+                    case 1:
+                        upkeep[0] = StoneMineLvl1.foodBoost.ToString();
+                        upkeep[1] = StoneMineLvl1.goldUpkeep.ToString();
+                        break;
+                    case 2:
+                        upkeep[0] = StoneMineLvl2.foodBoost.ToString();
+                        upkeep[1] = StoneMineLvl2.goldUpkeep.ToString();
+                        break;
+                    case 3:
+                        upkeep[0] = StoneMineLvl3.foodBoost.ToString();
+                        upkeep[1] = StoneMineLvl3.goldUpkeep.ToString();
+                        break;
+                }
+            break;
+            case "Farm":
+                switch (buildingLevel)
+                {
+                    case 1:
+                        upkeep[0] = FarmLvl1.foodBoost.ToString();
+                        upkeep[1] = FarmLvl1.goldUpkeep.ToString();
+                        break;
+                    case 2:
+                        upkeep[0] = FarmLvl2.foodBoost.ToString();
+                        upkeep[1] = FarmLvl2.goldUpkeep.ToString();
+                        break;
+                    case 3:
+                        upkeep[0] = FarmLvl3.foodBoost.ToString();
+                        upkeep[1] = FarmLvl3.goldUpkeep.ToString();
+                        break;
+                }
+            break;
+            case "MainBuilding":
+                switch (buildingLevel)
+                {
+                    case 1:
+                        upkeep[0] = MainBuildingLvl1.foodBoost.ToString();
+                        upkeep[1] = MainBuildingLvl1.goldUpkeep.ToString();
+                        break;
+                    case 2:
+                        upkeep[0] = MainBuildingLvl2.foodBoost.ToString();
+                        upkeep[1] = MainBuildingLvl2.goldUpkeep.ToString();
+                        break;
+                    case 3:
+                        upkeep[0] = MainBuildingLvl3.foodBoost.ToString();
+                        upkeep[1] = MainBuildingLvl3.goldUpkeep.ToString();
+                        break;
+                }
+            break;
+            case "Stables":
+                switch (buildingLevel)
+                {
+                    case 1:
+                        upkeep[0] = StablesLvl1.foodBoost.ToString();
+                        upkeep[1] = StablesLvl1.goldUpkeep.ToString();
+                        break;
+                    case 2:
+                        upkeep[0] = StablesLvl2.foodBoost.ToString();
+                        upkeep[1] = StablesLvl2.goldUpkeep.ToString();
+                        break;
+                    case 3:
+                        upkeep[0] = StablesLvl3.foodBoost.ToString();
+                        upkeep[1] = StablesLvl3.goldUpkeep.ToString();
+                        break;
+                }
+            break;
+            case "Tavern":
+                switch (buildingLevel)
+                {
+                    case 1:
+                        upkeep[0] = TavernLvl1.foodBoost.ToString();
+                        upkeep[1] = TavernLvl1.goldUpkeep.ToString();
+                        break;
+                    case 2:
+                        upkeep[0] = TavernLvl2.foodBoost.ToString();
+                        upkeep[1] = TavernLvl2.goldUpkeep.ToString();
+                        break;
+                    case 3:
+                        upkeep[0] = TavernLvl3.foodBoost.ToString();
+                        upkeep[1] = TavernLvl3.goldUpkeep.ToString();
+                        break;
+                }
+            break;
+        }
+        return upkeep;
+    }
+
+    public string[] ReturnPrice(string buildingName, int buildingLevel)
+    {
+        string[] price = new string[4];
+        switch (buildingName)
+        {
+            case "House":
+                switch (buildingLevel)
+                {
+                    case 1:
+                        price[0] = HouseLvl1.wood.ToString();
+                        price[1] = HouseLvl1.stone.ToString();
+                        price[2] = HouseLvl1.food.ToString();
+                        price[3] = HouseLvl1.gold.ToString();
+                        break;
+                    case 2:
+                        price[0] = HouseLvl2.wood.ToString();
+                        price[1] = HouseLvl2.stone.ToString();
+                        price[2] = HouseLvl2.food.ToString();
+                        price[3] = HouseLvl2.gold.ToString();
+                        break;
+                    case 3:
+                        price[0] = HouseLvl3.wood.ToString();
+                        price[1] = HouseLvl3.stone.ToString();
+                        price[2] = HouseLvl3.food.ToString();
+                        price[3] = HouseLvl3.gold.ToString();
+                        break;
+                }
+                break;
+            case "Tavern":
+                switch (buildingLevel)
+                {
+                    case 1:
+                        price[0] = TavernLvl1.wood.ToString();
+                        price[1] = TavernLvl1.stone.ToString();
+                        price[2] = TavernLvl1.food.ToString();
+                        price[3] = TavernLvl1.gold.ToString();
+                        break;
+                    case 2:
+                        price[0] = TavernLvl2.wood.ToString();
+                        price[1] = TavernLvl2.stone.ToString();
+                        price[2] = TavernLvl2.food.ToString();
+                        price[3] = TavernLvl2.gold.ToString();
+                        break;
+                    case 3:
+                        price[0] = TavernLvl3.wood.ToString();
+                        price[1] = TavernLvl3.stone.ToString();
+                        price[2] = TavernLvl3.food.ToString();
+                        price[3] = TavernLvl3.gold.ToString();
+                        break;
+                }
+                break;
+            case "WoodCutter":
+                switch (buildingLevel)
+                {
+                    case 1:
+                        price[0] = WoodCutterLvl1.wood.ToString();
+                        price[1] = WoodCutterLvl1.stone.ToString();
+                        price[2] = WoodCutterLvl1.food.ToString();
+                        price[3] = WoodCutterLvl1.gold.ToString();
+                        break;
+                    case 2:
+                        price[0] = WoodCutterLvl2.wood.ToString();
+                        price[1] = WoodCutterLvl2.stone.ToString();
+                        price[2] = WoodCutterLvl2.food.ToString();
+                        price[3] = WoodCutterLvl2.gold.ToString();
+                        break;
+                    case 3:
+                        price[0] = WoodCutterLvl3.wood.ToString();
+                        price[1] = WoodCutterLvl3.stone.ToString();
+                        price[2] = WoodCutterLvl3.food.ToString();
+                        price[3] = WoodCutterLvl3.gold.ToString();
+                        break;
+                }
+                break;
+            case "MainBuilding":
+                switch (buildingLevel)
+                {
+                    case 1:
+                        price[0] = MainBuildingLvl1.wood.ToString();
+                        price[1] = MainBuildingLvl1.stone.ToString();
+                        price[2] = MainBuildingLvl1.food.ToString();
+                        price[3] = MainBuildingLvl1.gold.ToString();
+                        break;
+                    case 2:
+                        price[0] = MainBuildingLvl2.wood.ToString();
+                        price[1] = MainBuildingLvl2.stone.ToString();
+                        price[2] = MainBuildingLvl2.food.ToString();
+                        price[3] = MainBuildingLvl2.gold.ToString();
+                        break;
+                    case 3:
+                        price[0] = MainBuildingLvl3.wood.ToString();
+                        price[1] = MainBuildingLvl3.stone.ToString();
+                        price[2] = MainBuildingLvl3.food.ToString();
+                        price[3] = MainBuildingLvl3.gold.ToString();
+                        break;
+                }
+                break;
+            case "Stables":
+                switch (buildingLevel)
+                {
+                    case 1:
+                        price[0] = StablesLvl1.wood.ToString();
+                        price[1] = StablesLvl1.stone.ToString();
+                        price[2] = StablesLvl1.food.ToString();
+                        price[3] = StablesLvl1.gold.ToString();
+                        break;
+                    case 2:
+                        price[0] = StablesLvl2.wood.ToString();
+                        price[1] = StablesLvl2.stone.ToString();
+                        price[2] = StablesLvl2.food.ToString();
+                        price[3] = StablesLvl2.gold.ToString();
+                        break;
+                    case 3:
+                        price[0] = StablesLvl3.wood.ToString();
+                        price[1] = StablesLvl3.stone.ToString();
+                        price[2] = StablesLvl3.food.ToString();
+                        price[3] = StablesLvl3.gold.ToString();
+                        break;
+                }
+                break;
+            case "Farm":
+                switch (buildingLevel)
+                {
+                    case 1:
+                        price[0] = FarmLvl1.wood.ToString();
+                        price[1] = FarmLvl1.stone.ToString();
+                        price[2] = FarmLvl1.food.ToString();
+                        price[3] = FarmLvl1.gold.ToString();
+                        break;
+                    case 2:
+                        price[0] = FarmLvl2.wood.ToString();
+                        price[1] = FarmLvl2.stone.ToString();
+                        price[2] = FarmLvl2.food.ToString();
+                        price[3] = FarmLvl2.gold.ToString();
+                        break;
+                    case 3:
+                        price[0] = FarmLvl3.wood.ToString();
+                        price[1] = FarmLvl3.stone.ToString();
+                        price[2] = FarmLvl3.food.ToString();
+                        price[3] = FarmLvl3.gold.ToString();
+                        break;
+                }
+                break;
+            case "StoneMine":
+                switch (buildingLevel)
+                {
+                    case 1:
+                        price[0] = StoneMineLvl1.wood.ToString();
+                        price[1] = StoneMineLvl1.stone.ToString();
+                        price[2] = StoneMineLvl1.food.ToString();
+                        price[3] = StoneMineLvl1.gold.ToString();
+                        break;
+                    case 2:
+                        price[0] = StoneMineLvl2.wood.ToString();
+                        price[1] = StoneMineLvl2.stone.ToString();
+                        price[2] = StoneMineLvl2.food.ToString();
+                        price[3] = StoneMineLvl2.gold.ToString();
+                        break;
+                    case 3:
+                        price[0] = StoneMineLvl3.wood.ToString();
+                        price[1] = StoneMineLvl3.stone.ToString();
+                        price[2] = StoneMineLvl3.food.ToString();
+                        price[3] = StoneMineLvl3.gold.ToString();
+                        break;
+                }
+                break;
+            
+        }
+        return price;
+    }
+
 
     // functions to return the buildings into other scripts
 

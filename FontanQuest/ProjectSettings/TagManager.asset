@@ -10,7 +10,11 @@ TagManager:
   - Task
   - Tree
   - Building
-
+  - TreeTrunk
+  - ResourcesBuildingBtns
+  - PeopleBuildingsBtns
+  - MainBuildingsBtns
+  - BuildSubMenuBtns
   layers:
   - Default
   - TransparentFX
@@ -21,8 +25,8 @@ TagManager:
   - 
   - 
   - 
-  - Ground
-  - Player
+  - Building Ground
+  - 
   - 
   - 
   - 

@@ -5,82 +5,52 @@ using TMPro;
 
 public class Ressources : MonoBehaviour
 {
-    // variables storing the player's ressources
-    public int wood;
-    public int stone;
-    public int food;
-    public int gold;
-
-    // maximalstorage, increased through the main building in the function IncreaseMaxRessources
-    public int maxWood  = 100;
-    public int maxStone = 100;
-    public int maxFood  = 100;
-    // there is no maximum in gold to not demotivate benefits from sports
-
     // labels to display the player's ressources
     private TextMeshProUGUI WoodText;
     private TextMeshProUGUI StoneText;
     private TextMeshProUGUI FoodText;
     private TextMeshProUGUI GoldText;
 
-    // Start is called before the first frame update
-    public bool CheckRessources(int woodc, int stonec, int foodc, int goldc)
-    {
-        bool affordable = true;
-
-        if (woodc > wood)
-            { affordable = false; }
-        if (stonec > stone)
-            { affordable = false; }
-        if (foodc > food)
-            { affordable = false; }
-        if (goldc > gold)
-            { affordable = false; }
-
-        return affordable;
-    }
-
-
-    public void ChangeRessources(int woodc, int stonec, int foodc, int goldc)
-    {
-        wood = wood + woodc;
-        stone = stone + stonec;
-        food = food + foodc;
-        gold = gold + goldc;
-    }
-
-    public void IncreaseMaxRessources(int maxW, int maxS, int maxF)
-    {
-        maxWood  += maxW;
-        maxStone += maxS;
-        maxFood  += maxF;
-    }
-
     void Awake()
     {
-        GameObject.FindGameObjectWithTag("Menubuttons").SetActive(false);
+        // GameObject.FindGameObjectWithTag("Menubuttons").SetActive(false);
 
-        WoodText = GameObject.Find("Wood").GetComponent<TextMeshProUGUI>();
-        StoneText = GameObject.Find("Stone").GetComponent<TextMeshProUGUI>();
-        FoodText = GameObject.Find("Food").GetComponent<TextMeshProUGUI>();
-        GoldText = GameObject.Find("Gold").GetComponent<TextMeshProUGUI>();
+        WoodText = GameObject.Find("Wood Text (TMP)").GetComponent<TextMeshProUGUI>();
+        StoneText = GameObject.Find("Stone Text (TMP) ").GetComponent<TextMeshProUGUI>();
+        FoodText = GameObject.Find("Food Text (TMP) ").GetComponent<TextMeshProUGUI>();
+        GoldText = GameObject.Find("Gold Text (TMP) ").GetComponent<TextMeshProUGUI>();
+    
+        ResourceContainer.setMaxRes();
+        ResourceContainer.TestResources();
     }
 
-    void Update()
+    void Start()
     {
+        // run the load game function from SavingGameData.cs
+        this.GetComponent<SavingGameData>().load_Game();
+    }
+
+    void LateUpdate()
+    {
+        // get current ressources from ResourceContainer.cs
+        int[] res = ResourceContainer.getRes();
+        int[] maxRes = ResourceContainer.getMaxRes();
+
         // set ressources to maximum
-        if (wood > maxWood)
-            wood = maxWood;
-        if (stone > maxStone)
-            stone = maxStone;
-        if (food > maxFood)
-            food = maxFood;
+        if (res[0] > maxRes[0])
+            res[0] = maxRes[0];
+        if (res[1] > maxRes[1])
+            res[1] = maxRes[1];
+        if (res[2] > maxRes[2])
+            res[2] = maxRes[2];
+
+        ResourceContainer.setRes(res[0], res[1], res[2]);
 
         // display ressources
-        WoodText.text = wood.ToString() + " wood";
-        StoneText.text = stone.ToString() + " stone";
-        FoodText.text = food.ToString() + " food";
-        GoldText.text = gold.ToString() + " gold";
+        WoodText.text = res[0].ToString();
+        StoneText.text = res[1].ToString();
+        FoodText.text = res[2].ToString();
+        GoldText.text = res[3].ToString();
     }
 }
 

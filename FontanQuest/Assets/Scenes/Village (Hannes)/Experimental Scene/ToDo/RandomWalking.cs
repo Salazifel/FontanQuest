@@ -10,6 +10,7 @@ public class RandomWalking : MonoBehaviour
     public float wanderRadius;
     public float wanderTimer;
 
+    private bool wander = true;
     private Transform target;
     private UnityEngine.AI.NavMeshAgent agent;
     private float timer;
@@ -24,13 +25,16 @@ public class RandomWalking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-
-        if (timer >= wanderTimer)
+        if (wander == true)
         {
-            Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
-            agent.SetDestination(newPos);
-            timer = 0;
+            timer += Time.deltaTime;
+
+            if (timer >= wanderTimer)
+            {
+                Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
+                agent.SetDestination(newPos);
+                timer = 0;
+            }
         }
     }
 
@@ -45,5 +49,10 @@ public class RandomWalking : MonoBehaviour
         UnityEngine.AI.NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
 
         return navHit.position;
+    }
+
+    public void set_wander(bool b)
+    {
+        wander = b;
     }
 }

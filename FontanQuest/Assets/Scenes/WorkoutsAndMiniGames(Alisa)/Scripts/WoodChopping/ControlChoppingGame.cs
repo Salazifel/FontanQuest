@@ -90,9 +90,13 @@ public class ControlChoppingGame : MonoBehaviour
         {
             case Game.WoodChopping:
                 ResourceContainer.changeRes(wood: amount);
+                GameData.WoodChopping.CompletedGame();
+                GameData.WoodChopping.NewHighScore(amount);
                 break;
             case Game.StoneMining:
                 ResourceContainer.changeRes(stone: amount);
+                GameData.StoneMining.CompletedGame();
+                GameData.StoneMining.NewHighScore(amount);
                 break;
         }
     }

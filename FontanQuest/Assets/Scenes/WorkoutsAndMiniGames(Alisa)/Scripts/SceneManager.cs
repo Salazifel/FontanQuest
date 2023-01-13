@@ -18,7 +18,8 @@ public static class SceneManager
         FindIronOre,
         FindMushroom,
         FindTheButterFly,
-        SolveTheRiddle
+        SolveTheRiddle,
+        RunAway
     }
 
     /// <summary>

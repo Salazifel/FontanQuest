@@ -32,7 +32,7 @@ public class HikkingStoryControll : MonoBehaviour
     private static Level level3 = new Level(level3Steps, new Reward(Reward.kind.Gold, 4), new Reward(Reward.kind.EP, 1000));
     private static StoryPart FindTheIronOre = new StoryPart(SceneManager.Scene.FindIronOre.ToString(), StoryPart.IronOreSceneIntroText);
     private static StoryPart FindTheVioleteMushroom = new StoryPart(SceneManager.Scene.FindMushroom.ToString(), StoryPart.MushroomSceneIntroText);
-    private static StoryPart RunAwayFromTheBear = new StoryPart(SceneManager.Scene.RunAway.ToString(), )
+  //  private static StoryPart RunAwayFromTheBear = new StoryPart(SceneManager.Scene.RunAway.ToString(), )
     // private static StoryPart FindTheButterFly = new StoryPart(SceneManager.Scene.FindTheButterFly.ToString(), StoryPart.FindTheButterflyText);
     private static StoryPart SolveTheRiddle = new StoryPart(SceneManager.Scene.SolveTheRiddle.ToString(), StoryPart.SolveTheRiddeText);
     private static string completedText = "Healer: Oh thank you so much for gathering the ingridients. I will start to make the cure imeadiatly!!";

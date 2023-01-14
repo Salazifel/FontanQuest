@@ -31,7 +31,6 @@ public class HikkingStoryPartCanvasManager : MonoBehaviour
 
     public void NextChapterButtonClick()
     {
-        HikkingStoryControll.currentIndex++;
         var links = GetComponent<OpenLinks>();
         if (links == null)
         {
@@ -42,8 +41,6 @@ public class HikkingStoryPartCanvasManager : MonoBehaviour
 
     public void QuitGame()
     {
-        HikkingStoryControll.currentIndex = 0;
-        Debug.Log("Current index " + HikkingStoryControll.currentIndex);
         var links = GetComponent<OpenLinks>();
         if(links == null)
         {

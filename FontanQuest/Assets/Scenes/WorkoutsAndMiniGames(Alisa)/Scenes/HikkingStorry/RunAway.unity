@@ -743,6 +743,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuitGameCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6717134576240107270, guid: 13e5d2f36e90f774eb2900deb7f68965,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6717134576240107386, guid: 13e5d2f36e90f774eb2900deb7f68965,
         type: 3}
       propertyPath: m_Pivot.x

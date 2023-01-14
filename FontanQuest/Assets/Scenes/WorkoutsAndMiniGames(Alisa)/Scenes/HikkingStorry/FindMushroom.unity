@@ -456,6 +456,7 @@ GameObject:
   - component: {fileID: 205039601}
   - component: {fileID: 205039603}
   - component: {fileID: 205039605}
+  - component: {fileID: 205039606}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -515,6 +516,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47dd93884b80a5d46b14a1e6c46a3857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &205039606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205039600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 031c117a0c7f9ba48ab5f2512cd95620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameCanvas: {fileID: 1363889222}
+  QuitCanvas: {fileID: 241282054}
+  NextChapterButton: {fileID: 1784057295}
 --- !u!1 &211162244
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,6 +756,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6493430870300760233, guid: 7f3df905f511d4746a371f0969bac29a,
     type: 3}
   m_PrefabInstance: {fileID: 230162535}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &241282054 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 6717134576240107387, guid: 13e5d2f36e90f774eb2900deb7f68965,
+    type: 3}
+  m_PrefabInstance: {fileID: 6717134575765828027}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &279918399
 PrefabInstance:
@@ -1567,7 +1589,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 205039606}
         m_TargetAssemblyTypeName: HikkingStoryPartCanvasManager, Assembly-CSharp
         m_MethodName: ShowQuitGameWindow
         m_Mode: 1
@@ -4376,6 +4398,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1293591085}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1784057295 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
+    type: 3}
+  m_PrefabInstance: {fileID: 1293591085}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1812062191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4971,6 +5005,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 205039606}
+    - target: {fileID: 6717134575130258100, guid: 13e5d2f36e90f774eb2900deb7f68965,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ContinueGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717134575765451166, guid: 13e5d2f36e90f774eb2900deb7f68965,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717134575765451166, guid: 13e5d2f36e90f774eb2900deb7f68965,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0044956
       objectReference: {fileID: 0}
     - target: {fileID: 6717134576240107270, guid: 13e5d2f36e90f774eb2900deb7f68965,
         type: 3}

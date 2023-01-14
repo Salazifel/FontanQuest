@@ -10,14 +10,14 @@ public class StoryControll : MonoBehaviour
     {
         if(StoryScenes.Count == 0)
         {
-            Debug.Log("set story scenes");
             StoryScenes.Enqueue(SceneManager.Scene.FindIronOre);
             StoryScenes.Enqueue(SceneManager.Scene.RunAway);
             StoryScenes.Enqueue(SceneManager.Scene.HikkingStoryManager);
             StoryScenes.Enqueue(SceneManager.Scene.SolveTheRiddle);
             StoryScenes.Enqueue(SceneManager.Scene.HikkingStoryManager);
             StoryScenes.Enqueue(SceneManager.Scene.FindMushroom);
-            StoryScenes.Enqueue(SceneManager.Scene.HikkingStoryManager) ;
+            StoryScenes.Enqueue(SceneManager.Scene.HikkingStoryManager);
+            StoryScenes.Enqueue(SceneManager.Scene.HikkingStoryManager);
         }
     }
 

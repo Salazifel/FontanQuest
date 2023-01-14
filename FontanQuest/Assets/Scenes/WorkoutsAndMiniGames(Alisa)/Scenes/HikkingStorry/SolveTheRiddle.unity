@@ -334,7 +334,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 186, y: 220}
-  m_SizeDelta: {x: 90, y: 90}
+  m_SizeDelta: {x: 170, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &294076140
 MonoBehaviour:
@@ -765,8 +765,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2192432880097534085, guid: 39b0ed5922b4ddf47aa1db07b63365fd,
         type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2192432880097534085, guid: 39b0ed5922b4ddf47aa1db07b63365fd,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2192432880097534085, guid: 39b0ed5922b4ddf47aa1db07b63365fd,
+        type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174972848345691151, guid: 39b0ed5922b4ddf47aa1db07b63365fd,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 632.8782
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174972848345691151, guid: 39b0ed5922b4ddf47aa1db07b63365fd,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 409.5004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174972848345691151, guid: 39b0ed5922b4ddf47aa1db07b63365fd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -69.24548
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174972848345691151, guid: 39b0ed5922b4ddf47aa1db07b63365fd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -67.17859
       objectReference: {fileID: 0}
     - target: {fileID: 5021314472144707072, guid: 39b0ed5922b4ddf47aa1db07b63365fd,
         type: 3}
@@ -831,22 +861,22 @@ PrefabInstance:
     - target: {fileID: 8325740191261344693, guid: 39b0ed5922b4ddf47aa1db07b63365fd,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 400.7143
+      value: 508.1999
       objectReference: {fileID: 0}
     - target: {fileID: 8325740191261344693, guid: 39b0ed5922b4ddf47aa1db07b63365fd,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 135.6767
+      value: 222.4919
       objectReference: {fileID: 0}
     - target: {fileID: 8325740191261344693, guid: 39b0ed5922b4ddf47aa1db07b63365fd,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 3.8529
+      value: -62.292236
       objectReference: {fileID: 0}
     - target: {fileID: 8325740191261344693, guid: 39b0ed5922b4ddf47aa1db07b63365fd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25.5144
+      value: -104.061615
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39b0ed5922b4ddf47aa1db07b63365fd, type: 3}
@@ -1783,7 +1813,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 322.99683, y: -184.58405}
+  m_AnchoredPosition: {x: 322.99683, y: -275}
   m_SizeDelta: {x: 1296.5355, y: 206.2937}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1162213507
@@ -2324,7 +2354,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 538, y: 19}
+  m_AnchoredPosition: {x: 538, y: -71.07507}
   m_SizeDelta: {x: 315.7032, y: 126.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1435883889
@@ -2774,7 +2804,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.3228, y: 9.0751}
+  m_AnchoredPosition: {x: 1.3228, y: -81}
   m_SizeDelta: {x: 665.65, y: 126.1752}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1704605685
@@ -2998,8 +3028,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

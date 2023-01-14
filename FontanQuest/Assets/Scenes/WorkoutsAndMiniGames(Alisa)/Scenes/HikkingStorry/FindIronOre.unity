@@ -1639,18 +1639,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 522431688}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &522431690 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
-    type: 3}
-  m_PrefabInstance: {fileID: 522431688}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &553966388
 GameObject:
   m_ObjectHideFlags: 0
@@ -3534,7 +3522,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1413258099}
   - component: {fileID: 1413258100}
-  - component: {fileID: 1413258102}
   - component: {fileID: 1413258101}
   - component: {fileID: 1413258103}
   m_Layer: 0
@@ -3566,7 +3553,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413258097}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b03cd487546afc49ace5bed809b3826, type: 3}
   m_Name: 
@@ -3584,21 +3571,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b72ca2261f395f43aab36ba04ca404f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1413258102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413258097}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 031c117a0c7f9ba48ab5f2512cd95620, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameCanvas: {fileID: 2059550337}
-  QuitCanvas: {fileID: 1551163675}
-  NextChapterButton: {fileID: 522431690}
 --- !u!114 &1413258103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3759,11 +3731,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1413258102}
+      objectReference: {fileID: 0}
     - target: {fileID: 6717134575130258100, guid: 13e5d2f36e90f774eb2900deb7f68965,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ContinueGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717134575765451166, guid: 13e5d2f36e90f774eb2900deb7f68965,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1221.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717134575765451166, guid: 13e5d2f36e90f774eb2900deb7f68965,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 10.809
       objectReference: {fileID: 0}
     - target: {fileID: 6717134576240107270, guid: 13e5d2f36e90f774eb2900deb7f68965,
         type: 3}
@@ -3773,7 +3755,7 @@ PrefabInstance:
     - target: {fileID: 6717134576240107270, guid: 13e5d2f36e90f774eb2900deb7f68965,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6717134576240107386, guid: 13e5d2f36e90f774eb2900deb7f68965,
         type: 3}
@@ -3917,12 +3899,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13e5d2f36e90f774eb2900deb7f68965, type: 3}
---- !u!223 &1551163675 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 6717134576240107387, guid: 13e5d2f36e90f774eb2900deb7f68965,
-    type: 3}
-  m_PrefabInstance: {fileID: 1551163674}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1563259345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4247,7 +4223,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1413258102}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: HikkingStoryPartCanvasManager, Assembly-CSharp
         m_MethodName: ShowQuitGameWindow
         m_Mode: 1

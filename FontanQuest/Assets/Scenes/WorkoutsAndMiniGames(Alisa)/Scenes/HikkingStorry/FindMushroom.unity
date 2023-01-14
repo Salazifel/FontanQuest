@@ -455,7 +455,6 @@ GameObject:
   - component: {fileID: 205039602}
   - component: {fileID: 205039601}
   - component: {fileID: 205039603}
-  - component: {fileID: 205039604}
   - component: {fileID: 205039605}
   m_Layer: 0
   m_Name: SceneManager
@@ -504,21 +503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b72ca2261f395f43aab36ba04ca404f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &205039604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 205039600}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 031c117a0c7f9ba48ab5f2512cd95620, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameCanvas: {fileID: 1363889222}
-  QuitCanvas: {fileID: 743255744}
-  NextChapterButton: {fileID: 1784057295}
 --- !u!114 &205039605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1583,7 +1567,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 205039604}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: HikkingStoryPartCanvasManager, Assembly-CSharp
         m_MethodName: ShowQuitGameWindow
         m_Mode: 1
@@ -1701,12 +1685,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000010865213554, guid: 82bd0e3eef3cc854eae31c6f4cd718bf,
     type: 3}
   m_PrefabInstance: {fileID: 722624924}
-  m_PrefabAsset: {fileID: 0}
---- !u!223 &743255744 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 6717134576240107387, guid: 13e5d2f36e90f774eb2900deb7f68965,
-    type: 3}
-  m_PrefabInstance: {fileID: 6717134575765828027}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &749233329 stripped
 GameObject:
@@ -4398,18 +4376,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1293591085}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1784057295 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
-    type: 3}
-  m_PrefabInstance: {fileID: 1293591085}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1812062191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5005,7 +4971,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 205039604}
+      objectReference: {fileID: 0}
     - target: {fileID: 6717134576240107270, guid: 13e5d2f36e90f774eb2900deb7f68965,
         type: 3}
       propertyPath: m_Name

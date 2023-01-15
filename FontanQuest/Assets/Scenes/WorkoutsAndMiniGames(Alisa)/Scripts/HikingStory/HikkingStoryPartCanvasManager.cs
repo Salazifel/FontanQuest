@@ -16,14 +16,12 @@ public class HikkingStoryPartCanvasManager : MonoBehaviour
         QuitCanvas.gameObject.SetActive(false);
         if (NextChapterButton != null)
         {
-            Debug.Log("deactivate Button");
             NextChapterButton.gameObject.SetActive(false);
         }
     }
 
     public void ActivateNextChapterButton()
     {
-        Debug.Log("activate button");
         NextChapterButton.gameObject.SetActive(true);
     }
     public void ContinueGame()
@@ -33,7 +31,6 @@ public class HikkingStoryPartCanvasManager : MonoBehaviour
 
     public void NextChapterButtonClick()
     {
-        HikkingStoryControll.currentIndex++;
         var links = GetComponent<OpenLinks>();
         if (links == null)
         {
@@ -44,8 +41,6 @@ public class HikkingStoryPartCanvasManager : MonoBehaviour
 
     public void QuitGame()
     {
-        HikkingStoryControll.currentIndex = 0;
-        Debug.Log("Current index " + HikkingStoryControll.currentIndex);
         var links = GetComponent<OpenLinks>();
         if(links == null)
         {

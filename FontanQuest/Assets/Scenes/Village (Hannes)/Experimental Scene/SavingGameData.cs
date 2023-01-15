@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System.IO;
+using System;
 
 public class SavingGameData : MonoBehaviour
 {
+    public GameObject WorkerPrefab;
     private string savefile;
     public List<string> InGameOtherObjectsTags;
 
+    [Serializable] 
     public class GameData
     {
         public int wood;
@@ -16,78 +19,144 @@ public class SavingGameData : MonoBehaviour
         public int food;
         public int gold;
 
-        public List<InGameBuilding> InGameBuildings; // = new List<InGameObjects>();
+        public List<InGameBuilding> InGameBuildings;
         public List<InGameOtherObject> InGameOtherObjects;
-        // Dictionary<InGameObjects, InGameObjects> DictInGameObjects = new Dictionary<InGameObjects, InGameObjects>();   
+
+        public List<string> PlayerData;
     }
 
+    [Serializable]
     public class InGameBuilding
     {
         public Vector3 pos;
         public Quaternion rotation;
+        public string ObjectFolder;
         public string ObjectType;
-        public float wearDownV;
+        public float wearDown;
     }
 
+    [Serializable]
     public class InGameOtherObject
     {
         public Vector3 pos;
         public Quaternion rotation;
+        public string ObjectFolder;
         public string ObjectType;
         public string status;
     }
 
     public void save_Game()
     {
+        // delte old save file
+        if (File.Exists(savefile))
+        {
+            File.Delete(savefile);
+        }
+
         File.WriteAllText(savefile, get_GameData());
     }
 
     public void load_Game()
     {
-        if (File.Exists(savefile))
+        if (File.Exists(savefile) == false)
         {
-            string fileContents = File.ReadAllText(savefile);
+            return;
         }
+        
+        string fileContents = File.ReadAllText(savefile);
+        GameData gameData = JsonUtility.FromJson<GameData>(fileContents);
+
+        Debug.Log(gameData);
+        // load ressources
+        ResourceContainer.setRes(gameData.wood, gameData.stone, gameData.food, gameData.gold);
+        
+        // run the Receive_PlayerData_fromSaveGameDataCS function in MessageEventSystem.cs and hand over the PlayerData
+        GetComponent<MessageEventSystem>().Receive_PlayerData_fromSaveGameDataCS(gameData.PlayerData);
+
+        // load buildings
+        //Debug.Log("test: " + Resources.Load("Buildings/" + gameData.InGameBuildings[0].ObjectFolder + "/" + gameData.InGameBuildings[0].ObjectType).GetType());
+        for (int i = 0; i < gameData.InGameBuildings.Count; i++)
+        {
+            if (gameData.InGameBuildings[i].ObjectFolder != "" || gameData.InGameBuildings[i].ObjectType != "")
+            {
+                GameObject tmp = Instantiate(Resources.Load("Buildings/" + gameData.InGameBuildings[i].ObjectFolder + "/" + gameData.InGameBuildings[i].ObjectType) as GameObject);
+                tmp.transform.position = gameData.InGameBuildings[i].pos;
+                tmp.transform.rotation = gameData.InGameBuildings[i].rotation;
+                tmp.GetComponent<buildingDataSys>().set_WearDown((int) gameData.InGameBuildings[i].wearDown);
+            }
+        }
+
+        // load other objects
+        for (int i = 0; i < gameData.InGameOtherObjects.Count; i++)
+        {
+            if (gameData.InGameOtherObjects[i].ObjectFolder != "" || gameData.InGameOtherObjects[i].ObjectType != "")
+            {
+                GameObject tmp = Instantiate(Resources.Load("OtherObjects/" + gameData.InGameOtherObjects[i].ObjectFolder + "/" + gameData.InGameOtherObjects[i].ObjectType) as GameObject);
+            tmp.transform.position = gameData.InGameOtherObjects[i].pos;
+            tmp.transform.rotation = gameData.InGameOtherObjects[i].rotation;
+            tmp.GetComponent<OtherObjectsDataSys>().set_Status(gameData.InGameOtherObjects[i].status);
+            }
+        }
+
+        StartCoroutine("AutoSave");
     }
+
 
     void Awake()
     {
+        // Instantiate a worker at the start of the game
+        GameObject FirstWorkerPosition = GameObject.Find("FirstWorkerPosition");
+        GameObject worker = Instantiate(WorkerPrefab, FirstWorkerPosition.transform.position, Quaternion.identity);
+
         savefile = Application.persistentDataPath + "/gamedata.json";
         Debug.Log(Application.persistentDataPath);
 
         InGameOtherObjectsTags.Add("Tree");
-        // InGameOtherObjectsTags.Add("TreeTrunk");
+        InGameOtherObjectsTags.Add("TreeTrunk");
+
+        //load_Game();
+        //StartCoroutine("AutoSave");
     }
 
     public string get_GameData()
     {
         GameData gameData = new GameData();
+        gameData.InGameBuildings = new List<InGameBuilding>();
+        gameData.InGameOtherObjects = new List<InGameOtherObject>();
+        gameData.PlayerData = new List<string>();
+
+        // get the PlayerData
+        gameData.PlayerData = GetComponent<MessageEventSystem>().Send_PlayerData_toSaveGameDataCS();
 
         // Getting the ressources
-        gameData.wood = transform.parent.GetComponent<Ressources>().wood;
-        gameData.stone = transform.parent.GetComponent<Ressources>().wood;
-        gameData.food = transform.parent.GetComponent<Ressources>().wood;
-        gameData.gold = transform.parent.GetComponent<Ressources>().wood;
+        int[] res = ResourceContainer.getRes();
+        gameData.wood = res[0];
+        gameData.stone = res[1];
+        gameData.food = res[2];
+        gameData.gold = res[3];
 
         // get all buildings
-        GameObject [] buildings = GameObject.FindGameObjectsWithTag("building");
+        GameObject [] buildings = GameObject.FindGameObjectsWithTag("Building");
         for (int i = 0; i < buildings.Length; i++)
-        {
-            gameData.InGameBuildings.Add(CreateInGameBuilding(buildings[i]));
-
+        {            
+            InGameBuilding tmp = CreateInGameBuilding(buildings[i]);
+            gameData.InGameBuildings.Add(tmp);
         }
-        // get all other InGameObjects
 
+        // get all other InGameObjects
         for (int i = 0; i < InGameOtherObjectsTags.Count; i++)
         {
             GameObject [] otherObjects = GameObject.FindGameObjectsWithTag(InGameOtherObjectsTags[i]);
             for (int n = 0; n < otherObjects.Length; n++)
             {
-                gameData.InGameOtherObjects.Add(CreateInGameOtherObject(otherObjects[n]));
+                InGameOtherObject tmp = CreateInGameOtherObject(otherObjects[n]);
+                gameData.InGameOtherObjects.Add(tmp);
             }
         }
 
 
+        Debug.Log(gameData.InGameBuildings.Count);
+        
         string JasonString = JsonUtility.ToJson(gameData);
         return JasonString;
     }
@@ -98,8 +167,10 @@ public class SavingGameData : MonoBehaviour
 
         tmp.pos = gO.transform.position;
         tmp.rotation = gO.transform.rotation;
+
+        tmp.ObjectFolder = gO.GetComponent<buildingDataSys>().get_ObjectFolder();
         tmp.ObjectType = gO.GetComponent<buildingDataSys>().get_BuildingType();
-        tmp.wearDownV = gO.GetComponent<buildingDataSys>().get_WearDown();
+        tmp.wearDown = gO.GetComponent<buildingDataSys>().get_WearDown();
 
         return tmp;
     }
@@ -110,25 +181,23 @@ public class SavingGameData : MonoBehaviour
 
         tmp.pos = gO.transform.position;
         tmp.rotation = gO.transform.rotation;
+        tmp.ObjectFolder = gO.GetComponent<OtherObjectsDataSys>().get_ObjectFolder();
         tmp.ObjectType = gO.GetComponent<OtherObjectsDataSys>().get_ObjectType();
         tmp.status = gO.GetComponent<OtherObjectsDataSys>().get_Status();
 
         return tmp;
     }
+
+    IEnumerator AutoSave()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(10);
+            save_Game();
+            Debug.Log("GameSaved");
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
     /*
     public string buildingTypeGiven;
 

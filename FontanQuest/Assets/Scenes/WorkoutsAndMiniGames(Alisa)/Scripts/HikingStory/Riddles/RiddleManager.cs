@@ -143,8 +143,6 @@ public class RiddleManager : MonoBehaviour
         if(Dialogs.Count == 0)
         {
             SolveRiddleButton.gameObject.SetActive(false);
-            HikkingStoryPartCanvasManager manager = GetComponent<HikkingStoryPartCanvasManager>();
-            manager.ActivateNextChapterButton();
         }
     }
     private void WrongAnswer()

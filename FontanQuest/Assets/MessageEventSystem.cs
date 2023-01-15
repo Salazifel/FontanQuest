@@ -33,7 +33,7 @@ public class MessageEventSystem : MonoBehaviour
 
         // Message 2
         GameObject[] buildings = GameObject.FindGameObjectsWithTag("Building");
-        if (SentMessages[0] == true && buildings.Length > 0)
+        if (SentMessages[0] == true && buildings.Length > 0 && SentMessages[1] == false)
         {
             Debug.Log("Evil Wizard is not amused!");
             GetComponent<MessageDisplay>().new_Message("He! Was macht ihr da neben meiner geheimen Zaubererinsel. Ich bin Radion von Sauerampfer, der Großmagus der schwarzen Gilde! Ich dulde keine Nachbarn, die mich im Schlafanzug auf meiner Insel herumspazieren sehen könnten!", "EvilWizard");

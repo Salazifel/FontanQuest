@@ -38,6 +38,11 @@ public class FindObjectToTouch : MonoBehaviour
                         {
                             Debug.Log(mushroom.TextToMushroomKind());
                         }
+                        Bear bear = hittedObject.GetComponent<Bear>();
+                        if(bear != null)
+                        {
+                            bear.Hit();
+                        }
                     }
                 }
             }

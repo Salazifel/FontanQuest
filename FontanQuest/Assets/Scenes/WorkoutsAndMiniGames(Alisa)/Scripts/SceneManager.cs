@@ -19,7 +19,8 @@ public static class SceneManager
         FindMushroom,
         FindTheButterFly,
         SolveTheRiddle,
-        RunAway
+        RunAway,
+        SampleScene
     }
 
     /// <summary>

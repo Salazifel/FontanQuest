@@ -36,4 +36,9 @@ public class OpenLinks : MonoBehaviour
     {
         SceneManager.Load(SceneManager.Scene.HikkingStoryManager);
     }
+
+    public void LoadVillage()
+    {
+        SceneManager.Load(SceneManager.Scene.SampleScene);
+    }
 }

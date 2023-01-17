@@ -11,6 +11,13 @@ public class otherButtons : MonoBehaviour
 
     public void OpenQuestScene()
     {
+        save_Game();
         UnityEngine.SceneManagement.SceneManager.LoadScene("chooseAction");
+    }
+
+    public void OpenMenuScene()
+    {
+        save_Game();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main Screen");
     }
 }

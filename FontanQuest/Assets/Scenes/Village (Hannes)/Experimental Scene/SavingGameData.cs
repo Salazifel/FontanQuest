@@ -58,8 +58,10 @@ public class SavingGameData : MonoBehaviour
 
     public void load_Game()
     {
+
         if (File.Exists(savefile) == false)
         {
+            GetComponent<MessageEventSystem>().set_GameFullyLoaded(true);
             return;
         }
         
@@ -97,8 +99,6 @@ public class SavingGameData : MonoBehaviour
             tmp.GetComponent<OtherObjectsDataSys>().set_Status(gameData.InGameOtherObjects[i].status);
             }
         }
-
-        StartCoroutine("AutoSave");
     }
 
 
@@ -116,6 +116,7 @@ public class SavingGameData : MonoBehaviour
 
         //load_Game();
         //StartCoroutine("AutoSave");
+        StartCoroutine("AutoSave");
     }
 
     public string get_GameData()

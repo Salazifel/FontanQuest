@@ -10,9 +10,13 @@ public class MessageEventSystem : MonoBehaviour
 
     private int NumberOfMessager = 2;
 
-    void Start()
+    private bool GameFullyLoaded = false;
+
+    void Awake()
     {
         resetPlayerData();
+
+        GameFullyLoaded = false;
 
         for (int i = 0; i < NumberOfMessager; i++)
         {
@@ -22,12 +26,17 @@ public class MessageEventSystem : MonoBehaviour
 
     void Update()
     {
+        if (GameFullyLoaded == false)
+        {
+            return;
+        }
+    
         // Message 1
         if (this.PlayerData[1] == "true")
         {
             Debug.Log("First time!");
             SentMessages[0] = true;
-            GetComponent<MessageDisplay>().new_Message("Willkommen bei Fontan Quest! König Peter-Emiliard von und zu Butherodelid, der Große, der Löwe, der Erhabene, der Lustige, der ... [ich überspringe das jetzt mal] hat ich als gesannten auf eine ferne Insel gesannt. Ihr sollt in seinem Namen hier einen kleinen Außenposten bauen. Doch wir haben sehr wenig Rohstoffe zur Verfügung. Holz, Stein und Essen könnten wir durch Siedler erwirtschaften indem Ihr die Gebäude über das Hammersymbol baut. In Häusern wohnen die Arbeiter. Das Hauptgebäude erhöht euer Lager, die Taverne die Geschwindigkeit der Arbeiter und die Ställe bieten einige Überraschungen. Vielleicht solltet Ihr erstmal ein Haus bauen?", "Advisor");
+            GetComponent<MessageDisplay>().new_Message("Welcome to Fontan Quest! King Peter-Emiliard of Butherodelid, the Great, the Lion, the Sublime, the Merry, the... [I'll skip that for now] has sent me to a distant island as a summoned one. You are to build a small outpost here in his name. But we have very few raw materials at our disposal. Wood, stone and food could be obtained by settlers by constructing buildings over the hammer symbol. In houses live the workers. The main building increases your stock, the tavern the speed of the workers and the stables offer some surprises. Maybe you should build a house first?", "Advisor");
             this.PlayerData[1] = "false";
         }
 
@@ -36,24 +45,26 @@ public class MessageEventSystem : MonoBehaviour
         if (SentMessages[0] == true && buildings.Length > 0 && SentMessages[1] == false)
         {
             Debug.Log("Evil Wizard is not amused!");
-            GetComponent<MessageDisplay>().new_Message("He! Was macht ihr da neben meiner geheimen Zaubererinsel. Ich bin Radion von Sauerampfer, der Großmagus der schwarzen Gilde! Ich dulde keine Nachbarn, die mich im Schlafanzug auf meiner Insel herumspazieren sehen könnten!", "EvilWizard");
+            GetComponent<MessageDisplay>().new_Message("Hey! What are you doing next to my secret wizard island. I am Radion of Sorrel, the Grand Magus of the Black Guild! I don't tolerate neighbors who might see me walking around my island in my pajamas!", "EvilWizard");
             SentMessages[1] = true;
         }
     }
 
     // Load and Save stuff
-    public void Receive_PlayerData_fromSaveGameDataCS(List<string> PlayerData)
+    public void Receive_PlayerData_fromSaveGameDataCS(List<string> pD)
     {
-        if (PlayerData.Count < 3)
+        if (pD.Count < 3)
         {
             Debug.Log("PlayerData.Count < 3");
             return;
         }
 
         this.PlayerData.Clear();
-        this.PlayerData.Add(PlayerData[0]);
-        this.PlayerData.Add(PlayerData[1]);
-        this.PlayerData.Add(PlayerData[2]);
+        this.PlayerData.Add(pD[0]);
+        this.PlayerData.Add(pD[1]);
+        this.PlayerData.Add(pD[2]);
+
+        GameFullyLoaded = true;
     }
 
     public List<string> Send_PlayerData_toSaveGameDataCS()
@@ -73,4 +84,9 @@ public class MessageEventSystem : MonoBehaviour
     // 0: PlayerName
     // 1: FirstPlay (true/false)
     // 2: EverReachedResourceLimit (true/false)
+
+    public void set_GameFullyLoaded(bool b)
+    {
+        GameFullyLoaded = b;
+    }
 }

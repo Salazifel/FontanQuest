@@ -95,8 +95,14 @@ public class MessageDisplay : MonoBehaviour
         // check whether the whole message string fits into the message box, if not, split it into multiple messages and show the next button to click through them
         if (message.Length > StringLen)
         {
+            // with a maximum string length of 180, find the largest substring from the last whitespace before the 180th character
+            int lastSpace = message.Substring(0, StringLen).LastIndexOf(' ');
+            if (lastSpace > 0)
+            {
+                StringLen = lastSpace;
+            }
             MessageDisplayText.text = message.Substring(0, StringLen);
-            MessageDisplayBtnText.text = "Weiter";
+            MessageDisplayBtnText.text = "Next";
             MessageDisplayBtn.SetActive(true);
             RemainingMessage = message.Substring(StringLen);
             currentSender = sender;
@@ -104,7 +110,7 @@ public class MessageDisplay : MonoBehaviour
         else
         {
             MessageDisplayText.text = message;
-            MessageDisplayBtnText.text = "Schließen";
+            MessageDisplayBtnText.text = "Close";
             MessageDisplayBtn.SetActive(true);
             RemainingMessage = "";
             currentSender = "";

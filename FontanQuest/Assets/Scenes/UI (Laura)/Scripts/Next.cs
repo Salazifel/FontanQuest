@@ -14,7 +14,8 @@ public class Next : MonoBehaviour
 
     void Start()
     {
-       textField = GameObject.Find("Fact").GetComponent<TextMeshProUGUI>();
+       textField = GameObject.Find("Fact (TMP)").GetComponent<TextMeshProUGUI>();
+       VideoLink.gameObject.SetActive(false);
 
     }
 

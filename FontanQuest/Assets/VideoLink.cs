@@ -8,7 +8,7 @@ public class VideoLink : MonoBehaviour
 {
     public TextMeshProUGUI textField;
     
-    private void Start() { textField = GameObject.Find("Fact").GetComponent<TextMeshProUGUI>(); }
+    private void Start() { textField = GameObject.Find("Fact (TMP)").GetComponent<TextMeshProUGUI>(); }
     public void OpenVideo()
     {
         

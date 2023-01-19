@@ -886,7 +886,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 993954675}
     - target: {fileID: 6717134575130258100, guid: 13e5d2f36e90f774eb2900deb7f68965,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1087,6 +1087,7 @@ GameObject:
   - component: {fileID: 993954671}
   - component: {fileID: 993954674}
   - component: {fileID: 993954673}
+  - component: {fileID: 993954675}
   m_Layer: 0
   m_Name: StoryController
   m_TagString: Untagged
@@ -1142,6 +1143,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47dd93884b80a5d46b14a1e6c46a3857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &993954675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993954669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 031c117a0c7f9ba48ab5f2512cd95620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameCanvas: {fileID: 2139916508}
+  QuitCanvas: {fileID: 635410108}
+  NextChapterButton: {fileID: 0}
 --- !u!1001 &1112412235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2535,7 +2551,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 993954675}
         m_TargetAssemblyTypeName: HikkingStoryPartCanvasManager, Assembly-CSharp
         m_MethodName: ShowQuitGameWindow
         m_Mode: 1

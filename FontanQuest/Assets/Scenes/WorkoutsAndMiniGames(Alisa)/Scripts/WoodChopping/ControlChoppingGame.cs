@@ -12,7 +12,7 @@ public class ControlChoppingGame : MonoBehaviour
     [SerializeField]
     private int _prepairingPhaseLengthInSeconds = 3;
     [SerializeField]
-    private int _chopingPhaseLengthInSeconds = 10;
+    private int _chopingPhaseLengthInSeconds = 20;
     private List<TrainingsInterval> _countdownIntervals;
 
     public enum Game
@@ -44,6 +44,7 @@ public class ControlChoppingGame : MonoBehaviour
         if (!_firstRound)
         {
             _countdown.TrainingIntervals = new List<TrainingsInterval>(_countdownIntervals);
+            Debug.Log("new list " + _countdown.TrainingIntervals.Count);
             _countdown.Reset();
             _choppingDetect.Reset();
             _ui.Restart();
@@ -53,6 +54,7 @@ public class ControlChoppingGame : MonoBehaviour
         else
         {
             _firstRound = false;
+            _countdown.TrainingIntervals = new List<TrainingsInterval>(_countdownIntervals);
             _countdown.StartCountDown();
             _ui.Restart();
         }

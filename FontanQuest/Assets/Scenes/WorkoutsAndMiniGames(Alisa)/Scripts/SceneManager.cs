@@ -8,6 +8,7 @@ public static class SceneManager
     public enum Scene
     {
         chooseAction,
+        MainScreen,
 
         // Game Scenes 
         StoneCrushing,

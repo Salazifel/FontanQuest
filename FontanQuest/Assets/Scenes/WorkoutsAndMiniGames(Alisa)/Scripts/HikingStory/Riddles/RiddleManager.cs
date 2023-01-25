@@ -15,6 +15,7 @@ public class RiddleManager : MonoBehaviour
     public Button AnswerButton;
     public Button CloseHintButton;
     public Button SolveRiddleButton;
+    public Button FinishChapterButton;
     public TextMeshProUGUI FeedBackText;
 
     //hint UI
@@ -31,30 +32,30 @@ public class RiddleManager : MonoBehaviour
     // define dialog, riddle and feedback strings
     private static Queue<string> Dialogs = new Queue<string>();
     #region dialog strings
-    private static string introText = $"Strange man: {Environment.NewLine}I heard someone is looking for me because of a dragon tooth. I am Akirbus and your right I have one. It's yours if you can solve some small riddles. Hihihi.";
-    private static string dialogText2 = $"Akirbus: {Environment.NewLine}Grrr... well ok that one was just a warm up the second riddle is more difficult";
-    private static string dialogText3 = $"Akirbus: {Environment.NewLine}What, how could you solve this one so fast, it took me 3 weeks and 143 coffees to solve it";
-    private static string dialogText4 = $"Akirbus: {Environment.NewLine}Well I guess I have to increas the difficulty of my riddles, here is your dragon tooth. Now leave me alone I have to think!";
+    private static string introText = $"Merkwuerdiger Mann: {Environment.NewLine}Ich habe gehoert jemand sucht nach mir wegen eines Drachenzahnes.Nun ich bin Akirbus und ihr habt Glueck ich habe wirklich einen. Es ist eurer wenn ihr 3 einfache Raetsel loest. Hihihihi";
+    private static string dialogText2 = $"Akirbus: {Environment.NewLine}Grrr...nun gut das war natuerlich nur zum aufwaermen das naechste ist viel schwerer";
+    private static string dialogText3 = $"Akirbus: {Environment.NewLine}Waaaas? Wie konntet ihr das nur so schnell loesen?";
+    private static string dialogText4 = $"Akirbus: {Environment.NewLine}Na schoen, hier habt ihr den Drachenzahn. Nun verzieht euch, ich muss mir neue Raetsel ausdenken.";
     #endregion
 
     #region feedback strings
-    private const string Feedback1 = "Haha thats not right";
+    private const string Feedback1 = "Haha das ist falsch";
     private const string Feedback2 = "Noooooooope";
-    private const string Feedback3 = "Where did you get this idea from, a flying mushroom?";
+    private const string Feedback3 = "Wo hast du den diese Idee her, von einem fliegenden Fliegenpilz? Hihihi";
     #endregion
 
     #region riddle definition
-    private string _riddle1Text = $"1.Riddle:{Environment.NewLine}It belongs to you, but your friend use it more.What is it?";
-    private string _hint1Text = "It's a word";
+    private string _riddle1Text = $"1.Raetsel:{Environment.NewLine}Es gehoert dir, aber deine Freunde benutzen es viel oefter als du.";
+    private string _hint1Text = "Es handelt sich um ein Wort";
     private string _solution1 = "Name";
 
-    private string _riddle2Text = $"Riddle 2:{Environment.NewLine}I make a loud sound when I'm changing. When I do change, I get bigger but weight less. What am I?";
-    private string _hint2Text = "You can buy it in cinemas";
+    private string _riddle2Text = $"2. Raetsel:{Environment.NewLine}Ich mache ein lautes Gerausche wenn ich mich veraendere und bin danach viel groeﬂer als vorher. Was bin ich?";
+    private string _hint2Text = "Man kann mich in Kinos kaufen";
     private string _solution2 = "Popcorn";
 
-    private string _riddle3Text = $"Riddle 3:{Environment.NewLine}Thereís only one word in the dictionary thatís spelled wrong.What is it?";
-    private string _hint3Text = "The riddle contains the word";
-    private string _solution3 = "wrong";
+    private string _riddle3Text = $"3. Raetsel{Environment.NewLine}Es gibt nur ein Wort das falsch im Woerterbuch geschrieben wird. Welches Wort ist es?";
+    private string _hint3Text = "Das Wort ist ebenfalls im Raetsel enthalten";
+    private string _solution3 = "falsch";
 
     #endregion
 
@@ -81,6 +82,8 @@ public class RiddleManager : MonoBehaviour
         Dialog.SetActive(true);
         Hintwindow.gameObject.SetActive(false);
         RiddleUI.gameObject.SetActive(false);
+        FinishChapterButton.gameObject.SetActive(false);
+        
 
         ShowNextDialog();
     }
@@ -135,7 +138,7 @@ public class RiddleManager : MonoBehaviour
         FeedBackText.text = " ";
         Riddles.Dequeue();
         ShowNextDialog();
-    }
+            }
     private void ShowNextDialog()
     {
         Dialog.gameObject.SetActive(true);
@@ -143,6 +146,7 @@ public class RiddleManager : MonoBehaviour
         if(Dialogs.Count == 0)
         {
             SolveRiddleButton.gameObject.SetActive(false);
+            FinishChapterButton.gameObject.SetActive(true);
         }
     }
     private void WrongAnswer()

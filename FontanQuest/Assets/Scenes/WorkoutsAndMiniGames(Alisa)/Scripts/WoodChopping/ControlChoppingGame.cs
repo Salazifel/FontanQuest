@@ -91,14 +91,16 @@ public class ControlChoppingGame : MonoBehaviour
         switch (WhatGame)
         {
             case Game.WoodChopping:
-                ResourceContainer.changeRes(wood: amount);
                 GameData.WoodChopping.CompletedGame();
                 GameData.WoodChopping.NewHighScore(amount);
+                ResourceContainer.changeRes(wood: amount);
+
                 break;
             case Game.StoneMining:
-                ResourceContainer.changeRes(stone: amount);
-                GameData.StoneMining.CompletedGame();
+                 GameData.StoneMining.CompletedGame();
                 GameData.StoneMining.NewHighScore(amount);
+                ResourceContainer.changeRes(stone: amount);
+               
                 break;
         }
     }

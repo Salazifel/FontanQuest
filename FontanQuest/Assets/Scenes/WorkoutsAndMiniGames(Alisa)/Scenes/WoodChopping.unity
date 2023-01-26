@@ -808,6 +808,16 @@ PrefabInstance:
       propertyPath: m_text
       value: 'Dein Highscore:'
       objectReference: {fileID: 0}
+    - target: {fileID: 9122186093379617721, guid: 3d38affef05ded44a8a4b4ac976de1d4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 60.5655
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122186093379617721, guid: 3d38affef05ded44a8a4b4ac976de1d4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 234.18274
+      objectReference: {fileID: 0}
     - target: {fileID: 9122186093408458800, guid: 3d38affef05ded44a8a4b4ac976de1d4,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -971,7 +981,7 @@ PrefabInstance:
     - target: {fileID: 9122186094662692365, guid: 3d38affef05ded44a8a4b4ac976de1d4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9122186094799529789, guid: 3d38affef05ded44a8a4b4ac976de1d4,
         type: 3}

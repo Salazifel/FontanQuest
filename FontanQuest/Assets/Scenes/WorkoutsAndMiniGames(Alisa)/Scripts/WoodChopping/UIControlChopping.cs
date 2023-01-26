@@ -41,11 +41,11 @@ public class UIControlChopping : MonoBehaviour
         FinalTreeCounter.text = numberOfTrees.ToString();
         if(Game == ControlChoppingGame.Game.StoneMining)
         {
-            Highscore.text = GameData.StoneMining.HighScore.ToString();
+            Highscore.text = MiniGameData.StoneMiningHighscore.ToString();
         }
         if (Game == ControlChoppingGame.Game.WoodChopping)
         {
-            Highscore.text = GameData.WoodChopping.HighScore.ToString();
+            Highscore.text = MiniGameData.ChoppingHighscore.ToString();
         }
 
     }

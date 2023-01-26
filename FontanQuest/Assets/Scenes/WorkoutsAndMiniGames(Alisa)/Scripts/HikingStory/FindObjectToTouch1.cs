@@ -9,6 +9,7 @@ public class FindObjectToTouch1 : MonoBehaviour
     private Camera mainCamera;
     private HikkingStoryPartCanvasManager _manager;
     public TextMeshProUGUI TextMesh;
+
     // Start is called before the first frame update
     void Start()
     {

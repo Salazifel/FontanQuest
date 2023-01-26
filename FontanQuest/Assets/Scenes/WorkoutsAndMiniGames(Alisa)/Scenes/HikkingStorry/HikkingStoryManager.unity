@@ -1271,6 +1271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f17aea6b09d529448d94e8e1f82e5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FlutterManager: {fileID: 1181017779}
   DialogCanvas: {fileID: 2139916508}
   LevelCanvas: {fileID: 1412068222}
   QuitGameCanvas: {fileID: 635410108}
@@ -1708,6 +1709,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1181017779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1181017781}
+  - component: {fileID: 1181017780}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1181017780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181017779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d33d6728bc873441b4c3f8aeb75490f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepcount: 0
+  TextDisplay: {fileID: 0}
+--- !u!4 &1181017781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181017779}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1218, y: 562.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1349891292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3171,7 +3218,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 993954674}
+      objectReference: {fileID: 993954673}
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -3180,12 +3227,12 @@ PrefabInstance:
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Continue
+      value: StartNextChapter
       objectReference: {fileID: 0}
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: StoryControll, Assembly-CSharp
+      value: StoryTeller, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}

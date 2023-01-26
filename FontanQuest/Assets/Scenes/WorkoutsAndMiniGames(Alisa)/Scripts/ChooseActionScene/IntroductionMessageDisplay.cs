@@ -8,9 +8,10 @@ public class IntroductionMessageDisplay : MonoBehaviour
     public GameObject IntroductionPrefab;
  void Start()
     {
-        if (GameData.FirstVisit)
+        SaveGameData.Load();
+        if (MiniGameData.FirstVisit)
         {
-            GameData.FirstVisit = false;
+            MiniGameData.FirstVisit = false;
         }
         else
         {
@@ -21,6 +22,7 @@ public class IntroductionMessageDisplay : MonoBehaviour
     public void CloseIntroduction()
     {
        Destroy(IntroductionPrefab);
+        SaveGameData.Save();
     }
 
 }

@@ -19,8 +19,10 @@ public class Run : MonoBehaviour
     public GameObject BearObject;
     public GameObject CountDownManagerObject;
     public TextMeshProUGUI StepsWalkedText;
+    public GameObject FlutterManager;
     public Button StartcountDownButton;
 
+    private flutterCommunication flutterCommunication;
     private SingleCountDownManager _manager;
     private Bear _bear;
 
@@ -36,6 +38,7 @@ public class Run : MonoBehaviour
         YouWonAgainstTheBearCanvas.gameObject.SetActive(false);
         BearLive.gameObject.SetActive(false);
         StartCanvas.gameObject.SetActive(true);
+        flutterCommunication= FlutterManager.GetComponent<flutterCommunication>();
     }
 
     public void BearDied()
@@ -44,6 +47,7 @@ public class Run : MonoBehaviour
     }
     public void CountDownFinished()
     {
+        flutterCommunication.NewStepValue -= UpdateSteps;
         StartCanvas.gameObject.SetActive(false);
         if (StepsToWalk > StepsWalked)
         {
@@ -67,10 +71,17 @@ public class Run : MonoBehaviour
     {
         _manager.StartCountdown();
         StartcountDownButton.gameObject.SetActive(false);
+        flutterCommunication.NewStepValue += UpdateSteps;
     }
     public void YouWonAgainstTheBear()
     {
         Destroy(gameObject.GetComponent<FindObjectToTouch>());
         YouWonAgainstTheBearCanvas.gameObject.SetActive(true);
+    }
+
+    public void UpdateSteps(string steps)
+    {
+        StepsWalkedText.text = steps;
+        StepsWalked = int.Parse(steps);
     }
 }

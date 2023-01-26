@@ -11,6 +11,7 @@ public class UIControlChopping : MonoBehaviour
     public TextMeshProUGUI FinalTreeCounter;
     public TextMeshProUGUI FinalReward;
     public TextMeshProUGUI FeedBack;
+    public TextMeshProUGUI Highscore;
     public GameObject GetReadyText;
 
     public Canvas StartCanvas;
@@ -19,6 +20,7 @@ public class UIControlChopping : MonoBehaviour
 
     public Animator TreeAnimator;
     public Animator AxeAnimator;
+    public ControlChoppingGame.Game Game;
 
 
     private string _hitTrigger = "Hit";
@@ -37,6 +39,15 @@ public class UIControlChopping : MonoBehaviour
         GamingCanvas.gameObject.SetActive(false);
         FinalReward.text = reward.ToString();
         FinalTreeCounter.text = numberOfTrees.ToString();
+        if(Game == ControlChoppingGame.Game.StoneMining)
+        {
+            Highscore.text = GameData.StoneMining.HighScore.ToString();
+        }
+        if (Game == ControlChoppingGame.Game.WoodChopping)
+        {
+            Highscore.text = GameData.WoodChopping.HighScore.ToString();
+        }
+
     }
 
     public void Restart()

@@ -86,10 +86,10 @@ public class StoryTeller : MonoBehaviour
     public void SetLevel1()
     {
         level = 1;
-        Steps.Enqueue(10);
-        Steps.Enqueue(15);
-        Steps.Enqueue(20);
-        Steps.Enqueue(30);
+        Steps.Enqueue(500);
+        Steps.Enqueue(500);
+        Steps.Enqueue(500);
+        Steps.Enqueue(500);
         StepsToWalk.text = "Laufe " + Steps.Peek().ToString() + " Schritte";
 
         LevelCanvas.gameObject.SetActive(false);

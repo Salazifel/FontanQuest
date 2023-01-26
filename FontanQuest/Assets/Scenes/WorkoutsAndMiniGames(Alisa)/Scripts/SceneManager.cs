@@ -8,7 +8,7 @@ public static class SceneManager
     public enum Scene
     {
         chooseAction,
-        MainScreen,
+       
 
         // Game Scenes 
         StoneCrushing,
@@ -40,7 +40,7 @@ public static class SceneManager
     }
 
     /// <summary>
-    /// Opens the scene with the name scene.
+    /// Opens the scene with the name of the  scene.
     /// !!! Attention 1: the scene name has to be correct !!!
     /// 
     /// !!! Attention 2:

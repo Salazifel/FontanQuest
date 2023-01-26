@@ -25,26 +25,44 @@ public void PickRandomFromList()
     {
         string[] activities = new string[] { "football?",
                                                "dance sesion",
-                                                "pirates"};
+                                                "pirates", "act4", "act5", "sonic"};
         //     string randomActivity = activities[Random.Range(0, activities.Length)];
         string randomActivity = activities[Random.Range(0, activities.Length)];
         textField.text = randomActivity;
         if (randomActivity == "football?")
         {
             VideoLink.gameObject.SetActive(false);
-            textField.text = "Why don't we try a new sport in the park like football?";
+            textField.text = "Wollen wir nicht im Park mal Fussbal spielen?";
       
         }
         else if (randomActivity == "dance sesion")
         {
-            textField.text = "Why don't we do a dance session?";
+            textField.text = "Warum tanzen wir nicht einbisschen mit Elsa, der Eiskonigin?";
             VideoLink.gameObject.SetActive(true);
 
         }
         else if (randomActivity == "pirates")
         {
-            textField.text = "Why don't we do a pirate themed workout?";
+            textField.text = "Lass uns ein Workout mit Piraten machen!";
             VideoLink.gameObject.SetActive(true);        
+
+        }
+        else if (randomActivity == "act4")
+        {
+            textField.text = "Wollen wir ins Schwimmbad gehen?";
+            VideoLink.gameObject.SetActive(false);
+
+        }
+        else if (randomActivity == "act5")
+        {
+            textField.text = "Wollen wir draussen Frisbee spielen?";
+            VideoLink.gameObject.SetActive(false);
+
+        }
+        else if (randomActivity == "sonic")
+        {
+            textField.text = "Lass uns einbisschen Yoga mit Sonic the Hedgehog machen!";
+            VideoLink.gameObject.SetActive(false);
 
         }
         else

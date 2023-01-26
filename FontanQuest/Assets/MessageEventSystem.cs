@@ -36,7 +36,7 @@ public class MessageEventSystem : MonoBehaviour
         {
             Debug.Log("First time!");
             SentMessages[0] = true;
-            GetComponent<MessageDisplay>().new_Message("Willkommen bei Fontan Quest! Koenig Peter-Emiliard von Butherodelid, der Große, der Loewe, der Erhabene, der Froehliche, der... [das überspringe ich jetzt mal] hat euch den Auftrag gegeben diese für den Handel wichtige Insel zu erschliessen. Ihr sollt hier in seinem Namen einen kleinen Außenposten errichten. Aber wir haben nur sehr wenige Rohstoffe zur Verfügung. Holz, Stein und Nahrung koennen die Siedler erhalten, indem sie über dem Hammersymbol Gebaeude errichten. In den Haeusern wohnen die Arbeiter. Das Hauptgebaeude erhoeht den Vorrat, die Taverne die Geschwindigkeit der Arbeiter und die Staelle bieten einige Ueberraschungen. Vielleicht sollten Sie zuerst ein Haus bauen?", "Advisor");
+            GetComponent<MessageDisplay>().new_Message("Willkommen bei Fontan Quest! Koenig Peter-Emiliard von Butherodelid, der Große, der Loewe, der Erhabene, der Froehliche, der... [das ueberspringe ich jetzt mal] hat euch den Auftrag gegeben diese fuer den Handel wichtige Insel zu erschliessen. Ihr sollt hier in seinem Namen einen kleinen Außenposten errichten. Aber wir haben nur sehr wenige Rohstoffe zur Verfuegung. Holz, Stein und Nahrung koennen die Siedler sammeln, indem sie ueber dem Hammersymbol Gebaeude errichten. In den Haeusern wohnen die Arbeiter. Das Hauptgebaeude erhoeht den Vorrat, die Taverne die Geschwindigkeit der Arbeiter und die Staelle bieten einige Ueberraschungen. Vielleicht sollten Sie zuerst ein Haus bauen?", "Advisor");
             this.PlayerData[1] = "false";
         }
 

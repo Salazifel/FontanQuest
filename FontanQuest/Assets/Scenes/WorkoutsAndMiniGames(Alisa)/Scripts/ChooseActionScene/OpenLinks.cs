@@ -44,6 +44,6 @@ public class OpenLinks : MonoBehaviour
 
     public void LoadMenueScene()
     {
-        SceneManager.Load(SceneManager.Scene.MainScreen);
+        SceneManager.Load("Main Screen");
     }
 }

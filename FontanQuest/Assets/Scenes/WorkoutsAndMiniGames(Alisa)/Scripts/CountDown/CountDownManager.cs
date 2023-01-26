@@ -36,17 +36,7 @@ public class CountDownManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        /// test training intervals and training interval list;
-        TrainingsInterval interval1 = new TrainingsInterval(3, false, null);
-        TrainingsInterval interval2 = new TrainingsInterval(10, true, null);
-        TrainingIntervals = new List<TrainingsInterval> { interval1, interval2 };
         ui = CountDownUI.GetComponent<CountDownUI>();
-        /*fakeFitnessTracker = FitnessTracker.GetComponent<FakeFittnessTracker>();
-        if(fakeFitnessTracker != null)
-        {
-            fakeFitnessTracker.OnPublishHeartRateValue += AddHeartRateValueToInterval;
-        }*/
-
     }
 
     /// <summary>
@@ -130,6 +120,8 @@ public class CountDownManager : MonoBehaviour
     {
         if (_currentIndex < TrainingIntervals.Count)
         {
+            Debug.Log(_currentIndex);
+            Debug.Log(TrainingIntervals.Count);
             _currentIndex++;
             GameObject countdownObject = Instantiate(CountDownPrefab);
             _currentCountDown = countdownObject.GetComponent<CountDown>();

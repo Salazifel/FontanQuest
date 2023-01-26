@@ -24,12 +24,12 @@ public class StoryTeller : MonoBehaviour
     public Button CompleteButton;
 
     #region previewTexts
-    public const string Intro = "This morning many villagers start to feel ill. I think the evil wizard has cursed our island. Maybe I can make a cure but I need some rare ingridients, can you go and get them? Here is a list, now go, hurry!";
-    public const string IronOreSceneIntroText = "The first ingridient is iron ore. Maybe we can find some in the bear teretory.";
-    public const string SolveTheRiddeText = "Ok one done, two left. The next on the list is a dragon tooth. I heard of a strange old man in the forest how collects a lot of weird stuff. Maybe he has one.";
-    public const string MushroomSceneIntroText = "Alright one ingridient left. The last one is some rare mushroom. I just know the right place to find it. The Mushroom meadow! Let's go!!";
-    public const string BackToTheWizardText = "Perfect we have all ingridients, lets go back to the village so that we can make the cure";
-    public const string FinalText = "Healer: You got everything on the list? Oh thank you I will go and make the cure for the villagers, they will get better soon thanks to you.";
+    public const string Intro = "Heiler: Heute morgen sind viele der Dorfbewohner krank geworden. Ich glaube es war der böse Zauberer. Ich kenne ein Rezept für ein Heilmittel aber mir fehlen die Zutaten. Ich brauche eure Hilfe die Zutaten im Verwunschenen Wald zu finden!";
+    public const string IronOreSceneIntroText = "Die erste Zutat ist Eisenerz vielleicht finden wir welches im Bären Teritorium";
+    public const string SolveTheRiddeText = "Ok die erste Zutat haben wir. Als nächstes steht ein Drachenzahn auf der Liste. Ich habe von einem merkwürdigen alten Mann im Wald gehört der solche Sachen sammelt, wir sollten versuchen ihn zu finden.";
+    public const string MushroomSceneIntroText = "Was ein komischer alter Kauz aber naja jetzt fehlt nur noch eine Zutat. Irgend so ein Komischer Pilz, ich wette wir finden einen auf der Lichtung.";
+    public const string BackToTheWizardText = "Super wir haben alles zusammen! Nichts wie zurück zum Heiler damit er das Heilmittel zubereiten kann. Ich kriege langsam echt Hunger.";
+    public const string FinalText = "Heiler: Oh da seid ihr ja wieder und ihr habt alle Zutaten wie ich sehe. Perfekt dann mache ich mich mal gleich ans Werk";
     #endregion previewTexts
 
     // Start is called before the first frame update

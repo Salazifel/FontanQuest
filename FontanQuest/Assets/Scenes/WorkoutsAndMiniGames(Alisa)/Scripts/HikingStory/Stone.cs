@@ -22,21 +22,21 @@ public class Stone : MonoBehaviour
         switch (StoneName)
         {
             case StoneKind.Salt:
-               return "Mhm that stone tastes like salt, I don't think that is what we are looking for";
+               return "Mhm dieser Stein schmeckt verdächtig nach Salz";
             case StoneKind.Iron:
-                return "Well thats already iron, but we are looking for iron ore";
+                return "Das ist richtiges Eisen, wir suchen nach Eisenerz";
             case StoneKind.Scandium:
-                return "I don't think that's the right one";
+                return "Ich glaube nicht das dass der richtige Stein ist";
             case StoneKind.Aluminium:
-                return "Nope thats aluminium";
+                return "Nope das ist Aluminium";
             case StoneKind.Rock:
-                return "Just a normal rock";
+                return "Nur ein normaler Stein";
             case StoneKind.MagmaOre:
-                return "this one seems to be cold lava";
+                return "Das sieht aus wie abgekühlte Lava";
             case StoneKind.IronOre:
-                return "Yeah, that must be the right one, unluckily its close the bear cub. ... Well ... let's just  grap it and run away. ";
+                return "Oh ja das muss es sein! Aber es ist ziemlich nah an dem Bärenjungen. Lass es uns holen und dann machen wir uns so schnell wie möglich aus dem Staub";
             default:
-                return "No thats not what we are looking for";
+                return "Nein wir suchen nach einem komisch aussehenden Stein";
         }
     }
 }

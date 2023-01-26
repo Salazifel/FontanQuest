@@ -10,6 +10,9 @@ public class StoryTeller : MonoBehaviour
     public static Queue<int> Steps = new Queue<int>();
     public static bool freshStart = true;
     private static int level;
+    public GameObject FlutterManager;
+    private int currentSteps = 0;
+    private flutterCommunication flutterCommunication;
 
     public Canvas DialogCanvas;
     public Canvas LevelCanvas;
@@ -24,12 +27,12 @@ public class StoryTeller : MonoBehaviour
     public Button CompleteButton;
 
     #region previewTexts
-    public const string Intro = "This morning many villagers start to feel ill. I think the evil wizard has cursed our island. Maybe I can make a cure but I need some rare ingridients, can you go and get them? Here is a list, now go, hurry!";
-    public const string IronOreSceneIntroText = "The first ingridient is iron ore. Maybe we can find some in the bear teretory.";
-    public const string SolveTheRiddeText = "Ok one done, two left. The next on the list is a dragon tooth. I heard of a strange old man in the forest how collects a lot of weird stuff. Maybe he has one.";
-    public const string MushroomSceneIntroText = "Alright one ingridient left. The last one is some rare mushroom. I just know the right place to find it. The Mushroom meadow! Let's go!!";
-    public const string BackToTheWizardText = "Perfect we have all ingridients, lets go back to the village so that we can make the cure";
-    public const string FinalText = "Healer: You got everything on the list? Oh thank you I will go and make the cure for the villagers, they will get better soon thanks to you.";
+    public const string Intro = "Heiler: Heute morgen sind viele der Dorfbewohner krank geworden. Ich glaube es war der boese Zauberer. Ich kenne ein Rezept fuer ein Heilmittel aber mir fehlen die Zutaten. Ich brauche eure Hilfe die Zutaten im verwunschenen Wald zu finden!";
+    public const string IronOreSceneIntroText = "Die erste Zutat ist Eisenerz vielleicht finden wir welches im Baeren Teritorium";
+    public const string SolveTheRiddeText = "Ok die erste Zutat haben wir. Als naechstes steht ein Drachenzahn auf der Liste. Ich habe von einem merkwuerdigen alten Mann im Wald gehoert der solche Sachen sammelt, wir sollten versuchen ihn zu finden.";
+    public const string MushroomSceneIntroText = "Was ein komischer alter Kauz aber naja jetzt fehlt nur noch eine Zutat. Irgend so ein komischer Pilz, ich wette wir finden einen auf der Lichtung.";
+    public const string BackToTheWizardText = "Super wir haben alles zusammen! Nichts wie zurueck zum Heiler damit er das Heilmittel zubereiten kann. Ich kriege langsam echt Hunger.";
+    public const string FinalText = "Heiler: Oh da seid ihr ja wieder und ihr habt alle Zutaten wie ich sehe. Perfekt dann mache ich mich mal gleich ans Werk";
     #endregion previewTexts
 
     // Start is called before the first frame update
@@ -51,13 +54,32 @@ public class StoryTeller : MonoBehaviour
         DialogCanvas.gameObject.SetActive(true);
         QuitGameCanvas.gameObject.SetActive(false);
         CompleteButton.gameObject.SetActive(false);
-        DialogTextMesh.text = Dialogs.Dequeue();
+        StartNextChallenge.gameObject.SetActive(false);
+        if (FlutterManager != null)
+        {
+            flutterCommunication = FlutterManager.GetComponent<flutterCommunication>();
+            if(Steps.Count > 0)
+            {
+                flutterCommunication.NewStepValue += NewStepValue;
+            }
+        }
 
         // for the last itteration of the story teller
         if (Dialogs.Count == 0)
         {
+            StepsToWalk.gameObject.SetActive(false);
+            StepsWalked.gameObject.SetActive(false);
             StartNextChallenge.gameObject.SetActive(false);
             CompleteButton.gameObject.SetActive(true);
+        }
+        else
+        {
+        DialogTextMesh.text = Dialogs.Dequeue();
+        }
+
+        if(Steps.Count != 0)
+        {
+            StepsToWalk.text = "Laufe " + Steps.Peek().ToString() + " Schritte";
         }
     }
 
@@ -68,10 +90,12 @@ public class StoryTeller : MonoBehaviour
         Steps.Enqueue(500);
         Steps.Enqueue(500);
         Steps.Enqueue(500);
-        StepsToWalk.text = "Walk " + Steps.Dequeue().ToString() + " Steps";
+        StepsToWalk.text = "Laufe " + Steps.Peek().ToString() + " Schritte";
 
         LevelCanvas.gameObject.SetActive(false);
-    }
+        flutterCommunication.NewStepValue += NewStepValue;
+    
+}
     public void SetLevel2()
     {
         level = 2;
@@ -79,10 +103,12 @@ public class StoryTeller : MonoBehaviour
         Steps.Enqueue(1000);
         Steps.Enqueue(1000);
         Steps.Enqueue(1000);
-        StepsToWalk.text = "Walk " + Steps.Dequeue().ToString() + " Steps";
+        StepsToWalk.text = "Laufe " + Steps.Dequeue().ToString() + " Schritte";
 
         LevelCanvas.gameObject.SetActive(false);
-    }
+        flutterCommunication.NewStepValue += NewStepValue;
+    
+}
     public void SetLevel3()
     {
         level = 3;
@@ -90,15 +116,28 @@ public class StoryTeller : MonoBehaviour
         Steps.Enqueue(2000);
         Steps.Enqueue(2000);
         Steps.Enqueue(2000);
-        StepsToWalk.text = "Walk " + Steps.Dequeue().ToString() + " Steps";
+        StepsToWalk.text = "Laufe " + Steps.Dequeue().ToString() + " Schritte";
 
         LevelCanvas.gameObject.SetActive(false);
+        flutterCommunication.NewStepValue += NewStepValue;
 
     }
 
     public void StartNextChapter()
     {
+        Steps.Dequeue();
         Controller.Continue();
+        flutterCommunication.NewStepValue -= NewStepValue;
+    }
+
+    public void NewStepValue(string steps)
+    {
+        currentSteps++;
+        StepsWalked.text = currentSteps.ToString();
+            if (currentSteps >= Steps.Peek())
+            {
+                StartNextChallenge.gameObject.SetActive(true);
+            }
     }
 
     public void QuitGameWindow()
@@ -112,6 +151,8 @@ public class StoryTeller : MonoBehaviour
     }
     public void Complete()
     {
+        Steps = new Queue<int>();
+        Dialogs = new Queue<string>();
         SceneManager.Load(SceneManager.Scene.chooseAction);
     }
     private void SetStoryDialogs()
@@ -128,6 +169,5 @@ public class StoryTeller : MonoBehaviour
     {
         DialogTextMesh.text = Dialogs.Dequeue();
         NextText.gameObject.SetActive(false);
-        StartNextChallenge.gameObject.SetActive(true);
     }
 }

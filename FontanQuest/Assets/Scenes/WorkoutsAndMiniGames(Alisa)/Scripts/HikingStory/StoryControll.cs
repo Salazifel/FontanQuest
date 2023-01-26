@@ -6,6 +6,7 @@ public class StoryControll : MonoBehaviour
 {
     public static Queue<SceneManager.Scene> StoryScenes = new Queue<SceneManager.Scene>();
 
+
     private void Start()
     {
         if(StoryScenes.Count == 0)

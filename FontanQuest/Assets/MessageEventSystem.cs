@@ -36,7 +36,7 @@ public class MessageEventSystem : MonoBehaviour
         {
             Debug.Log("First time!");
             SentMessages[0] = true;
-            GetComponent<MessageDisplay>().new_Message("Welcome to Fontan Quest! King Peter-Emiliard of Butherodelid, the Great, the Lion, the Sublime, the Merry, the... [I'll skip that for now] has sent me to a distant island as a summoned one. You are to build a small outpost here in his name. But we have very few raw materials at our disposal. Wood, stone and food could be obtained by settlers by constructing buildings over the hammer symbol. In houses live the workers. The main building increases your stock, the tavern the speed of the workers and the stables offer some surprises. Maybe you should build a house first?", "Advisor");
+            GetComponent<MessageDisplay>().new_Message("Willkommen bei Fontan Quest! Koenig Peter-Emiliard von Butherodelid, der Große, der Loewe, der Erhabene, der Froehliche, der... [das ueberspringe ich jetzt mal] hat euch den Auftrag gegeben diese fuer den Handel wichtige Insel zu erschliessen. Ihr sollt hier in seinem Namen einen kleinen Außenposten errichten. Aber wir haben nur sehr wenige Rohstoffe zur Verfuegung. Holz, Stein und Nahrung koennen die Siedler sammeln, indem sie ueber dem Hammersymbol Gebaeude errichten. In den Haeusern wohnen die Arbeiter. Das Hauptgebaeude erhoeht den Vorrat, die Taverne die Geschwindigkeit der Arbeiter und die Staelle bieten einige Ueberraschungen. Vielleicht sollten Sie zuerst ein Haus bauen?", "Advisor");
             this.PlayerData[1] = "false";
         }
 
@@ -45,7 +45,7 @@ public class MessageEventSystem : MonoBehaviour
         if (SentMessages[0] == true && buildings.Length > 0 && SentMessages[1] == false)
         {
             Debug.Log("Evil Wizard is not amused!");
-            GetComponent<MessageDisplay>().new_Message("Hey! What are you doing next to my secret wizard island. I am Radion of Sorrel, the Grand Magus of the Black Guild! I don't tolerate neighbors who might see me walking around my island in my pajamas!", "EvilWizard");
+            GetComponent<MessageDisplay>().new_Message("Hey! Was machst du neben meiner geheimen Zaubererinsel? Ich bin Radion von Sauerampfer, der Großmagus der Schwarzen Gilde! Ich dulde keine Nachbarn, die mich in meinem Pyjama auf meiner Insel herumlaufen sehen!", "EvilWizard");
             SentMessages[1] = true;
         }
     }

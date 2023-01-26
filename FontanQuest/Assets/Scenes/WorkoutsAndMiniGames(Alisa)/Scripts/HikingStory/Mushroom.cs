@@ -20,15 +20,15 @@ public class Mushroom : MonoBehaviour
         switch (Kind)
         {
             case MushroomKind.Violaceus:
-                return "Yes, that must be the right one. Good Job.";
+                return "Gut gemacht, das ist genau wonach wir gesucht haben.";
             case MushroomKind.Boletus:
-                return "No there are way to many of this kind in this meadow";
+                return "Nein von dieser Sorte gibt es viel zu viele wir suchen einen sehr seltenen Pilz";
             case MushroomKind.GreenToadStool:
-                return "Mhm they grow in groups, the healer said that they are very rare";
+                return "Ich glaube nicht das diese Pilze zur Art der Violaceus Pilze gehören";
             case MushroomKind.ToadStool:
-                return "I am pretty sure that that is an Toadstool";
+                return "Das ist ein stink normaler Fliegenpilz, such weiter";
             default:
-                return "No thats not what we are looking for";
+                return "Das ist nicht das wonach wir suchen";
         }
     }
 

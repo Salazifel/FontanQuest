@@ -50,14 +50,12 @@ public class DetectChopping : MonoBehaviour
     }
     private void ShakeDetected()
     {
-        Debug.Log("Shake");
         _tree.Hit();
         HitTree?.Invoke();
     }
 
     private void SuperShakeDetected()
     {
-        Debug.Log("Super Shake");
         _tree.SuperHit();
     }
 
@@ -67,6 +65,5 @@ public class DetectChopping : MonoBehaviour
         _tree.CutDown += TreeCutDown;
         _cutDownTrees++;
         CutDownTreeEvent?.Invoke(_cutDownTrees);
-        Debug.Log("Cut tree number " + _cutDownTrees);
     }
 }

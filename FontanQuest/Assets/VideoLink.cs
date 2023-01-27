@@ -18,9 +18,12 @@ public class VideoLink : MonoBehaviour
     {
       Application.OpenURL("https://www.youtube.com/watch?v=xlg052EKMtk&ab_channel=CosmicKidsYoga");
     }
+        else if (textField.text == "Lass uns einbisschen Yoga mit Sonic the Hedgehog machen!")
+        {
+            Application.OpenURL("https://www.youtube.com/watch?v=QM8NjfCfOg0&ab_channel=CosmicKidsYoga");
+        }
     }
-           
-
+   
     
     
 }

@@ -62,7 +62,7 @@ public void PickRandomFromList()
         else if (randomActivity == "sonic")
         {
             textField.text = "Lass uns einbisschen Yoga mit Sonic the Hedgehog machen!";
-            VideoLink.gameObject.SetActive(false);
+            VideoLink.gameObject.SetActive(true);
 
         }
         else
@@ -97,7 +97,7 @@ public void PickRandomFromList()
         else if (randomActivity == "pirates")
         {
             textField.text = "Early promotion of movement during childhood leads to a more active lifestyle as an adult, since habits founded during childhood are more likely to be kept, than if sports are commenced at a higher age. (De Cocker et al., 2011).";
-            VideoLink.gameObject.SetActive(true);
+            VideoLink.gameObject.SetActive(false);
 
         }
         else if (randomActivity == "act4")

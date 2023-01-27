@@ -52,13 +52,13 @@ public class SaveManager : MonoBehaviour
             yield return new WaitForSeconds(1);
             state.playtime += 1;
             state.seconds =  (state.playtime % 60);
-            Debug.Log(state.seconds);
+            //Debug.Log(state.seconds);
             state.minutes =  (state.playtime / 60) % 60;
             state.hours = (state.playtime / 3600) % 24;
             Save();
             
         }   
-            
-
     }
+
+
 }

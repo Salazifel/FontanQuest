@@ -6,12 +6,13 @@ using TMPro;
 
 public class EnablePanel : MonoBehaviour
 {
-    public Button InsertData;
-    // Start is called before the first frame update
+    public GameObject Panel;
 
-    // Update is called once per frame
-    public void Enable()
+    void Start()
     {
-        InsertData.gameObject.SetActive(true);
+
+       Panel.SetActive(false);
+
     }
+
 }

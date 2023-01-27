@@ -102,7 +102,7 @@ public class MessageDisplay : MonoBehaviour
                 StringLen = lastSpace;
             }
             MessageDisplayText.text = message.Substring(0, StringLen);
-            MessageDisplayBtnText.text = "Next";
+            MessageDisplayBtnText.text = "Weiter";
             MessageDisplayBtn.SetActive(true);
             RemainingMessage = message.Substring(StringLen);
             currentSender = sender;
@@ -110,7 +110,7 @@ public class MessageDisplay : MonoBehaviour
         else
         {
             MessageDisplayText.text = message;
-            MessageDisplayBtnText.text = "Close";
+            MessageDisplayBtnText.text = "Schliessen";
             MessageDisplayBtn.SetActive(true);
             RemainingMessage = "";
             currentSender = "";

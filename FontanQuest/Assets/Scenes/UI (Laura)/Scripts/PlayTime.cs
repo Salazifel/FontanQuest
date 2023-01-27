@@ -7,10 +7,10 @@ using TMPro;
 
 public class PlayTime : MonoBehaviour
 {
-    public int playtime = 0;
-    public int seconds = 0;
-    public int minutes = 0;
-    public int hours = 0;
+    public int playtime;
+    public int seconds;
+    public int minutes;
+    public int hours;
     public TextMeshProUGUI textField;
     public string text;
 
@@ -19,8 +19,9 @@ public class PlayTime : MonoBehaviour
     {
         StartCoroutine("Playtimer");
         textField = GameObject.Find("Timeplay (TMP)").GetComponent<TextMeshProUGUI>();
+            
     }
-
+    
     public IEnumerator Playtimer()
     {
         while (true)
@@ -30,6 +31,8 @@ public class PlayTime : MonoBehaviour
             seconds = (playtime % 60);
             minutes = (playtime / 60) % 60;
             hours = (playtime / 3600) % 24;
+
+            
         }
     }
 

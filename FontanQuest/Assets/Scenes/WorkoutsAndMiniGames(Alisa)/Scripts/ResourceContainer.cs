@@ -28,7 +28,7 @@ public static class ResourceContainer
         Wood = 120; // above limit for testing
         Stone = 100;
         Food = 100;
-        Gold = 100;
+        Gold = 10;
     }
 
     public static bool CheckRessources(int woodc, int stonec, int foodc, int goldc)

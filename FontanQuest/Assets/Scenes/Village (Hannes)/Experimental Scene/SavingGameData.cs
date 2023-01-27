@@ -56,6 +56,14 @@ public class SavingGameData : MonoBehaviour
         File.WriteAllText(savefile, get_GameData());
     }
 
+    public void delete_SaveFile()
+    {
+        if (File.Exists(savefile))
+        {
+            File.Delete(savefile);
+        }
+    }
+
     public void load_Game()
     {
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MessageEventSystem : MonoBehaviour
 {
+    private int currentSteps;
+
     private List<string> PlayerData = new List<string>();
 
     private List<bool> SentMessages = new List<bool>();
@@ -21,6 +23,15 @@ public class MessageEventSystem : MonoBehaviour
         for (int i = 0; i < NumberOfMessager; i++)
         {
             SentMessages.Add(false);
+        }
+
+        try
+        {
+            currentSteps = int.Parse(GameObject.Find("GameObject").GetComponent<flutterCommunication>().stepcount);
+        }
+        catch (System.Exception)
+        {
+            currentSteps = 0;
         }
     }
 
@@ -48,14 +59,24 @@ public class MessageEventSystem : MonoBehaviour
             GetComponent<MessageDisplay>().new_Message("Hey! Was machst du neben meiner geheimen Zaubererinsel? Ich bin Radion von Sauerampfer, der Großmagus der Schwarzen Gilde! Ich dulde keine Nachbarn, die mich in meinem Pyjama auf meiner Insel herumlaufen sehen!", "EvilWizard");
             SentMessages[1] = true;
         }
+
+        if (currentSteps > int.Parse(this.PlayerData[3]))
+        {
+            Debug.Log("Reward for steps!");
+            int tmp = currentSteps - int.Parse(this.PlayerData[3]);
+            int goldReward = (int) Mathf.Round( tmp / 100);
+            GetComponent<MessageDisplay>().new_Message("Oh Ihr seid wohl viel unterwegs, " + tmp + " Schritte habt Ihr seit eurem Letzten Versuch getan. Das entspricht " + goldReward + " Gold.", "Advisor");
+            ResourceContainer.changeRes(0, 0, 0, goldReward);
+            this.PlayerData[3] = currentSteps.ToString();
+        }
     }
 
     // Load and Save stuff
     public void Receive_PlayerData_fromSaveGameDataCS(List<string> pD)
     {
-        if (pD.Count < 3)
+        if (pD.Count < 4)
         {
-            Debug.Log("PlayerData.Count < 3");
+            Debug.Log("PlayerData.Count < 4");
             return;
         }
 
@@ -63,8 +84,11 @@ public class MessageEventSystem : MonoBehaviour
         this.PlayerData.Add(pD[0]);
         this.PlayerData.Add(pD[1]);
         this.PlayerData.Add(pD[2]);
+        this.PlayerData.Add(pD[3]);
 
         GameFullyLoaded = true;
+
+        Debug.Log("PlayerData loaded: " + this.PlayerData[0] + ", " + this.PlayerData[1] + ", " + this.PlayerData[2] + ", " + this.PlayerData[3]);
     }
 
     public List<string> Send_PlayerData_toSaveGameDataCS()
@@ -78,6 +102,7 @@ public class MessageEventSystem : MonoBehaviour
         this.PlayerData.Add("PlayerName");
         this.PlayerData.Add("true");
         this.PlayerData.Add("false");
+        this.PlayerData.Add("0");
     }
 
     // structure of PlayerData:

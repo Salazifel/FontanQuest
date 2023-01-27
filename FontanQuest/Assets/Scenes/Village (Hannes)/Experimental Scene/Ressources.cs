@@ -44,7 +44,7 @@ public class Ressources : MonoBehaviour
         if (res[2] > maxRes[2])
             res[2] = maxRes[2];
 
-        ResourceContainer.setRes(res[0], res[1], res[2]);
+        ResourceContainer.setRes(res[0], res[1], res[2], res[3]);
 
         // display ressources
         WoodText.text = res[0].ToString();

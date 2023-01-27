@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AndroidInput : MonoBehaviour
 {
-    public float speed = 10.0f;
+    public float speed = 5.0f;
     private Vector3 startPos;
 
     public float minZoom = 5.0f;

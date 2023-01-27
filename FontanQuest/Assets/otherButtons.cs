@@ -7,7 +7,12 @@ public class otherButtons : MonoBehaviour
     public void save_Game()
     {
         GameObject.Find("MasterData").GetComponent<SavingGameData>().save_Game();
-    }   
+    }  
+
+    public void delete_SaveFile()
+    {
+        GameObject.Find("MasterData").GetComponent<SavingGameData>().delete_SaveFile();
+    } 
 
     public void OpenQuestScene()
     {

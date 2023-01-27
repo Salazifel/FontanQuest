@@ -11,7 +11,8 @@ public class StoryTeller : MonoBehaviour
     public static bool freshStart = true;
     private static int level;
     public GameObject FlutterManager;
-    private int currentSteps = 0;
+    private int steps = 0;
+    private int startSteps = -1;
     private flutterCommunication flutterCommunication;
 
     public Canvas DialogCanvas;
@@ -132,12 +133,17 @@ public class StoryTeller : MonoBehaviour
 
     public void NewStepValue(string steps)
     {
-        currentSteps++;
-        StepsWalked.text = currentSteps.ToString();
-            if (currentSteps >= Steps.Peek())
-            {
-                StartNextChallenge.gameObject.SetActive(true);
-            }
+        int stepsInt = int.Parse(steps);
+        if (startSteps == -1)
+        {
+            startSteps = stepsInt;
+        }
+        this.steps = stepsInt - startSteps;
+        StepsWalked.text = this.steps.ToString();
+        if (this.steps >= Steps.Peek())
+        {
+            StartNextChallenge.gameObject.SetActive(true);
+        }
     }
 
     public void QuitGameWindow()

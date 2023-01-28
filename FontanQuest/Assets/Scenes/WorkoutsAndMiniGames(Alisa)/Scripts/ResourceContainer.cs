@@ -28,7 +28,7 @@ public static class ResourceContainer
         Wood = 120; // above limit for testing
         Stone = 100;
         Food = 100;
-        Gold = 10;
+        Gold = 3;
     }
 
     public static bool CheckRessources(int woodc, int stonec, int foodc, int goldc)
@@ -52,6 +52,13 @@ public static class ResourceContainer
         MaxWood += maxWood;
         MaxStone += maxStone;
         MaxFood += maxFood;
+    }
+
+    public static void setInitialMax(int maxWood = 100, int maxStone = 100, int maxFood = 100)
+    {
+        MaxWood = maxWood;
+        MaxStone = maxStone;
+        MaxFood = maxFood;
     }
 
     public static int[] getMaxRes()

@@ -169,7 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae5d9cd3c1fbcf4e86af3c86dea237d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuildingType: ConstrWoodCutterLvl3
 --- !u!1 &6200245248236714014
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +184,7 @@ GameObject:
   - component: {fileID: 7757282738150189719}
   m_Layer: 0
   m_Name: FreeZone
-  m_TagString: Untagged
+  m_TagString: BuildingFreeZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

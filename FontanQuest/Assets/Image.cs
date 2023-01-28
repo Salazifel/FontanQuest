@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Image : MonoBehaviour
 {
+    public Sprite sprite { get; internal set; }
+
     // Start is called before the first frame update
     void Start()
     {

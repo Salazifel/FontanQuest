@@ -65,9 +65,12 @@ public class MessageEventSystem : MonoBehaviour
             Debug.Log("Reward for steps!");
             int tmp = currentSteps - int.Parse(this.PlayerData[3]);
             int goldReward = (int) Mathf.Round( tmp / 100);
-            GetComponent<MessageDisplay>().new_Message("Oh Ihr seid wohl viel unterwegs, " + tmp + " Schritte habt Ihr seit eurem Letzten Versuch getan. Das entspricht " + goldReward + " Gold.", "Advisor");
-            ResourceContainer.changeRes(0, 0, 0, goldReward);
-            this.PlayerData[3] = currentSteps.ToString();
+            if (goldReward > 0)
+            {
+                GetComponent<MessageDisplay>().new_Message("Oh Ihr seid wohl viel unterwegs, " + tmp + " Schritte habt Ihr seit eurem Letzten Versuch getan. Das entspricht " + goldReward + " Gold.", "Advisor");
+                ResourceContainer.changeRes(0, 0, 0, goldReward);
+                this.PlayerData[3] = currentSteps.ToString();
+            }
         }
     }
 
@@ -81,11 +84,11 @@ public class MessageEventSystem : MonoBehaviour
         }
 
         this.PlayerData.Clear();
-        this.PlayerData.Add(pD[0]);
-        this.PlayerData.Add(pD[1]);
-        this.PlayerData.Add(pD[2]);
-        this.PlayerData.Add(pD[3]);
-
+        // make a for loop for the length of pD
+        for (int i = 0; i < pD.Count; i++)
+        {
+            this.PlayerData.Add(pD[i]);
+        }
         GameFullyLoaded = true;
 
         Debug.Log("PlayerData loaded: " + this.PlayerData[0] + ", " + this.PlayerData[1] + ", " + this.PlayerData[2] + ", " + this.PlayerData[3]);
@@ -99,19 +102,31 @@ public class MessageEventSystem : MonoBehaviour
     private void resetPlayerData()
     {
         this.PlayerData.Clear();
-        this.PlayerData.Add("PlayerName");
+        this.PlayerData.Add("PlayerName"); 
         this.PlayerData.Add("true");
         this.PlayerData.Add("false");
         this.PlayerData.Add("0");
+        this.PlayerData.Add(System.DateTime.Now.ToString("dd/MM/yyyy"));
     }
 
     // structure of PlayerData:
     // 0: PlayerName
     // 1: FirstPlay (true/false)
     // 2: EverReachedResourceLimit (true/false)
+    // 3: number of steps since last entry to the screen
+    // 4: last day played
 
     public void set_GameFullyLoaded(bool b)
     {
         GameFullyLoaded = b;
+    }
+
+    private void compare_today_to_last_date()
+    {
+        string today = System.DateTime.Now.ToString("dd/MM/yyyy");
+        if (today != this.PlayerData[4])
+        {
+            this.PlayerData[4] = today;
+        }
     }
 }

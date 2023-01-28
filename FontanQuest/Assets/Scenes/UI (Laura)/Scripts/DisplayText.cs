@@ -7,9 +7,10 @@ using TMPro;
 public class DisplayText : MonoBehaviour
 {
     public TextMeshProUGUI textField;
-    public int text;
+    public string text;
     public TMP_InputField display;
-
+    public int prev;
+    public int current = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +21,9 @@ public class DisplayText : MonoBehaviour
     // Update is called once per frame
     public void Create()
     {
-     //   display.text =  display.text;
-        textField.text = display.text + " min";
+        int.TryParse(display.text, out current);
+        int.TryParse(textField.text, out prev);
+        textField.text = (prev + current) + " min";
         PlayerPrefs.SetString("activity", textField.text);
         PlayerPrefs.Save();
     }

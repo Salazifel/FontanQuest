@@ -10,6 +10,8 @@ public class ButtonVisibilityController : MonoBehaviour
     public GameObject HikkingStoryFindTheCureButton;
     public GameObject SuperMarioYouTubeGameButton;
     public GameObject DisneyDanceYouTubeGameButton;
+    public GameObject SoccerBeginnerTricksYouTubeButton;
+    public GameObject PokemonKickBoxWorkoutYouTubeButton;
 
 
     // Start is called before the first frame update
@@ -35,6 +37,14 @@ public class ButtonVisibilityController : MonoBehaviour
         {
             DisneyDanceYouTubeGameButton.SetActive(GamesVisibiltyForKids.DisneyDanceYouTubeGame);
         }
+        if (PokemonKickBoxWorkoutYouTubeButton != null)
+        {
+            PokemonKickBoxWorkoutYouTubeButton.SetActive(GamesVisibiltyForKids.PokemonKickBoxWorkoutYouTubeGame);
+        }
+        if (SoccerBeginnerTricksYouTubeButton != null)
+        {
+            SoccerBeginnerTricksYouTubeButton.SetActive(GamesVisibiltyForKids.PokemonKickBoxWorkoutYouTubeGame);
+        }
     }
 }
 
@@ -45,7 +55,8 @@ public static class GamesVisibiltyForKids
     public static bool HikkingStoryFindTheCure = true;
     public static bool SuperMarioYouTubeGame = true;
     public static bool DisneyDanceYouTubeGame = true;
-
+    public static bool SoccerBeginnerTricksYouTubeGame = true;
+    public static bool PokemonKickBoxWorkoutYouTubeGame = true;
     public static void DisableYoutubeGames()
     {
         GamesVisibiltyForKids.YouTubeGamesSetVisibility(false);
@@ -59,5 +70,7 @@ public static class GamesVisibiltyForKids
     {
         SuperMarioYouTubeGame = visibile;
         DisneyDanceYouTubeGame = visibile;
+        SoccerBeginnerTricksYouTubeGame=visibile;
+        PokemonKickBoxWorkoutYouTubeGame = visibile;
     }
 }

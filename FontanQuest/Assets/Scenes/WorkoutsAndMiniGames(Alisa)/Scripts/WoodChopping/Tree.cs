@@ -6,7 +6,7 @@ using UnityEngine;
 public class Tree : MonoBehaviour
 {
     [SerializeField]
-    private int _hitsToCutDown = 5;
+    private int _hitsToCutDown = 1;
     private int _hits = 0;
     [SerializeField]
     private int superHitValue = 3;

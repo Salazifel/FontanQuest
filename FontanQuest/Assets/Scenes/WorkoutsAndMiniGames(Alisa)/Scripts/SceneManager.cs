@@ -8,6 +8,7 @@ public static class SceneManager
     public enum Scene
     {
         chooseAction,
+        MedalOverview,
        
 
         // Game Scenes 

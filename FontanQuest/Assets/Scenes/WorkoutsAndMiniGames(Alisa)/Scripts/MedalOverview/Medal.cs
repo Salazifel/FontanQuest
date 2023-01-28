@@ -9,7 +9,7 @@ public class Medal : MonoBehaviour
 
 
     public string Title;
-
+    public int CurrentLevel = 0;
     public int Level1;
     public int Level2;
     public int Level3;
@@ -19,6 +19,7 @@ public class Medal : MonoBehaviour
         get { return value; }
         set
         {
+            Manager = GameObject.Find("MedalManager").gameObject.GetComponent<MedalManager>();
             this.value = value;
             int xpToNextLevel = 0;
             Sprite image = null;
@@ -33,33 +34,39 @@ public class Medal : MonoBehaviour
             {
                 xpToNextLevel = Level2;
                 image = Manager.Level1Image;
+                CurrentLevel = 1;
             }
             else if (value < Level3)
             {
                 xpToNextLevel = Level3;
                 image = Manager.Level2Image;
+                CurrentLevel = 2;
+
             }
             else if (value <= Level4)
             {
                 xpToNextLevel = Level4;
                 image = Manager.Level3Image;
+                CurrentLevel = 3;
+
             }
             else
             {
                 xpToNextLevel = Level4;
                 image = Manager.Level4Image;
                 ProgressUi.value = Level4;
+                CurrentLevel = 4;
             }
             // set all components according to level and value
             _valueText.text = value.ToString();
             _nextLevelValueText.text = xpToNextLevel.ToString();
-            ProgressUi.value = value;
             ProgressUi.maxValue = xpToNextLevel;
+            ProgressUi.value = value;
             Image.sprite = image;
         }
     }
     private int value = 0;
-    
+
     public MedalManager Manager;
 
     private TextMeshProUGUI _titleUi;
@@ -72,12 +79,12 @@ public class Medal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         _titleUi = this.gameObject.transform.Find("Title").gameObject.GetComponent<TextMeshProUGUI>();
         _titleUi.text = Title;
         ProgressUi = this.gameObject.transform.Find("Progress").gameObject.GetComponent<Slider>();
         _nextLevelValueText = ProgressUi.transform.Find("NextLevelText").gameObject.GetComponent<TextMeshProUGUI>();
         _valueText = ProgressUi.transform.Find("ValueText").gameObject.GetComponent<TextMeshProUGUI>();
-        Image = this.gameObject.gameObject.GetComponent<UnityEngine.UI.Image>();
-        Manager = GetComponent<MedalManager>();
+        Image = this.gameObject.transform.Find("Image").GetComponent<UnityEngine.UI.Image>();
     }
 }

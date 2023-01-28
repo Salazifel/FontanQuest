@@ -46,4 +46,9 @@ public class OpenLinks : MonoBehaviour
     {
         SceneManager.Load("Main Screen");
     }
+
+    public void LoadMedalScene()
+    {
+        SceneManager.Load(SceneManager.Scene.MedalOverview);
+    }
 }

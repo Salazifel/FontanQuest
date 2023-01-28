@@ -11,6 +11,11 @@ public class Ressources : MonoBehaviour
     private TextMeshProUGUI FoodText;
     private TextMeshProUGUI GoldText;
 
+
+    private TextMeshProUGUI WoodMax;
+    private TextMeshProUGUI StoneMax;
+    private TextMeshProUGUI FoodMax;
+
     void Awake()
     {
         // GameObject.FindGameObjectWithTag("Menubuttons").SetActive(false);
@@ -19,8 +24,14 @@ public class Ressources : MonoBehaviour
         StoneText = GameObject.Find("Stone Text (TMP) ").GetComponent<TextMeshProUGUI>();
         FoodText = GameObject.Find("Food Text (TMP) ").GetComponent<TextMeshProUGUI>();
         GoldText = GameObject.Find("Gold Text (TMP) ").GetComponent<TextMeshProUGUI>();
-    
-        ResourceContainer.setMaxRes();
+
+        // max resource displays
+
+        WoodMax = GameObject.Find("Wood Max").GetComponent<TextMeshProUGUI>();
+        StoneMax = GameObject.Find("Stone Max").GetComponent<TextMeshProUGUI>();
+        FoodMax = GameObject.Find("Food Max").GetComponent<TextMeshProUGUI>();
+
+        ResourceContainer.setInitialMax();
         ResourceContainer.TestResources();
     }
 
@@ -51,6 +62,11 @@ public class Ressources : MonoBehaviour
         StoneText.text = res[1].ToString();
         FoodText.text = res[2].ToString();
         GoldText.text = res[3].ToString();
+
+        // display max ressources
+        WoodMax.text = "/ " + maxRes[0].ToString();
+        StoneMax.text = "/ " + maxRes[1].ToString();    
+        FoodMax.text = "/ " + maxRes[2].ToString();
     }
 }
 

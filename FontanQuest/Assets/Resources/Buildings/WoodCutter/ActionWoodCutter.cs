@@ -58,7 +58,7 @@ public class ActionWoodCutter : MonoBehaviour
 
     public void OnExecution()
     {
-        OnTaskCompletion();
+        StartCoroutine(Wait());
     }
 
     public void OnTaskCompletion()
@@ -66,5 +66,12 @@ public class ActionWoodCutter : MonoBehaviour
         ResourceContainer.changeRes(1 * factor, 0, 0, 0);
         BroadcastMessage("Free_Worker");
         taskEmitted = false;
+    }
+
+    private IEnumerator Wait()
+    {
+        Debug.Log("Task started");
+        yield return new WaitForSeconds(30);
+        OnTaskCompletion();
     }
 }

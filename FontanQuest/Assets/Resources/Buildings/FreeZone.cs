@@ -9,10 +9,41 @@ public class FreeZone : MonoBehaviour
     private Renderer rend;
     private Material[] mats;
 
-    void OnTriggerStay()
+    private Collider col;
+
+    void OnTriggerStay(Collider other)
+    {   
+        col = other;
+        set_Red();
+     }
+
+    void OnTriggerExit(Collider other)
+    {
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.name == "BuildableZone"){
+            for (int i = 0; i < rend.materials.Length; i++)
+            {
+                mats[i] = material[0];
+            }
+            rend.materials = mats;
+            return;
+        }
+        set_Green();
+    }
+
+    void Start()
     {
         rend = transform.parent.gameObject.GetComponent<Renderer>();
         mats = rend.materials;
+    }
+
+    void set_Red()
+    {
+        if (col.gameObject.name == "BuildableZone"){
+            set_Green();
+            return;
+        }
+
         // if there is also a tmp of materials, the OnTriggerExit could pass on the original colours (all of them)
         for (int i = 0; i < rend.materials.Length; i++)
         {
@@ -21,9 +52,9 @@ public class FreeZone : MonoBehaviour
         rend.materials = mats;
 
         transform.parent.gameObject.GetComponent<BluePrint>().SendMessage("set_placeable", false);
-     }
+    }
 
-    void OnTriggerExit()
+    void set_Green()
     {
         for (int i = 0; i < rend.materials.Length; i++)
         {

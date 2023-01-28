@@ -13,7 +13,7 @@ public class BluePrint : MonoBehaviour
     private string ObjectFolder;
     private GameObject MasterData;
     private GameObject Canvas;
-    private bool placable;
+    public bool placable;
 
     // Start is called before the first frame update
 
@@ -27,9 +27,11 @@ public class BluePrint : MonoBehaviour
         placable = true;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
+        transform.position = GameObject.Find("BuildPos").transform.position;
+        
         if (Physics.Raycast(ray, out hit, 50000.0f, (1 << 9)))
         {
-            transform.position = hit.point;
+            //transform.position = hit.point;
         }
     }
 
@@ -40,9 +42,9 @@ public class BluePrint : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 50000.0f, (1 << 9)))
         {
-            transform.position = hit.point;
+            //transform.position = hit.point;
         }
-
+        /*
         if (Input.GetMouseButton(0))
         {
             if (placable == true)
@@ -61,7 +63,7 @@ public class BluePrint : MonoBehaviour
                 GameObject.Find("Canvas").GetComponent<BuildButton>().Finalize_built();
             }
         }
-
+        */
         if (Input.GetMouseButton(1))
         {
             Destroy(gameObject);
@@ -78,5 +80,10 @@ public class BluePrint : MonoBehaviour
         ObjectLvl = lvl;
         ObjectType = type;
         ObjectFolder = folder;
+    }
+
+    public bool get_placable()
+    {
+        return placable;
     }
 }

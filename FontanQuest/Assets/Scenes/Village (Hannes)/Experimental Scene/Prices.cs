@@ -102,21 +102,21 @@ public class Prices : MonoBehaviour
                 HouseLvl1.wood = 10;
                 HouseLvl1.stone = 10;
                 HouseLvl1.food = 0;
-                HouseLvl1.gold = 0;
+                HouseLvl1.gold = 1;
                 HouseLvl1.foodBoost = 10;
                 HouseLvl1.goldUpkeep = 10;
             // define House Level 2
                 HouseLvl2.wood = 50;
                 HouseLvl2.stone = 50;
                 HouseLvl2.food = 0;
-                HouseLvl2.gold = 0;
+                HouseLvl2.gold = 1;
                 HouseLvl2.foodBoost = 20;
                 HouseLvl2.goldUpkeep = 20;
             // define House Level 3
                 HouseLvl3.wood = 100;
                 HouseLvl3.stone = 100;
                 HouseLvl3.food = 0;
-                HouseLvl3.gold = 0;
+                HouseLvl3.gold = 1;
                 HouseLvl3.foodBoost = 30;
                 HouseLvl3.goldUpkeep = 35;
 
@@ -125,21 +125,21 @@ public class Prices : MonoBehaviour
                 TavernLvl1.wood = 10;
                 TavernLvl1.stone = 10;
                 TavernLvl1.food = 0;
-                TavernLvl1.gold = 0;
+                TavernLvl1.gold = 1;
                 TavernLvl1.foodBoost = 10;
                 TavernLvl1.goldUpkeep = 10;
             // define Tavern Level 2
                 TavernLvl2.wood = 50;
                 TavernLvl2.stone = 50;
                 TavernLvl2.food = 0;
-                TavernLvl2.gold = 0;
+                TavernLvl2.gold = 1;
                 TavernLvl2.foodBoost = 20;
                 TavernLvl2.goldUpkeep = 20;
             // define Tavern Level 3
                 TavernLvl3.wood = 100;
                 TavernLvl3.stone = 100;
                 TavernLvl3.food = 0;
-                TavernLvl3.gold = 0;
+                TavernLvl3.gold = 1;
                 TavernLvl3.foodBoost = 30;
                 TavernLvl3.goldUpkeep = 35;
 
@@ -148,21 +148,21 @@ public class Prices : MonoBehaviour
                 WoodCutterLvl1.wood = 10;
                 WoodCutterLvl1.stone = 10;
                 WoodCutterLvl1.food = 0;
-                WoodCutterLvl1.gold = 0;
+                WoodCutterLvl1.gold = 1;
                 WoodCutterLvl1.foodBoost = 10;
                 WoodCutterLvl1.goldUpkeep = 10;
             // define WoodCutter Level 2
                 WoodCutterLvl2.wood = 50;
                 WoodCutterLvl2.stone = 50;
                 WoodCutterLvl2.food = 0;
-                WoodCutterLvl2.gold = 0;
+                WoodCutterLvl2.gold = 1;
                 WoodCutterLvl2.foodBoost = 20;
                 WoodCutterLvl2.goldUpkeep = 20;
             // define WoodCutter Level 3
                 WoodCutterLvl3.wood = 100;
                 WoodCutterLvl3.stone = 100;
                 WoodCutterLvl3.food = 0;
-                WoodCutterLvl3.gold = 0;
+                WoodCutterLvl3.gold = 1;
                 WoodCutterLvl3.foodBoost = 30;
                 WoodCutterLvl3.goldUpkeep = 35;
 
@@ -171,21 +171,21 @@ public class Prices : MonoBehaviour
                 StoneMineLvl1.wood = 10;
                 StoneMineLvl1.stone = 10;
                 StoneMineLvl1.food = 0;
-                StoneMineLvl1.gold = 0;
+                StoneMineLvl1.gold = 1;
                 StoneMineLvl1.foodBoost = 10;
                 StoneMineLvl1.goldUpkeep = 10;
             // define StoneMine Level 2
                 StoneMineLvl2.wood = 50;
                 StoneMineLvl2.stone = 50;
                 StoneMineLvl2.food = 0;
-                StoneMineLvl2.gold = 0;
+                StoneMineLvl2.gold = 1;
                 StoneMineLvl2.foodBoost = 20;
                 StoneMineLvl2.goldUpkeep = 20;
             // define StoneMine Level 3
                 StoneMineLvl3.wood = 100;
                 StoneMineLvl3.stone = 100;
                 StoneMineLvl3.food = 0;
-                StoneMineLvl3.gold = 0;
+                StoneMineLvl3.gold = 1;
                 StoneMineLvl3.foodBoost = 30;
                 StoneMineLvl3.goldUpkeep = 35;
 
@@ -194,21 +194,21 @@ public class Prices : MonoBehaviour
                 FarmLvl1.wood = 10;
                 FarmLvl1.stone = 10;
                 FarmLvl1.food = 0;
-                FarmLvl1.gold = 0;
+                FarmLvl1.gold = 1;
                 FarmLvl1.foodBoost = 10;
                 FarmLvl1.goldUpkeep = 10;
             // define Farm Level 2
                 FarmLvl2.wood = 50;
                 FarmLvl2.stone = 50;
                 FarmLvl2.food = 0;
-                FarmLvl2.gold = 0;
+                FarmLvl2.gold = 1;
                 FarmLvl2.foodBoost = 20;
                 FarmLvl2.goldUpkeep = 20;
             // define Farm Level 3
                 FarmLvl3.wood = 100;
                 FarmLvl3.stone = 100;
                 FarmLvl3.food = 0;
-                FarmLvl3.gold = 0;
+                FarmLvl3.gold = 1;
                 FarmLvl3.foodBoost = 30;
                 FarmLvl3.goldUpkeep = 35;
 
@@ -217,21 +217,21 @@ public class Prices : MonoBehaviour
                 MainBuildingLvl1.wood = 10;
                 MainBuildingLvl1.stone = 10;
                 MainBuildingLvl1.food = 0;
-                MainBuildingLvl1.gold = 0;
+                MainBuildingLvl1.gold = 1;
                 MainBuildingLvl1.foodBoost = 10;
                 MainBuildingLvl1.goldUpkeep = 10;
             // define MainBuilding Level 2
                 MainBuildingLvl2.wood = 50;
                 MainBuildingLvl2.stone = 50;
                 MainBuildingLvl2.food = 0;
-                MainBuildingLvl2.gold = 0;
+                MainBuildingLvl2.gold = 1;
                 MainBuildingLvl2.foodBoost = 20;
                 MainBuildingLvl2.goldUpkeep = 20;
             // define MainBuilding Level 3
                 MainBuildingLvl3.wood = 100;
                 MainBuildingLvl3.stone = 100;
                 MainBuildingLvl3.food = 0;
-                MainBuildingLvl3.gold = 0;
+                MainBuildingLvl3.gold = 1;
                 MainBuildingLvl3.foodBoost = 30;
                 MainBuildingLvl3.goldUpkeep = 35;
 
@@ -240,21 +240,21 @@ public class Prices : MonoBehaviour
                 StablesLvl1.wood = 10;
                 StablesLvl1.stone = 10;
                 StablesLvl1.food = 0;
-                StablesLvl1.gold = 0;
+                StablesLvl1.gold = 1;
                 StablesLvl1.foodBoost = 10;
                 StablesLvl1.goldUpkeep = 10;
             // define Stables Level 2
                 StablesLvl2.wood = 50;
                 StablesLvl2.stone = 50;
                 StablesLvl2.food = 0;
-                StablesLvl2.gold = 0;
+                StablesLvl2.gold = 1;
                 StablesLvl2.foodBoost = 20;
                 StablesLvl2.goldUpkeep = 20;
             // define Stables Level 3
                 StablesLvl3.wood = 100;
                 StablesLvl3.stone = 100;
                 StablesLvl3.food = 0;
-                StablesLvl3.gold = 0;
+                StablesLvl3.gold = 1;
                 StablesLvl3.foodBoost = 30;
                 StablesLvl3.goldUpkeep = 35;
     }

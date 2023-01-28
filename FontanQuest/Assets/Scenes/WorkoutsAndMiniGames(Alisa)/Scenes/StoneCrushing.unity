@@ -1098,7 +1098,7 @@ PrefabInstance:
     - target: {fileID: 4334548070238062024, guid: 611f28ef8f289bd479fff7184cdd67a3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 53
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 4334548070238062031, guid: 611f28ef8f289bd479fff7184cdd67a3,
         type: 3}
@@ -1549,6 +1549,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Nochmal Spielen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2641265120950361537, guid: 3d38affef05ded44a8a4b4ac976de1d4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: 2641265120950361542, guid: 3d38affef05ded44a8a4b4ac976de1d4,
         type: 3}

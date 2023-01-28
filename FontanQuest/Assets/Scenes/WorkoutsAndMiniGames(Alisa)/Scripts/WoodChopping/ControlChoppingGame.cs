@@ -68,7 +68,7 @@ public class ControlChoppingGame : MonoBehaviour
         _choppingDetect.StopChopping();
         int cutDownTrees = _choppingDetect.CuttedTrees();
         int reward = Mathf.RoundToInt(cutDownTrees / 2);
-        Reward(reward);
+        Reward(reward, cutDownTrees);
         _ui.Completed(cutDownTrees, reward);
     }
 
@@ -86,17 +86,17 @@ public class ControlChoppingGame : MonoBehaviour
         }
     }
 
-    private void Reward(int amount)
+    private void Reward(int reward, int cutDownTrees)
     {
         switch (WhatGame)
         {
             case Game.WoodChopping:
-                MiniGameData.NewWoodChoppingHighScore(amount);
-                ResourceContainer.changeRes(wood: amount);
+                MiniGameData.NewWoodChoppingHighScore(cutDownTrees);
+                ResourceContainer.changeRes(wood: reward);
                 break;
             case Game.StoneMining:
-                MiniGameData.NewStoneMiningHighScore(amount);
-                ResourceContainer.changeRes(stone: amount);            
+                MiniGameData.NewStoneMiningHighScore(cutDownTrees);
+                ResourceContainer.changeRes(stone: reward);            
                 break;
         }
     }

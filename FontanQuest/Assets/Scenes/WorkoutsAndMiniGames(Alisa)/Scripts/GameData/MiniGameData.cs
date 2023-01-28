@@ -5,12 +5,12 @@ using UnityEngine;
 public class MiniGameData
 {
     public static bool FirstVisit = true;
-    public static int ChoppingHighscore = 30;
-    public static int StoneMiningHighscore = 4;
-    public static int PlayedChoppingGameXTimes = 10;
-    public static int PlayedMiningGameXTimes = 20;
-    public static int CompletedFindTheCureLevel1XTimes = 6;
-    public static int CompletedFindTheCureLevel2XTimes = 70;
+    public static int ChoppingHighscore = 0;
+    public static int StoneMiningHighscore = 0;
+    public static int PlayedChoppingGameXTimes = 0;
+    public static int PlayedMiningGameXTimes = 0;
+    public static int CompletedFindTheCureLevel1XTimes = 0;
+    public static int CompletedFindTheCureLevel2XTimes = 0;
     public static int CompletedFindTheCureLevel3XTimes = 0;
 
 

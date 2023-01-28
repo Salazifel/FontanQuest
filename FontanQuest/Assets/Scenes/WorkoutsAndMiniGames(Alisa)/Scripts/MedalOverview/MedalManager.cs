@@ -46,7 +46,7 @@ public class MedalManager : MonoBehaviour
         PlayedFindTheCureLevel2GameXTimes.Value = MiniGameData.CompletedFindTheCureLevel2XTimes;
         PlayedFindTheCureLevel3GameXTimes.Value = MiniGameData.CompletedFindTheCureLevel3XTimes;
 
-        Medals = new List<Medal>() { AmountOfDiamondMedals, AmountOfGoldMedals, AmountOfSilverMedals, AmountOfBronceMedals, WalkedXStepsOnOneDay, ChoppingHighScore, MiningHighScore, PlayedChoppingGameXTimes, PlayedMiningGameXTimes, PlayedFindTheCureLevel1GameXTimes, PlayedFindTheCureLevel2GameXTimes, PlayedFindTheCureLevel3GameXTimes };
+        Medals = new List<Medal>() { WalkedXStepsOnOneDay, ChoppingHighScore, MiningHighScore, PlayedChoppingGameXTimes, PlayedMiningGameXTimes, PlayedFindTheCureLevel1GameXTimes, PlayedFindTheCureLevel2GameXTimes, PlayedFindTheCureLevel3GameXTimes };
         UpdateAmountOfMedalMedals();
     }
 

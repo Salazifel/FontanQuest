@@ -323,6 +323,8 @@ public class BuildButton : MonoBehaviour
 
     private void not_enough_ressources()
     {
+        // hiding the buttons
+        GetComponent<build>().hide_Building_Interaction_Buttons();
         MasterData.GetComponent<MessageDisplay>().new_Message("Oh nein. Es scheint so, als ob du nicht genug Ressourcen hast um dieses Gebaeude zu bauen.", "Advisor");
     }
 

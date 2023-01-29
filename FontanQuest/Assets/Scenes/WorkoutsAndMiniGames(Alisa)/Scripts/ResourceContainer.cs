@@ -6,6 +6,8 @@ public static class ResourceContainer
 {
     // current ressources
     public static int Wood { get; private set; }
+
+    public static System.TimeSpan time_played { get; private set; }
     public static int Stone { get; private set; }
     public static int Food { get; private set; }
     public static int Gold { get; private set; }
@@ -90,5 +92,10 @@ public static class ResourceContainer
         res[3] = Gold;
 
         return res;
+    }
+    
+    public static void set__time_played(System.TimeSpan time)
+    {
+        time_played = time;
     }
 }

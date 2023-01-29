@@ -6,17 +6,26 @@ public class OpenLinks : MonoBehaviour
 {
     private static string SuperMarioWorkout = "https://www.youtube.com/watch?v=2CXG02qzWcM";
     private static string DisneyDanceWorkout = "https://www.youtube.com/watch?v=FhmtR3YzBmQ";
+    private static string PokemonKickBoxWorkout = "https://www.youtube.com/watch?v=F-roDdEkSHQ";
+    private static string SoccerTricksBeginner = "https://www.youtube.com/watch?v=aSnGxTxJ5SQ";
 
     public void SuperMarioWorkoutKlick()
     {
          Application.OpenURL(SuperMarioWorkout);
+    }
+    public void SoccerTricksBeginnerKlick()
+    {
+        Application.OpenURL(SoccerTricksBeginner);
     }
 
     public void DanceWorkoutKlick()
     {
         Application.OpenURL(DisneyDanceWorkout);
     }
-
+    public void PokemonKickBoxWorkoutKlick()
+    {
+        Application.OpenURL(PokemonKickBoxWorkout);
+    }
     public void LoadChoppingGame()
     {
         SceneManager.Load(SceneManager.Scene.WoodChopping);
@@ -45,5 +54,10 @@ public class OpenLinks : MonoBehaviour
     public void LoadMenueScene()
     {
         SceneManager.Load("Main Screen");
+    }
+
+    public void LoadMedalScene()
+    {
+        SceneManager.Load(SceneManager.Scene.MedalOverview);
     }
 }

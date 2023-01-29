@@ -6,8 +6,9 @@ using TMPro;
 
 public class Run : MonoBehaviour
 {
-    public int StepsWalked = 40;
-    public int StepsToWalk = 30;
+    private int _stepsWalked = 0;
+    public int StepsToWalk = 60;
+    private int _stepsAtTheBeginning = -1;
 
     //canvasas
     public Canvas BearLive;
@@ -49,7 +50,7 @@ public class Run : MonoBehaviour
     {
         flutterCommunication.NewStepValue -= UpdateSteps;
         StartCanvas.gameObject.SetActive(false);
-        if (StepsToWalk > StepsWalked)
+        if (StepsToWalk > _stepsWalked)
         {
             // you lost, fight the bear
             YouLost.gameObject.SetActive(true);
@@ -81,7 +82,9 @@ public class Run : MonoBehaviour
 
     public void UpdateSteps(string steps)
     {
-        StepsWalkedText.text = steps;
-        StepsWalked = int.Parse(steps);
+        int stepsInt = int.Parse(steps);
+        _stepsAtTheBeginning = _stepsAtTheBeginning == -1 ? stepsInt :_stepsAtTheBeginning;
+        _stepsWalked = stepsInt - _stepsAtTheBeginning;
+        StepsWalkedText.text = _stepsWalked.ToString();
     }
 }

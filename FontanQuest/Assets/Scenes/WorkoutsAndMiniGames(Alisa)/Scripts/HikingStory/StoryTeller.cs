@@ -157,6 +157,7 @@ public class StoryTeller : MonoBehaviour
     }
     public void Complete()
     {
+        MiniGameData.CompletedFindTheCure(level);
         Steps = new Queue<int>();
         Dialogs = new Queue<string>();
         SceneManager.Load(SceneManager.Scene.chooseAction);

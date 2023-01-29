@@ -297,6 +297,8 @@ MonoBehaviour:
   HikkingStoryFindTheCureButton: {fileID: 1256014958}
   SuperMarioYouTubeGameButton: {fileID: 1913359049}
   DisneyDanceYouTubeGameButton: {fileID: 1035876859}
+  SoccerBeginnerTricksYouTubeButton: {fileID: 0}
+  PokemonKickBoxWorkoutYouTubeButton: {fileID: 0}
 --- !u!114 &145465170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1949,8 +1951,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1789253400}
   m_HandleRect: {fileID: 1789253399}
   m_Direction: 0
-  m_Value: -0.0000010896624
-  m_Size: 0.3354422
+  m_Value: 0.49999875
+  m_Size: 0.33544442
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2041,7 +2043,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.529, y: 196.04549}
+  m_AnchoredPosition: {x: -8.529, y: 0.0013885498}
   m_SizeDelta: {x: 673.0881, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1043528186
@@ -2979,6 +2981,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013356806474060492, guid: 47294e3c372ce344ca2407cd49f1d01a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013356806474060492, guid: 47294e3c372ce344ca2407cd49f1d01a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013356806474060492, guid: 47294e3c372ce344ca2407cd49f1d01a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 145465166}
+    - target: {fileID: 5013356806474060492, guid: 47294e3c372ce344ca2407cd49f1d01a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013356806474060492, guid: 47294e3c372ce344ca2407cd49f1d01a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SoccerTricksBeginnerKlick
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013356806474060492, guid: 47294e3c372ce344ca2407cd49f1d01a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OpenLinks, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013356806474060492, guid: 47294e3c372ce344ca2407cd49f1d01a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5013356806474060498, guid: 47294e3c372ce344ca2407cd49f1d01a,
         type: 3}

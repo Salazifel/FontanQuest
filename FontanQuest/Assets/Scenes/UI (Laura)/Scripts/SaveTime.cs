@@ -16,7 +16,6 @@ public class SaveTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         textField.text = ResourceContainer.get__time_played().ToString();
     }
 }

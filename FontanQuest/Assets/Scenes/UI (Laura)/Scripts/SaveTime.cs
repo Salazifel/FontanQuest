@@ -10,12 +10,12 @@ public class SaveTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        textField = GameObject.Find("Timeplay (TMP)").GetComponent<TextMeshProUGUI>();
+      textField = GameObject.Find("TimeUpdate").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-      // textField.text = Resources.time_played;
+      textField.text = ResourceContainer.time_played.ToString();
     }
 }

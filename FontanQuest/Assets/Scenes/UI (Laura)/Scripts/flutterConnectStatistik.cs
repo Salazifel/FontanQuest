@@ -24,7 +24,7 @@ public class flutterConnectStatistik : MonoBehaviour
     {
         flutterCommunication.NewStepValue -= HandleSteps;
         int currentSteps = int.Parse(steps);
-        TextDisplay.text = currentSteps;
+        TextDisplay.text = currentSteps.ToString();
         /// do what ever you want with steps and current steps
     }
 

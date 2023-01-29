@@ -4,10 +4,12 @@ using UnityEngine;
 
 public static class ResourceContainer
 {
+    // further variables to be accesible across scripts
+    public static System.TimeSpan time_played { get; private set; }
+
+    public static int number_of_buildings { get; private set; }
     // current ressources
     public static int Wood { get; private set; }
-
-    public static System.TimeSpan time_played { get; private set; }
     public static int Stone { get; private set; }
     public static int Food { get; private set; }
     public static int Gold { get; private set; }
@@ -97,5 +99,10 @@ public static class ResourceContainer
     public static void set__time_played(System.TimeSpan time)
     {
         time_played = time;
+    }
+
+    public static void set__number_of_buildings(int number)
+    {
+        number_of_buildings = number;
     }
 }

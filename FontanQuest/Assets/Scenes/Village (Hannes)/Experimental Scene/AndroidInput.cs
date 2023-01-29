@@ -81,6 +81,7 @@ public class AndroidInput : MonoBehaviour
             {
                 if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
                 {
+                    Debug.Log("You clicked on the UI!");
                     return;
                 }
                 
@@ -88,7 +89,7 @@ public class AndroidInput : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit))
                 {
-                    if (hit.collider.CompareTag("BuildingFreeZone"))
+                    if (hit.collider.name == "FreeZone")
                     {
                         Debug.Log("You clicked on a building!");
                         building = hit.collider.transform.parent.gameObject;

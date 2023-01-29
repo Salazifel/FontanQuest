@@ -15,7 +15,6 @@ public class DisplayText : MonoBehaviour
     void Start()
     {
         textField.text = PlayerPrefs.GetString("activity");
-        
     }
 
     // Update is called once per frame
@@ -25,6 +24,6 @@ public class DisplayText : MonoBehaviour
         int.TryParse(textField.text, out prev);
         textField.text = (prev + current) + " min";
         PlayerPrefs.SetString("activity", textField.text);
-        PlayerPrefs.Save();
+        PlayerPrefs.Save(); 
     }
 }

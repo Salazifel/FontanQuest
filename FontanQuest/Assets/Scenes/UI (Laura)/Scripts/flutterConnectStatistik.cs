@@ -9,19 +9,23 @@ public class flutterConnectStatistik : MonoBehaviour
     public delegate void NewStepValueEvent(string step);
     public event NewStepValueEvent NewStepValue;
     public TextMeshProUGUI TextDisplay = null;
+    private flutterCommunication flutterCommunication;
 
     // Start is called before the first frame update
     void Start()
     {
         stepcount = "0";
-        TextDisplay = GameObject.Find("Fact (TMP)").GetComponent<TextMeshProUGUI>();
-        PlayerPrefs.Save();
-
+        TextDisplay = GameObject.Find("StepUpdate").GetComponent<TextMeshProUGUI>();
+        flutterCommunication = GameObject.Find("GameObject").GetComponent<flutterCommunication>();
+        flutterCommunication.NewStepValue += HandleSteps;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HandleSteps(string steps)
     {
-        
+        flutterCommunication.NewStepValue -= HandleSteps;
+        int currentSteps = int.Parse(steps);
+        TextDisplay.text = currentSteps.ToString();
+        /// do what ever you want with steps and current steps
     }
+
 }

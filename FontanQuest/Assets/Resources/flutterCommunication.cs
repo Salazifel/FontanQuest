@@ -11,7 +11,7 @@ public class flutterCommunication : MonoBehaviour
     public TextMeshProUGUI TextDisplay =null;
 
     //test 
-    private bool test = true; // indicates that the test state is active and will trigger every interpolation second an new step event
+    private bool test = false; // indicates that the test state is active and will trigger every interpolation second an new step event
     private float time = 0; 
     private float interpolation = 1f; //intervall between two new step events for the test phase
     // Start is called before the first frame update

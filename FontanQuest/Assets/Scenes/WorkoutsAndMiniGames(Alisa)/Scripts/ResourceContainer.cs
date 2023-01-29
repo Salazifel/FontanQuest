@@ -101,6 +101,11 @@ public static class ResourceContainer
         time_played = time;
     }
 
+    public static System.TimeSpan get__time_played()
+    {
+        return time_played;
+    }
+
     public static void set__number_of_buildings(int number)
     {
         number_of_buildings = number;

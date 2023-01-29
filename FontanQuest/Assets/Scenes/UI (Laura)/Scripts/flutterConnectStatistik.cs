@@ -14,7 +14,7 @@ public class flutterConnectStatistik : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stepcount = "0";
+        //stepcount = "0";
         TextDisplay = GameObject.Find("StepUpdate").GetComponent<TextMeshProUGUI>();
         flutterCommunication = GameObject.Find("GameObject").GetComponent<flutterCommunication>();
         flutterCommunication.NewStepValue += HandleSteps;

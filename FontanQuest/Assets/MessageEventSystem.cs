@@ -156,7 +156,5 @@ public class MessageEventSystem : MonoBehaviour
 
         flutterCommunication.NewStepValue -= HandleSteps;
         currentSteps = int.Parse(steps);
-        Debug.Log("New Step for MessageEventSystem");
-
     }
 }

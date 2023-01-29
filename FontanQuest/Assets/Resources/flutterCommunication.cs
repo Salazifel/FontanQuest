@@ -56,7 +56,7 @@ public class flutterCommunication : MonoBehaviour
             {
                 stepcount = (int.Parse(stepcount) + 1).ToString();
                 time = 0;
-                NewStepValue?.Invoke("10");
+                NewStepValue?.Invoke(stepcount);
             }
         }
     }

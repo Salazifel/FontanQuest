@@ -224,6 +224,7 @@ public class BuildButton : MonoBehaviour
                     not_enough_ressources();
                     if (is_upgrading == true)
                     {
+                        free_building();
                         GetComponent<build>().hide_Building_Interaction_Buttons();
                         is_build_mode = false;
                     }
@@ -315,10 +316,30 @@ public class BuildButton : MonoBehaviour
         food = int.Parse(prices[2]);
         gold = int.Parse(prices[3]);
 
-        MasterData.GetComponent<MessageDisplay>().new_Message("Name: " + ObjectFolder +"\n"
+        MasterData.GetComponent<MessageDisplay>().new_Message("Name: " + get_building_name_translation(ObjectFolder) +"\n"
                                                             + "Level: " + level + "\n"
                                                             + "Preise zur Levelerhoehung: \n"
                                                             + wood + " Holz, " + stone + " Stein, " + gold + " Gold.", "Advisor");
+    }
+
+    private string get_building_name_translation(string s)
+    {
+        if (s == "House")
+        {return "Haus";}
+        else if (s == "Farm")
+        {return "Bauernhof";}
+        else if (s == "MainBuilding")
+        {return "Burg";}
+        else if (s == "Stables")
+        {return "Staelle";}
+        else if (s == "WoodCutter")
+        {return "Holzfaeller";}
+        else if (s == "StoneMine")
+        {return "Mine";}
+        else if (s == "Tavern")
+        {return "Taverne";}
+
+        return "ERROR";
     }
 
     private void not_enough_ressources()

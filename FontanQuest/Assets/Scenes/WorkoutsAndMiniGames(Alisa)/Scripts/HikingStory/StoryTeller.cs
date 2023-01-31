@@ -45,9 +45,8 @@ public class StoryTeller : MonoBehaviour
         if (freshStart)
         {
             freshStart = false;
-            Dialogs.Clear();
+            Dialogs = new Queue<string>();
             SetStoryDialogs();
-
             CompleteButton.gameObject.SetActive(false);
         }
 
@@ -87,10 +86,10 @@ public class StoryTeller : MonoBehaviour
     public void SetLevel1()
     {
         level = 1;
-        Steps.Enqueue(30);
-        Steps.Enqueue(30);
-        Steps.Enqueue(30);
-        Steps.Enqueue(30);
+        Steps.Enqueue(15);
+        Steps.Enqueue(15);
+        Steps.Enqueue(15);
+        Steps.Enqueue(15);
         StepsToWalk.text = "Laufe " + Steps.Peek().ToString() + " Schritte";
 
         LevelCanvas.gameObject.SetActive(false);

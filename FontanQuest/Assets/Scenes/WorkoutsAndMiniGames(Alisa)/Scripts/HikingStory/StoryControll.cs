@@ -9,17 +9,23 @@ public class StoryControll : MonoBehaviour
 
     private void Start()
     {
-        if(StoryScenes.Count == 0)
-        {
-            StoryScenes.Enqueue(SceneManager.Scene.FindIronOre);
-            StoryScenes.Enqueue(SceneManager.Scene.RunAway);
-            StoryScenes.Enqueue(SceneManager.Scene.HikkingStoryManager);
-            StoryScenes.Enqueue(SceneManager.Scene.SolveTheRiddle);
-            StoryScenes.Enqueue(SceneManager.Scene.HikkingStoryManager);
-            StoryScenes.Enqueue(SceneManager.Scene.FindMushroom);
-            StoryScenes.Enqueue(SceneManager.Scene.HikkingStoryManager);
-            StoryScenes.Enqueue(SceneManager.Scene.HikkingStoryManager);
+        if(StoryScenes.Count == 0 )
+        {ResetstoryScenes();
         }
+    }
+    private void ResetstoryScenes()
+    {
+        StoryScenes.Clear();
+        StoryScenes.Enqueue(SceneManager.Scene.FindIronOre);
+        StoryScenes.Enqueue(SceneManager.Scene.RunAway);
+        StoryScenes.Enqueue(SceneManager.Scene.HikkingStoryManager);
+        StoryScenes.Enqueue(SceneManager.Scene.SolveTheRiddle);
+
+        StoryScenes.Enqueue(SceneManager.Scene.HikkingStoryManager);
+        StoryScenes.Enqueue(SceneManager.Scene.FindMushroom);
+        StoryScenes.Enqueue(SceneManager.Scene.HikkingStoryManager);
+        StoryScenes.Enqueue(SceneManager.Scene.HikkingStoryManager);
+
     }
 
    
@@ -28,6 +34,7 @@ public class StoryControll : MonoBehaviour
     {
         SceneManager.Load(SceneManager.Scene.chooseAction);
         StoryTeller.freshStart = true;
+        ResetstoryScenes();
     }
 
     public void Continue()

@@ -7,10 +7,13 @@ public class CountDown : MonoBehaviour
     public int StartAt;
     public CountDownManager Manager;
     private volatile bool run = true;
-    private int currentSecondsLeft;
+    private int currentSecondsLeft = 10;
+    public AudioSource AudioSource1;
+    public AudioSource AudioSource2;
 
     public delegate void UpdateCountDownText(string text);
     public event UpdateCountDownText UpdateCountDown;
+
     public void StartCountDown()
     {
         currentSecondsLeft = StartAt;
@@ -65,6 +68,17 @@ public class CountDown : MonoBehaviour
         {
             currentSecondsLeft--;
             UpdateCountDown?.Invoke(currentSecondsLeft.ToString());
+            if (currentSecondsLeft < 4)
+            {
+                if (currentSecondsLeft >= 1)
+                {
+                    AudioSource1.Play();
+                }
+                else
+                {
+                    AudioSource2.Play();
+                }
+            }
         }
         else
         {

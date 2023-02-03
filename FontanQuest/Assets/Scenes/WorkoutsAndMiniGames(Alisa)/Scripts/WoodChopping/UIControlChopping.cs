@@ -13,6 +13,7 @@ public class UIControlChopping : MonoBehaviour
     public TextMeshProUGUI FeedBack;
     public TextMeshProUGUI Highscore;
     public GameObject GetReadyText;
+    public AudioSource AudioSource;
 
     public Canvas StartCanvas;
     public Canvas GamingCanvas;
@@ -31,6 +32,7 @@ public class UIControlChopping : MonoBehaviour
         StartCanvas.gameObject.SetActive(true);
         GamingCanvas.gameObject.SetActive(false);
         CompletedCanvas.gameObject.SetActive(false);
+        AudioSource = GetComponent<AudioSource>();
     }
 
     public void Completed(int numberOfTrees, int reward)
@@ -71,6 +73,10 @@ public class UIControlChopping : MonoBehaviour
         if(TreeAnimator != null)
         {
             TreeAnimator.SetTrigger(_hitTrigger);
+        }
+        if(AudioSource != null)
+        {
+            AudioSource.Play();
         }
     }
 

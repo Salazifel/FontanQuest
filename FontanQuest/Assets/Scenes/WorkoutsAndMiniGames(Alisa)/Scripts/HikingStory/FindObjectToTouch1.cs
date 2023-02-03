@@ -53,6 +53,21 @@ public class FindObjectToTouch1 : MonoBehaviour
 
                             }
                         }
+                        Bear1 bear = hittedObject.GetComponent<Bear1>();
+                        if (bear != null)
+                        {
+                            TextMesh.text = bear.TextToKind();
+                        }
+                        Rabit rabit= hittedObject.GetComponent<Rabit>();
+                        if (rabit != null)
+                        {
+                            TextMesh.text = rabit.TextToKind();
+                        }
+                        Deer deer = hittedObject.GetComponent<Deer>();
+                        if (deer != null)
+                        {
+                            TextMesh.text = deer.TextToKind();
+                        }
                     }
                 }
             }

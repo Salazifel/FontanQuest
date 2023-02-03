@@ -67,7 +67,7 @@ public class ControlChoppingGame : MonoBehaviour
     {
         _choppingDetect.StopChopping();
         int cutDownTrees = _choppingDetect.CuttedTrees();
-        int reward = Mathf.RoundToInt(cutDownTrees / 2);
+        int reward = Mathf.RoundToInt(cutDownTrees / 3);
         Reward(reward, cutDownTrees);
         _ui.Completed(cutDownTrees, reward);
     }

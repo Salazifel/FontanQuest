@@ -14,7 +14,8 @@ public class Stone : MonoBehaviour
         Aluminium,
         Rock,
         MagmaOre,
-        IronOre
+        IronOre,
+        Mountain
     }
 
     public string TextToStone()
@@ -22,7 +23,7 @@ public class Stone : MonoBehaviour
         switch (StoneName)
         {
             case StoneKind.Salt:
-               return "Mhm dieser Stein schmeckt verdächtig nach Salz";
+               return "Mhm dieser Stein schmeckt verdaechtig nach Salz";
             case StoneKind.Iron:
                 return "Das ist richtiges Eisen, wir suchen nach Eisenerz";
             case StoneKind.Scandium:
@@ -32,9 +33,11 @@ public class Stone : MonoBehaviour
             case StoneKind.Rock:
                 return "Nur ein normaler Stein";
             case StoneKind.MagmaOre:
-                return "Das sieht aus wie abgekühlte Lava";
+                return "Das sieht aus wie abgekuehlte Lava";
             case StoneKind.IronOre:
-                return "Oh ja das muss es sein! Aber es ist ziemlich nah an dem Bärenjungen. Lass es uns holen und dann machen wir uns so schnell wie möglich aus dem Staub";
+                return "Oh ja das muss es sein! Aber es ist ziemlich nah an dem Baerenjungen. Lass es uns holen und dann machen wir uns so schnell wie möglich aus dem Staub";
+            case StoneKind.Mountain:
+                return "Dieser Berg sieht ziemlich merkwuerdig aus, wie der wohl entstanden ist?";
             default:
                 return "Nein wir suchen nach einem komisch aussehenden Stein";
         }

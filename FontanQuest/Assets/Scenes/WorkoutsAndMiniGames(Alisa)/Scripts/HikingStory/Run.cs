@@ -7,7 +7,7 @@ using TMPro;
 public class Run : MonoBehaviour
 {
     private int _stepsWalked = 0;
-    public int StepsToWalk = 60;
+    public int StepsToWalk = 45;
     private int _stepsAtTheBeginning = -1;
 
     //canvasas

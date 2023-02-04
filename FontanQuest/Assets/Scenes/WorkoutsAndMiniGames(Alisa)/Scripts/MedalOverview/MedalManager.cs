@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 
+/// <summary>
+/// If you want to add a new medal:
+/// 1.create a new gameobject of the prefab medal in the unity solution
+/// 2.Add the medal script to the new created medal and type in the tile you want to gave it and the threshold for the level
+/// 3.add a new public medal in this script 
+/// 4.update the new medal in WaitOneSecondForLoading()
+/// 5.add the new medal to the list Medals (this is important so that the medal will be take into account for the counter medals for all diamond, gold, silver and bronce medals
+/// </summary>
 public class MedalManager : MonoBehaviour
 {
     public Sprite Level0Image;
@@ -25,7 +33,7 @@ public class MedalManager : MonoBehaviour
     public Medal PlayedFindTheCureLevel1GameXTimes;
     public Medal PlayedFindTheCureLevel2GameXTimes;
     public Medal PlayedFindTheCureLevel3GameXTimes;
-
+    public Medal BuildingMaster;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,8 +53,8 @@ public class MedalManager : MonoBehaviour
         PlayedFindTheCureLevel1GameXTimes.Value = MiniGameData.CompletedFindTheCureLevel1XTimes;
         PlayedFindTheCureLevel2GameXTimes.Value = MiniGameData.CompletedFindTheCureLevel2XTimes;
         PlayedFindTheCureLevel3GameXTimes.Value = MiniGameData.CompletedFindTheCureLevel3XTimes;
-
-        Medals = new List<Medal>() { WalkedXStepsOnOneDay, ChoppingHighScore, MiningHighScore, PlayedChoppingGameXTimes, PlayedMiningGameXTimes, PlayedFindTheCureLevel1GameXTimes, PlayedFindTheCureLevel2GameXTimes, PlayedFindTheCureLevel3GameXTimes };
+        BuildingMaster.Value = ResourceContainer.number_of_buildings;
+        Medals = new List<Medal>() { WalkedXStepsOnOneDay, ChoppingHighScore, MiningHighScore, PlayedChoppingGameXTimes, PlayedMiningGameXTimes, PlayedFindTheCureLevel1GameXTimes, PlayedFindTheCureLevel2GameXTimes, PlayedFindTheCureLevel3GameXTimes, BuildingMaster};
         UpdateAmountOfMedalMedals();
     }
 

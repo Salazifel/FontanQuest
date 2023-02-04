@@ -8,6 +8,7 @@ public class CountDownUI : MonoBehaviour
 {
     private TextMeshProUGUI textMesh;
     private int _max;
+    
     public int Max
     {
         get { return _max; }

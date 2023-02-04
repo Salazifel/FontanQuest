@@ -21,6 +21,7 @@ public class StoryTeller : MonoBehaviour
     public TextMeshProUGUI DialogTextMesh;
     public TextMeshProUGUI StepsToWalk;
     public TextMeshProUGUI StepsWalked;
+    public TextMeshProUGUI StepsWalkedText;
     private StoryControll Controller;
 
     public Button NextText;
@@ -45,9 +46,8 @@ public class StoryTeller : MonoBehaviour
         if (freshStart)
         {
             freshStart = false;
-            Dialogs.Clear();
+            Dialogs = new Queue<string>();
             SetStoryDialogs();
-
             CompleteButton.gameObject.SetActive(false);
         }
 
@@ -66,17 +66,18 @@ public class StoryTeller : MonoBehaviour
         }
 
         // for the last itteration of the story teller
-        if (Dialogs.Count == 0)
+        if (Dialogs.Count == 1)
         {
             StepsToWalk.gameObject.SetActive(false);
             StepsWalked.gameObject.SetActive(false);
+            StepsWalkedText.gameObject.SetActive(false);
             StartNextChallenge.gameObject.SetActive(false);
             CompleteButton.gameObject.SetActive(true);
         }
-        else
-        {
+        
+        
         DialogTextMesh.text = Dialogs.Dequeue();
-        }
+        
 
         if(Steps.Count != 0)
         {
@@ -87,10 +88,10 @@ public class StoryTeller : MonoBehaviour
     public void SetLevel1()
     {
         level = 1;
-        Steps.Enqueue(500);
-        Steps.Enqueue(500);
-        Steps.Enqueue(500);
-        Steps.Enqueue(500);
+        Steps.Enqueue(15);
+        Steps.Enqueue(15);
+        Steps.Enqueue(15);
+        Steps.Enqueue(15);
         StepsToWalk.text = "Laufe " + Steps.Peek().ToString() + " Schritte";
 
         LevelCanvas.gameObject.SetActive(false);
@@ -158,6 +159,18 @@ public class StoryTeller : MonoBehaviour
     public void Complete()
     {
         MiniGameData.CompletedFindTheCure(level);
+        switch (level)
+        {
+            case 1:
+                ResourceContainer.changeRes(gold: 1);
+                break;
+            case 2:
+                ResourceContainer.changeRes(gold: 2);
+                break;
+            case 3:
+                ResourceContainer.changeRes(gold: 4);
+                break;
+        }
         Steps = new Queue<int>();
         Dialogs = new Queue<string>();
         SceneManager.Load(SceneManager.Scene.chooseAction);

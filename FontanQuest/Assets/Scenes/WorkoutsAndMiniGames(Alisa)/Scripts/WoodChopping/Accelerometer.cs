@@ -28,7 +28,7 @@ public class Accelerometer : MonoBehaviour
     [Header("Shake Detection")]
     public Action OnChop;
     public Action OnSuperChop;
-    [SerializeField] private float threshold = 1.0f;
+    [SerializeField] private float threshold = 3.2f;
     [SerializeField] private float superThreshold = 6.0f;
 
     private bool hitAlreadyCounted = false;

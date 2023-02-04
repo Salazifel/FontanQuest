@@ -9,8 +9,8 @@ public class DisplayText : MonoBehaviour
     public TextMeshProUGUI textField;
     public string text;
     public TMP_InputField display;
-    public int prev;
-    public int current = 0;
+    int savedMinutes, current;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +21,8 @@ public class DisplayText : MonoBehaviour
     public void Create()
     {
         int.TryParse(display.text, out current);
-        int.TryParse(textField.text, out prev);
-        textField.text = (prev + current) + " min";
+        int.TryParse(textField.text, out savedMinutes);
+        textField.text = (savedMinutes + current) + " min";
         PlayerPrefs.SetString("activity", textField.text);
         PlayerPrefs.Save(); 
     }

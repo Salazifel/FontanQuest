@@ -6,4 +6,6 @@ public class SaveState
     public int minutes = 0;
     public int hours = 0;
     public int prev = 0;
+    public int current = 0;
+    public int savedMinutes = 0;
 }

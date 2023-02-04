@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -9,15 +10,29 @@ public class SaveManager : MonoBehaviour
     public static SaveManager Instance { set; get; }
     public SaveState state;
     public TextMeshProUGUI textField;
+    
+
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        Instance = this;
-        Load();
-        Debug.Log(Helper.Serialize<SaveState>(state));
-        StartCoroutine("UpdateTime");
-        textField = GameObject.Find("TimeUpdate").GetComponent<TextMeshProUGUI>();
+
+        if (Instance == null)
+        {         
+            Instance = this;
+            Load();
+            textField = GameObject.Find("TimeUpdate").GetComponent<TextMeshProUGUI>();
+            StartCoroutine("UpdateTime"); //Playtime counting starts
+            
+        }
+        else
+        {
+            Load();
+            textField = GameObject.Find("TimeUpdate").GetComponent<TextMeshProUGUI>();
+            StartCoroutine("UpdateTime"); //Playtime counting starts
+            DestroyObject(gameObject);
+        }
+        
     }
 
      public void Save()
@@ -41,7 +56,7 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    //Check if the color is owned
+    //Function for time updating
     private IEnumerator UpdateTime()
     {
         textField.text = state.minutes.ToString() + "min " + state.seconds.ToString() + "sec";

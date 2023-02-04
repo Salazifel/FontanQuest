@@ -85,51 +85,43 @@ public void PickRandomFromList()
         if (randomActivity == "football?")
         {
             VideoLink.gameObject.SetActive(false);
-            textField.text = "Exercise training in Fontan patients is most likely safe and has positive effects on exercise capacity, cardiac function and quality of life. (Scheffers et al., 2021)";
+            textField.text = "Bewegungstraining bei Fontan-Patienten ist höchstwahrscheinlich sicher und hat positive Auswirkungen auf die körperliche Leistungsfähigkeit, die Herzfunktion und die Lebensqualität. (Scheffers et al., 2021)";
 
         }
         else if (randomActivity == "dance sesion")
         {
-            textField.text = "From 16 studies with 264 patients, none of the studies reported negative outcome measures related to the exercise programme.";
+            textField.text = "In 16 Studien mit 264 Patienten wurden in keiner der Studien negative Ergebnisse im Zusammenhang mit dem Trainingsprogramm ermittelt. (Scheffers et al., 2021)";
             VideoLink.gameObject.SetActive(false);
 
         }
         else if (randomActivity == "pirates")
         {
-            textField.text = "Early promotion of movement during childhood leads to a more active lifestyle as an adult, since habits founded during childhood are more likely to be kept, than if sports are commenced at a higher age. (De Cocker et al., 2011).";
+            textField.text = "Eine frühzeitige Bewegungsförderung in der Kindheit führt zu einem aktiveren Lebensstil im Erwachsenenalter, da in der Kindheit angelegte Gewohnheiten eher beibehalten werden, als wenn erst in höherem Alter mit Sport begonnen wird. (De Cocker et al., 2011).";
             VideoLink.gameObject.SetActive(false);
 
         }
         else if (randomActivity == "act4")
         {
-            textField.text = "The results in the over 200 Fontan participants in the literature convincingly demonstrates that cardiac rehabilitation is safe in this population and further, they deeply benefit from participation in an exercise program with improved exercise tolerance, muscle strength, activity levels and quality of life. ";
+            textField.text = "Die Ergebnisse der über 200 Fontan-Teilnehmer zeigen überzeugend, dass die kardiale Rehabilitation bei dieser Gruppe sicher ist und dass sie von der Teilnahme an einem Trainingsprogramm mit verbesserter Belastungstoleranz, Muskelkraft, Aktivitätsniveau und Lebensqualität stark profitieren. (N. Sutherland, Jones, & d'Udekem, 2015)";
             VideoLink.gameObject.SetActive(false);
 
         }
         else if (randomActivity == "act5")
         {
-            textField.text = "More habitual physical activity should lead to a better exercise tolerance for Fontan Patients. (McCrindle et al., 2007)";
+            textField.text = "Mehr gewohnheitsmäßige körperliche Aktivität sollte bei Fontan-Patienten zu einer besseren Bewegungstoleranz führen. (McCrindle et al., 2007)";
             VideoLink.gameObject.SetActive(false);
 
         }
         else if (randomActivity == "sonic")
         {
-            textField.text = "According to the study made by McCrindle in 2007, VO2 peak and maximum HR were significantly higher in Fontan patients who had been physically active compared to those who had been inactive. (McCrindle et al., 2007)";
+            textField.text = "Laut einer Studie von McCrindle aus dem Jahr 2007 waren der VO2-Spitzenwert und die maximale Herzfrequenz bei Fontan-Patienten, die körperlich aktiv waren, signifikant höher als bei denen, die nicht aktiv waren. (McCrindle et al., 2007)";
             VideoLink.gameObject.SetActive(false);
 
         }
         else
         {
-            textField.text = "That is all the facts we have";
+            textField.text = "Klicken Sie auf \"Weiter\", um weitere Fakten zu sehen, oder auf \"Zurück\", um zum Menü \"Eltern\" zu gelangen.";
         }
 
-    }
-
-
-
-    public void changeText()
-    {
-        text = "hola";
-        textField.text = text;
     }
 }

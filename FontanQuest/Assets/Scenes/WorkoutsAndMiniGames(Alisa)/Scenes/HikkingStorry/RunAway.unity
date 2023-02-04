@@ -2835,7 +2835,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1104991720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3738,7 +3738,7 @@ PrefabInstance:
     - target: {fileID: 6502963982672909896, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6502963982672909897, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
@@ -4783,6 +4783,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartAt: 0
   Manager: {fileID: 0}
+  AudioSource1: {fileID: 0}
+  AudioSource2: {fileID: 0}
 --- !u!1 &1629500641
 GameObject:
   m_ObjectHideFlags: 0
@@ -4996,7 +4998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d53b9e2f48c5bd4798c31598e378afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StepsToWalk: 60
+  StepsToWalk: 45
   BearLive: {fileID: 851836957}
   StartCanvas: {fileID: 1588943748}
   YouWon: {fileID: 1104991722}

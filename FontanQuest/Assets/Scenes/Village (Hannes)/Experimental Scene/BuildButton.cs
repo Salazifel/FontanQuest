@@ -307,7 +307,7 @@ public class BuildButton : MonoBehaviour
             Debug.Log("Input does not contain an integer");
             return;
         }
-        ObjectLvl = level;
+        ObjectLvl = level + 1;
         Debug.Log(ObjectFolder + " " + ObjectType + " " + ObjectLvl);
 
         prices = MasterData.GetComponent<Prices>().ReturnPrice(ObjectFolder, ObjectLvl);
@@ -346,6 +346,7 @@ public class BuildButton : MonoBehaviour
     {
         // hiding the buttons
         GetComponent<build>().hide_Building_Interaction_Buttons();
+        Debug.Log("Price: " + wood + " " + stone + " " + food + " " + gold);
         MasterData.GetComponent<MessageDisplay>().new_Message("Oh nein. Es scheint so, als ob du nicht genug Ressourcen hast um dieses Gebaeude zu bauen.", "Advisor");
     }
 

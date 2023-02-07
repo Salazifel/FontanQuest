@@ -12,9 +12,9 @@ public class VideoLink : MonoBehaviour
     public void OpenVideo()
     {
         
-        if (textField.text == "Why don't we do a pirate themed workout?") { Application.OpenURL("https://youtu.be/FRWEMBe2BCg"); }
+        if (textField.text == "Lass uns ein Workout mit Piraten machen!") { Application.OpenURL("https://youtu.be/FRWEMBe2BCg"); }
             
-        else if (textField.text == "Why don't we do a dance session?")
+        else if (textField.text == "Warum tanzen wir nicht einbisschen mit Elsa, der Eiskonigin?")
     {
       Application.OpenURL("https://www.youtube.com/watch?v=xlg052EKMtk&ab_channel=CosmicKidsYoga");
     }

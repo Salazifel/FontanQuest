@@ -76,43 +76,43 @@ public void PickRandomFromList()
     public void PickFact()
     {
 
-        string[] activities = new string[] { "football?",
-                                               "dance sesion",
-                                                "pirates", "act4", "act5", "sonic"};
+        string[] activities = new string[] { "football",
+                                               "dance sesio",
+                                                "pirate", "ac4", "ac5", "soni"};
         //     string randomActivity = activities[Random.Range(0, activities.Length)];
         string randomActivity = activities[Random.Range(0, activities.Length)];
         textField.text = randomActivity;
-        if (randomActivity == "football?")
+        if (randomActivity == "football")
         {
             VideoLink.gameObject.SetActive(false);
             textField.text = "Bewegungstraining bei Fontan-Patienten ist höchstwahrscheinlich sicher und hat positive Auswirkungen auf die körperliche Leistungsfähigkeit, die Herzfunktion und die Lebensqualität. (Scheffers et al., 2021)";
 
         }
-        else if (randomActivity == "dance sesion")
+        else if (randomActivity == "dance sesio")
         {
-            textField.text = "In 16 Studien mit 264 Patienten wurden in keiner der Studien negative Ergebnisse im Zusammenhang mit dem Trainingsprogramm ermittelt. (Scheffers et al., 2021)";
+            textField.text = "Jacobsen et. al. (2016) untersuchten die Verbesserung der körperlichen Funktion von Fontan-Patienten nach einem 12-wöchigen häuslichen Bewegungsprogramm mit mittlerer bis hoher Intensität, das keine negativen Ergebnisse brachte.";
             VideoLink.gameObject.SetActive(false);
 
         }
-        else if (randomActivity == "pirates")
+        else if (randomActivity == "pirate")
         {
             textField.text = "Eine frühzeitige Bewegungsförderung in der Kindheit führt zu einem aktiveren Lebensstil im Erwachsenenalter, da in der Kindheit angelegte Gewohnheiten eher beibehalten werden, als wenn erst in höherem Alter mit Sport begonnen wird. (De Cocker et al., 2011).";
             VideoLink.gameObject.SetActive(false);
 
         }
-        else if (randomActivity == "act4")
+        else if (randomActivity == "ac4")
         {
             textField.text = "Die Ergebnisse der über 200 Fontan-Teilnehmer zeigen überzeugend, dass die kardiale Rehabilitation bei dieser Gruppe sicher ist und dass sie von der Teilnahme an einem Trainingsprogramm mit verbesserter Belastungstoleranz, Muskelkraft, Aktivitätsniveau und Lebensqualität stark profitieren. (N. Sutherland, Jones, & d'Udekem, 2015)";
             VideoLink.gameObject.SetActive(false);
 
         }
-        else if (randomActivity == "act5")
+        else if (randomActivity == "ac5")
         {
             textField.text = "Mehr gewohnheitsmäßige körperliche Aktivität sollte bei Fontan-Patienten zu einer besseren Bewegungstoleranz führen. (McCrindle et al., 2007)";
             VideoLink.gameObject.SetActive(false);
 
         }
-        else if (randomActivity == "sonic")
+        else if (randomActivity == "soni")
         {
             textField.text = "Laut einer Studie von McCrindle aus dem Jahr 2007 waren der VO2-Spitzenwert und die maximale Herzfrequenz bei Fontan-Patienten, die körperlich aktiv waren, signifikant höher als bei denen, die nicht aktiv waren. (McCrindle et al., 2007)";
             VideoLink.gameObject.SetActive(false);

@@ -19,7 +19,6 @@ public class SaveGameData : MonoBehaviour
 
         MiniGameData data = new MiniGameData();
         string jsonString = JsonUtility.ToJson(data);
-        Debug.Log("Save" + jsonString);
         File.WriteAllText(savefile, jsonString);
     }
 
@@ -29,14 +28,13 @@ public class SaveGameData : MonoBehaviour
         {
             return;
         }
-
+        //read
         string fileContents = File.ReadAllText(savefile);
+        //load
         MiniGameData GameData = JsonUtility.FromJson<MiniGameData>(fileContents);
-        MiniGameData.FirstVisit = GameData.firstVisit;
-        MiniGameData.ChoppingHighscore = GameData.choppingHighscore;
-        MiniGameData.StoneMiningHighscore = GameData.stoneMiningHighscore;
-        Debug.Log("Load: " + fileContents);
-    }
+        //update for the rest of the game
+        MiniGameData.UpdateGamedate(GameData);
+  }
 
 
 }

@@ -10,8 +10,9 @@ Alisa Schulz
 
 The App will be continued in 2023 by:
 Hannes Jacobi,
-Shu-Man Sheng,
-Christina Netta
+Shu-Man Cheng,
+Christina Netta,
+Firat Turgay
 
 Fontan Quest is a Digital Health Application Prototype to encourage children, aged 6-12, that underwent Fontan surgery to do Sports regularly. To achieve that, a colony builder strategy has been implemented that spans the overarching story to several mini-games of sports. Furthermore, the parents are encouraged to let their kids do Sports. 
 The game is based on recent findings in Fontan Surgery Rehabilitation and supported by Health Professionals.

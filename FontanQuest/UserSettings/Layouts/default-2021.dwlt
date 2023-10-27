@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 56
+  controlID: 109
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 57
+  controlID: 110
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 58
+  controlID: 111
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,8 +189,8 @@ MonoBehaviour:
     y: 0
     width: 476
     height: 621
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -271,8 +271,8 @@ MonoBehaviour:
     y: 0
     width: 460
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -537,9 +537,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -35.053925, y: 79.00772, z: -208.2414}
+    m_Target: {x: 10.4, y: -8.61467, z: -28.621655}
     speed: 2
-    m_Value: {x: -35.053925, y: 79.00772, z: -208.2414}
+    m_Value: {x: 10.399999, y: -8.614671, z: -28.621655}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -586,13 +586,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.203579, y: -0.3239164, z: 0.071575, w: 0.92117596}
+    m_Target: {x: 0.27532613, y: 0.022463094, z: -0.006451571, w: 0.96109504}
     speed: 2
-    m_Value: {x: 0.20495494, y: -0.32379988, z: 0.07205889, w: 0.92084455}
+    m_Value: {x: 0.275328, y: 0.021020856, z: -0.0060384106, w: 0.96110153}
   m_Size:
-    m_Target: 400
+    m_Target: 36.106808
     speed: 2
-    m_Value: 399.99994
+    m_Value: 34.551968
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -648,10 +648,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: cc6c0000
-      m_LastClickedID: 0
-      m_ExpandedIDs: a6daffff12deffffcae2ffff9ee9ffff36ecfffffcecffff34fbffff226100002c6300003a630000ee630000d8640000226500002e650000366500003a660000b26d0000147600000478000050800000
+      scrollPos: {x: 0, y: 2176}
+      m_SelectedIDs: 78e2ffff
+      m_LastClickedID: -7560
+      m_ExpandedIDs: 4ce4ffffbcf3ffff34fbffff1e7c00002c7c0000e07c0000ca7d0000147e0000287e00002c7f0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -983,22 +983,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Purchased Assets/polyperfect
+    - Assets/Purchased Assets/polyperfect/Low Poly Ultimate Pack
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Purchased Assets/polyperfect
+  - Assets/Purchased Assets/polyperfect/Low Poly Ultimate Pack
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Programme (x86)\Unity\FontanQuest\FontanQuest
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 179}
-    m_SelectedIDs: ce6c0000
-    m_LastClickedID: 27854
-    m_ExpandedIDs: 00000000aa6b0000ac6b0000ae6b0000b06b0000b26b0000b46b0000b66b0000b86b0000ba6b0000bc6b0000be6b0000ca6c0000ce6c000000ca9a3b
+    m_SelectedIDs: 9e790000
+    m_LastClickedID: 31134
+    m_ExpandedIDs: 00000000986c00009a6c00009c6c00009e6c0000a06c0000a26c0000a46c0000a66c0000a86c0000aa6c0000ac6c0000c26c0000e46c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1026,7 +1026,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000aa6b0000ac6b0000ae6b0000b06b0000b26b0000b46b0000b66b0000b86b0000ba6b0000bc6b0000be6b0000
+    m_ExpandedIDs: 00000000986c00009a6c00009c6c00009e6c0000a06c0000a26c0000a46c0000a66c0000a86c0000aa6c0000ac6c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_UseMipMap: 0
   m_SimulatorState:
     controlPanelVisible: 0
-    controlPanelWidth: NaN
+    controlPanelWidth: 0
     controlPanelFoldoutKeys:
     - UnityEditor.AdaptivePerformance.Editor.AdaptivePerformanceUIExtension
     - UnityEditor.AdaptivePerformance.Samsung.Android.Editor.AdaptivePerformanceVRRUIExtension
@@ -1212,7 +1212,7 @@ MonoBehaviour:
     - '{"m_SerializationStates":{"thermalFoldout":false,"performanceFoldout":false,"developerFoldout":false,"indexerFoldout":false,"scalersFoldout":false,"deviceSettingsFoldout":false}}'
     - '{"m_SerializationStates":{"settingsFoldout":false,"vrrFoldout":false,"androidSystemFoldout":false}}'
     - '{}'
-    scale: 10
+    scale: 30
     fitToScreenEnabled: 1
     rotationDegree: 90
     highlightSafeAreaEnabled: 0

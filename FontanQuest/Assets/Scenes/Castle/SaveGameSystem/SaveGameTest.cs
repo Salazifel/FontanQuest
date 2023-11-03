@@ -13,14 +13,26 @@ public class SaveGameTest : MonoBehaviour
         SaveGameObjects.GameData gameData2 = new SaveGameObjects.GameData();
         gameData2.coins = 4;
 
-        SaveGameObjects.House house1 = new SaveGameObjects.House();
-        house1.weardown = 0.5f;
-
-        SaveGameMechanic.saveSaveGameObject(gameData1, "gamedata");
+        //SaveGameMechanic.saveSaveGameObject(gameData1, "gamedata");
         //SaveGameMechanic.saveSaveGameObject(gameData2, "gamedata");
         //SaveGameMechanic.saveSaveGameObject(house1, "gamedata");
 
-        SaveGameMechanic.deleteSaveGameObject(new SaveGameObjects.GameData(), "gameData", 1);
+        //SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.GameData(), "gamedata", 1).Print();
+
+        //SaveGameMechanic.deleteBySaveFileName("gamedata");
+
+        //SaveGameMechanic.deleteGameSaveType(new SaveGameObjects.GameData(), "gamedata");
+
+        //SaveGameMechanic.deleteSaveGameObject(new SaveGameObjects.GameData(), "gameData", 1);
+
+        /*
+        List<SaveGameObjects.MainSaveObject> tmpGameSaveObjectsList = SaveGameMechanic.getAllSaveGameObjectsOfType(new SaveGameObjects.GameData(), "gamedata");
+
+        for (int i = 0; i < tmpGameSaveObjectsList.Count; i++) 
+        {
+            tmpGameSaveObjectsList[i].Print();
+        }
+        */
 
         //SaveGameMechanic.getSaveGameObject(1).Print();
 

@@ -1,13 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
-using Unity.VisualScripting;
 using Newtonsoft.Json;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Linq;
 
 public class SaveGameMechanic : MonoBehaviour
@@ -27,9 +22,153 @@ public class SaveGameMechanic : MonoBehaviour
         return savefile;
     }
 
-    public static void cleanUpData()
+    public static SaveGameObjects.MainSaveObject getSaveGameObjectByPrimaryKey(SaveGameObjects.MainSaveObject emptyMainSaveObject, string saveFileName, int primaryKey)
     {
-        
+        string filePath = savefilePath + "/" + saveFileName + "/" + emptyMainSaveObject.GetType() + ".json";
+
+        // Check if the file exists
+        if (!File.Exists(filePath))
+        {
+            Debug.Log("File not found: " + filePath);
+            return null; // Return null if file not found
+        }
+
+        try
+        {
+            Load(File.ReadAllText(filePath));
+        }
+        catch (Exception)
+        {
+            Debug.Log("Save File corrupted: " + filePath);
+            return null; // Return null in case of error
+        }
+
+        // Find the object with the given primaryKey
+        SaveGameObjects.MainSaveObject foundObject = currentGameSaveData.gameSaveObjects.FirstOrDefault(obj => obj.primaryKey == primaryKey && !obj.deleted);
+
+        if (foundObject == null)
+        {
+            Debug.Log("No object found with primary key: " + primaryKey);
+        }
+        return foundObject;
+    }
+
+
+
+    public static List<SaveGameObjects.MainSaveObject> getAllSaveGameObjectsOfType(SaveGameObjects.MainSaveObject emptyMainSaveObject, string saveFileName)
+    {
+        string filePath = savefilePath + "/" + saveFileName + "/" + emptyMainSaveObject.GetType() + ".json";
+
+        // Check if the file exists
+        if (!File.Exists(filePath))
+        {
+            Debug.Log("File not found: " + filePath);
+            return new List<SaveGameObjects.MainSaveObject>(); // Return empty list if file not found
+        }
+
+        try
+        {
+            Load(File.ReadAllText(filePath));
+        }
+        catch (Exception)
+        {
+            Debug.Log("Save File corrupted: " + filePath);
+            return new List<SaveGameObjects.MainSaveObject>(); // Return empty list in case of error
+        }
+
+        // Filter out deleted objects and return the list
+        return currentGameSaveData.gameSaveObjects.Where(obj => !obj.deleted).ToList();
+    }
+
+    public static void deleteGameSaveType(SaveGameObjects.MainSaveObject emptyMainSaveObject, string saveFileName)
+    {
+        string filePath = savefilePath + "/" + saveFileName + "/" + emptyMainSaveObject.GetType() + ".json";
+
+        // Check if the file exists
+        if (File.Exists(filePath))
+        {
+            try
+            {
+                File.Delete(filePath);
+                Debug.Log("Deleted file: " + filePath);
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Failed to delete file: " + filePath + ". Reason: " + e.Message);
+            }
+        }
+        else
+        {
+            Debug.Log("File not found: " + filePath);
+        }
+    }
+
+    public static void deleteBySaveFileName(string saveFileName)
+    {
+        string folderPath = savefilePath + "/" + saveFileName;
+
+        // Check if the directory exists
+        if (Directory.Exists(folderPath))
+        {
+            try
+            {
+                // The true parameter means it will recursively delete the folder and its content
+                Directory.Delete(folderPath, true);
+                Debug.Log("Deleted folder: " + folderPath);
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Failed to delete folder: " + folderPath + ". Reason: " + e.Message);
+            }
+        }
+        else
+        {
+            Debug.Log("Folder not found: " + folderPath);
+        }
+    }
+
+
+    public static void CleanUpSaveFiles()
+    {
+        string directoryPath = savefilePath + "/"; // The directory containing all your save files
+
+        // Get all JSON files in the directory
+        string[] filePaths = Directory.GetFiles(directoryPath, "*.json", SearchOption.AllDirectories); // This will search all subdirectories as well
+
+        foreach (string filePath in filePaths)
+        {
+            try
+            {
+                Load(File.ReadAllText(filePath));
+            }
+            catch (Exception)
+            {
+                Debug.Log("Save File corrupted: " + filePath);
+                continue; // Move to the next file if there's an error reading this one
+            }
+
+            // Remove all deleted objects
+            currentGameSaveData.gameSaveObjects.RemoveAll(obj => obj.deleted);
+
+            // Consolidate primary key values
+            for (int i = 0; i < currentGameSaveData.gameSaveObjects.Count; i++)
+            {
+                currentGameSaveData.gameSaveObjects[i].primaryKey = i + 1; // Assuming primary keys are 1-based
+            }
+
+            // Set the overall primary key to the next available value
+            currentGameSaveData.primaryKey = currentGameSaveData.gameSaveObjects.Count;
+
+            // Serialize the cleaned-up data and save back to file
+            string combinedJson = JsonConvert.SerializeObject(currentGameSaveData, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                Formatting = Formatting.Indented,
+                Converters = new List<JsonConverter> { new QuaternionConverter() }
+            });
+
+            File.WriteAllText(filePath, combinedJson);
+        }
     }
 
     public static int saveSaveGameObject(SaveGameObjects.MainSaveObject mainSaveObject, string saveFileName, int OverridePrimaryKey = 0)
@@ -44,7 +183,7 @@ public class SaveGameMechanic : MonoBehaviour
             {
                 Load(File.ReadAllText(filePath));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Debug.Log("Save File corrupted: " + saveFileName);
             }
@@ -90,7 +229,9 @@ public class SaveGameMechanic : MonoBehaviour
             Converters = new List<JsonConverter> { new QuaternionConverter() }  // Use our custom Quaternion converter
         });
 
-        Debug.Log(combinedJson);
+        // output this file
+        //Debug.Log(combinedJson);
+
         // Save the file
         File.WriteAllText(filePath, combinedJson);
 
@@ -116,7 +257,7 @@ public class SaveGameMechanic : MonoBehaviour
             {
                 Load(File.ReadAllText(filePath));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Debug.Log("Save File corrupted: " + saveFileName);
                 return; // Exit if there's an error reading the file
@@ -223,29 +364,4 @@ public class SaveGameMechanic : MonoBehaviour
         public int primaryKey;
         public List<SaveGameObjects.MainSaveObject> gameSaveObjects;
     }
-
-
-    /*
-    void Start()
-    {
-        List<SaveGameObjects.MainSaveObject> u = new();
-
-        //Debug.Log(JsonUtility.ToJson(u));
-
-
-        // ----------------
-        JsonListWrapper<SaveGameObjects.MainSaveObject> wrapper = new JsonListWrapper<SaveGameObjects.MainSaveObject> { items = u };
-
-        // Serialize with Newtonsoft.Json and handle polymorphism
-        string combinedJson = JsonConvert.SerializeObject(wrapper, new JsonSerializerSettings
-        {
-            TypeNameHandling = TypeNameHandling.Auto,
-            Formatting = Formatting.Indented,
-            Converters = new List<JsonConverter> { new QuaternionConverter() }  // Use our custom Quaternion converter
-        });
-
-
-        Debug.Log(combinedJson);
-
-    } */
 }

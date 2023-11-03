@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class SaveGameObjects : MonoBehaviour
 {
+
+    // ----------------------- DO NOT CHANGE ----------------------------
     [Serializable]
     public class MainSaveObject
     {
@@ -19,6 +21,24 @@ public class SaveGameObjects : MonoBehaviour
         }
     }
 
+    // --------------------- INPUT NEW OBJECT HERE ----------------------
+
+    /*                             STRUCTURE
+
+    [Serializable]
+
+    public class NAME : MainSaveObject // or branching down further
+    {
+        // variables
+
+        public override void Print() 
+        {
+            // best to redifine it for debugging purposes
+        }
+    }
+
+    */
+
 
     [Serializable]
     public class GameData : MainSaveObject
@@ -32,17 +52,6 @@ public class SaveGameObjects : MonoBehaviour
         public override void Print()
         {
             Debug.Log(primaryKey + " coins: " + coins.ToString());
-        }
-    }
-
-    [Serializable]
-    public class House : MainSaveObject
-    {
-        public float weardown;
-
-        public override void Print()
-        {
-            Debug.Log(primaryKey + " wearDown: " + weardown.ToString());
         }
     }
 }

@@ -7,6 +7,7 @@ public class SaveGameObjects : MonoBehaviour
     public class MainSaveObject
     {
         public int primaryKey;
+        public bool deleted = false;
         protected string GameSaveObjectType;
         string getGameSaveObjectType() {
             return GameSaveObjectType;

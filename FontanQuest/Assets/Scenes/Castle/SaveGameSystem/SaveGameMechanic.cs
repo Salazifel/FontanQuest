@@ -10,7 +10,6 @@ using System.Runtime.Serialization.Formatters;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Linq;
 
-
 public class SaveGameMechanic : MonoBehaviour
 {
     private static GameSaveData currentGameSaveData = new GameSaveData()
@@ -28,11 +27,16 @@ public class SaveGameMechanic : MonoBehaviour
         return savefile;
     }
 
-    public static void saveSaveGameObject(SaveGameObjects.MainSaveObject mainSaveObject, string saveFileName)
+    public static void cleanUpData()
+    {
+        
+    }
+
+    public static int saveSaveGameObject(SaveGameObjects.MainSaveObject mainSaveObject, string saveFileName, int OverridePrimaryKey = 0)
     {
         string filePath = savefilePath + "/" + saveFileName;
         EnsureFoldersExist(filePath);
-        filePath = filePath + mainSaveObject.GetType() + ".json";
+        filePath = filePath + "/" + mainSaveObject.GetType() + ".json";
 
         if (File.Exists(filePath))
         {
@@ -47,15 +51,36 @@ public class SaveGameMechanic : MonoBehaviour
         }
         else
         {
+            // resetting the gameObject
             currentGameSaveData.gameSaveObjects.Clear();
+            currentGameSaveData.primaryKey = 0;
         }
 
-        // Increment primaryKey for the new object
-        currentGameSaveData.primaryKey++;
+        if (OverridePrimaryKey > 0)
+        { // an object has to be overwritten
+          // Find the object with the specified primary key
+            int index = currentGameSaveData.gameSaveObjects.FindIndex(obj => obj.primaryKey == OverridePrimaryKey);
+            if (index >= 0) // If found
+            {
+                // Update/replace the object at the found index
+                mainSaveObject.primaryKey = OverridePrimaryKey;
+                currentGameSaveData.gameSaveObjects[index] = mainSaveObject;
+            }
+            else
+            {
+                Debug.LogWarning("No object found with the specified primary key. Adding the new object instead.");
+                OverridePrimaryKey = 0;
+            }
+        }
 
-        // adding the new object
-        mainSaveObject.primaryKey = currentGameSaveData.primaryKey; // assign the new primary key
-        currentGameSaveData.gameSaveObjects.Add(mainSaveObject);
+        // checking again, as it might have changed when trying to override an object
+        if (OverridePrimaryKey == 0)
+        {
+            // adding a new object
+            currentGameSaveData.primaryKey++;
+            mainSaveObject.primaryKey = currentGameSaveData.primaryKey;
+            currentGameSaveData.gameSaveObjects.Add(mainSaveObject);
+        }
 
         // Serialize with Newtonsoft.Json and handle polymorphism
         string combinedJson = JsonConvert.SerializeObject(currentGameSaveData, new JsonSerializerSettings
@@ -68,6 +93,9 @@ public class SaveGameMechanic : MonoBehaviour
         Debug.Log(combinedJson);
         // Save the file
         File.WriteAllText(filePath, combinedJson);
+
+        // return primary key to be saved on the object
+        return mainSaveObject.primaryKey;
     }
 
     public static SaveGameObjects.MainSaveObject getSaveGameObject(int primaryKey)
@@ -75,13 +103,59 @@ public class SaveGameMechanic : MonoBehaviour
         return currentGameSaveData.gameSaveObjects.FirstOrDefault(obj => obj.primaryKey == primaryKey);
     }
 
-    void deleteSaveGameObject(string primaryKey)
+    public static void deleteSaveGameObject(SaveGameObjects.MainSaveObject emptyMainSaveObject, string saveFileName, int primaryKey)
     {
 
+        string filePath = savefilePath + "/" + saveFileName;
+        filePath = filePath + "/" + emptyMainSaveObject.GetType() + ".json";
+
+        // Load existing objects from file
+        if (File.Exists(filePath))
+        {
+            try
+            {
+                Load(File.ReadAllText(filePath));
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Save File corrupted: " + saveFileName);
+                return; // Exit if there's an error reading the file
+            }
+        }
+        else
+        {
+            Debug.LogWarning("File not found: " + filePath);
+            return;
+        }
+
+        // Find and remove the object with the specified primary key
+        int index = currentGameSaveData.gameSaveObjects.FindIndex(obj => obj.primaryKey == primaryKey);
+        if (index >= 0)
+        {
+            currentGameSaveData.gameSaveObjects[index].deleted = true;
+
+            // Serialize with Newtonsoft.Json and handle polymorphism
+            string combinedJson = JsonConvert.SerializeObject(currentGameSaveData, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                Formatting = Formatting.Indented,
+                Converters = new List<JsonConverter> { new QuaternionConverter() }  // Use custom Quaternion converter
+            });
+
+            // Save the modified data back to file
+            File.WriteAllText(filePath, combinedJson);
+        }
+        else
+        {
+            Debug.LogWarning("Object with the primary key " + primaryKey + " not found!");
+        }
     }
+
 
     public static void Load(string json)
     {
+        currentGameSaveData = new GameSaveData();
+
         var settings = new JsonSerializerSettings
         {
             TypeNameHandling = TypeNameHandling.Auto, // Handle type names during deserialization

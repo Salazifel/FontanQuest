@@ -39,6 +39,19 @@ public class SaveGameObjects : MonoBehaviour
 
     */
 
+    [Serializable]
+
+    public class JumpingTheRopeSavingGame : MainSaveObject
+    {
+        public int howmanyjumps;
+        public float glee;
+
+        public override void Print()
+        {
+            Debug.Log(howmanyjumps.ToString() + " " + glee.ToString());
+        }
+    }
+
 
     [Serializable]
     public class GameData : MainSaveObject

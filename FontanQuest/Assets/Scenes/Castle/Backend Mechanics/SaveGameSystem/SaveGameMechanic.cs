@@ -130,6 +130,7 @@ public class SaveGameMechanic : MonoBehaviour
 
     public static void CleanUpSaveFiles()
     {
+        Debug.Log(savefilePath);
         string directoryPath = savefilePath + "/"; // The directory containing all your save files
 
         // Get all JSON files in the directory

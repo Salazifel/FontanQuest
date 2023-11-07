@@ -3,11 +3,14 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     private Vector3 lastPosition;
-    public float panSpeed = 60.0f;
+    private float panSpeed = 8.0f;
+    private float zoomSpeed = 4.0f;
 
     // Define your scene boundaries
     public Vector3 minBoundary = new Vector3(-50f, 0f, -50f);
     public Vector3 maxBoundary = new Vector3(50f, 0f, 50f);
+
+    private Vector3 startPos;
 
     void Awake()
     {
@@ -28,52 +31,74 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        // Check for touch on mobile devices
-        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        // MOVING THE CAMERA AROUND 
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-            MoveCamera(touchDeltaPosition);
+            startPos = Input.GetTouch(0).position;
+        }
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        {
+            Vector2 touchDelta = Input.GetTouch(0).deltaPosition;
+
+            // Reverse the movement
+            touchDelta = -touchDelta;
+
+            // Calculate the new position based on input
+            Quaternion yRotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+            Vector3 forwardMovement = yRotation * Vector3.forward * touchDelta.y * panSpeed * Time.deltaTime;
+            Vector3 rightMovement = yRotation * Vector3.right * touchDelta.x * panSpeed * Time.deltaTime;
+            Vector3 newPosition = transform.position + forwardMovement + rightMovement;
+
+            // Clamp the new position to the bounds
+            newPosition.x = Mathf.Clamp(newPosition.x, minBoundary.x, maxBoundary.x);
+            newPosition.z = Mathf.Clamp(newPosition.z, minBoundary.z, maxBoundary.z);
+
+            // Y position could be clamped as well if needed
+            // newPosition.y = Mathf.Clamp(newPosition.y, minBounds.y, maxBounds.y);
+
+            // Apply the clamped position to the camera
+            transform.position = newPosition;
         }
 
-        // Check for mouse click and drag on desktop
-        else if (Input.GetMouseButtonDown(0))
+        // ZOOMING
+        if (Input.touchCount == 2)
         {
-            lastPosition = Input.mousePosition;
+            // Store both touches.
+            Touch touchZero = Input.GetTouch(0);
+            Touch touchOne = Input.GetTouch(1);
+
+            // Find the position in the previous frame of each touch.
+            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+            // Find the magnitude of the vector (the distance) between the touches in each frame.
+            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+            // Find the difference in the distances between each frame.
+            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+
+            // If the camera is orthographic...
+            if (Camera.main.orthographic)
+            {
+                // ... change the orthographic size based on the change in distance between the touches.
+                Camera.main.orthographicSize += deltaMagnitudeDiff * zoomSpeed;
+                // Clamp the orthographic size to ensure it's between the min and max zoom levels.
+                Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, minBoundary.y, maxBoundary.y);
+            }
+            else // If the camera uses a perspective view...
+            {
+                // ... change the position based on the change in distance between the touches.
+                Vector3 newPosition = transform.position;
+                newPosition.y -= deltaMagnitudeDiff * zoomSpeed * Time.deltaTime;
+                newPosition.y = Mathf.Clamp(newPosition.y, minBoundary.y, maxBoundary.y);
+
+                // Clamp the new position to ensure the camera stays within the x and z bounds as well
+                newPosition.x = Mathf.Clamp(newPosition.x, minBoundary.x, maxBoundary.x);
+                newPosition.z = Mathf.Clamp(newPosition.z, minBoundary.z, maxBoundary.z);
+
+                transform.position = newPosition;
+            }
         }
-        else if (Input.GetMouseButton(0))
-        {
-            Vector3 delta = Input.mousePosition - lastPosition;
-            MoveCamera(new Vector2(delta.x, delta.y));
-            lastPosition = Input.mousePosition;
-        }
-    }
-
-    void MoveCamera(Vector2 deltaPosition)
-    {
-        // Taking the rotation of the camera into account to make the movement feel intuitive
-        Vector3 moveDirection = new Vector3(
-            deltaPosition.x * transform.right.z,
-            0,
-            deltaPosition.x * transform.right.x
-        ) + new Vector3(
-            -deltaPosition.y * transform.forward.z,
-            0,
-            -deltaPosition.y * transform.forward.x
-        );
-
-        // Calculate the new prospective position
-        Vector3 newCameraPosition = transform.position + moveDirection * panSpeed * Time.deltaTime;
-
-        // Check if the new position is within bounds
-        if (IsWithinBounds(newCameraPosition))
-        {
-            transform.Translate(moveDirection * panSpeed * Time.deltaTime, Space.World);
-        }
-    }
-
-    bool IsWithinBounds(Vector3 position)
-    {
-        return position.x >= minBoundary.x && position.x <= maxBoundary.x &&
-               position.z >= minBoundary.z && position.z <= maxBoundary.z;
     }
 }

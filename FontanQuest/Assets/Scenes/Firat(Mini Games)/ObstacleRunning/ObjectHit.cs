@@ -11,10 +11,10 @@ public class ObjectHit : MonoBehaviour
     // private ConstantMove constantMoveScript;
     void Start()
     {
-        initialPosition = transform.position; // Store the initial position
-        Renderer renderer = GetComponent<Renderer>();
-        initialMaterial = renderer.material; // Store the initial material
-        initialColor = renderer.material.color; // Store the initial color
+        // initialPosition = transform.position; // Store the initial position
+        // Renderer renderer = GetComponent<Renderer>();
+        // initialMaterial = renderer.material; // Store the initial material
+        // initialColor = renderer.material.color; // Store the initial color
 
         // // Get a reference to the ConstantMove script
         // constantMoveScript = GetComponent<ConstantMove>();
@@ -23,7 +23,6 @@ public class ObjectHit : MonoBehaviour
     private void OnCollisionEnter(Collision other) 
     {
         Debug.Log("Bumped");
-        GetComponent<MeshRenderer>().material.color = Color.red;
         // constantMoveScript.increm = 0; // Access the instance variable
         Invoke("DelayedAction", 0.5f);
 

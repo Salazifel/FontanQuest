@@ -4,6 +4,30 @@ using UnityEngine;
 
 public class CastleMainUI : MonoBehaviour
 {
+
+    GameObject MessageWindow;
+    GameObject RotateButton;
+
+    void Awake()
+    {
+        MessageWindow = GameObject.Find("UI_Elements/MessageWindow");
+        RotateButton = GameObject.Find("UI_Elements/RotateButton");
+
+        DeactivateUIElements();
+
+        RotateButton.SetActive(true);
+    }
+
+    void DeactivateUIElements() {
+        MessageWindow.SetActive(false);
+        RotateButton.SetActive(false);
+    }
+
+
+
+
+
+        // ------------------------------ ROTATION OF CAMERA ----------------------------------------
     // The distance from the camera to the target point
     private float distanceToTarget = 50.0f;
     // The angle to rotate by

@@ -36,6 +36,10 @@ public class BuildCityWalls : MonoBehaviour
 
     private void RightButtonClicked()
     {
-        
+        StaticResources.reduceNumOfCoins(BuildingCosts.CityWallCost);
+        // loading in the existing BuiltBuildings-Block
+        SaveGameObjects.BuiltBuildings builtBuildings = (SaveGameObjects.BuiltBuildings)SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.BuiltBuildings(false, false, false, false), "builtBuildings", 1);
+        builtBuildings.CityWalls = true;
+        SaveGameMechanic.saveSaveGameObject(builtBuildings, "builtBuildings", 1);
     }
 }

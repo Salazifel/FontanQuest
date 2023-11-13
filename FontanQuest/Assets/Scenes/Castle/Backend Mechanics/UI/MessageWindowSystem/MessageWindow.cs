@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class MessageWindow : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class MessageWindow : MonoBehaviour
     private UnityEvent leftButtonEvent;
     private UnityEvent rightButtonEvent;
     private UnityEvent middleButtonEvent;
+
+    // animation
 
     public void SetupMessageWindow(
     string headlineText,
@@ -57,6 +60,9 @@ public class MessageWindow : MonoBehaviour
             // If middle button text is not set, assume two-button layout
             middleButton.gameObject.SetActive(false);
         }
+
+        // Display Message
+        this.gameObject.SetActive(true);
     }
 
     void Awake()

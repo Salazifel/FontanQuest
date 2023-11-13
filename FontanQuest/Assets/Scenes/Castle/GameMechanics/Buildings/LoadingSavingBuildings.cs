@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class LoadingSavingBuildings : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private GameObject CityWalls;
+    private GameObject Castle;
+
+    void Awake()
     {
-        
+        CityWalls = GameObject.Find("W A L L S");
+        Castle = GameObject.Find("C A S T L E");
+
+        DeactivateAllBuildings();
     }
 
-    // Update is called once per frame
-    void Update()
+    void ActivateCityWalls() 
     {
-        
+        CityWalls.SetActive(true);
+    }
+
+    void DeactivateAllBuildings()
+    {
+        CityWalls.SetActive(false);
+        Castle.SetActive(false);
     }
 }

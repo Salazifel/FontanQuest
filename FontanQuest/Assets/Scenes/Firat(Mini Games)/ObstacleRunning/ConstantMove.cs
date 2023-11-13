@@ -7,6 +7,8 @@ public class ConstantMove : MonoBehaviour
     public float speedVar = 0.3f;
     public float xValue = 0;
     public float increm = 1.05f;
+
+    public float distance = 200.0f;
     Vector3 initialPosition;
 
     void Start()
@@ -25,11 +27,11 @@ public class ConstantMove : MonoBehaviour
         if (playerHare != null)
         {   
             distanceToPlayerX = Mathf.Abs(transform.position.x - playerHare.transform.position.x);
-            Debug.Log(distanceToPlayerZ);
+            // Debug.Log(distanceToPlayerZ);
             distanceToPlayerZ = Mathf.Abs(transform.position.z - playerHare.transform.position.z);
-            Debug.Log(distanceToPlayerZ);
+            // Debug.Log(distanceToPlayerZ);
 
-            if (distanceToPlayerZ <= 2.0f && distanceToPlayerX >= 30.0f)
+            if (distanceToPlayerZ <= 1.0f && distanceToPlayerX >= 80.0f)
             {
                 xValue = 0;
                 // Stop the object's movement
@@ -37,7 +39,7 @@ public class ConstantMove : MonoBehaviour
             }
             else
             {
-                if (Mathf.Abs(transform.position.x - initialPosition.x) >= 200.0f)
+                if (Mathf.Abs(transform.position.x - initialPosition.x) >= distance)
                 {
                     // Reset the object to its initial position if it's not stopped
                     ResetObject();
@@ -50,10 +52,10 @@ public class ConstantMove : MonoBehaviour
     public void ResetObject()
     {
         // Reset the object to its initial position
-        initialPosition.x = -20.0f + initialPosition.x;
+        initialPosition.x = -100.0f + initialPosition.x;
         transform.position = initialPosition;
-        xValue = 0;
+        xValue = xValue/2;
         enabled = true; // Enable the script to resume movement
-        initialPosition.x = +20.0f + initialPosition.x;
+        initialPosition.x = +100.0f + initialPosition.x;
     }
 }

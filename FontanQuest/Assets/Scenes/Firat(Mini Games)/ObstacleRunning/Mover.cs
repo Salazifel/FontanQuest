@@ -1,36 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.Examples;
 using UnityEngine;
 
 public class Mover : MonoBehaviour
 {   
+    private Animator animator;
+
     [SerializeField] int speedVar = 5;
     Vector3 initialPosition;
     float zValue = 0.0f;
     float increm = 0.1f;
     float yValue;
+    float counter = 0.0f;
+
 
     // Start is called before the first frame update
     void Start()
     {
         initialPosition = transform.position; // Store the initial position
+        animator = GetComponent<Animator>();
         PrintInstructions();
+        counter = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {   
         // MovePlayer();
+
         Jump();
         // zValue += increm * Time.deltaTime;
         // transform.Translate(new Vector3(0, 0, zValue));
+        counter = Mathf.Abs(transform.position.z - initialPosition.z);
+        Debug.Log(counter);
     }
 
     void PrintInstructions()
     {
-        Debug.Log("Welcome to the hell!");
-        Debug.Log("Move your player with WASD or arrow keys");
-        Debug.Log("Don't touch the walls or any other shape");
+        Debug.Log("Follow the rabbit!");
+        Debug.Log("Move your player with pressing space");
+        Debug.Log("Try to avoid crashing to passing animals");
     }
 
     // void MovePlayer()
@@ -42,15 +52,19 @@ public class Mover : MonoBehaviour
 
     void Jump()
     {
-        float yValue = Input.GetAxis("Jump") * Time.deltaTime * speedVar;
-        float zValue = Input.GetAxis("Jump") * Time.deltaTime * speedVar;
+        yValue = Input.GetAxis("Jump") * Time.deltaTime * speedVar;
+        zValue = Input.GetAxis("Jump") * Time.deltaTime * speedVar;
         transform.Translate(0, 0, zValue);
 
-        if (yValue != 0) // Check if the "Jump" input is pressed
+        if (Input.GetAxis("Jump") > 0.1f)
         {
-            // Reset to the initial position after a delay (e.g., 1 second)
-            yValue = 0;
+            animator.SetBool("IsMoving", true);
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false);
         }
     }
+
 
 }

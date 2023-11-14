@@ -21,7 +21,7 @@ public class LoadingSavingBuildings : MonoBehaviour
     {
         SaveGameObjects.BuiltBuildings builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.BuiltBuildings(false, false, false, false), "builtBuildings", 1);
         if (builtBuildings == null) { builtBuildings = new SaveGameObjects.BuiltBuildings(false, false, false, false); }
-
+        
         // now checking each building
         if (builtBuildings.CityWalls == true) { ActivateCityWalls(); }
         if (builtBuildings.Castle == true) { }

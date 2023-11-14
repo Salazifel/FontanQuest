@@ -10,7 +10,6 @@ public class BuildCityWalls : MonoBehaviour
     CastleMainUI castleMainUIScript;
     GameObject messageWindowObject;
     MessageWindow messageWindow;
-
     void OpenBuildWindow()
     {
         // Find the MessageWindow instance in the current scene
@@ -34,7 +33,9 @@ public class BuildCityWalls : MonoBehaviour
                 "Bauen",
                 rightAction,
                 null, // If you want a middle button, provide the text
-                null
+                null,
+                MessageWindow.Character_options.Character_Male_Peasant_01,
+                AnimationLibrary.Animations.Talk 
             );
         }
         else

@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using System;
 
 public class MessageWindow : MonoBehaviour
 {
@@ -20,7 +21,25 @@ public class MessageWindow : MonoBehaviour
     private UnityEvent rightButtonEvent;
     private UnityEvent middleButtonEvent;
 
-    // animation
+    // all characters
+    private Dictionary<string, GameObject> CharacterDictionary = new Dictionary<string, GameObject>();
+    private GameObject CharacterPrefabs;
+    public enum Character_options
+    {
+        Character_Female_Druid,
+        Character_Female_Gypsy,
+        Character_Female_Peasant_01,
+        Character_Female_Peasant_02,
+        Character_Female_Queen,
+        Character_Female_Witch,
+        Character_Male_Baird,
+        Character_Male_King,
+        Character_Male_Peasant_01,
+        Character_Male_Peasant_02,
+        Character_Male_Sorcerer,
+        Character_Male_Wizard,
+        none
+    }
 
     public void SetupMessageWindow(
     string headlineText,
@@ -30,7 +49,9 @@ public class MessageWindow : MonoBehaviour
     string rightButtonText,
     UnityAction rightButtonCallback,
     string middleButtonText,
-    UnityAction middleButtonCallback)
+    UnityAction middleButtonCallback,
+    Character_options character_Options,
+    AnimationLibrary.Animations animations)
     {
         // Set headline and main text
         AdjustHeadline(headlineText);
@@ -61,8 +82,69 @@ public class MessageWindow : MonoBehaviour
             middleButton.gameObject.SetActive(false);
         }
 
+        // Select right character
+        ActivateCharacter(character_Options);
+
+        // Select the right Animation
+        ActivateAnimation(animations);
+
         // Display Message
         this.gameObject.SetActive(true);
+    }
+
+    public void ActivateCharacter(Character_options characterOption)
+    {
+        // Convert the enum value to string
+        string characterKey = characterOption.ToString();
+
+        // Check if the selected character is 'none'
+        if (characterOption == Character_options.none)
+        {
+            // Handle the 'none' case if needed
+            return;
+        }
+
+        // Find and activate the corresponding GameObject
+        if (CharacterDictionary.TryGetValue(characterKey, out GameObject characterPrefab))
+        {
+            // Activate the GameObject
+            characterPrefab.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("Character prefab not found for: " + characterKey);
+        }
+    }
+
+    public void ActivateAnimation(AnimationLibrary.Animations animation)
+    {
+        // Check if the character prefab is valid
+        if (CharacterPrefabs == null)
+        {
+            Debug.LogError("Character prefab is null.");
+            return;
+        }
+
+        // Get the Animator component from the character prefab
+        Animator animator = CharacterPrefabs.GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogError("Animator component not found on the character prefab.");
+            return;
+        }
+
+        // Get the appropriate animation controller from the AnimationLibrary
+        RuntimeAnimatorController controller = AnimationLibrary.getAnimationController(animation);
+
+        // Assign the controller to the Animator
+        if (controller != null)
+        {
+            animator.runtimeAnimatorController = controller;
+        }
+        else
+        {
+            Debug.LogError("Animation controller not found for: " + animation.ToString());
+        }
     }
 
     void Awake()
@@ -80,13 +162,40 @@ public class MessageWindow : MonoBehaviour
         leftButton.onClick.AddListener(DefaultLeftButtonClick);
         rightButton.onClick.AddListener(DefaultRightButtonClick);
         middleButton.onClick.AddListener(DefaultMiddleButtonClick);
+
+        // Get all the characters
+        CharacterPrefabs = GameObject.Find("CharacterPrefabs");
+
+        CharacterDictionary.Add("Character_Female_Druid", GameObject.Find("Character_Female_Druid"));
+        CharacterDictionary.Add("Character_Female_Gypsy", GameObject.Find("Character_Female_Gypsy"));
+        CharacterDictionary.Add("Character_Female_Peasant_01", GameObject.Find("Character_Female_Peasant_01"));
+        CharacterDictionary.Add("Character_Female_Peasant_02", GameObject.Find("Character_Female_Peasant_02"));
+        CharacterDictionary.Add("Character_Female_Queen", GameObject.Find("Character_Female_Queen"));
+        CharacterDictionary.Add("Character_Female_Witch", GameObject.Find("Character_Female_Witch"));
+        CharacterDictionary.Add("Character_Male_Baird", GameObject.Find("Character_Male_Baird"));
+        CharacterDictionary.Add("Character_Male_King", GameObject.Find("Character_Male_King"));
+        CharacterDictionary.Add("Character_Male_Peasant_01", GameObject.Find("Character_Male_Peasant_01"));
+        CharacterDictionary.Add("Character_Male_Peasant_02", GameObject.Find("Character_Male_Peasant_02"));
+        CharacterDictionary.Add("Character_Male_Sorcerer", GameObject.Find("Character_Male_Sorcerer"));
+        CharacterDictionary.Add("Character_Male_Wizard", GameObject.Find("Character_Male_Wizard"));
+    }
+
+    public void HideAllCharacters()
+    {
+        foreach (KeyValuePair<string, GameObject> entry in CharacterDictionary)
+        {
+            if (entry.Value != null)
+            {
+                entry.Value.SetActive(false);
+            }
+        }
     }
 
     public void AdjustHeadline(string text)
     {
         headline.text = text;
     }
-    
+
     private void AdjustButton(Button button, string text, UnityAction callback)
     {
         button.gameObject.SetActive(true);
@@ -150,7 +259,7 @@ public class MessageWindow : MonoBehaviour
 
     private void CharacterManagement()
     {
-        
+
     }
 
 }

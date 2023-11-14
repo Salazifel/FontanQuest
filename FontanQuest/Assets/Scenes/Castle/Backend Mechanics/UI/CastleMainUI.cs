@@ -24,7 +24,6 @@ public class CastleMainUI : MonoBehaviour
     void DeactivateUIElements() {
         MessageWindow.SetActive(false);
         RotateButton.SetActive(false);
-        CharacterDisplayRawImage.SetActive(false);
     }
 
     public void DeactivateMessageWindow()

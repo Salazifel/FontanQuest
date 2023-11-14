@@ -2,13 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class BuildCityWalls : MonoBehaviour
 {
+    GameObject mainCanvas;
+    CastleMainUI castleMainUIScript;
+    GameObject messageWindowObject;
+    MessageWindow messageWindow;
+
     void OpenBuildWindow()
     {
         // Find the MessageWindow instance in the current scene
-        MessageWindow messageWindow = FindObjectOfType<MessageWindow>();
+        mainCanvas = GameObject.Find("MainCanvas");
+        castleMainUIScript = mainCanvas.GetComponent<CastleMainUI>();
+        messageWindowObject = castleMainUIScript.GetMessageWindow();
+        messageWindow = messageWindowObject.GetComponent<MessageWindow>();
 
         if (messageWindow != null)
         {
@@ -36,10 +45,17 @@ public class BuildCityWalls : MonoBehaviour
 
     private void RightButtonClicked()
     {
-        StaticResources.reduceNumOfCoins(BuildingCosts.CityWallCost);
-        // loading in the existing BuiltBuildings-Block
-        SaveGameObjects.BuiltBuildings builtBuildings = (SaveGameObjects.BuiltBuildings)SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.BuiltBuildings(false, false, false, false), "builtBuildings", 1);
-        builtBuildings.CityWalls = true;
-        SaveGameMechanic.saveSaveGameObject(builtBuildings, "builtBuildings", 1);
+        if (StaticResources.reduceNumOfCoins(BuildingCosts.CityWallCost) != 1)
+        {
+            // loading in the existing BuiltBuildings-Block
+            SaveGameObjects.BuiltBuildings builtBuildings = (SaveGameObjects.BuiltBuildings)SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.BuiltBuildings(false, false, false, false), "builtBuildings", 1);
+            if (builtBuildings == null) { builtBuildings = new SaveGameObjects.BuiltBuildings(false, false, false, false);}
+            builtBuildings.CityWalls = true;
+            GameObject.Find("GameData").GetComponent<LoadingSavingBuildings>().ActivateCityWalls();
+            SaveGameMechanic.saveSaveGameObject(builtBuildings, "builtBuildings", 1);
+            castleMainUIScript.DeactivateMessageWindow();
+        } else {
+            Debug.Log("Not enough coins");
+        }
     }
 }

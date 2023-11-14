@@ -13,14 +13,26 @@ public class LoadingSavingBuildings : MonoBehaviour
         Castle = GameObject.Find("C A S T L E");
 
         DeactivateAllBuildings();
+
+        LoadBuildings();
     }
 
-    void ActivateCityWalls() 
+    public void LoadBuildings()
+    {
+        SaveGameObjects.BuiltBuildings builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.BuiltBuildings(false, false, false, false), "builtBuildings", 1);
+        if (builtBuildings == null) { builtBuildings = new SaveGameObjects.BuiltBuildings(false, false, false, false); }
+
+        // now checking each building
+        if (builtBuildings.CityWalls == true) { ActivateCityWalls(); }
+        if (builtBuildings.Castle == true) { }
+    }
+
+    public void ActivateCityWalls() 
     {
         CityWalls.SetActive(true);
     }
 
-    void DeactivateAllBuildings()
+    public void DeactivateAllBuildings()
     {
         CityWalls.SetActive(false);
         Castle.SetActive(false);

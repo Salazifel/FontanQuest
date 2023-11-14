@@ -100,27 +100,6 @@ public class MessageWindow : MonoBehaviour
         mainText.text = text;
     }
 
-    public void AdjustButtons(string text1, string text2 = null)
-    {
-        DeactivateAllButtons();
-
-        // If 'text2' is null or empty, only show the middle button
-        if (string.IsNullOrEmpty(text2)) // Use string.IsNullOrEmpty to check for both null and empty strings
-        {
-            middleButton.gameObject.SetActive(true); // Use SetActive to change the active state
-            middleButton.GetComponentInChildren<TextMeshProUGUI>().text = text1;
-        }
-        else
-        {
-            leftButton.gameObject.SetActive(true);
-            rightButton.gameObject.SetActive(true);
-
-            // Assign texts to buttons, assuming each button has one TextMeshProUGUI child
-            leftButton.GetComponentInChildren<TextMeshProUGUI>().text = text1;
-            rightButton.GetComponentInChildren<TextMeshProUGUI>().text = text2;
-        }
-    }
-
     public void DeactivateMessageWindow()
     {
         this.gameObject.SetActive(false);
@@ -167,6 +146,11 @@ public class MessageWindow : MonoBehaviour
     private void DefaultMiddleButtonClick()
     {
         Debug.Log("Middle button clicked!");
+    }
+
+    private void CharacterManagement()
+    {
+        
     }
 
 }

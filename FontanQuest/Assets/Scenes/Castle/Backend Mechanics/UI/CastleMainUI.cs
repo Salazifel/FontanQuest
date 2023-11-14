@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class CastleMainUI : MonoBehaviour
 {
-
+    GameObject UI_Elements;
     GameObject MessageWindow;
     GameObject RotateButton;
+    GameObject CharacterDisplayRawImage;
 
-    void Awake()
+    void Start()
     {
         MessageWindow = GameObject.Find("UI_Elements/MessageWindow");
         RotateButton = GameObject.Find("UI_Elements/RotateButton");
+        CharacterDisplayRawImage = GameObject.Find("UI_Elements/CharacterDisplayRawImage");
+        UI_Elements = GameObject.Find("UI_Elements");
 
         DeactivateUIElements();
 
@@ -21,6 +24,17 @@ public class CastleMainUI : MonoBehaviour
     void DeactivateUIElements() {
         MessageWindow.SetActive(false);
         RotateButton.SetActive(false);
+        CharacterDisplayRawImage.SetActive(false);
+    }
+
+    public void DeactivateMessageWindow()
+    {
+        MessageWindow.SetActive(false);
+    }
+
+    public GameObject GetMessageWindow()
+    {
+        return MessageWindow;
     }
 
 

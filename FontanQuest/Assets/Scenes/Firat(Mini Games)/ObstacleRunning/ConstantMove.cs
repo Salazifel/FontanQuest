@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ConstantMove : MonoBehaviour
@@ -10,52 +8,68 @@ public class ConstantMove : MonoBehaviour
 
     public float distance = 200.0f;
     Vector3 initialPosition;
+    Vector3 initialPositionHare;
+    GameObject playerHare;
+
+    bool isEnabled = true; // Renamed to avoid conflict with Unity's enabled property
 
     void Start()
-    {
+    {   
+        isEnabled = true;
+        playerHare = GameObject.Find("Player_Hare");
         initialPosition = transform.position; // Store the initial global position
+        if (playerHare != null)
+        {
+            initialPositionHare = playerHare.transform.position;
+        }
     }
 
     void Update()
     {
-        xValue += increm * speedVar * Time.deltaTime;
-        transform.position += new Vector3(xValue, 0, 0);  // Use position directly
-
-        float distanceToPlayerZ = 0;  // Declare the variable outside the block
-        float distanceToPlayerX = 0;   // Declare the variable outside the block
-        GameObject playerHare = GameObject.Find("Player_Hare");
         if (playerHare != null)
-        {   
-            distanceToPlayerX = Mathf.Abs(transform.position.x - playerHare.transform.position.x);
-            // Debug.Log(distanceToPlayerZ);
-            distanceToPlayerZ = Mathf.Abs(transform.position.z - playerHare.transform.position.z);
-            // Debug.Log(distanceToPlayerZ);
+        {
+            // float distanceToPlayerX = Mathf.Abs(transform.position.x - playerHare.transform.position.x);
+            // float distanceToPlayerZ = Mathf.Abs(transform.position.z - playerHare.transform.position.z);
 
-            if (distanceToPlayerZ <= 1.0f && distanceToPlayerX >= 80.0f)
-            {
-                xValue = 0;
-                // Stop the object's movement
-                enabled = false;
-            }
-            else
-            {
+            // if (distanceToPlayerZ <= 10.0f && distanceToPlayerX >= 200.0f)
+            // {
+            //     xValue = 0;
+            //     isEnabled = false; // Stop the object's movement
+            // }
+            // else
+            // {   
+                if (isEnabled == true)
+                {
+                    Move();
+
                 if (Mathf.Abs(transform.position.x - initialPosition.x) >= distance)
                 {
-                    // Reset the object to its initial position if it's not stopped
                     ResetObject();
+                }
+                }
+                else
+                {
+                    if (initialPositionHare == playerHare.transform.position){
+                        ResetObject();
+                    }
                 }
             }
         }
-    }
+    // }
 
     // Add a method to reset the object
     public void ResetObject()
-    {
-        // Reset the object to its initial position
-        initialPosition.x = -100.0f + initialPosition.x;
-        transform.position = initialPosition;
+    {   
+        Vector3 newPosition = new Vector3(initialPosition.x, transform.position.y, transform.position.z);
+        transform.position = newPosition;
         xValue = xValue/2;
-        enabled = true; // Enable the script to resume movement
-        initialPosition.x = +100.0f + initialPosition.x;
+        Move();
+        isEnabled = true; // Enable the script to resume movement
+    }
+
+    public void Move()
+    {
+        xValue += increm * speedVar * Time.deltaTime;
+        transform.position += new Vector3(xValue, 0, 0);  // Use position directly
     }
 }

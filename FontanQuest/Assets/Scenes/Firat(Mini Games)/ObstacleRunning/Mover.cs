@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro.Examples;
 using UnityEngine;
+using TMPro;
 
 public class Mover : MonoBehaviour
 {   
@@ -13,6 +14,7 @@ public class Mover : MonoBehaviour
     float increm = 0.1f;
     float yValue;
     float counter = 0.0f;
+    public TextMeshProUGUI highScoreText; // Reference to the TextMeshPro text component
 
 
     // Start is called before the first frame update
@@ -33,7 +35,7 @@ public class Mover : MonoBehaviour
         // zValue += increm * Time.deltaTime;
         // transform.Translate(new Vector3(0, 0, zValue));
         counter = Mathf.Abs(transform.position.z - initialPosition.z);
-        Debug.Log(counter);
+        // Debug.Log(counter);
     }
 
     void PrintInstructions()
@@ -65,6 +67,13 @@ public class Mover : MonoBehaviour
             animator.SetBool("IsMoving", false);
         }
     }
-
+    void UpdateHighScoreText()
+    {
+        // Update the high score text component with the counter value
+        if (highScoreText != null)
+        {
+            highScoreText.text = "High Score: " + counter.ToString("F1"); // Display counter value as text
+        }
+    }
 
 }

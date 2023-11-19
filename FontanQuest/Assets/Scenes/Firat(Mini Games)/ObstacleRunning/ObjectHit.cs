@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class ObjectHit : MonoBehaviour
@@ -39,7 +40,11 @@ public class ObjectHit : MonoBehaviour
     }
     public void ExitGame()
     {
-        Application.Quit();
+        // // Unload the current scene asynchronously
+        // SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+
+        // Load the next scene by its name or index
+        Application.LoadLevel("ObstacleRunning_2");
     }
 
 }

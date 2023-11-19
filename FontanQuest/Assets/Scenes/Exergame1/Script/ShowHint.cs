@@ -26,7 +26,7 @@ public class ShowHint : MonoBehaviour
             accumTime = 0f;
         }
 
-        if (accumTime > 3f)
+        if (accumTime > 2f)
         {
             spriteRenderer.enabled = false;
         }

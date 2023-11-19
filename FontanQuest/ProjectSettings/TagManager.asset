@@ -18,6 +18,7 @@ TagManager:
   - GameMusic
   - BuildingFreeZone
   - Obstacles
+  - Hint
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - 
   - Building Ground
   - top
-  - 
+  - Hint
   - 
   - 
   - 

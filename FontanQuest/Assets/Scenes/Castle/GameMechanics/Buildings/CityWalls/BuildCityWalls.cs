@@ -27,7 +27,7 @@ public class BuildCityWalls : MonoBehaviour
             // Call the SetupMessageWindow function
             messageWindow.SetupMessageWindow(
                 "Mauer",
-                "Sollen wir eine Stadtmauer bauen? Das kostet " + BuildingCosts.CityWallCost + " Gold.",
+                "Sollen wir eine Stadtmauer bauen? Das kostet " + BuildingCosts.CityWallCost + " Gold. MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM MMMMMMMMMMMMMMMMMM MMMMMMMMMMMMMMMMMM MMMMMMMMMMMMMMMMMMMM MMMMMMMMMMMMMMMMMMMMM",
                 "Abrechen",
                 leftAction,
                 "Bauen",

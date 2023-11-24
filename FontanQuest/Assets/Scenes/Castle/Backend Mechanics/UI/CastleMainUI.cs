@@ -29,6 +29,7 @@ public class CastleMainUI : MonoBehaviour
     public void DeactivateMessageWindow()
     {
         MessageWindow.SetActive(false);
+        CharacterDisplayRawImage.SetActive(false);
     }
 
     public GameObject GetMessageWindow()

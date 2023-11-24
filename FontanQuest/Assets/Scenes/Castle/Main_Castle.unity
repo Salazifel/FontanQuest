@@ -4241,7 +4241,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 392562390}
-  - component: {fileID: 392562391}
   - component: {fileID: 392562392}
   m_Layer: 0
   m_Name: SaveGameTest
@@ -4265,18 +4264,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &392562391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392562388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e638d7e60ba8c3c4786a911a1b751e53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &392562392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21709,7 +21696,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -22572,6 +22559,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSizeBase
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3048858894958183002, guid: 1679aef0e8f162d4a9f5a23e6e604edb,
+        type: 3}
+      propertyPath: m_useMaxVisibleDescender
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4718630693241175872, guid: 1679aef0e8f162d4a9f5a23e6e604edb,
         type: 3}

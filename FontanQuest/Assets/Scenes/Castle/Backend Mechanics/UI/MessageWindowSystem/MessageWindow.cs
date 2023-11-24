@@ -22,6 +22,7 @@ public class MessageWindow : MonoBehaviour
     private UnityEvent middleButtonEvent;
 
     // all characters
+    private GameObject CharacterDisplayRawImage;
     private Dictionary<string, GameObject> CharacterDictionary = new Dictionary<string, GameObject>();
     private GameObject CharacterPrefabs;
     public enum Character_options
@@ -90,6 +91,7 @@ public class MessageWindow : MonoBehaviour
 
         // Display Message
         this.gameObject.SetActive(true);
+        CharacterDisplayRawImage.SetActive(true);
     }
 
     public void ActivateCharacter(Character_options characterOption)
@@ -178,6 +180,10 @@ public class MessageWindow : MonoBehaviour
         CharacterDictionary.Add("Character_Male_Peasant_02", GameObject.Find("Character_Male_Peasant_02"));
         CharacterDictionary.Add("Character_Male_Sorcerer", GameObject.Find("Character_Male_Sorcerer"));
         CharacterDictionary.Add("Character_Male_Wizard", GameObject.Find("Character_Male_Wizard"));
+
+        CharacterDisplayRawImage = GameObject.Find("CharacterDisplayRawImage");
+
+        HideAllCharacters();
     }
 
     public void HideAllCharacters()
@@ -212,6 +218,7 @@ public class MessageWindow : MonoBehaviour
     public void DeactivateMessageWindow()
     {
         this.gameObject.SetActive(false);
+        CharacterDisplayRawImage.SetActive(false);
     }
 
     void DeactivateAllButtons()

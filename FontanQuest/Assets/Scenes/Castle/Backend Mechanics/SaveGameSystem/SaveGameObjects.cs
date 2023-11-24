@@ -57,8 +57,8 @@ public class SaveGameObjects : MonoBehaviour
     public class GameData : MainSaveObject
     {
         public int coins;
-
-
+        public int daysPlayed;
+        public string nameOfPlayer;
 
         public GameData(int _coins) {
             GameSaveObjectType = "gameData";

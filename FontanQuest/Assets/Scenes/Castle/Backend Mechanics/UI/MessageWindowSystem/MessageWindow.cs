@@ -91,7 +91,9 @@ public class MessageWindow : MonoBehaviour
 
         // Display Message
         this.gameObject.SetActive(true);
-        CharacterDisplayRawImage.SetActive(true);
+        if (CharacterDisplayRawImage) {
+            CharacterDisplayRawImage.SetActive(true);
+        }
     }
 
     public void ActivateCharacter(Character_options characterOption)
@@ -218,7 +220,9 @@ public class MessageWindow : MonoBehaviour
     public void DeactivateMessageWindow()
     {
         this.gameObject.SetActive(false);
-        CharacterDisplayRawImage.SetActive(false);
+        if (CharacterDisplayRawImage) {
+            CharacterDisplayRawImage.SetActive(false);
+        }
     }
 
     void DeactivateAllButtons()

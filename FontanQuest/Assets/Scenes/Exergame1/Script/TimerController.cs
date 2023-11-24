@@ -11,6 +11,7 @@ public class TimerController : MonoBehaviour
     public float StartAt;
     float accumTime;
     float totalTime;
+    public AsianMonkUI asianMonkUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,8 +38,7 @@ public class TimerController : MonoBehaviour
             }
             else
             {
-                TimerContainer.SetActive(false);
-                countTimerUI.gameObject.SetActive(false);
+                CompleteGame();
             }
         }
 
@@ -53,4 +53,10 @@ public class TimerController : MonoBehaviour
         string formattedTime = string.Format("{0}:{1:00}", minutes, seconds);
         countTimerUI.UpdateCountDown(formattedTime);
     }
+
+    void CompleteGame()
+    {
+        asianMonkUI.ChangeToFinishGame();
+    }
 }
+

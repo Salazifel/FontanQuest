@@ -7,7 +7,7 @@ public class AsianMonkUI : MonoBehaviour
     public Canvas StoryCanvas;
     public Canvas StartMenuCanvas;
     public Canvas GameCanvas;
-    // public Canvas FinishCanvas;
+    public Canvas FinishCanvas;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +15,7 @@ public class AsianMonkUI : MonoBehaviour
         StoryCanvas.gameObject.SetActive(true);
         StartMenuCanvas.gameObject.SetActive(false);
         GameCanvas.gameObject.SetActive(false);
-        // FinishCanvas.gameObject.SetActive(false);
+        FinishCanvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class AsianMonkUI : MonoBehaviour
         StoryCanvas.gameObject.SetActive(false);
         StartMenuCanvas.gameObject.SetActive(true);
         GameCanvas.gameObject.SetActive(false);
-        // FinishCanvas.gameObject.SetActive(false);
+        FinishCanvas.gameObject.SetActive(false);
 
     }
 
@@ -38,7 +38,15 @@ public class AsianMonkUI : MonoBehaviour
         StoryCanvas.gameObject.SetActive(false);
         StartMenuCanvas.gameObject.SetActive(false);
         GameCanvas.gameObject.SetActive(true);
-        // FinishCanvas.gameObject.SetActive(false);
+        FinishCanvas.gameObject.SetActive(false);
+    }
+
+    public void ChangeToFinishGame()
+    {
+        StoryCanvas.gameObject.SetActive(false);
+        StartMenuCanvas.gameObject.SetActive(false);
+        GameCanvas.gameObject.SetActive(false);
+        FinishCanvas.gameObject.SetActive(true);
     }
 
 

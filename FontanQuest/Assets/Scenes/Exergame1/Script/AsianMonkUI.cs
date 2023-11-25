@@ -41,17 +41,12 @@ public class AsianMonkUI : MonoBehaviour
         FinishCanvas.gameObject.SetActive(false);
     }
 
-    public void ChangeToFinishGame()
+    public void ChangeToComplete()
     {
-        Debug.Log("Changing to FinishGame!");
         StoryCanvas.gameObject.SetActive(false);
-        Debug.Log("StoryCanvas set to inactive");
         StartMenuCanvas.gameObject.SetActive(false);
-        Debug.Log("StartMenuCanvas set to inactive");
         GameCanvas.gameObject.SetActive(false);
-        Debug.Log("GameCanvas set to inactive");
         FinishCanvas.gameObject.SetActive(true);
-        Debug.Log("FinishCanvas set to active");
     }
 
 

@@ -8,7 +8,7 @@ public class TimerController : MonoBehaviour
 {
     [SerializeField] GameObject TimerContainer;
     [SerializeField] CountDownUI countTimerUI; // Reference to the CountDownUI component
-    public float StartAt;
+    // public float StartAt;
     float accumTime;
     float totalTime;
     public AsianMonkUI asianMonkUI;
@@ -17,7 +17,7 @@ public class TimerController : MonoBehaviour
     {
         //TimerContainer.SetActive(false);
         //countTimerUI.gameObject.SetActive(false);
-        totalTime = 90f; // Set the total time in seconds (1 minute and 30 seconds)
+        totalTime = 10f; // Set the total time in seconds (1 minute and 30 seconds)
         UpdateTimerUI(totalTime);
     }
 
@@ -56,6 +56,7 @@ public class TimerController : MonoBehaviour
 
     void CompleteGame()
     {
+        Debug.Log("Game Completed!");
         asianMonkUI.ChangeToFinishGame();
     }
 }

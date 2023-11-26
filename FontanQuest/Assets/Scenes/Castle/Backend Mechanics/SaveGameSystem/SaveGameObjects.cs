@@ -11,7 +11,8 @@ public class SaveGameObjects : MonoBehaviour
         public int primaryKey;
         public bool deleted = false;
         protected string GameSaveObjectType;
-        string getGameSaveObjectType() {
+        string getGameSaveObjectType()
+        {
             return GameSaveObjectType;
         }
 
@@ -57,14 +58,58 @@ public class SaveGameObjects : MonoBehaviour
     public class GameData : MainSaveObject
     {
         public int coins;
+        public int daysPlayed;
+        public string nameOfPlayer;
 
-        public GameData() {
+        public GameData(int _coins)
+        {
             GameSaveObjectType = "gameData";
+            coins = _coins;
         }
 
         public override void Print()
         {
             Debug.Log(primaryKey + " coins: " + coins.ToString());
+        }
+    }
+
+    [Serializable]
+    public class BuiltBuildings : MainSaveObject
+    {
+        public Boolean CityWalls;
+        public Boolean Castle;
+        public Boolean Temple;
+        public Boolean Stables;
+
+        public BuiltBuildings(Boolean CityWallsActive, Boolean CastleActive, Boolean TempleActive, Boolean StablesActive)
+        {
+            GameSaveObjectType = "BuiltBuildings";
+            CityWalls = CityWallsActive;
+            Castle = CastleActive;
+            Temple = TempleActive;
+            Stables = StablesActive;
+        }
+
+        public override void Print()
+        {
+            Debug.Log(primaryKey + " CityWalls" + CityWalls.ToString());
+        }
+    }
+
+    [Serializable]
+
+    public class AvatarSystem : MainSaveObject
+    {
+        public Boolean onBoardingDone;
+
+        public AvatarSystem(Boolean _onBoardingDone)
+        {
+            onBoardingDone = _onBoardingDone;
+        }
+
+        public override void Print()
+        {
+            base.Print();
         }
     }
 }

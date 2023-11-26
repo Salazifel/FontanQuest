@@ -49,6 +49,7 @@ public class SaveGameMechanic : MonoBehaviour
         if (foundObject == null)
         {
             Debug.Log("No object found with primary key: " + primaryKey);
+            return null;
         }
         return foundObject;
     }

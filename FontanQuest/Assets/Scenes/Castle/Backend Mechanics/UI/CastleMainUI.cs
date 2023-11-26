@@ -4,6 +4,44 @@ using UnityEngine;
 
 public class CastleMainUI : MonoBehaviour
 {
+    GameObject UI_Elements;
+    GameObject MessageWindow;
+    GameObject RotateButton;
+    GameObject CharacterDisplayRawImage;
+
+    void Start()
+    {
+        MessageWindow = GameObject.Find("UI_Elements/MessageWindow");
+        RotateButton = GameObject.Find("UI_Elements/RotateButton");
+        CharacterDisplayRawImage = GameObject.Find("UI_Elements/CharacterDisplayRawImage");
+        UI_Elements = GameObject.Find("UI_Elements");
+
+        DeactivateUIElements();
+
+        RotateButton.SetActive(true);
+    }
+
+    void DeactivateUIElements() {
+        MessageWindow.SetActive(false);
+        RotateButton.SetActive(false);
+    }
+
+    public void DeactivateMessageWindow()
+    {
+        MessageWindow.SetActive(false);
+        CharacterDisplayRawImage.SetActive(false);
+    }
+
+    public GameObject GetMessageWindow()
+    {
+        return MessageWindow;
+    }
+
+
+
+
+
+        // ------------------------------ ROTATION OF CAMERA ----------------------------------------
     // The distance from the camera to the target point
     private float distanceToTarget = 50.0f;
     // The angle to rotate by

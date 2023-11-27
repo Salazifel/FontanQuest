@@ -26,9 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WorkoutsAndMiniGames(Alisa)/Scenes/HikkingStorry/FindMushroom.unity
     guid: bd058230a6c1e58469731150e9b74392
-  - enabled: 1
-    path: Assets/Scenes/WorkoutsAndMiniGames(Alisa)/Scenes/HikkingStorry/FindTheButterfly.unity
-    guid: 41e75136c8c81ce4aab1328cec890270
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/WorkoutsAndMiniGames(Alisa)/Scenes/HikkingStorry/SolveTheRiddle.unity
     guid: d177a0a72965ddc43b1f91d71051c501
@@ -53,6 +53,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WorkoutsAndMiniGames(Alisa)/Scenes/MedalOverview.unity
     guid: eadc739c053d1864997a4e2915e43598
+  - enabled: 1
+    path: Assets/Scenes/Firat(Mini Games)/ObstacleRunning/ObstacleRunning.unity
+    guid: 27a729a69536fc8419b6d38b081a12f2
+  - enabled: 1
+    path: Assets/Scenes/Firat(Mini Games)/ObstacleRunning/ObstacleRunning_2.unity
+    guid: 43cd6f4d68f85f04fbbb6f43cc96915d
+  - enabled: 1
+    path: Assets/Scenes/Firat(Mini Games)/ObstacleRunning/ObstacleRunning_4.unity
+    guid: d0297c9fb7f0db943960bffc86925cba
+  - enabled: 1
+    path: Assets/Scenes/Firat(Mini Games)/MountainTreeClimber/TreeClimber.unity
+    guid: 07eb38ba69e20154cbe7d11ff42417ae
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 254f22ba6035e6d4398b0fed5896fd9a,
       type: 2}

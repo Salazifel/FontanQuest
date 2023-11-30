@@ -218,9 +218,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 80
-  Perfekt1: {fileID: 0}
-  Perfekt2: {fileID: 0}
-  timeToShowPerfekt: 3
 --- !u!61 &5775921219926742512
 BoxCollider2D:
   m_ObjectHideFlags: 0

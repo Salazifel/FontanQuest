@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShowPerfekt : MonoBehaviour
+public class ShowPerfekt2 : MonoBehaviour
 {
-    public GameObject Perfekt1;
-    [SerializeField] float timeToShowPerfekt = 3f;
+    public GameObject Perfekt2;
+    [SerializeField] float timeToShowPerfekt = 1f;
     float accumTime;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -13,9 +13,9 @@ public class ShowPerfekt : MonoBehaviour
         if (collision.gameObject.tag == "Punch1" || collision.gameObject.tag == "Punch2")
         {
             accumTime = 0f;  // Reset accumTime before showing "Perfekt"
-            Perfekt1.gameObject.SetActive(true);
+            Perfekt2.gameObject.SetActive(true);
             // gameObject.SetActive(false);
-            Debug.Log("SmallCube1 collision");
+            // Debug.Log("SmallCube2 collision");
         }
     }
 
@@ -23,11 +23,11 @@ public class ShowPerfekt : MonoBehaviour
     {
         accumTime += Time.fixedDeltaTime;
 
-        if (Perfekt1.activeSelf && accumTime > timeToShowPerfekt)
+        if (Perfekt2.activeSelf && accumTime > timeToShowPerfekt)
         {
-            Perfekt1.gameObject.SetActive(false);
+            Perfekt2.gameObject.SetActive(false);
             accumTime = 0f;  // Reset accumTime after hiding "Perfekt"
-            Debug.Log("Hiding Perfekt1");
+            // Debug.Log("Hiding Perfekt2");
         }
     }
 }

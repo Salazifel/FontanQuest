@@ -27,11 +27,13 @@ public class ObjectMove : MonoBehaviour
         {
             gameObject.SetActive(false);
             transform.parent.GetComponent<PunchManager>().SpawnPunch1();
+            transform.parent.GetComponent<PunchManager>().UpdateScore(20);
         }
         else if (collision.gameObject.tag == "SmallCube2")
         {
             gameObject.SetActive(false);
             transform.parent.GetComponent<PunchManager>().SpawnPunch2();
+            transform.parent.GetComponent<PunchManager>().UpdateScore(20);
         }
     }
 

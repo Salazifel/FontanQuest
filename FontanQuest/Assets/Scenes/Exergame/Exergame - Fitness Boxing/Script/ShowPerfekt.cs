@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShowPerfekt : MonoBehaviour
 {
     public GameObject Perfekt1;
-    [SerializeField] float timeToShowPerfekt = 3f;
+    [SerializeField] float timeToShowPerfekt = 1f;
     float accumTime;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -15,7 +15,7 @@ public class ShowPerfekt : MonoBehaviour
             accumTime = 0f;  // Reset accumTime before showing "Perfekt"
             Perfekt1.gameObject.SetActive(true);
             // gameObject.SetActive(false);
-            Debug.Log("SmallCube1 collision");
+            // Debug.Log("SmallCube1 collision");
         }
     }
 
@@ -27,7 +27,7 @@ public class ShowPerfekt : MonoBehaviour
         {
             Perfekt1.gameObject.SetActive(false);
             accumTime = 0f;  // Reset accumTime after hiding "Perfekt"
-            Debug.Log("Hiding Perfekt1");
+            // Debug.Log("Hiding Perfekt1");
         }
     }
 }

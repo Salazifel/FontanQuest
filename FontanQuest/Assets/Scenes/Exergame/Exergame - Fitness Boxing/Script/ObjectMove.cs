@@ -26,10 +26,12 @@ public class ObjectMove : MonoBehaviour
         if (collision.gameObject.tag == "SmallCube1")
         {
             gameObject.SetActive(false);
+            transform.parent.GetComponent<PunchManager>().SpawnPunch1();
         }
         else if (collision.gameObject.tag == "SmallCube2")
         {
-            gameObject.SetActive(false); 
+            gameObject.SetActive(false);
+            transform.parent.GetComponent<PunchManager>().SpawnPunch2();
         }
     }
 

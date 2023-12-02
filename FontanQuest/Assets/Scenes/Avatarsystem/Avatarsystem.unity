@@ -1686,8 +1686,16 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 109980, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
+      propertyPath: m_Name
+      value: Character_Female_Druid
+      objectReference: {fileID: 0}
+    - target: {fileID: 109980, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 109980, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 110662, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
       propertyPath: m_Layer
@@ -1796,6 +1804,10 @@ PrefabInstance:
     - target: {fileID: 136616, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 136616, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 137450, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
       propertyPath: m_Layer

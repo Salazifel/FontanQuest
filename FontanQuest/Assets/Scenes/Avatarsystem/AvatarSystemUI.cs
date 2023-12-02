@@ -25,9 +25,7 @@ public class AvatarSystemUI : MonoBehaviour
         PlayerCharacters[9] = GameObject.Find("Character_Male_Rouge_01");
         PlayerCharacters[10] = GameObject.Find("Character_Male_Sorcerer");
         PlayerCharacters[11] = GameObject.Find("Character_Male_Wizard");
-        disableAllCharacters();
         setCharacterModel(0);
-        Debug.Log("TEST");
     }
 
     public void NextCharacterButtonClick()
@@ -52,6 +50,7 @@ public class AvatarSystemUI : MonoBehaviour
     public void setCharacterModel(int arrayPosition)
     {
         disableAllCharacters();
+        // cycle through the array if top or min is reached
         if (arrayPosition >= PlayerCharacters.Length) {
             arrayPosition = 0;
             currentArrayPosition = 0;
@@ -60,6 +59,7 @@ public class AvatarSystemUI : MonoBehaviour
             arrayPosition = PlayerCharacters.Length -1;
             currentArrayPosition = PlayerCharacters.Length -1;
         }
+        // actually changing the array
         PlayerCharacters[arrayPosition].SetActive(true);
     }
 

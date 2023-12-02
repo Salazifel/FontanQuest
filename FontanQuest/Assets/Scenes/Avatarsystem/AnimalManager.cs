@@ -1,42 +1,77 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimalManager : MonoBehaviour
 {
     void Start()
     {
-        // Deactivate all individual animals under "Pet"
         DeactivateAllAnimals();
+        GameObject pet = GameObject.Find("Pet");
+        AnimalManager animalManager = pet.GetComponent<AnimalManager>();
+        animalManager.ActivateAnimal("Bear_1");   
     }
 
     void DeactivateAllAnimals()
     {
-        foreach (Transform child in transform) // For each group like "Wolves", "Deers"
+        DeactivateChildrenRecursively(transform);
+    }
+
+    void DeactivateChildrenRecursively(Transform parent)
+    {
+        foreach (Transform child in parent)
         {
-            foreach (Transform animal in child) // For each animal in the group
-            {
-                animal.gameObject.SetActive(false);
-                Debug.Log(animal.gameObject.name);
-            }
+            child.gameObject.SetActive(false);
+            DeactivateChildrenRecursively(child);
         }
     }
 
-    // Function to activate a specific animal
     public void ActivateAnimal(string animalName)
     {
         Debug.Log("Activating " + animalName);
-        //DeactivateAllAnimals(); // First, deactivate all animals
+        DeactivateAllAnimals(); // First, deactivate all animals
 
-        foreach (Transform child in transform)
+        if (ActivateAnimalRecursively(transform, animalName))
         {
-            foreach (Transform animal in child)
+            // If the animal is found and activated, activate its parent hierarchy
+            ActivateParentHierarchy(transform, animalName);
+        }
+    }
+
+    bool ActivateAnimalRecursively(Transform parent, string animalName)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == animalName)
             {
-                if (animal.name == animalName)
-                {
-                    animal.gameObject.SetActive(true);
-                    return; // Exit the function once the animal is found and activated
-                }
+                child.gameObject.SetActive(true);
+                return true; // Animal found and activated
             }
+
+            if (ActivateAnimalRecursively(child, animalName))
+            {
+                return true; // Animal found in sub-children
+            }
+        }
+        return false; // Animal not found in this branch
+    }
+
+    void ActivateParentHierarchy(Transform parent, string animalName)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == animalName)
+            {
+                // Activate all parents up to the root
+                Transform currentParent = child.parent;
+                while (currentParent != null)
+                {
+                    currentParent.gameObject.SetActive(true);
+                    currentParent = currentParent.parent;
+                }
+                break;
+            }
+            ActivateParentHierarchy(child, animalName); // Check sub-children
         }
     }
 }
-       

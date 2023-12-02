@@ -27,6 +27,7 @@ public class AvatarSystemUI : MonoBehaviour
         PlayerCharacters[11] = GameObject.Find("Character_Male_Wizard");
         disableAllCharacters();
         setCharacterModel(0);
+        Debug.Log("TEST");
     }
 
     public void NextCharacterButtonClick()

@@ -4,6 +4,17 @@ using UnityEngine;
 public class SaveGameObjects : MonoBehaviour
 {
 
+    // ----------------- HOW TO SAVE & LOAD & DELETE --------------------
+
+    /*
+    // LOADING (you could also load all objects of that type)
+    SaveGameObjects.TreeClimber treeClimber = (SaveGameObjects.TreeClimber) SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.TreeClimber(1), "treeClimber", 1);
+    // SAVING (this is for one object, you can also use something like SELECT ALL)
+    SaveGameMechanic.getSaveGameObjectByPrimaryKey(treeClimber, "treeClimber", 1);
+    // DELETING (you could also delete all objects of that type or the folder)
+    SaveGameMechanic.deleteSaveGameObject(new SaveGameObjects.TreeClimber(1), "treeClimber", 1);
+    */
+
     // ----------------------- DO NOT CHANGE ----------------------------
     [Serializable]
     public class MainSaveObject
@@ -93,6 +104,24 @@ public class SaveGameObjects : MonoBehaviour
         public override void Print()
         {
             Debug.Log(primaryKey + " CityWalls" + CityWalls.ToString());
+        }
+    }
+
+    [Serializable]
+
+    public class TreeClimber : MainSaveObject
+    {
+        public int highscore;
+
+        public TreeClimber(int _highscore)
+        {
+            highscore = _highscore;
+        }
+
+        public override void Print()
+        {
+            base.Print();
+            Debug.Log(highscore.ToString());
         }
     }
 

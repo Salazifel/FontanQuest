@@ -9,7 +9,7 @@ public class AnimalManager : MonoBehaviour
         DeactivateAllAnimals();
         GameObject pet = GameObject.Find("Pet");
         AnimalManager animalManager = pet.GetComponent<AnimalManager>();
-        animalManager.ActivateAnimal("Bear_1");   
+        animalManager.ActivateAnimal("Bear_Cub_8");   
     }
 
     void DeactivateAllAnimals()

@@ -7,6 +7,8 @@ public class ShowPerfekt2 : MonoBehaviour
     public GameObject Perfekt2;
     [SerializeField] float timeToShowPerfekt = 1f;
     float accumTime;
+    public AudioSource Punch1;
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,6 +16,7 @@ public class ShowPerfekt2 : MonoBehaviour
         {
             accumTime = 0f;  // Reset accumTime before showing "Perfekt"
             Perfekt2.gameObject.SetActive(true);
+            Punch1.Play();
             // gameObject.SetActive(false);
             // Debug.Log("SmallCube2 collision");
         }

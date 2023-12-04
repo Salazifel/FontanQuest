@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Climber : MonoBehaviour
-{
+{   
+
     // private Animator animator;
     private Animator animator;
     [SerializeField] int speedVar = 5;
@@ -46,9 +47,9 @@ public class Climber : MonoBehaviour
         // zValue += increm * Time.deltaTime;
         // transform.Translate(new Vector3(0, 0, zValue));
         // counter = Mathf.Abs(transform.position.z - initialPosition.z);
-        Debug.Log(RespawnPosition);
-        Debug.Log(TriggerPosition);
-        Debug.Log(transform.position.z);
+        // Debug.Log(RespawnPosition);
+        // Debug.Log(TriggerPosition);
+        // Debug.Log(transform.position.z);
     }
 
    void Climb()

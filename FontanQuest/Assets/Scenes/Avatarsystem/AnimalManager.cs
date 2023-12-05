@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AnimalManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class AnimalManager : MonoBehaviour
         DeactivateAllAnimals();
         GameObject pet = GameObject.Find("Pet");
         AnimalManager animalManager = pet.GetComponent<AnimalManager>();
-        animalManager.ActivateAnimal("Bear_Cub_8");   
+        animalManager.ActivateAnimal("Bear_Cub_8");
     }
 
     void DeactivateAllAnimals()
@@ -73,5 +74,64 @@ public class AnimalManager : MonoBehaviour
             }
             ActivateParentHierarchy(child, animalName); // Check sub-children
         }
+    }
+
+
+    // -------------------- animal selection
+    public enum DefaultCubsToSelect
+    {
+        Bear_Cub_1,
+        Deer_stag_1,
+        LowPoly_Boar_cub_1,
+        Fox_cub_1,
+        LowPoly_Hare_cub_1,
+        Wolf_cub_01
+    }
+    DefaultCubsToSelect defaultCubsToSelect;
+    int currentArrayPosition = 0;
+
+    public void nextPet()
+    {
+        currentArrayPosition++;
+        setCubByArray(currentArrayPosition);
+    }
+
+    public void previousPet()
+    {
+        currentArrayPosition--;
+        setCubByArray(currentArrayPosition);
+    }
+
+    public void setPet()
+    {
+        SaveGameObjects.PetSystem petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.PetSystem(false, false), "PetSystem", 1);
+        var enumValues = (DefaultCubsToSelect[])Enum.GetValues(typeof(DefaultCubsToSelect));
+        petSystem.selectedAnimal = enumValues[currentArrayPosition].ToString();
+        petSystem.animalSelected = true;
+        SaveGameMechanic.getSaveGameObjectByPrimaryKey(petSystem, "PetSytem", 1);
+
+        // new let's deactivate the buttons
+        
+    }
+
+    public void setCubByArray(int arrayPosition)
+    {
+        DeactivateAllAnimals();
+        // Get all values of DefaultCubsToSelect as an array
+        var enumValues = (DefaultCubsToSelect[])Enum.GetValues(typeof(DefaultCubsToSelect));
+
+        // cycle through the array if top or min is reached
+        if (arrayPosition >= enumValues.Length)
+        {
+            arrayPosition = 0;
+            currentArrayPosition = 0;
+        }
+        if (arrayPosition < 0)
+        {
+            arrayPosition = enumValues.Length - 1;
+            currentArrayPosition = enumValues.Length - 1;
+        }
+        // actually changing the array
+        ActivateAnimal(enumValues[arrayPosition].ToString());
     }
 }

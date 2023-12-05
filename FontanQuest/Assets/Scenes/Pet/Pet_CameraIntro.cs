@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
@@ -63,5 +64,10 @@ public class Pet_CameraIntro : MonoBehaviour
                 AnimationIsDone = true;
             }
         }
+    }
+
+    public static explicit operator ScriptableObject(Pet_CameraIntro v)
+    {
+        throw new NotImplementedException();
     }
 }

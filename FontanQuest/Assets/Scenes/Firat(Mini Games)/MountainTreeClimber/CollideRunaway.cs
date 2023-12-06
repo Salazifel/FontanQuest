@@ -37,7 +37,7 @@ public class CollideRunaway : MonoBehaviour
     IEnumerator InputTimer()
     {
         float timer = 0f;
-        float maxTime = 5f; // Adjust the time frame here (in seconds)
+        float maxTime = 2f; // Adjust the time frame here (in seconds)
 
         while (timer < maxTime)
         {
@@ -68,7 +68,7 @@ public class CollideRunaway : MonoBehaviour
 
     IEnumerator SlideObject(float direction)
     {
-        float slideDistance = 5f; // Adjust the distance to slide here
+        float slideDistance = 3f; // Adjust the distance to slide here
         float slideSpeed = 1f; // Adjust the speed of sliding
         float targetX = parentObject.transform.position.x + (slideDistance * direction);
         float startTime = Time.time;

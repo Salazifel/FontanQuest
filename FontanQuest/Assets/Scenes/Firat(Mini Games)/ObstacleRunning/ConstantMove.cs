@@ -1,75 +1,57 @@
 using UnityEngine;
-
 public class ConstantMove : MonoBehaviour
 {
-    public float speedVar = 0.3f;
+    public float speedVar = 0.5f;
     public float xValue = 0;
-    public float increm = 1.05f;
+    public float increm = 0.1f;
 
-    public float distance = 200.0f;
+    public float resetXPosition = 65f; // Define the X position for reset
+
     Vector3 initialPosition;
-    Vector3 initialPositionHare;
     GameObject playerHare;
 
-    bool isEnabled = true; // Renamed to avoid conflict with Unity's enabled property
+    bool isEnabled = true;
 
     void Start()
     {   
         isEnabled = true;
         playerHare = GameObject.Find("Player_Hare");
         initialPosition = transform.position; // Store the initial global position
-        if (playerHare != null)
-        {
-            initialPositionHare = playerHare.transform.position;
-        }
     }
 
     void Update()
     {
         if (playerHare != null)
         {
-            // float distanceToPlayerX = Mathf.Abs(transform.position.x - playerHare.transform.position.x);
-            // float distanceToPlayerZ = Mathf.Abs(transform.position.z - playerHare.transform.position.z);
+            if (isEnabled)
+            {
+                Move();
 
-            // if (distanceToPlayerZ <= 10.0f && distanceToPlayerX >= 200.0f)
-            // {
-            //     xValue = 0;
-            //     isEnabled = false; // Stop the object's movement
-            // }
-            // else
-            // {   
-                if (isEnabled == true)
-                {
-                    Move();
-
-                if (Mathf.Abs(transform.position.x - initialPosition.x) >= distance)
+                if (transform.position.x >= resetXPosition) // Check X position for reset
                 {
                     ResetObject();
                 }
-                }
-                else
+            }
+            else
+            {
+                if (Vector3.Distance(initialPosition, transform.position) < 0.1f)
                 {
-                    if (initialPositionHare == playerHare.transform.position){
-                        ResetObject();
-                    }
+                    ResetObject();
                 }
             }
         }
-    // }
+    }
 
-    // Add a method to reset the object
     public void ResetObject()
     {   
-        Vector3 newPosition = new Vector3(initialPosition.x, transform.position.y, transform.position.z);
-        transform.position = newPosition;
-        xValue = xValue/2;
-        Move();
+        transform.position = initialPosition; // Reset the position
+        xValue = xValue / 2;
         isEnabled = true; // Enable the script to resume movement
     }
 
     public void Move()
     {
         xValue += increm * speedVar * Time.deltaTime;
-        transform.position += new Vector3(xValue, 0, 0);  // Use position directly
+        transform.position += new Vector3(xValue, 0, 0);
     }
 }

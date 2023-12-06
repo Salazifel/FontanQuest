@@ -4,20 +4,28 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class ObjectHit : MonoBehaviour
-{   
+{      
+
+    // public ToggleObject toggleObject; // Reference to the ToggleObject script
+
     Vector3 initialPosition;
     private Animator animator;
     void Start()
     {
         initialPosition = transform.position; // Store the initial position
         animator = GetComponent<Animator>();
+        // toggleObject = GetComponent<ToggleObject>(); // Get reference to the ToggleObject script
+
     }
     private void OnCollisionEnter(Collision other) 
     {   
         if (other.gameObject.name == "carrot (1)")
-        {
+        {   
+            Time.timeScale = 0.0f; // Reset the time scale back to normal
+
             Debug.Log("You win!");
-            ExitGame();
+            
+            // ExitGame();
         }
         else
         {

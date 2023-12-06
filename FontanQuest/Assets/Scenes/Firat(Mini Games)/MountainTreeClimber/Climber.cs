@@ -16,6 +16,8 @@ public class Climber : MonoBehaviour
     float counter = 0.0f;
     GameObject FirstTile;
     GameObject LastTile;
+    GameObject PlayaObject;
+
     // public TextMeshProUGUI highScoreText; // Reference to the TextMeshPro text component
 
 
@@ -23,6 +25,7 @@ public class Climber : MonoBehaviour
     void Start()
     {   
 
+        PlayaObject = GameObject.Find("Playa");
         FirstTile = GameObject.Find("First_Tile");
         LastTile = GameObject.Find("Last_Tile");
         //GET SCREEN SIZE TO MAKE GAME MORE ADAPTIVE AND RESPONSIVE.(This may not be necessary right now, but keep it as a placeholder in case it is needed)
@@ -65,6 +68,7 @@ public class Climber : MonoBehaviour
         if (Vector3.Distance(transform.position, TriggerPosition) < 0.1f && gameObject.name != "Last_Tile")
         {
             transform.position = RespawnPosition;
+
         }
         else
         {

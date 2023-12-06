@@ -7,6 +7,7 @@ public class PunchManager : MonoBehaviour
 {
     [SerializeField] GameObject[] PunchPrefabs;
     [SerializeField] TextMeshProUGUI scoreText;
+    public FitnessBoxingUI fitnessBoxingUI;
     // int score = 0;
     // float NewScore = 0f;
     private static float NewScore = 0f;
@@ -42,5 +43,14 @@ public class PunchManager : MonoBehaviour
     {
         NewScore += points;
         scoreText.text = "Score:  " + NewScore.ToString();
+        if (NewScore > 1000)
+        {
+            FinishGame();
+        }
+    }
+
+    public void FinishGame()
+    {
+        fitnessBoxingUI.ChangeToComplete();
     }
 }

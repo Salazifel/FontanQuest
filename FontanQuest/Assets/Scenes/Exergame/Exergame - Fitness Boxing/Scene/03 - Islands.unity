@@ -6127,6 +6127,7 @@ MonoBehaviour:
   - {fileID: 5775921219926742520, guid: 2ab6f80f6e112164b896ea06383a02c2, type: 3}
   - {fileID: 367844237628963075, guid: 661d34a7f0e097f428046569cad34195, type: 3}
   scoreText: {fileID: 1140275950}
+  fitnessBoxingUI: {fileID: 135700368}
 --- !u!1001 &86756474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7953,6 +7954,7 @@ MonoBehaviour:
   - {fileID: 367844237628963075, guid: 661d34a7f0e097f428046569cad34195, type: 3}
   - {fileID: 81826915}
   scoreText: {fileID: 788884220}
+  fitnessBoxingUI: {fileID: 135700368}
 --- !u!1001 &150141875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35045,7 +35047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1265565617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36156,6 +36158,7 @@ MonoBehaviour:
   - {fileID: 367844237628963075, guid: 661d34a7f0e097f428046569cad34195, type: 3}
   - {fileID: 295074222}
   scoreText: {fileID: 788884220}
+  fitnessBoxingUI: {fileID: 135700368}
 --- !u!1001 &1318668536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48523,7 +48526,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2481, y: -461}
+  m_AnchoredPosition: {x: 2441, y: -528}
   m_SizeDelta: {x: 14.92, y: 9.85}
   m_Pivot: {x: 0.4999999, y: 0.5}
 --- !u!114 &1866292077
@@ -54037,6 +54040,7 @@ MonoBehaviour:
   - {fileID: 5775921219926742520, guid: 2ab6f80f6e112164b896ea06383a02c2, type: 3}
   - {fileID: 367844237628963075, guid: 661d34a7f0e097f428046569cad34195, type: 3}
   scoreText: {fileID: 1140275950}
+  fitnessBoxingUI: {fileID: 135700368}
 --- !u!1001 &2114115894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54560,7 +54564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2137676575
 MonoBehaviour:
   m_ObjectHideFlags: 0

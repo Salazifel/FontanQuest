@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using System;
+using UnityEditor;
 
 public class MessageWindow : MonoBehaviour
 {
@@ -42,6 +43,53 @@ public class MessageWindow : MonoBehaviour
         none
     }
 
+    public void SetupMessageWindowWorkerFunction(MessageObjectBlueprint.messageObject messageObject) {
+        // Set headline and main text
+        AdjustHeadline(messageObject.headlineText);
+        AdjustMainText(messageObject.mainTextContent);
+
+        // Set up buttons
+        DeactivateAllButtons();
+        if (!string.IsNullOrEmpty(messageObject.leftButtonText) && messageObject.leftButtonCallback != null)
+        {
+            // Enable the left button and set text and callback
+            AdjustButton(leftButton, messageObject.leftButtonText, messageObject.leftButtonCallback);
+        }
+
+        if (!string.IsNullOrEmpty(messageObject.rightButtonText) && messageObject.rightButtonCallback != null)
+        {
+            // Enable the right button and set text and callback
+            AdjustButton(rightButton, messageObject.rightButtonText, messageObject.rightButtonCallback);
+        }
+
+        if (!string.IsNullOrEmpty(messageObject.middleButtonText) && messageObject.middleButtonCallback != null)
+        {
+            // Only the middle button is to be shown
+            AdjustButton(middleButton, messageObject.middleButtonText, messageObject.middleButtonCallback);
+        }
+        else
+        {
+            // If middle button text is not set, assume two-button layout
+            middleButton.gameObject.SetActive(false);
+        }
+
+        // Select right character
+        ActivateCharacter(messageObject.character_Options);
+
+        // Select the right Animation
+        ActivateAnimation(messageObject.animations);
+
+        // Display Message
+        this.gameObject.SetActive(true);
+        if (CharacterDisplayRawImage) {
+            CharacterDisplayRawImage.SetActive(true);
+        }
+    }
+
+    public void SetupMessageWindowByMessageObject(MessageObjectBlueprint.messageObject messageObject) {
+        SetupMessageWindowWorkerFunction(messageObject);
+    }
+
     public void SetupMessageWindow(
     string headlineText,
     string mainTextContent,
@@ -54,46 +102,18 @@ public class MessageWindow : MonoBehaviour
     Character_options character_Options,
     AnimationLibrary.Animations animations)
     {
-        // Set headline and main text
-        AdjustHeadline(headlineText);
-        AdjustMainText(mainTextContent);
-
-        // Set up buttons
-        DeactivateAllButtons();
-        if (!string.IsNullOrEmpty(leftButtonText) && leftButtonCallback != null)
-        {
-            // Enable the left button and set text and callback
-            AdjustButton(leftButton, leftButtonText, leftButtonCallback);
-        }
-
-        if (!string.IsNullOrEmpty(rightButtonText) && rightButtonCallback != null)
-        {
-            // Enable the right button and set text and callback
-            AdjustButton(rightButton, rightButtonText, rightButtonCallback);
-        }
-
-        if (!string.IsNullOrEmpty(middleButtonText) && middleButtonCallback != null)
-        {
-            // Only the middle button is to be shown
-            AdjustButton(middleButton, middleButtonText, middleButtonCallback);
-        }
-        else
-        {
-            // If middle button text is not set, assume two-button layout
-            middleButton.gameObject.SetActive(false);
-        }
-
-        // Select right character
-        ActivateCharacter(character_Options);
-
-        // Select the right Animation
-        ActivateAnimation(animations);
-
-        // Display Message
-        this.gameObject.SetActive(true);
-        if (CharacterDisplayRawImage) {
-            CharacterDisplayRawImage.SetActive(true);
-        }
+        MessageObjectBlueprint.messageObject messageObject = new MessageObjectBlueprint.messageObject(
+                    headlineText, 
+                    mainTextContent, 
+                    leftButtonText, 
+                    leftButtonCallback, 
+                    rightButtonText, 
+                    rightButtonCallback, 
+                    middleButtonText, 
+                    middleButtonCallback, 
+                    character_Options, 
+                    animations);
+        SetupMessageWindowWorkerFunction(messageObject);
     }
 
     public void ActivateCharacter(Character_options characterOption)
@@ -273,4 +293,19 @@ public class MessageWindow : MonoBehaviour
 
     }
 
+    // ########################################### using the EVENTSYSTEM
+    private void OnEnable()
+    {
+        Message_EventSystem.OnMessageReceived += HandleMessage;
+    }
+
+    private void OnDisable()
+    {
+        Message_EventSystem.OnMessageReceived -= HandleMessage;
+    }
+
+    private void HandleMessage(MessageObjectBlueprint.messageObject messageObject)
+    {
+        SetupMessageWindowByMessageObject(messageObject);
+    }
 }

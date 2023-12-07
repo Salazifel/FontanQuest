@@ -9,11 +9,11 @@ public class CastleMainUI : MonoBehaviour
     GameObject RotateButton;
     GameObject CharacterDisplayRawImage;
 
-    void Start()
+    void Awake()
     {
         MessageWindow = GameObject.Find("UI_Elements/MessageWindow");
         RotateButton = GameObject.Find("UI_Elements/RotateButton");
-        CharacterDisplayRawImage = GameObject.Find("UI_Elements/CharacterDisplayRawImage");
+        //CharacterDisplayRawImage = GameObject.Find("UI_Elements/CharacterDisplayRawImage");
         UI_Elements = GameObject.Find("UI_Elements");
 
         DeactivateUIElements();
@@ -29,7 +29,7 @@ public class CastleMainUI : MonoBehaviour
     public void DeactivateMessageWindow()
     {
         MessageWindow.SetActive(false);
-        CharacterDisplayRawImage.SetActive(false);
+        //CharacterDisplayRawImage.SetActive(false);
     }
 
     public GameObject GetMessageWindow()

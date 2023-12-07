@@ -162,4 +162,16 @@ public class SaveGameObjects : MonoBehaviour
             Debug.Log(onBoardingDone);
         }
     }
+
+    [Serializable]
+
+    public class CastleOnBoardingSystem: MainSaveObject
+    {
+        public Boolean onBoardingDone;
+
+        public CastleOnBoardingSystem (Boolean _onBoardingDone)
+        {
+            onBoardingDone = _onBoardingDone;
+        }
+    }
 }

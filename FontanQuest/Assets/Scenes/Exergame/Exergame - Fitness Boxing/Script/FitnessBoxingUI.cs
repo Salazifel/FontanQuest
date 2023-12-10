@@ -50,7 +50,7 @@ public class FitnessBoxingUI : MonoBehaviour
 
     public void SaveFitnessBoxingData()
     {
-        // Save Asian Monk game data
+     
         SaveGameMechanic.saveSaveGameObject(fitnessBoxingSavingGame, "AsianMonkSavingGame", fitnessBoxingSavingGame.primaryKey);
     }
 }

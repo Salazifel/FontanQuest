@@ -52,5 +52,6 @@ public class PunchManager : MonoBehaviour
     public void FinishGame()
     {
         fitnessBoxingUI.ChangeToComplete();
+        fitnessBoxingUI.SaveFitnessBoxingData();
     }
 }

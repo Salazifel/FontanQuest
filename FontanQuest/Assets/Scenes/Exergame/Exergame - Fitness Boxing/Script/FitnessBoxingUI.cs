@@ -8,7 +8,7 @@ public class FitnessBoxingUI : MonoBehaviour
     public Canvas StoryCanvas;
     public Canvas GameCanvas;
     public Canvas FinishCanvas;
-
+    SaveGameObjects.FitnessBoxingSavingGame fitnessBoxingSavingGame;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,15 @@ public class FitnessBoxingUI : MonoBehaviour
         StoryCanvas.gameObject.SetActive(true);
         GameCanvas.gameObject.SetActive(false);
         FinishCanvas.gameObject.SetActive(false);
+
+        fitnessBoxingSavingGame = (SaveGameObjects.FitnessBoxingSavingGame)SaveGameMechanic.getSaveGameObjectByPrimaryKey(
+            new SaveGameObjects.FitnessBoxingSavingGame(0), "FitnessBoxingSavingGame", 1);
+
+        if (fitnessBoxingSavingGame == null)
+        {
+            // If no saved data is found, create a new instance
+            fitnessBoxingSavingGame = new SaveGameObjects.FitnessBoxingSavingGame(0);
+        }
 
     }
 
@@ -37,5 +46,11 @@ public class FitnessBoxingUI : MonoBehaviour
         StoryCanvas.gameObject.SetActive(false);
         GameCanvas.gameObject.SetActive(false);
         FinishCanvas.gameObject.SetActive(true);
+    }
+
+    public void SaveFitnessBoxingData()
+    {
+        // Save Asian Monk game data
+        SaveGameMechanic.saveSaveGameObject(fitnessBoxingSavingGame, "AsianMonkSavingGame", fitnessBoxingSavingGame.primaryKey);
     }
 }

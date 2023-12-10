@@ -126,6 +126,42 @@ public class SaveGameObjects : MonoBehaviour
     }
 
     [Serializable]
+    public class AsianMonkSavingGame : MainSaveObject
+    {
+        public int currentLevel;
+
+        public AsianMonkSavingGame(int _currentLevel)
+        {
+            currentLevel = _currentLevel;
+            GameSaveObjectType = "AsianMonkSavingGame";
+        }
+
+        public override void Print()
+        {
+            Debug.Log(primaryKey + " level: " + currentLevel.ToString());
+        }
+    }
+
+
+    [Serializable]
+
+    public class FitnessBoxingSavingGame : MainSaveObject
+    {
+        public int currentLevel;
+
+        public FitnessBoxingSavingGame(int _currentLevel)
+        {
+            currentLevel = _currentLevel;
+            GameSaveObjectType = "FitnessBoxingSavingGame";
+        }
+
+        public override void Print()
+        {
+            Debug.Log(primaryKey + " level: " + currentLevel.ToString());
+        }
+    }
+
+    [Serializable]
 
     public class AvatarSystem : MainSaveObject
     {

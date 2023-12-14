@@ -40,6 +40,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("DeadLIne"))
+        {
+            Debug.Log("Lose!");
+        }
+    }
+
     // Called when the player jumps on a special platform
     public void OnSpecialPlatformJump()
     {

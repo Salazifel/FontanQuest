@@ -36,12 +36,6 @@ public class AvatarsystemManager : MonoBehaviour
         LoadAvatarSytem();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void LoadAvatarSytem()
     {
 
@@ -66,6 +60,5 @@ public class AvatarsystemManager : MonoBehaviour
         messageWindow.DeactivateMessageWindow();
         NextCharacterButton.SetActive(true);
         PreviousCharacterButton.SetActive(true);
-
     }
 }

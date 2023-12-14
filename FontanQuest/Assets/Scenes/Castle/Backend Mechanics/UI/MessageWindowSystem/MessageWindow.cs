@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using System;
+using UnityEditor;
 
 public class MessageWindow : MonoBehaviour
 {
@@ -36,10 +37,57 @@ public class MessageWindow : MonoBehaviour
         Character_Male_Baird,
         Character_Male_King,
         Character_Male_Peasant_01,
-        Character_Male_Peasant_02,
+        Character_Male_Rouge_01,
         Character_Male_Sorcerer,
         Character_Male_Wizard,
         none
+    }
+
+    public void SetupMessageWindowWorkerFunction(MessageObjectBlueprint.messageObject messageObject) {
+        // Set headline and main text
+        AdjustHeadline(messageObject.headlineText);
+        AdjustMainText(messageObject.mainTextContent);
+
+        // Set up buttons
+        DeactivateAllButtons();
+        if (!string.IsNullOrEmpty(messageObject.leftButtonText) && messageObject.leftButtonCallback != null)
+        {
+            // Enable the left button and set text and callback
+            AdjustButton(leftButton, messageObject.leftButtonText, messageObject.leftButtonCallback);
+        }
+
+        if (!string.IsNullOrEmpty(messageObject.rightButtonText) && messageObject.rightButtonCallback != null)
+        {
+            // Enable the right button and set text and callback
+            AdjustButton(rightButton, messageObject.rightButtonText, messageObject.rightButtonCallback);
+        }
+
+        if (!string.IsNullOrEmpty(messageObject.middleButtonText) && messageObject.middleButtonCallback != null)
+        {
+            // Only the middle button is to be shown
+            AdjustButton(middleButton, messageObject.middleButtonText, messageObject.middleButtonCallback);
+        }
+        else
+        {
+            // If middle button text is not set, assume two-button layout
+            middleButton.gameObject.SetActive(false);
+        }
+
+        // Select right character
+        ActivateCharacter(messageObject.character_Options);
+
+        // Select the right Animation
+        ActivateAnimation(messageObject.animations);
+
+        // Display Message
+        this.gameObject.SetActive(true);
+        if (CharacterDisplayRawImage) {
+            CharacterDisplayRawImage.SetActive(true);
+        }
+    }
+
+    public void SetupMessageWindowByMessageObject(MessageObjectBlueprint.messageObject messageObject) {
+        SetupMessageWindowWorkerFunction(messageObject);
     }
 
     public void SetupMessageWindow(
@@ -54,46 +102,18 @@ public class MessageWindow : MonoBehaviour
     Character_options character_Options,
     AnimationLibrary.Animations animations)
     {
-        // Set headline and main text
-        AdjustHeadline(headlineText);
-        AdjustMainText(mainTextContent);
-
-        // Set up buttons
-        DeactivateAllButtons();
-        if (!string.IsNullOrEmpty(leftButtonText) && leftButtonCallback != null)
-        {
-            // Enable the left button and set text and callback
-            AdjustButton(leftButton, leftButtonText, leftButtonCallback);
-        }
-
-        if (!string.IsNullOrEmpty(rightButtonText) && rightButtonCallback != null)
-        {
-            // Enable the right button and set text and callback
-            AdjustButton(rightButton, rightButtonText, rightButtonCallback);
-        }
-
-        if (!string.IsNullOrEmpty(middleButtonText) && middleButtonCallback != null)
-        {
-            // Only the middle button is to be shown
-            AdjustButton(middleButton, middleButtonText, middleButtonCallback);
-        }
-        else
-        {
-            // If middle button text is not set, assume two-button layout
-            middleButton.gameObject.SetActive(false);
-        }
-
-        // Select right character
-        ActivateCharacter(character_Options);
-
-        // Select the right Animation
-        ActivateAnimation(animations);
-
-        // Display Message
-        this.gameObject.SetActive(true);
-        if (CharacterDisplayRawImage) {
-            CharacterDisplayRawImage.SetActive(true);
-        }
+        MessageObjectBlueprint.messageObject messageObject = new MessageObjectBlueprint.messageObject(
+                    headlineText, 
+                    mainTextContent, 
+                    leftButtonText, 
+                    leftButtonCallback, 
+                    rightButtonText, 
+                    rightButtonCallback, 
+                    middleButtonText, 
+                    middleButtonCallback, 
+                    character_Options, 
+                    animations);
+        SetupMessageWindowWorkerFunction(messageObject);
     }
 
     public void ActivateCharacter(Character_options characterOption)
@@ -104,7 +124,6 @@ public class MessageWindow : MonoBehaviour
         // Check if the selected character is 'none'
         if (characterOption == Character_options.none)
         {
-            // Handle the 'none' case if needed
             return;
         }
 
@@ -170,18 +189,34 @@ public class MessageWindow : MonoBehaviour
         // Get all the characters
         CharacterPrefabs = GameObject.Find("CharacterPrefabs");
 
-        CharacterDictionary.Add("Character_Female_Druid", GameObject.Find("Character_Female_Druid"));
-        CharacterDictionary.Add("Character_Female_Gypsy", GameObject.Find("Character_Female_Gypsy"));
-        CharacterDictionary.Add("Character_Female_Peasant_01", GameObject.Find("Character_Female_Peasant_01"));
-        CharacterDictionary.Add("Character_Female_Peasant_02", GameObject.Find("Character_Female_Peasant_02"));
-        CharacterDictionary.Add("Character_Female_Queen", GameObject.Find("Character_Female_Queen"));
-        CharacterDictionary.Add("Character_Female_Witch", GameObject.Find("Character_Female_Witch"));
-        CharacterDictionary.Add("Character_Male_Baird", GameObject.Find("Character_Male_Baird"));
-        CharacterDictionary.Add("Character_Male_King", GameObject.Find("Character_Male_King"));
-        CharacterDictionary.Add("Character_Male_Peasant_01", GameObject.Find("Character_Male_Peasant_01"));
-        CharacterDictionary.Add("Character_Male_Peasant_02", GameObject.Find("Character_Male_Peasant_02"));
-        CharacterDictionary.Add("Character_Male_Sorcerer", GameObject.Find("Character_Male_Sorcerer"));
-        CharacterDictionary.Add("Character_Male_Wizard", GameObject.Find("Character_Male_Wizard"));
+        // List of character names
+        string[] characterNames = {
+            "Character_Female_Druid", "Character_Female_Gypsy", 
+            "Character_Female_Peasant_01", "Character_Female_Peasant_02", 
+            "Character_Female_Queen", "Character_Female_Witch", 
+            "Character_Male_Baird", "Character_Male_King", 
+            "Character_Male_Peasant_01", "Character_Male_Rouge_01", 
+            "Character_Male_Sorcerer", "Character_Male_Wizard"
+        };
+
+        // Find all GameObjects with the tag "MessageWindow"
+        GameObject[] allObjectsWithTag = GameObject.FindGameObjectsWithTag("MessageWindow");
+
+        // Iterate through the character names
+        foreach (string characterName in characterNames)
+        {
+            // Iterate through each GameObject with the tag
+            foreach (GameObject obj in allObjectsWithTag)
+            {
+                // Check if the GameObject's name matches the character name
+                if (obj.name == characterName)
+                {
+                    // Add the found object to the dictionary and break the inner loop
+                    CharacterDictionary.Add(characterName, obj);
+                    break;
+                }
+            }
+        }
 
         CharacterDisplayRawImage = GameObject.Find("CharacterDisplayRawImage");
 
@@ -273,4 +308,19 @@ public class MessageWindow : MonoBehaviour
 
     }
 
+    // ########################################### using the EVENTSYSTEM
+    private void OnEnable()
+    {
+        Message_EventSystem.OnMessageReceived += HandleMessage;
+    }
+
+    private void OnDisable()
+    {
+        Message_EventSystem.OnMessageReceived -= HandleMessage;
+    }
+
+    private void HandleMessage(MessageObjectBlueprint.messageObject messageObject)
+    {
+        SetupMessageWindowByMessageObject(messageObject);
+    }
 }

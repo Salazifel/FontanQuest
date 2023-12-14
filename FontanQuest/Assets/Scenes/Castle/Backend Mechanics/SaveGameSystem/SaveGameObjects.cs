@@ -141,4 +141,37 @@ public class SaveGameObjects : MonoBehaviour
             base.Print();
         }
     }
+
+    [Serializable]
+
+    public class PetSystem : MainSaveObject
+    {
+        public Boolean onBoardingDone;
+        public Boolean animalSelected;
+        public string selectedAnimal;
+
+        public PetSystem(Boolean _onBoardingDone, Boolean _animalSelected)
+        {
+            onBoardingDone = _onBoardingDone;
+            animalSelected = _animalSelected;
+        }
+
+        public override void Print()
+        {
+            base.Print();
+            Debug.Log(onBoardingDone);
+        }
+    }
+
+    [Serializable]
+
+    public class CastleOnBoardingSystem: MainSaveObject
+    {
+        public Boolean onBoardingDone;
+
+        public CastleOnBoardingSystem (Boolean _onBoardingDone)
+        {
+            onBoardingDone = _onBoardingDone;
+        }
+    }
 }

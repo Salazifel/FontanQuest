@@ -27,7 +27,7 @@ public class BuildCityWalls : MonoBehaviour
             // Call the SetupMessageWindow function
             messageWindow.SetupMessageWindow(
                 "Mauer",
-                "Sollen wir eine Stadtmauer bauen? Das kostet " + BuildingCosts.CityWallCost + " Gold. MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM MMMMMMMMMMMMMMMMMM MMMMMMMMMMMMMMMMMM MMMMMMMMMMMMMMMMMMMM MMMMMMMMMMMMMMMMMMMMM",
+                "Sollen wir eine Stadtmauer bauen?",
                 "Abrechen",
                 leftAction,
                 "Bauen",
@@ -55,6 +55,21 @@ public class BuildCityWalls : MonoBehaviour
             GameObject.Find("GameData").GetComponent<LoadingSavingBuildings>().ActivateCityWalls();
             SaveGameMechanic.saveSaveGameObject(builtBuildings, "builtBuildings", 1);
             castleMainUIScript.DeactivateMessageWindow();
+   
+
+            Message_EventSystem.SendMessage(new MessageObjectBlueprint.messageObject(
+                "Glückwunsch!",
+                "Vielen Dank, dass du die Mauer mit mir gebaut hast. Nun sind wir sicher in der Stadt",
+                null,
+                null,
+                null,
+                null,
+                "Gerne",
+                messageWindow.DeactivateMessageWindow,
+                MessageWindow.Character_options.Character_Male_Peasant_01,
+                AnimationLibrary.Animations.Talk
+            ));
+
         } else {
             Debug.Log("Not enough coins");
         }

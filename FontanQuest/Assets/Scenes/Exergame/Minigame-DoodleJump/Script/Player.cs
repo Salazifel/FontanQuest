@@ -10,9 +10,8 @@ public class Player : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     int score;
     float scoreTime;
-    float movement = 0f;
     Rigidbody2D rb;
-    // Start is called before the first frame update
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,28 +19,46 @@ public class Player : MonoBehaviour
         scoreTime = 0f;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        movement = Input.GetAxis("Horizontal") * movementSpeed;
         UpdateScore();
     }
 
     void FixedUpdate()
     {
-        Vector2 velocity = rb.velocity;
-        velocity.x = movement;
-        rb.velocity = velocity;
+        // No need for keyboard input, as movement is now handled by buttons
     }
 
     void UpdateScore()
     {
         scoreTime += Time.deltaTime;
-        if(scoreTime>1f)
+        if (scoreTime > 1f)
         {
             score++;
             scoreTime = 0f;
             scoreText.text = score.ToString() + " Level";
         }
     }
+
+    // Called when the player jumps on a special platform
+    public void OnSpecialPlatformJump()
+    {
+        // Increment the score rapidly for special platforms
+        for (int i = 0; i < 10; i++)
+        {
+            score++;
+        }
+
+        scoreText.text = score.ToString() + " Level";
+    }
+
+    // Move the player based on input (-1 for left, 1 for right)
+    public void MovePlayer(float direction)
+    {
+        float horizontalMovement = direction * movementSpeed;
+        Vector2 velocity = rb.velocity;
+        velocity.x = horizontalMovement;
+        rb.velocity = velocity;
+    }
+
 }

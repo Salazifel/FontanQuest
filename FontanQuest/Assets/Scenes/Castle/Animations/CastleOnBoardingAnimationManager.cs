@@ -24,11 +24,16 @@ public class CastleOnBoardingAnimationManager : MonoBehaviour
     MessageWindow messageWindowScript;
 
     GameObject Advisor;
+    GameObject LoadDiningSceneMusic;
+
+    private int lenghtOfMessagePresentation = 2;
 
     void Start() {
         messageWindow = GameObject.Find("MessageWindow");
         messageWindowScript = messageWindow.GetComponent<MessageWindow>();
         messageWindowScript.DeactivateMessageWindow();
+
+        LoadDiningSceneMusic = GameObject.Find("LoadDiningSceneMusic");
 
         cameraMovementAnimation1 = GameObject.Find("IntermediatePosition").GetComponent<CameraMovementAnimation>();
         cameraMovementAnimation2 = GameObject.Find("FinalPosition").GetComponent<CameraMovementAnimation>();
@@ -111,73 +116,75 @@ public class CastleOnBoardingAnimationManager : MonoBehaviour
 
     IEnumerator Action2()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(lenghtOfMessagePresentation);
         speechBubble2.SetActive(true);
         StartCoroutine(Action3());
     }
 
     IEnumerator Action3()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(lenghtOfMessagePresentation);
         speechBubble3.SetActive(true);
         StartCoroutine(Action4());
     }
 
     IEnumerator Action4()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(lenghtOfMessagePresentation);
+        LoadDiningSceneMusic.SetActive(false);
         speechBubble4.SetActive(true);
         StartCoroutine(Action5());
     }
     IEnumerator Action5()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(lenghtOfMessagePresentation);
         speechBubble5.SetActive(true);
         StartCoroutine(Action6());
     }
 
     IEnumerator Action6()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(lenghtOfMessagePresentation);
         speechBubble6.SetActive(true);
         StartCoroutine(Action7());
     }
 
     IEnumerator Action7()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(lenghtOfMessagePresentation);
         speechBubble7.SetActive(true);
         StartCoroutine(Action8());
     }
 
     IEnumerator Action8()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(lenghtOfMessagePresentation);
         speechBubble8.SetActive(true);
         StartCoroutine(Action9());
     }
 
     IEnumerator Action9()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(lenghtOfMessagePresentation);
         speechBubble9.SetActive(true);
         StartCoroutine(Action10());
     }
 
     IEnumerator Action10()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(lenghtOfMessagePresentation);
         speechBubble10.SetActive(true);
         StartCoroutine(Action11());
     }
 
     IEnumerator Action11()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(lenghtOfMessagePresentation);
         HideAllSpeechBubbles();
+        Advisor.SetActive(false);
         messageWindowScript.SetupMessageWindowByMessageObject(new MessageObjectBlueprint.messageObject(
             "Ein Auftrag",
-            "Nun, der König ist etwas kompliziert ... wir sollten ihm lieber ein paar Freunde suchen",
+            "Nun, der Koenig ist etwas kompliziert ... wir sollten ihm lieber ein paar Freunde suchen",
             null,
             null,
             null,

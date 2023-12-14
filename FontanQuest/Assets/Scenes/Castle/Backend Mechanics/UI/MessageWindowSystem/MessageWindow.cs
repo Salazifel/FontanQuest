@@ -37,7 +37,7 @@ public class MessageWindow : MonoBehaviour
         Character_Male_Baird,
         Character_Male_King,
         Character_Male_Peasant_01,
-        Character_Male_Peasant_02,
+        Character_Male_Rouge_01,
         Character_Male_Sorcerer,
         Character_Male_Wizard,
         none
@@ -124,7 +124,6 @@ public class MessageWindow : MonoBehaviour
         // Check if the selected character is 'none'
         if (characterOption == Character_options.none)
         {
-            // Handle the 'none' case if needed
             return;
         }
 
@@ -190,18 +189,34 @@ public class MessageWindow : MonoBehaviour
         // Get all the characters
         CharacterPrefabs = GameObject.Find("CharacterPrefabs");
 
-        CharacterDictionary.Add("Character_Female_Druid", GameObject.Find("Character_Female_Druid"));
-        CharacterDictionary.Add("Character_Female_Gypsy", GameObject.Find("Character_Female_Gypsy"));
-        CharacterDictionary.Add("Character_Female_Peasant_01", GameObject.Find("Character_Female_Peasant_01"));
-        CharacterDictionary.Add("Character_Female_Peasant_02", GameObject.Find("Character_Female_Peasant_02"));
-        CharacterDictionary.Add("Character_Female_Queen", GameObject.Find("Character_Female_Queen"));
-        CharacterDictionary.Add("Character_Female_Witch", GameObject.Find("Character_Female_Witch"));
-        CharacterDictionary.Add("Character_Male_Baird", GameObject.Find("Character_Male_Baird"));
-        CharacterDictionary.Add("Character_Male_King", GameObject.Find("Character_Male_King"));
-        CharacterDictionary.Add("Character_Male_Peasant_01", GameObject.Find("Character_Male_Peasant_01"));
-        CharacterDictionary.Add("Character_Male_Peasant_02", GameObject.Find("Character_Male_Peasant_02"));
-        CharacterDictionary.Add("Character_Male_Sorcerer", GameObject.Find("Character_Male_Sorcerer"));
-        CharacterDictionary.Add("Character_Male_Wizard", GameObject.Find("Character_Male_Wizard"));
+        // List of character names
+        string[] characterNames = {
+            "Character_Female_Druid", "Character_Female_Gypsy", 
+            "Character_Female_Peasant_01", "Character_Female_Peasant_02", 
+            "Character_Female_Queen", "Character_Female_Witch", 
+            "Character_Male_Baird", "Character_Male_King", 
+            "Character_Male_Peasant_01", "Character_Male_Rouge_01", 
+            "Character_Male_Sorcerer", "Character_Male_Wizard"
+        };
+
+        // Find all GameObjects with the tag "MessageWindow"
+        GameObject[] allObjectsWithTag = GameObject.FindGameObjectsWithTag("MessageWindow");
+
+        // Iterate through the character names
+        foreach (string characterName in characterNames)
+        {
+            // Iterate through each GameObject with the tag
+            foreach (GameObject obj in allObjectsWithTag)
+            {
+                // Check if the GameObject's name matches the character name
+                if (obj.name == characterName)
+                {
+                    // Add the found object to the dictionary and break the inner loop
+                    CharacterDictionary.Add(characterName, obj);
+                    break;
+                }
+            }
+        }
 
         CharacterDisplayRawImage = GameObject.Find("CharacterDisplayRawImage");
 

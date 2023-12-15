@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
 
     public void GameOver()
     {
-        DoodleJumpController.ChangeToComplete();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("DoodleJumpFinishScene");
     }
 
     // Move the player based on input (-1 for left, 1 for right)

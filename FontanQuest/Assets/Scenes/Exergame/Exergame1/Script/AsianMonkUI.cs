@@ -8,6 +8,7 @@ public class AsianMonkUI : MonoBehaviour
     public Canvas StartMenuCanvas;
     public Canvas GameCanvas;
     public Canvas FinishCanvas;
+    SaveGameObjects.AsianMonkSavingGame asianMonkSavingGame;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,16 @@ public class AsianMonkUI : MonoBehaviour
         StartMenuCanvas.gameObject.SetActive(false);
         GameCanvas.gameObject.SetActive(false);
         FinishCanvas.gameObject.SetActive(false);
+
+        // Load Asian Monk game data
+        asianMonkSavingGame = (SaveGameObjects.AsianMonkSavingGame)SaveGameMechanic.getSaveGameObjectByPrimaryKey(
+            new SaveGameObjects.AsianMonkSavingGame(0), "AsianMonkSavingGame", 1);
+
+        if (asianMonkSavingGame == null)
+        {
+            // If no saved data is found, create a new instance
+            asianMonkSavingGame = new SaveGameObjects.AsianMonkSavingGame(0);
+        }
     }
 
     // Update is called once per frame
@@ -49,6 +60,10 @@ public class AsianMonkUI : MonoBehaviour
         FinishCanvas.gameObject.SetActive(true);
     }
 
-
+    public void SaveAsianMonkData()
+    {
+        // Save Asian Monk game data
+        SaveGameMechanic.saveSaveGameObject(asianMonkSavingGame, "AsianMonkSavingGame", asianMonkSavingGame.primaryKey);
+    }
 
 }

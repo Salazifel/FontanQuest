@@ -57,6 +57,7 @@ public class TimerController : MonoBehaviour
     void CompleteGame()
     {
         asianMonkUI.ChangeToComplete();
+        asianMonkUI.SaveAsianMonkData();
     }
 }
 

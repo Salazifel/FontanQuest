@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     int score;
     float scoreTime;
     Rigidbody2D rb;
+    public DoodleJumpController DoodleJumpController;
 
     void Start()
     {
@@ -44,7 +45,7 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("DeadLIne"))
         {
-            Debug.Log("Lose!");
+            GameOver();
         }
     }
 
@@ -58,6 +59,11 @@ public class Player : MonoBehaviour
         }
 
         scoreText.text = score.ToString() + " Level";
+    }
+
+    public void GameOver()
+    {
+        DoodleJumpController.ChangeToComplete();
     }
 
     // Move the player based on input (-1 for left, 1 for right)

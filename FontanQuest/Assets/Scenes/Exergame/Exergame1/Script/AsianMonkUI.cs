@@ -24,12 +24,12 @@ public class AsianMonkUI : MonoBehaviour
 
         // Load Asian Monk game data
         asianMonkSavingGame = (SaveGameObjects.AsianMonkSavingGame)SaveGameMechanic.getSaveGameObjectByPrimaryKey(
-            new SaveGameObjects.AsianMonkSavingGame(0, 3000f), "AsianMonkSavingGame", 1);
+            new SaveGameObjects.AsianMonkSavingGame(0, 300.0f), "AsianMonkSavingGame", 1);
 
         if (asianMonkSavingGame == null)
         {
             // If no saved data is found, create a new instance
-            asianMonkSavingGame = new SaveGameObjects.AsianMonkSavingGame(0, 3000f);
+            asianMonkSavingGame = new SaveGameObjects.AsianMonkSavingGame(0, 300.0f);
         }
     }
 
@@ -50,9 +50,10 @@ public class AsianMonkUI : MonoBehaviour
 
     public void ChangeToGame()
     {
+        Debug.Log("Changing to GameCanvas");  // Add this line
         // Increase level and adjust speed
         asianMonkSavingGame.currentLevel++;
-        asianMonkSavingGame.obstacleSpeed += 20.0f; // Adjust this value based on your preference
+        asianMonkSavingGame.obstacleSpeed *= 1.2f; // Adjust this value based on your preference
 
         // Save Asian Monk game data
         SaveGameMechanic.saveSaveGameObject(asianMonkSavingGame, "AsianMonkSavingGame", asianMonkSavingGame.primaryKey);
@@ -74,6 +75,14 @@ public class AsianMonkUI : MonoBehaviour
         StartMenuCanvas.gameObject.SetActive(false);
         GameCanvas.gameObject.SetActive(false);
         FinishCanvas.gameObject.SetActive(true);
+    }
+
+    public void ChangeToStory()
+    {
+        StoryCanvas.gameObject.SetActive(true);
+        StartMenuCanvas.gameObject.SetActive(false);
+        GameCanvas.gameObject.SetActive(false);
+        FinishCanvas.gameObject.SetActive(false);
     }
 
     public void SaveAsianMonkData()

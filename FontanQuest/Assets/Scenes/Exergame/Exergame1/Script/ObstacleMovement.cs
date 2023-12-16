@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObstacleMovement : MonoBehaviour
 {
-    public float speed = 300f; // Adjust this to control the speed of the obstacle
+    // public float speed = 1000.0f; // Adjust this to control the speed of the obstacle
     SaveGameObjects.AsianMonkSavingGame asianMonkSavingGame;
 
     void Start()
@@ -25,7 +25,7 @@ public class ObstacleMovement : MonoBehaviour
     {
         if (asianMonkSavingGame != null)
         {
-            Vector3 movement = Vector3.back * asianMonkSavingGame.obstacleSpeed * Time.deltaTime;
+            Vector3 movement = Vector3.back * asianMonkSavingGame.obstacleSpeed * Time.deltaTime * 1.2f;
             transform.Translate(movement);
         }
         else

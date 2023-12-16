@@ -129,18 +129,21 @@ public class SaveGameObjects : MonoBehaviour
     public class AsianMonkSavingGame : MainSaveObject
     {
         public int currentLevel;
+        public float obstacleSpeed; // New variable to store obstacle speed
 
-        public AsianMonkSavingGame(int _currentLevel)
+        public AsianMonkSavingGame(int _currentLevel, float _obstacleSpeed)
         {
             currentLevel = _currentLevel;
+            obstacleSpeed = _obstacleSpeed;
             GameSaveObjectType = "AsianMonkSavingGame";
         }
 
         public override void Print()
         {
-            Debug.Log(primaryKey + " level: " + currentLevel.ToString());
+            Debug.Log(primaryKey + " level: " + currentLevel.ToString() + " speed: " + obstacleSpeed.ToString());
         }
     }
+
 
 
     [Serializable]

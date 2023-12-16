@@ -4,14 +4,33 @@ using UnityEngine;
 
 public class ObstacleMovement : MonoBehaviour
 {
-    public float speed = 5f; // Adjust this to control the speed of the obstacle
+    public float speed = 300f; // Adjust this to control the speed of the obstacle
+    SaveGameObjects.AsianMonkSavingGame asianMonkSavingGame;
 
-    // Update is called once per frame
+    void Start()
+    {
+        // Find the AsianMonkUI script in the scene and get the reference to asianMonkSavingGame
+        asianMonkSavingGame = FindObjectOfType<AsianMonkUI>().asianMonkSavingGame;
+
+        // Alternatively, you can assign the reference through inspector if it's already set there.
+        // asianMonkSavingGame = GetComponent<AsianMonkUI>().asianMonkSavingGame;
+
+        if (asianMonkSavingGame == null)
+        {
+            Debug.LogWarning("AsianMonkSavingGame reference not found.");
+        }
+    }
+
     void Update()
     {
-        Vector3 movement = Vector3.back * speed * Time.deltaTime;
-        transform.Translate(movement);
-
+        if (asianMonkSavingGame != null)
+        {
+            Vector3 movement = Vector3.back * asianMonkSavingGame.obstacleSpeed * Time.deltaTime;
+            transform.Translate(movement);
+        }
+        else
+        {
+            Debug.LogWarning("AsianMonkSavingGame is not initialized.");
+        }
     }
 }
-

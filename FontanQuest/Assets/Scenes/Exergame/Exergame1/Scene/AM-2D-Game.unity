@@ -714,7 +714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 616131786392999559, guid: 3731599bc741b9e47ba67a3d3dd6db98,
     type: 3}
-  spawnInterval: 6
+  spawnInterval: 2
 --- !u!1 &235687209
 GameObject:
   m_ObjectHideFlags: 0
@@ -5337,7 +5337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 1215166025353205516, guid: ab16d0fab5087744f96f8b39c1f65a52,
     type: 3}
-  spawnInterval: 12
+  spawnInterval: 2
 --- !u!1 &1518252112
 GameObject:
   m_ObjectHideFlags: 0
@@ -5428,7 +5428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 1215166025353205516, guid: ab16d0fab5087744f96f8b39c1f65a52,
     type: 3}
-  spawnInterval: 16
+  spawnInterval: 2
 --- !u!1 &1536847528
 GameObject:
   m_ObjectHideFlags: 0
@@ -5531,7 +5531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 1215166025353205516, guid: ab16d0fab5087744f96f8b39c1f65a52,
     type: 3}
-  spawnInterval: 10
+  spawnInterval: 2
 --- !u!1 &1590486410
 GameObject:
   m_ObjectHideFlags: 0

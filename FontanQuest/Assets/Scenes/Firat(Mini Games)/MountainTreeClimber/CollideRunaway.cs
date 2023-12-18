@@ -27,47 +27,54 @@ public class CollideRunaway : MonoBehaviour
     {
         if (other.gameObject.tag == "Animals")
         {
-            Time.timeScale = 0.4f;
+            Time.timeScale = 0.05f;
             Debug.Log("DANGER!!!");
 
             StartCoroutine(InputTimer());
         }
     }
+IEnumerator InputTimer()
+{
+    float startTime = Time.realtimeSinceStartup;
+    float maxTime = 5f; // Adjust the time frame here (in seconds)
+    float timeLeft = maxTime;
 
-    IEnumerator InputTimer()
+    while (Time.realtimeSinceStartup - startTime < maxTime)
     {
-        float timer = 0f;
-        float maxTime = 2f; // Adjust the time frame here (in seconds)
+        timeLeft = maxTime - (Time.realtimeSinceStartup - startTime);
+        int roundedTime = Mathf.CeilToInt(timeLeft); // Round up the time left
 
-        while (timer < maxTime)
+        // Display countdown message
+        Debug.Log($"You have {roundedTime} seconds!");
+
+        if (Input.GetAxis("Fire1") > 0.1f)
         {
-            if (Input.GetAxis("Vertical") > 0.1f)
-            {
-                inputReceived = true;
-                break; // Exit the loop if input is received
-            }
-
-            timer += Time.deltaTime;
-            yield return null;
+            inputReceived = true;
+            break; // Exit the loop if input is received
         }
 
-        if (!inputReceived)
-        {
-            Debug.Log("No input received within the time frame");
-            Time.timeScale = 0.0f; // Reset the time scale back to normal
-            Debug.Log("Gameover");
-        }
-        else
-        {
-            Debug.Log("Input received! Game continues...");
-            float direction = (parentObject.transform.position.x < 0) ? 1f : -1f;
-            StartCoroutine(SlideObject(direction));
-        }
+        yield return null;
     }
+
+    if (!inputReceived)
+    {
+        Debug.Log("Gameover!");
+        Time.timeScale = 0.0f; // Reset the time scale back to normal
+    }
+    else
+    {
+        Debug.Log("You avoided the obstacle perfectly, game continues...");
+        float direction = (parentObject.transform.position.x < 0) ? 1f : -1f;
+        StartCoroutine(SlideObject(direction));
+        inputReceived = false;
+    }
+}
+
+
 
 IEnumerator SlideObject(float direction)
 {
-    float slideDistance = 6f; // Adjust the distance to slide here
+    float slideDistance = 5f; // Adjust the distance to slide here
     float slideSpeed = 0.1f; // Adjust the speed of sliding
 
     float initialX = parentObject.transform.position.x;

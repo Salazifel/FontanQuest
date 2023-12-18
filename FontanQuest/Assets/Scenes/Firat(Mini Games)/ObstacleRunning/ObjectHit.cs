@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class ObjectHit : MonoBehaviour
@@ -26,7 +25,7 @@ public class ObjectHit : MonoBehaviour
     {   
         if (other.gameObject.name == "carrot (1)")
         {   
-            Time.timeScale = 0.0f; // Reset the time scale back to normal
+            Time.timeScale = 0.0f; // Freeze time
 
             Debug.Log("You win!");
             ShowGameMenu(); // Show the game menu on collision
@@ -35,9 +34,11 @@ public class ObjectHit : MonoBehaviour
         }
         else
         {
+        Time.timeScale = 0.2f;
         Debug.Log("Bumped");
         animator.SetTrigger("Collision");
-        Invoke("DelayedAction", 2.0f);
+        Invoke("DelayedAction", 3.0f);
+        Time.timeScale = 1.0f;
         }
 
 
@@ -68,9 +69,11 @@ public void ExitGame()
 
     // Check if the scene exists before loading it
     if (SceneExists(nextSceneName))
-    {
+    {   
+
         // Load the next scene by name
         UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneName);
+        Time.timeScale = 1.0f;// Unfreeze the scene set speed back to normal        
     }
     else
     {
@@ -84,7 +87,7 @@ bool SceneExists(string sceneName)
 {
     for (int i = 0; i < UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings; i++)
     {
-        string scenePath = SceneUtility.GetScenePathByBuildIndex(i);
+        string scenePath = UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(i);
         string name = System.IO.Path.GetFileNameWithoutExtension(scenePath);
 
         if (name.Equals(sceneName))
@@ -137,7 +140,6 @@ IEnumerator WaitForInputOrTime()
         yield return null;
     }
 
-    ExitGame(); // Exit the game after the delay or if the button is clicked
 }
 
 

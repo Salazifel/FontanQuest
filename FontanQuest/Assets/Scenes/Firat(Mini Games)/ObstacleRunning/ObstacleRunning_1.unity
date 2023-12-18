@@ -333,7 +333,7 @@ MonoBehaviour:
   speedVar: 0.5
   xValue: 0
   increm: 0.2
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &14578607
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -703,10 +703,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.1
+  speedVar: 0.5
   xValue: 0
   increm: 1.05
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &122985106
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1327,10 +1327,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.2
+  speedVar: 0.5
   xValue: 0
   increm: 0.5
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &246844908
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1363,10 +1363,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.2
+  speedVar: 0.5
   xValue: 0
   increm: 0.5
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &247972277
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1590,7 +1590,7 @@ MonoBehaviour:
   speedVar: 0.5
   xValue: 0
   increm: 0.2
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &288228298
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1796,10 +1796,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.2
+  speedVar: 0.5
   xValue: 0
   increm: 0.5
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &304859196
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2950,10 +2950,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.2
+  speedVar: 0.5
   xValue: 0
   increm: 0.5
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &476038386
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3144,10 +3144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.1
+  speedVar: 0.5
   xValue: 0
   increm: 1.05
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &509289412
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3259,10 +3259,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.1
+  speedVar: 0.5
   xValue: 0
   increm: 1.05
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &553462229
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3295,10 +3295,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.1
+  speedVar: 0.5
   xValue: 0
   increm: 1.05
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &577863659
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3495,10 +3495,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.1
+  speedVar: 0.5
   xValue: 0
   increm: 1.05
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &593113089
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3694,10 +3694,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.1
+  speedVar: 0.5
   xValue: 0
   increm: 1.05
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &654017266
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3730,10 +3730,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.1
+  speedVar: 0.5
   xValue: 0
   increm: 1.05
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &654985642
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3971,10 +3971,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.2
+  speedVar: 0.5
   xValue: 0
   increm: 0.5
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &682233137
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4110,10 +4110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.2
+  speedVar: 0.5
   xValue: 0
   increm: 0.5
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &735560088
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4149,7 +4149,7 @@ MonoBehaviour:
   speedVar: 0.5
   xValue: 0
   increm: 0.2
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &740323366
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4859,10 +4859,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.2
+  speedVar: 0.5
   xValue: 0
   increm: 0.5
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &831095288
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5184,10 +5184,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.1
+  speedVar: 0.5
   xValue: 0
   increm: 1.05
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &922205558
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5438,10 +5438,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.1
+  speedVar: 0.5
   xValue: 0
   increm: 1.05
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1043303464
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5474,10 +5474,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.1
+  speedVar: 0.5
   xValue: 0
   increm: 1.05
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1047282107
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5648,10 +5648,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.2
+  speedVar: 0.5
   xValue: 0
   increm: 0.5
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1076308932
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5874,10 +5874,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.2
+  speedVar: 0.5
   xValue: 0
   increm: 0.5
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1089743492
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5910,10 +5910,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.2
+  speedVar: 0.5
   xValue: 0
   increm: 0.5
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1096235758
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6099,10 +6099,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.2
+  speedVar: 0.5
   xValue: 0
   increm: 0.5
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1114358265
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6315,10 +6315,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.1
+  speedVar: 0.5
   xValue: 0
   increm: 1.05
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1193099018
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7037,7 +7037,7 @@ MonoBehaviour:
   speedVar: 0.5
   xValue: 0
   increm: 0.2
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1272745875
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8000,10 +8000,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.1
+  speedVar: 0.5
   xValue: 0
   increm: 1.05
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1402546092
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8616,7 +8616,7 @@ MonoBehaviour:
   speedVar: 0.5
   xValue: 0
   increm: 0.2
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1511707222
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9174,7 +9174,7 @@ MonoBehaviour:
   speedVar: 0.5
   xValue: 0
   increm: 0.2
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1569928576
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9302,10 +9302,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.2
+  speedVar: 0.5
   xValue: 0
   increm: 0.5
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1614684852
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9432,10 +9432,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.2
+  speedVar: 0.5
   xValue: 0
   increm: 0.5
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1629366487
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9468,10 +9468,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.2
+  speedVar: 0.5
   xValue: 0
   increm: 0.5
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1635115459
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9632,7 +9632,7 @@ MonoBehaviour:
   speedVar: 0.5
   xValue: 0
   increm: 0.2
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1681697577
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9760,10 +9760,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.2
+  speedVar: 0.5
   xValue: 0
   increm: 0.5
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1689445017
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9865,10 +9865,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.1
+  speedVar: 0.5
   xValue: 0
   increm: 1.05
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1703744473
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10198,7 +10198,7 @@ MonoBehaviour:
   speedVar: 0.5
   xValue: 0
   increm: 0.2
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1755146211
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10639,10 +10639,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.1
+  speedVar: 0.5
   xValue: 0
   increm: 1.05
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1828238961
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11070,10 +11070,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.1
+  speedVar: 0.5
   xValue: 0
   increm: 1.05
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1918461824
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11319,10 +11319,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbc7d0ce02026c42a98cb063db29bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 0.2
+  speedVar: 0.5
   xValue: 0
   increm: 0.5
-  resetXPosition: 90
+  resetXPosition: 155
 --- !u!64 &1974704892
 MeshCollider:
   m_ObjectHideFlags: 0

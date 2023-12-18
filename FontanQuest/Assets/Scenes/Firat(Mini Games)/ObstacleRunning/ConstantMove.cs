@@ -45,7 +45,7 @@ public class ConstantMove : MonoBehaviour
     public void ResetObject()
     {   
         transform.position = initialPosition; // Reset the position
-        xValue = xValue / 2;
+        xValue = 0;
         isEnabled = true; // Enable the script to resume movement
     }
 

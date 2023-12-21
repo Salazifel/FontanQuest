@@ -190,6 +190,7 @@ public class SaveGameObjects : MonoBehaviour
         {
             onBoardingDone = _onBoardingDone;
             animalSelected = _animalSelected;
+            // selectedAnimal = _selectedAnimal;
         }
 
         public override void Print()

@@ -11,6 +11,7 @@ public class AnimalManager : MonoBehaviour
         GameObject pet = GameObject.Find("Pet");
         AnimalManager animalManager = pet.GetComponent<AnimalManager>();
         animalManager.ActivateAnimal("Bear_Cub_8");
+        int petSystem_Key = SaveGameMechanic.saveSaveGameObject(new SaveGameObjects.PetSystem(false,false), "petSystem", 1);
     }
 
     void DeactivateAllAnimals()
@@ -106,9 +107,13 @@ public class AnimalManager : MonoBehaviour
     {
         SaveGameObjects.PetSystem petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.PetSystem(false, false), "PetSystem", 1);
         var enumValues = (DefaultCubsToSelect[])Enum.GetValues(typeof(DefaultCubsToSelect));
+        Debug.Log(enumValues[currentArrayPosition]);
         petSystem.selectedAnimal = enumValues[currentArrayPosition].ToString();
+        Debug.Log(petSystem.selectedAnimal);
         petSystem.animalSelected = true;
-        SaveGameMechanic.getSaveGameObjectByPrimaryKey(petSystem, "PetSytem", 1);
+        Debug.Log(petSystem.animalSelected);
+        SaveGameMechanic.saveSaveGameObject(petSystem, "petSystem", 1);
+        // SaveGameMechanic.getSaveGameObjectByPrimaryKey(petSystem, "PetSystem", 1);
 
         // new let's deactivate the buttons
         

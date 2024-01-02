@@ -6,11 +6,15 @@ using UnityEngine;
 
 public class Pet_UI_Management : MonoBehaviour
 {
-    private SaveGameObjects.PetSystem petSystem;
+    public SaveGameObjects.PetSystem petSystem;
     GameObject messageWindowObject;
     GameObject nextPetButton;
     GameObject previousPetButton;
     GameObject PetSelectionDoneButton;
+    GameObject fuetternGameButton;
+    GameObject spielenGameButton;
+    GameObject rennenGameButton;
+    GameObject reselectButton;
     MessageWindow messageWindow;
     private Pet_CameraIntro pet_CameraIntro;
     // Start is called before the first frame update
@@ -22,7 +26,12 @@ public class Pet_UI_Management : MonoBehaviour
         nextPetButton = GameObject.Find("NextPetButton");
         previousPetButton = GameObject.Find("PreviousPetButton");
         PetSelectionDoneButton = GameObject.Find("PetSelectionDoneButton");
+        fuetternGameButton = GameObject.Find("FuetternGameButton");
+        spielenGameButton = GameObject.Find("SpielenGameButton");
+        rennenGameButton= GameObject.Find("RennenGameButton");
+        reselectButton = GameObject.Find("ReselectButton");
         ToggleVisibiliyAnimalSelectionButtons(false);
+        ToggleVisibiliyGameSelectionButtons(false);
         // Get MessageWindow
         messageWindowObject = GameObject.Find("MessageWindow");
         messageWindow = messageWindowObject.GetComponent<MessageWindow>();
@@ -58,9 +67,8 @@ public class Pet_UI_Management : MonoBehaviour
             pet_CameraIntro.ActivateCameraAnimation();
         }
     }
-
-    void LateUpdate()
-    {
+        void LateUpdate()
+    { 
         if (!petSystem.animalSelected && pet_CameraIntro.AnimationIsDone)
         {
             messageWindow.SetupMessageWindow(
@@ -76,8 +84,32 @@ public class Pet_UI_Management : MonoBehaviour
                 AnimationLibrary.Animations.Talk
             );
         }
-    }
+        if (petSystem.animalSelected && petSystem.selectedAnimal != null)
+        {
+            messageWindow.SetupMessageWindow(
+                "Wahlen",
+                "Clicke ein spiel, um sich um dein Tier zu kümmern.",
+                null,
+                null,
+                null,
+                null,
+                "Ok",
+                SelectGameMiddleButtonClick,
+                MessageWindow.Character_options.none,
+                AnimationLibrary.Animations.Talk
+            );
+        }
 
+        else {
+            //here it will be implemented the 
+        }
+    }
+    private void StartMessageMiddleButtonClick()
+    {
+        messageWindow.DeactivateMessageWindow();
+        pet_CameraIntro.ActivateCameraAnimation();
+        savePetSystem();
+    }
     private void SelectPetMiddleButtonClick()
     {
         messageWindow.DeactivateMessageWindow();
@@ -85,15 +117,17 @@ public class Pet_UI_Management : MonoBehaviour
         savePetSystem();
         ToggleVisibiliyAnimalSelectionButtons(true);
     }
-
-    private void StartMessageMiddleButtonClick()
+    private void SelectGameMiddleButtonClick()
     {
         messageWindow.DeactivateMessageWindow();
-        pet_CameraIntro.ActivateCameraAnimation();
+        petSystem.onBoardingDone = true;
         savePetSystem();
+        ToggleVisibiliyAnimalSelectionButtons(false);
+        ToggleVisibiliyGameSelectionButtons(true);
     }
 
-    private void savePetSystem()
+
+    public void savePetSystem()
     {
         SaveGameMechanic.getSaveGameObjectByPrimaryKey(petSystem, "PetSystem", 1);
     }
@@ -104,4 +138,13 @@ public class Pet_UI_Management : MonoBehaviour
         previousPetButton.SetActive(setBoolean);
         PetSelectionDoneButton.SetActive(setBoolean);
     }
+    void ToggleVisibiliyGameSelectionButtons(Boolean setBoolean)
+    {
+        fuetternGameButton.SetActive(setBoolean);
+        spielenGameButton.SetActive(setBoolean);
+        rennenGameButton.SetActive(setBoolean);
+        reselectButton.SetActive(setBoolean);
+    }
+
+
 }

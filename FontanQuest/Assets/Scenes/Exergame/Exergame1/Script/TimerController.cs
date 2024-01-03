@@ -17,7 +17,7 @@ public class TimerController : MonoBehaviour
     {
         //TimerContainer.SetActive(false);
         //countTimerUI.gameObject.SetActive(false);
-        totalTime = 90f; // Set the total time in seconds (1 minute and 30 seconds)
+        totalTime = 10f; // Set the total time in seconds (1 minute and 30 seconds)
         UpdateTimerUI(totalTime);
     }
 

@@ -17,10 +17,10 @@ public static class AddGameDataObjects
         SaveGameMechanic.saveSaveGameObject(gameData, "GameData", 1);
     }
 
-    public static int getNumOfHay()
-    {
-        //2do
-    }
+    // public static int getNumOfHay()
+    // {
+    //     //2do
+    // }
 }
 
 

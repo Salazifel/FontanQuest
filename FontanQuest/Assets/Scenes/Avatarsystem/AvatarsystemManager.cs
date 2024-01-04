@@ -23,7 +23,7 @@ public class AvatarsystemManager : MonoBehaviour
         NextCharacterButton.SetActive(false);
         PreviousCharacterButton.SetActive(false);
 
-        avatarSystem = (SaveGameObjects.AvatarSystem)SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.AvatarSystem(false), "Avatarsystem", 1);
+        avatarSystem = (SaveGameObjects.AvatarSystem)SaveGameMechanic.getSaveGameObjectByPrimaryKey("Avatarsystem", 1);
         if (avatarSystem == null)
         {
             avatarSystem = new SaveGameObjects.AvatarSystem(false);

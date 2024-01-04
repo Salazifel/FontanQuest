@@ -14,10 +14,10 @@ public class Castle_OnBoarding : MonoBehaviour
         onboardingGO = GameObject.Find("On_Boarding_Simulation");
         cameraMovementAnimation = onboardingGO.GetComponent<CameraMovementAnimation>();
 
-        castleOnBoardingSystem = (SaveGameObjects.CastleOnBoardingSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.CastleOnBoardingSystem(false), "CastleOnBoardingSystem", 1);
+        castleOnBoardingSystem = (SaveGameObjects.CastleOnBoardingSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey("CastleOnBoardingSystem", 1);
         if (castleOnBoardingSystem == null)
         {
-            castleOnBoardingSystem = new SaveGameObjects.CastleOnBoardingSystem(false);
+            castleOnBoardingSystem = (SaveGameObjects.CastleOnBoardingSystem) SaveGameObjects.CreateSaveGameObject("CastleOnBoardingSystem");
         }
 
         if (castleOnBoardingSystem.onBoardingDone == false)
@@ -45,7 +45,7 @@ public class Castle_OnBoarding : MonoBehaviour
                 null,
                 "Ok",
                 StartKingOnBoardingSimulation,
-                MessageWindow.Character_options.Character_Male_Peasant_01,
+                MessageWindow.Character_options.Character_Male_Rouge_01,
                 AnimationLibrary.Animations.Talk
             ));
         }

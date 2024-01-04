@@ -91,16 +91,16 @@ public class MessageWindow : MonoBehaviour
     }
 
     public void SetupMessageWindow(
-    string headlineText,
-    string mainTextContent,
-    string leftButtonText,
-    UnityAction leftButtonCallback,
-    string rightButtonText,
-    UnityAction rightButtonCallback,
-    string middleButtonText,
-    UnityAction middleButtonCallback,
-    Character_options character_Options,
-    AnimationLibrary.Animations animations)
+                                    string headlineText,
+                                    string mainTextContent,
+                                    string leftButtonText,
+                                    UnityAction leftButtonCallback,
+                                    string rightButtonText,
+                                    UnityAction rightButtonCallback,
+                                    string middleButtonText,
+                                    UnityAction middleButtonCallback,
+                                    Character_options character_Options,
+                                    AnimationLibrary.Animations animations)
     {
         MessageObjectBlueprint.messageObject messageObject = new MessageObjectBlueprint.messageObject(
                     headlineText, 
@@ -190,21 +190,22 @@ public class MessageWindow : MonoBehaviour
         CharacterPrefabs = GameObject.Find("CharacterPrefabs");
 
         // List of character names
-        string[] characterNames = {
-            "Character_Female_Druid", "Character_Female_Gypsy", 
-            "Character_Female_Peasant_01", "Character_Female_Peasant_02", 
-            "Character_Female_Queen", "Character_Female_Witch", 
-            "Character_Male_Baird", "Character_Male_King", 
-            "Character_Male_Peasant_01", "Character_Male_Rouge_01", 
-            "Character_Male_Sorcerer", "Character_Male_Wizard"
-        };
+        // string[] characterNames = {
+        //     "Character_Female_Druid", "Character_Female_Gypsy", 
+        //     "Character_Female_Peasant_01", "Character_Female_Peasant_02", 
+        //     "Character_Female_Queen", "Character_Female_Witch", 
+        //     "Character_Male_Baird", "Character_Male_King", 
+        //     "Character_Male_Peasant_01", "Character_Male_Rouge_01", 
+        //     "Character_Male_Sorcerer", "Character_Male_Wizard"
+        // };
 
         // Find all GameObjects with the tag "MessageWindow"
         GameObject[] allObjectsWithTag = GameObject.FindGameObjectsWithTag("MessageWindow");
 
         // Iterate through the character names
-        foreach (string characterName in characterNames)
+        foreach (Character_options character_option in Enum.GetValues(typeof(Character_options)))
         {
+            string characterName = character_option.ToString();
             // Iterate through each GameObject with the tag
             foreach (GameObject obj in allObjectsWithTag)
             {
@@ -213,6 +214,7 @@ public class MessageWindow : MonoBehaviour
                 {
                     // Add the found object to the dictionary and break the inner loop
                     CharacterDictionary.Add(characterName, obj);
+                    Debug.Log(characterName);
                     break;
                 }
             }

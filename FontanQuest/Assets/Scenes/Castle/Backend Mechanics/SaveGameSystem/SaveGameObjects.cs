@@ -33,6 +33,42 @@ public class SaveGameObjects : MonoBehaviour
         }
     }
 
+    // ----------------------- CHANGE THIS ----------------------------
+
+    /*
+                               Instruction
+
+        Add a case to the function below, if there is a new SaveGameObject.
+        The case should simply initialize a new SaveGameObject.                                
+
+    */
+    public static MainSaveObject CreateSaveGameObject(string type)
+    {
+        switch (type)
+        {
+            case "JumpingTheRopeSavingGame":
+                return new JumpingTheRopeSavingGame();
+            case "GameData":
+                return new GameData(0);
+            case "BuiltBuildings":
+                return new BuiltBuildings(false, false, false, false);
+            case "AvatarSystem":
+                return new AvatarSystem(false);
+            case "TreeClimber":
+                return new TreeClimber(0);
+            case "AsianMonkSavingGame":
+                return new AsianMonkSavingGame(0);
+            case "FitnessBoxingSavingGame":
+                return new FitnessBoxingSavingGame(0);
+            case "PetSystem":
+                return new PetSystem(false, false);
+            case "CastleOnBoardingSystem":
+                return new CastleOnBoardingSystem(false);
+            default:
+                throw new ArgumentException("Unknown SaveGameObject. Please declare the initialization of an empty SaveGameObject above as a new case.");
+        }
+    }
+
     // --------------------- INPUT NEW OBJECT HERE ----------------------
 
     /*                             STRUCTURE
@@ -71,6 +107,7 @@ public class SaveGameObjects : MonoBehaviour
         public int coins;
         public int daysPlayed;
         public string nameOfPlayer;
+        public int numOfHay;
 
         public GameData(int _coins)
         {

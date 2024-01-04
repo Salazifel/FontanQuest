@@ -105,15 +105,13 @@ public class AnimalManager : MonoBehaviour
 
     public void setPet()
     {
-        SaveGameObjects.PetSystem petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.PetSystem(false, false), "PetSystem", 1);
+        SaveGameObjects.PetSystem petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey("PetSystem", 1);
         var enumValues = (DefaultCubsToSelect[])Enum.GetValues(typeof(DefaultCubsToSelect));
         Debug.Log(enumValues[currentArrayPosition]);
         petSystem.selectedAnimal = enumValues[currentArrayPosition].ToString();
         Debug.Log(petSystem.selectedAnimal);
         petSystem.animalSelected = true;
-        Debug.Log(petSystem.animalSelected);
-        SaveGameMechanic.saveSaveGameObject(petSystem, "petSystem", 1);
-        // SaveGameMechanic.getSaveGameObjectByPrimaryKey(petSystem, "PetSystem", 1);
+        SaveGameMechanic.getSaveGameObjectByPrimaryKey("PetSytem", 1);
 
         // new let's deactivate the buttons
         

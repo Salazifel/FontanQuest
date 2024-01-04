@@ -35,11 +35,11 @@ public class Pet_UI_Management : MonoBehaviour
         // Get MessageWindow
         messageWindowObject = GameObject.Find("MessageWindow");
         messageWindow = messageWindowObject.GetComponent<MessageWindow>();
-        petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.PetSystem(false, false), "PetSystem", 1);
+        petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey("PetSystem", 1);
         
         if (petSystem == null)
         {
-            petSystem = new SaveGameObjects.PetSystem(false, false);
+            petSystem = (SaveGameObjects.PetSystem) SaveGameObjects.CreateSaveGameObject("PetSystem");
         }
 
         if (petSystem.animalSelected == true && petSystem.selectedAnimal == null)
@@ -59,8 +59,9 @@ public class Pet_UI_Management : MonoBehaviour
                 null,
                 "Ok",
                 StartMessageMiddleButtonClick,
-                MessageWindow.Character_options.Character_Male_Peasant_01,
-                AnimationLibrary.Animations.Talk
+                MessageWindow.Character_options.Character_Male_Rouge_01,
+                AnimationLibrary.Animations.Talk,
+                null
             );
         } else 
         {
@@ -84,7 +85,8 @@ public class Pet_UI_Management : MonoBehaviour
                     "Ok",
                     SelectPetMiddleButtonClick,
                     MessageWindow.Character_options.none,
-                    AnimationLibrary.Animations.Talk
+                    AnimationLibrary.Animations.Talk,
+                    null,
                 );
             }
             if (petSystem.animalSelected && petSystem.selectedAnimal != null)
@@ -99,7 +101,8 @@ public class Pet_UI_Management : MonoBehaviour
                     "Ok",
                     SelectGameMiddleButtonClick,
                     MessageWindow.Character_options.none,
-                    AnimationLibrary.Animations.Talk
+                    AnimationLibrary.Animations.Talk,
+                    null,
                 );
             }
 
@@ -133,7 +136,7 @@ public class Pet_UI_Management : MonoBehaviour
 
     public void savePetSystem()
     {
-        SaveGameMechanic.getSaveGameObjectByPrimaryKey(petSystem, "PetSystem", 1);
+        SaveGameMechanic.saveSaveGameObject(petSystem, "PetSystem", 1);
     }
 
     void ToggleVisibiliyAnimalSelectionButtons(Boolean setBoolean)

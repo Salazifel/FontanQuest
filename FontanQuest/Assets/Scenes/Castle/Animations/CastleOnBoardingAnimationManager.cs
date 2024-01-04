@@ -131,7 +131,7 @@ public class CastleOnBoardingAnimationManager : MonoBehaviour
     IEnumerator Action4()
     {
         yield return new WaitForSeconds(lenghtOfMessagePresentation);
-        LoadDiningSceneMusic.SetActive(false);
+        LoadDiningSceneMusic.GetComponent<AudioSource>().volume = 0.1f;
         speechBubble4.SetActive(true);
         StartCoroutine(Action5());
     }
@@ -192,7 +192,8 @@ public class CastleOnBoardingAnimationManager : MonoBehaviour
             "Ok",
             endScene,
             MessageWindow.Character_options.Character_Female_Peasant_01,
-            AnimationLibrary.Animations.Talk
+            AnimationLibrary.Animations.Talk,
+            null
         ));
     }
 

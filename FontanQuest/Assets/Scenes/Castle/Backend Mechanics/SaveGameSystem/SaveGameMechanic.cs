@@ -22,9 +22,10 @@ public class SaveGameMechanic : MonoBehaviour
         return savefile;
     }
 
-    public static SaveGameObjects.MainSaveObject getSaveGameObjectByPrimaryKey(SaveGameObjects.MainSaveObject emptyMainSaveObject, string saveFileName, int primaryKey)
+    public static SaveGameObjects.MainSaveObject getSaveGameObjectByPrimaryKey(string SaveGameObjectName, int primaryKey)
     {
-        string filePath = savefilePath + "/" + saveFileName + "/" + emptyMainSaveObject.GetType() + ".json";
+        SaveGameObjects.MainSaveObject emptyMainSaveObject = SaveGameObjects.CreateSaveGameObject(SaveGameObjectName);
+        string filePath = savefilePath + "/" + SaveGameObjectName + "/" + emptyMainSaveObject.GetType() + ".json";
 
         // Check if the file exists
         if (!File.Exists(filePath))
@@ -56,8 +57,10 @@ public class SaveGameMechanic : MonoBehaviour
 
 
 
-    public static List<SaveGameObjects.MainSaveObject> getAllSaveGameObjectsOfType(SaveGameObjects.MainSaveObject emptyMainSaveObject, string saveFileName)
+    public static List<SaveGameObjects.MainSaveObject> getAllSaveGameObjectsOfType(string SaveGameObjectName, string saveFileName)
     {
+        SaveGameObjects.MainSaveObject emptyMainSaveObject = SaveGameObjects.CreateSaveGameObject(SaveGameObjectName);
+
         string filePath = savefilePath + "/" + saveFileName + "/" + emptyMainSaveObject.GetType() + ".json";
 
         // Check if the file exists

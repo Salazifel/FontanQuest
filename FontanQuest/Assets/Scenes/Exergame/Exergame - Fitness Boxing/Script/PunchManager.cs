@@ -43,7 +43,7 @@ public class PunchManager : MonoBehaviour
     {
         NewScore += points;
         scoreText.text = "Score:  " + NewScore.ToString();
-        if (NewScore > 200)
+        if (NewScore > 100)
         {
             FinishGame();
         }

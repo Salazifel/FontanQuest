@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class FitnessBoxingUI : MonoBehaviour
 {
-
     public Canvas StoryCanvas;
     public Canvas[] GameCanvases;
     public Canvas FinishCanvas;
     SaveGameObjects.FitnessBoxingSavingGame fitnessBoxingSavingGame;
 
+    private int currentLevel = 0; // Track the current level
+
     // Start is called before the first frame update
     void Start()
     {
         StoryCanvas.gameObject.SetActive(true);
-        SetGameCanvasActive(0); // Show the first level canvas initially
+
+        // Initially, set all game canvases to inactive
+        foreach (Canvas gameCanvas in GameCanvases)
+        {
+            gameCanvas.gameObject.SetActive(false);
+        }
+
         FinishCanvas.gameObject.SetActive(false);
 
         fitnessBoxingSavingGame = (SaveGameObjects.FitnessBoxingSavingGame)SaveGameMechanic.getSaveGameObjectByPrimaryKey("FitnessBoxingSavingGame", 1);
@@ -26,13 +33,7 @@ public class FitnessBoxingUI : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void SetGameCanvasActive(int levelIndex)
+    void SetGameCanvasActive(int level)
     {
         // Deactivate all canvases
         foreach (Canvas canvas in GameCanvases)
@@ -41,9 +42,9 @@ public class FitnessBoxingUI : MonoBehaviour
         }
 
         // Activate the specified level canvas
-        if (levelIndex >= 0 && levelIndex < GameCanvases.Length)
+        if (level >= 0 && level < GameCanvases.Length)
         {
-            GameCanvases[levelIndex].gameObject.SetActive(true);
+            GameCanvases[level].gameObject.SetActive(true);
         }
         else
         {
@@ -51,29 +52,51 @@ public class FitnessBoxingUI : MonoBehaviour
         }
     }
 
-    public void ChangeToGame(int levelIndex)
+    public void ChangeToGame()
     {
-        StoryCanvas.gameObject.SetActive(false);
+        // Deactivate all canvases
+        foreach (Canvas canvas in GameCanvases)
+        {
+            canvas.gameObject.SetActive(false);
+        }
 
-        // Check if the specified level index is valid
-        if (levelIndex >= 0 && levelIndex < GameCanvases.Length)
+        if (currentLevel >= 0 && currentLevel < GameCanvases.Length)
         {
             // Activate the specified level canvas
-            SetGameCanvasActive(levelIndex);
+            SetGameCanvasActive(currentLevel);
+
+            StoryCanvas.gameObject.SetActive(false);
             FinishCanvas.gameObject.SetActive(false);
+
+            // Increment the current level after setting up the game canvas
+            currentLevel++;
+
+            Debug.Log("Current Level: " + currentLevel);
         }
         else
         {
             Debug.LogError("Invalid level index");
         }
     }
-
 
     public void ChangeToComplete()
     {
         StoryCanvas.gameObject.SetActive(false);
-        SetGameCanvasActive(fitnessBoxingSavingGame.currentLevel);
+        foreach (Canvas gameCanvas in GameCanvases)
+        {
+            gameCanvas.gameObject.SetActive(false);
+        }
         FinishCanvas.gameObject.SetActive(true);
+    }
+
+    public void ChangeToStory()
+    {
+        StoryCanvas.gameObject.SetActive(true);
+        foreach (Canvas gameCanvas in GameCanvases)
+        {
+            gameCanvas.gameObject.SetActive(false);
+        }
+        FinishCanvas.gameObject.SetActive(false);
     }
 
     public void CompleteLevel()
@@ -84,12 +107,4 @@ public class FitnessBoxingUI : MonoBehaviour
         // Save the updated data
         SaveGameMechanic.saveSaveGameObject(fitnessBoxingSavingGame, "FitnessBoxingSavingGame", fitnessBoxingSavingGame.primaryKey);
     }
-
-    /*
-    public void SaveFitnessBoxingData()
-    {
-     
-        SaveGameMechanic.saveSaveGameObject(fitnessBoxingSavingGame, "AsianMonkSavingGame", fitnessBoxingSavingGame.primaryKey);
-    }
-    */
 }

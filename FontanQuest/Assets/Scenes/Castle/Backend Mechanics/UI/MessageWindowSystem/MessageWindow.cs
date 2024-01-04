@@ -22,6 +22,9 @@ public class MessageWindow : MonoBehaviour
     private UnityEvent rightButtonEvent;
     private UnityEvent middleButtonEvent;
 
+    // Audio
+    private AudioSource audioSource;
+
     // all characters
     private GameObject CharacterDisplayRawImage;
     private Dictionary<string, GameObject> CharacterDictionary = new Dictionary<string, GameObject>();
@@ -79,6 +82,9 @@ public class MessageWindow : MonoBehaviour
         // Select the right Animation
         ActivateAnimation(messageObject.animations);
 
+        // Select and start Audio
+        ActivateAudioSource(messageObject.audioClipPath);
+
         // Display Message
         this.gameObject.SetActive(true);
         if (CharacterDisplayRawImage) {
@@ -100,7 +106,8 @@ public class MessageWindow : MonoBehaviour
                                     string middleButtonText,
                                     UnityAction middleButtonCallback,
                                     Character_options character_Options,
-                                    AnimationLibrary.Animations animations)
+                                    AnimationLibrary.Animations animations,
+                                    string audioClipPath)
     {
         MessageObjectBlueprint.messageObject messageObject = new MessageObjectBlueprint.messageObject(
                     headlineText, 
@@ -112,8 +119,33 @@ public class MessageWindow : MonoBehaviour
                     middleButtonText, 
                     middleButtonCallback, 
                     character_Options, 
-                    animations);
+                    animations,
+                    audioClipPath);
         SetupMessageWindowWorkerFunction(messageObject);
+    }
+
+    public void ActivateAudioSource(string audioClipPath)
+    {
+        if (audioClipPath == null)
+        {
+            return; // no audio is supposed to be played
+        }
+        AudioClip clip = Resources.Load<AudioClip>(audioClipPath);
+    
+        if (clip != null)
+        {
+            audioSource.clip = clip;
+            audioSource.Play(0);
+        }
+        else
+        {
+            Debug.LogError("AudioClip not found.");
+        }
+    }
+
+    public void DeactivateAudioSource()
+    {
+        audioSource.Stop();
     }
 
     public void ActivateCharacter(Character_options characterOption)
@@ -182,6 +214,8 @@ public class MessageWindow : MonoBehaviour
 
         DeactivateAllButtons();
 
+        audioSource = transform.Find("MessageWindowAudioSource").GetComponent<AudioSource>();
+
         leftButton.onClick.AddListener(DefaultLeftButtonClick);
         rightButton.onClick.AddListener(DefaultRightButtonClick);
         middleButton.onClick.AddListener(DefaultMiddleButtonClick);
@@ -214,7 +248,6 @@ public class MessageWindow : MonoBehaviour
                 {
                     // Add the found object to the dictionary and break the inner loop
                     CharacterDictionary.Add(characterName, obj);
-                    Debug.Log(characterName);
                     break;
                 }
             }

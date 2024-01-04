@@ -51,7 +51,8 @@ public class Pet_UI_Management : MonoBehaviour
                 "Ok",
                 StartMessageMiddleButtonClick,
                 MessageWindow.Character_options.Character_Male_Rouge_01,
-                AnimationLibrary.Animations.Talk
+                AnimationLibrary.Animations.Talk,
+                null
             );
         } else 
         {
@@ -73,7 +74,8 @@ public class Pet_UI_Management : MonoBehaviour
                 "Ok",
                 SelectPetMiddleButtonClick,
                 MessageWindow.Character_options.none,
-                AnimationLibrary.Animations.Talk
+                AnimationLibrary.Animations.Talk,
+                null
             );
         }
     }

@@ -52,7 +52,8 @@ public class AvatarsystemManager : MonoBehaviour
             "Okay!",
             AvatarOnboardingReadyClick,
             MessageWindow.Character_options.none,
-            AnimationLibrary.Animations.Talk);
+            AnimationLibrary.Animations.Talk,
+            null);
     }
 
     void AvatarOnboardingReadyClick()

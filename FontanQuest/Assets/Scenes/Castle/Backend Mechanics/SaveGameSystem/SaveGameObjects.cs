@@ -107,6 +107,7 @@ public class SaveGameObjects : MonoBehaviour
         public int coins;
         public int daysPlayed;
         public string nameOfPlayer;
+        public int numOfHay;
 
         public GameData(int _coins)
         {

@@ -17,6 +17,7 @@ public static class MessageObjectBlueprint
         public UnityAction middleButtonCallback;
         public Character_options character_Options;
         public AnimationLibrary.Animations animations;
+        public string audioClipPath;
 
         public messageObject(string _headlineText,
                                 string _mainTextContent, 
@@ -27,7 +28,8 @@ public static class MessageObjectBlueprint
                                 string _middleButtonText, 
                                 UnityAction _middleButtonCallback, 
                                 Character_options _character_Options, 
-                                AnimationLibrary.Animations _animations) 
+                                AnimationLibrary.Animations _animations,
+                                string _audioClipPath) 
         {
             headlineText = _headlineText;
             mainTextContent = _mainTextContent;
@@ -39,6 +41,7 @@ public static class MessageObjectBlueprint
             middleButtonCallback = _middleButtonCallback;
             character_Options = _character_Options;
             animations = _animations;
+            audioClipPath = _audioClipPath;
         }
     }
 }

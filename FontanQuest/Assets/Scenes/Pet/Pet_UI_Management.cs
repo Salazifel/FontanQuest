@@ -19,7 +19,8 @@ public class Pet_UI_Management : MonoBehaviour
     private Pet_CameraIntro pet_CameraIntro;
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        Debug.Log("is " + petSystem + " null?");
         // Get MainCameraScript
         pet_CameraIntro = GameObject.Find("Main Camera").GetComponent<Pet_CameraIntro>();
         // Get PetSelectionButtons
@@ -35,6 +36,7 @@ public class Pet_UI_Management : MonoBehaviour
         // Get MessageWindow
         messageWindowObject = GameObject.Find("MessageWindow");
         messageWindow = messageWindowObject.GetComponent<MessageWindow>();
+
         petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey("PetSystem", 1);
         
         if (petSystem == null)
@@ -69,10 +71,13 @@ public class Pet_UI_Management : MonoBehaviour
         }
     }
         void LateUpdate()
-    { 
-        petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.PetSystem(false, false), "PetSystem", 1);
+    {   
 
-        if (petSystem != null) {
+        if (petSystem != null) 
+        loadPetSystem();
+        // Debug.Log("Loaded");
+        // Debug.Log("is " + petSystem + " null?");
+        {
             if (!petSystem.animalSelected && pet_CameraIntro.AnimationIsDone)
             {
                 messageWindow.SetupMessageWindow(
@@ -86,7 +91,7 @@ public class Pet_UI_Management : MonoBehaviour
                     SelectPetMiddleButtonClick,
                     MessageWindow.Character_options.none,
                     AnimationLibrary.Animations.Talk,
-                    null,
+                    null
                 );
             }
             if (petSystem.animalSelected && petSystem.selectedAnimal != null)
@@ -102,7 +107,7 @@ public class Pet_UI_Management : MonoBehaviour
                     SelectGameMiddleButtonClick,
                     MessageWindow.Character_options.none,
                     AnimationLibrary.Animations.Talk,
-                    null,
+                    null
                 );
             }
 
@@ -116,27 +121,45 @@ public class Pet_UI_Management : MonoBehaviour
         messageWindow.DeactivateMessageWindow();
         pet_CameraIntro.ActivateCameraAnimation();
         savePetSystem();
+        Debug.Log("Saved");
+        loadPetSystem();
+        Debug.Log("Loaded");
     }
     private void SelectPetMiddleButtonClick()
     {
         messageWindow.DeactivateMessageWindow();
         petSystem.animalSelected = true;
         savePetSystem();
+        Debug.Log("Saved");
         ToggleVisibiliyAnimalSelectionButtons(true);
+        Debug.Log("AnimalSelectButtons activated!");
+        loadPetSystem();
+        Debug.Log("Loaded");
     }
     private void SelectGameMiddleButtonClick()
     {
         messageWindow.DeactivateMessageWindow();
         petSystem.onBoardingDone = true;
         savePetSystem();
+        Debug.Log("Saved");
         ToggleVisibiliyAnimalSelectionButtons(false);
+        Debug.Log("AnimalSelectButtons deactivated!");
         ToggleVisibiliyGameSelectionButtons(true);
+        Debug.Log("GameSelectButtons activated!");
+        loadPetSystem();
+        Debug.Log("Loaded");
     }
 
 
     public void savePetSystem()
     {
         SaveGameMechanic.saveSaveGameObject(petSystem, "PetSystem", 1);
+    }
+
+    public void loadPetSystem()
+    {
+        SaveGameMechanic.getSaveGameObjectByPrimaryKey("PetSystem",1);
+
     }
 
     void ToggleVisibiliyAnimalSelectionButtons(Boolean setBoolean)

@@ -61,7 +61,7 @@ public class SaveGameObjects : MonoBehaviour
             case "FitnessBoxingSavingGame":
                 return new FitnessBoxingSavingGame(0);
             case "PetSystem":
-                return new PetSystem(false, false);
+                return new PetSystem();
             case "CastleOnBoardingSystem":
                 return new CastleOnBoardingSystem(false);
             default:
@@ -223,12 +223,6 @@ public class SaveGameObjects : MonoBehaviour
         public Boolean animalSelected;
         public string selectedAnimal;
 
-        public PetSystem(Boolean _onBoardingDone, Boolean _animalSelected)
-        {
-            onBoardingDone = _onBoardingDone;
-            animalSelected = _animalSelected;
-            // selectedAnimal = _selectedAnimal;
-        }
 
         public override void Print()
         {

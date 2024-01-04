@@ -69,39 +69,43 @@ public class Pet_UI_Management : MonoBehaviour
     }
         void LateUpdate()
     { 
-        if (!petSystem.animalSelected && pet_CameraIntro.AnimationIsDone)
-        {
-            messageWindow.SetupMessageWindow(
-                "Dein Tier",
-                "Clicke nach links oder rechts, um dein Tier auszuwaehlen.",
-                null,
-                null,
-                null,
-                null,
-                "Ok",
-                SelectPetMiddleButtonClick,
-                MessageWindow.Character_options.none,
-                AnimationLibrary.Animations.Talk
-            );
-        }
-        if (petSystem.animalSelected && petSystem.selectedAnimal != null)
-        {
-            messageWindow.SetupMessageWindow(
-                "Wahlen",
-                "Clicke ein spiel, um sich um dein Tier zu kümmern.",
-                null,
-                null,
-                null,
-                null,
-                "Ok",
-                SelectGameMiddleButtonClick,
-                MessageWindow.Character_options.none,
-                AnimationLibrary.Animations.Talk
-            );
-        }
+        petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.PetSystem(false, false), "PetSystem", 1);
 
-        else {
-            //here it will be implemented the 
+        if (petSystem != null) {
+            if (!petSystem.animalSelected && pet_CameraIntro.AnimationIsDone)
+            {
+                messageWindow.SetupMessageWindow(
+                    "Dein Tier",
+                    "Clicke nach links oder rechts, um dein Tier auszuwaehlen.",
+                    null,
+                    null,
+                    null,
+                    null,
+                    "Ok",
+                    SelectPetMiddleButtonClick,
+                    MessageWindow.Character_options.none,
+                    AnimationLibrary.Animations.Talk
+                );
+            }
+            if (petSystem.animalSelected && petSystem.selectedAnimal != null)
+            {
+                messageWindow.SetupMessageWindow(
+                    "Wahlen",
+                    "Clicke ein spiel, um sich um dein Tier zu kümmern.",
+                    null,
+                    null,
+                    null,
+                    null,
+                    "Ok",
+                    SelectGameMiddleButtonClick,
+                    MessageWindow.Character_options.none,
+                    AnimationLibrary.Animations.Talk
+                );
+            }
+
+            else {
+                //here it will be implemented the 
+            }
         }
     }
     private void StartMessageMiddleButtonClick()

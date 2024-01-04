@@ -43,7 +43,7 @@ public class PunchManager : MonoBehaviour
     {
         NewScore += points;
         scoreText.text = "Score:  " + NewScore.ToString();
-        if (NewScore > 1000)
+        if (NewScore > 200)
         {
             FinishGame();
         }
@@ -52,6 +52,7 @@ public class PunchManager : MonoBehaviour
     public void FinishGame()
     {
         fitnessBoxingUI.ChangeToComplete();
-        fitnessBoxingUI.SaveFitnessBoxingData();
+        fitnessBoxingUI.CompleteLevel();
+        // fitnessBoxingUI.SaveFitnessBoxingData();
     }
 }

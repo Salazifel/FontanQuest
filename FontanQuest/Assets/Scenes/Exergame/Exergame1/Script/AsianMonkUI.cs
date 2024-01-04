@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AsianMonkUI : MonoBehaviour
@@ -7,20 +5,18 @@ public class AsianMonkUI : MonoBehaviour
     public Canvas StoryCanvas;
     public Canvas StartMenuCanvas;
     public Canvas FinishCanvas;
-    SaveGameObjects.AsianMonkSavingGame asianMonkSavingGame;
-
     public Canvas[] GameCanvases;
-    private int currentLevelIndex = 0; // Index of the current level
+
+    private SaveGameObjects.AsianMonkSavingGame asianMonkSavingGame;
 
     // Start is called before the first frame update
     void Start()
     {
         StoryCanvas.gameObject.SetActive(true);
         StartMenuCanvas.gameObject.SetActive(false);
-        GameCanvases[currentLevelIndex].gameObject.SetActive(false);
         FinishCanvas.gameObject.SetActive(false);
 
-        // Load Asian Monk game data
+        // Load or create Asian Monk game data
         asianMonkSavingGame = (SaveGameObjects.AsianMonkSavingGame)SaveGameMechanic.getSaveGameObjectByPrimaryKey(
             new SaveGameObjects.AsianMonkSavingGame(0), "AsianMonkSavingGame", 1);
 
@@ -30,69 +26,72 @@ public class AsianMonkUI : MonoBehaviour
             asianMonkSavingGame = new SaveGameObjects.AsianMonkSavingGame(0);
         }
 
-        // Instantiate the initial game level (e.g., Level 1)
-        LoadGameLevel(currentLevelIndex);
+        // Instantiate the initial game level
+        LoadGameLevel(asianMonkSavingGame.currentLevel);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void ChangeToMenu()
     {
         StoryCanvas.gameObject.SetActive(false);
         StartMenuCanvas.gameObject.SetActive(true);
-        GameCanvases[currentLevelIndex].gameObject.SetActive(false);
         FinishCanvas.gameObject.SetActive(false);
-
+        LoadGameLevel(asianMonkSavingGame.currentLevel); // Reload the current level when going back to the menu
     }
 
     public void ChangeToGame()
     {
         StoryCanvas.gameObject.SetActive(false);
         StartMenuCanvas.gameObject.SetActive(false);
-        GameCanvases[currentLevelIndex].gameObject.SetActive(true);
         FinishCanvas.gameObject.SetActive(false);
 
-        currentLevelIndex++;
-        if (currentLevelIndex < GameCanvases.Length)
+        if (asianMonkSavingGame.currentLevel < GameCanvases.Length)
         {
-            LoadGameLevel(currentLevelIndex);
+            // Load the current level
+            LoadGameLevel(asianMonkSavingGame.currentLevel);
+
+            // Increment the level for the next playthrough
+            asianMonkSavingGame.currentLevel++;
         }
         else
         {
-            Debug.LogWarning("No more levels available.");
+            asianMonkSavingGame.currentLevel = 0; // Reset to the first level if there are no more levels
+            LoadGameLevel(asianMonkSavingGame.currentLevel);
+            Debug.LogWarning("No more levels available. Resetting to the first level.");
         }
     }
+
 
     public void ChangeToComplete()
     {
         StoryCanvas.gameObject.SetActive(false);
         StartMenuCanvas.gameObject.SetActive(false);
-        GameCanvases[currentLevelIndex].gameObject.SetActive(false);
         FinishCanvas.gameObject.SetActive(true);
+        SaveAsianMonkData(); // Save the game data when completing a level
     }
 
     private void LoadGameLevel(int levelIndex)
     {
-        // Clear the current game level if exists
-        if (levelIndex >= 0 && levelIndex < GameCanvases.Length && GameCanvases[levelIndex] != null)
-        {
-            GameCanvases[levelIndex].gameObject.SetActive(true);
-        }
-
-        // Deactivate previous level(s)
+        // Deactivate all levels
         for (int i = 0; i < GameCanvases.Length; i++)
         {
-            if (i != levelIndex && i >= 0 && i < GameCanvases.Length && GameCanvases[i] != null)
+            if (GameCanvases[i] != null)
             {
                 GameCanvases[i].gameObject.SetActive(false);
             }
         }
 
-        // Additional setup or initialization for the game level can be done here
+        // Activate the current level
+        if (levelIndex >= 0 && levelIndex < GameCanvases.Length && GameCanvases[levelIndex] != null)
+        {
+            GameCanvases[levelIndex].gameObject.SetActive(true);
+        }
+
     }
 
     public void SaveAsianMonkData()
@@ -100,6 +99,4 @@ public class AsianMonkUI : MonoBehaviour
         // Save Asian Monk game data
         SaveGameMechanic.saveSaveGameObject(asianMonkSavingGame, "AsianMonkSavingGame", asianMonkSavingGame.primaryKey);
     }
-
 }
-

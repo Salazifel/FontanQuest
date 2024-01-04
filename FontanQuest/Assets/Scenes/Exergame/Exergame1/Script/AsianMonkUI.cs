@@ -8,6 +8,7 @@ public class AsianMonkUI : MonoBehaviour
     public Canvas[] GameCanvases;
 
     private SaveGameObjects.AsianMonkSavingGame asianMonkSavingGame;
+    private int currentLevelIndex = 0; 
 
     // Start is called before the first frame update
     void Start()
@@ -50,21 +51,24 @@ public class AsianMonkUI : MonoBehaviour
         StartMenuCanvas.gameObject.SetActive(false);
         FinishCanvas.gameObject.SetActive(false);
 
-        if (asianMonkSavingGame.currentLevel < GameCanvases.Length)
-        {
-            // Load the current level
-            LoadGameLevel(asianMonkSavingGame.currentLevel);
+        // Load the next level (currentLevelIndex) without incrementing the level
+        LoadGameLevel(currentLevelIndex);
 
-            // Increment the level for the next playthrough
+        if (currentLevelIndex > 0)
+        {
             asianMonkSavingGame.currentLevel++;
         }
-        else
+
+        currentLevelIndex++;
+
+        if (currentLevelIndex >= GameCanvases.Length)
         {
-            asianMonkSavingGame.currentLevel = 0; // Reset to the first level if there are no more levels
-            LoadGameLevel(asianMonkSavingGame.currentLevel);
+            currentLevelIndex = 0; // Reset to the first level if there are no more levels
             Debug.LogWarning("No more levels available. Resetting to the first level.");
         }
     }
+
+
 
 
     public void ChangeToComplete()
@@ -73,7 +77,11 @@ public class AsianMonkUI : MonoBehaviour
         StartMenuCanvas.gameObject.SetActive(false);
         FinishCanvas.gameObject.SetActive(true);
         SaveAsianMonkData(); // Save the game data when completing a level
+
+        // Make sure to load the current level AFTER displaying the FinishCanvas
+        LoadGameLevel(asianMonkSavingGame.currentLevel);
     }
+
 
     private void LoadGameLevel(int levelIndex)
     {
@@ -90,6 +98,7 @@ public class AsianMonkUI : MonoBehaviour
         if (levelIndex >= 0 && levelIndex < GameCanvases.Length && GameCanvases[levelIndex] != null)
         {
             GameCanvases[levelIndex].gameObject.SetActive(true);
+            Debug.Log("Loaded GameCanvas: " + GameCanvases[levelIndex].name);
         }
 
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4332,7 +4332,6 @@ GameObject:
   m_Component:
   - component: {fileID: 243157467}
   - component: {fileID: 243157469}
-  - component: {fileID: 243157468}
   m_Layer: 5
   m_Name: TimerContainer
   m_TagString: Untagged
@@ -4362,32 +4361,6 @@ RectTransform:
   m_AnchoredPosition: {x: 110, y: 126}
   m_SizeDelta: {x: 128.0828, y: 91.5752}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &243157468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 243157466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ef0897ff78f584bab36b9689e27c79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StoryCanvas: {fileID: 592831593}
-  StartMenuCanvas: {fileID: 959465337}
-  FinishCanvas: {fileID: 86490927}
-  GameCanvases:
-  - {fileID: 1886847519}
-  - {fileID: 1944820593}
-  - {fileID: 1900287320}
-  - {fileID: 852947456}
-  - {fileID: 1996817003}
-  - {fileID: 922052505}
-  - {fileID: 1806072981}
-  - {fileID: 186257156}
-  - {fileID: 947792694}
-  - {fileID: 202311061}
 --- !u!114 &243157469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4402,7 +4375,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerContainer: {fileID: 243157466}
   countTimerUI: {fileID: 1456824117}
-  asianMonkUI: {fileID: 1945518229}
 --- !u!1 &243258073
 GameObject:
   m_ObjectHideFlags: 0
@@ -5109,7 +5081,6 @@ GameObject:
   m_Component:
   - component: {fileID: 271888030}
   - component: {fileID: 271888032}
-  - component: {fileID: 271888031}
   m_Layer: 5
   m_Name: TimerContainer
   m_TagString: Untagged
@@ -5139,32 +5110,6 @@ RectTransform:
   m_AnchoredPosition: {x: 110, y: 126}
   m_SizeDelta: {x: 128.0828, y: 91.5752}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &271888031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 271888029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ef0897ff78f584bab36b9689e27c79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StoryCanvas: {fileID: 592831593}
-  StartMenuCanvas: {fileID: 959465337}
-  FinishCanvas: {fileID: 86490927}
-  GameCanvases:
-  - {fileID: 1886847519}
-  - {fileID: 1944820593}
-  - {fileID: 1900287320}
-  - {fileID: 852947456}
-  - {fileID: 1996817003}
-  - {fileID: 922052505}
-  - {fileID: 1806072981}
-  - {fileID: 186257156}
-  - {fileID: 947792694}
-  - {fileID: 202311061}
 --- !u!114 &271888032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5179,7 +5124,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerContainer: {fileID: 271888029}
   countTimerUI: {fileID: 892880884}
-  asianMonkUI: {fileID: 1945518229}
 --- !u!1 &276112189
 GameObject:
   m_ObjectHideFlags: 0
@@ -5784,7 +5728,6 @@ GameObject:
   m_Component:
   - component: {fileID: 286748207}
   - component: {fileID: 286748209}
-  - component: {fileID: 286748208}
   m_Layer: 5
   m_Name: TimerContainer
   m_TagString: Untagged
@@ -5814,32 +5757,6 @@ RectTransform:
   m_AnchoredPosition: {x: 110, y: 126}
   m_SizeDelta: {x: 128.0828, y: 91.5752}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &286748208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 286748206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ef0897ff78f584bab36b9689e27c79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StoryCanvas: {fileID: 592831593}
-  StartMenuCanvas: {fileID: 959465337}
-  FinishCanvas: {fileID: 86490927}
-  GameCanvases:
-  - {fileID: 1886847519}
-  - {fileID: 1944820593}
-  - {fileID: 1900287320}
-  - {fileID: 852947456}
-  - {fileID: 1996817003}
-  - {fileID: 922052505}
-  - {fileID: 1806072981}
-  - {fileID: 186257156}
-  - {fileID: 947792694}
-  - {fileID: 202311061}
 --- !u!114 &286748209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5854,7 +5771,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerContainer: {fileID: 286748206}
   countTimerUI: {fileID: 1252474927}
-  asianMonkUI: {fileID: 1945518229}
 --- !u!1 &294405250
 GameObject:
   m_ObjectHideFlags: 0
@@ -6633,7 +6549,6 @@ GameObject:
   m_Component:
   - component: {fileID: 369096677}
   - component: {fileID: 369096678}
-  - component: {fileID: 369096679}
   m_Layer: 5
   m_Name: TimerContainer
   m_TagString: Untagged
@@ -6677,33 +6592,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerContainer: {fileID: 369096676}
   countTimerUI: {fileID: 49881147}
-  asianMonkUI: {fileID: 1945518229}
---- !u!114 &369096679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 369096676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ef0897ff78f584bab36b9689e27c79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StoryCanvas: {fileID: 592831593}
-  StartMenuCanvas: {fileID: 959465337}
-  FinishCanvas: {fileID: 86490927}
-  GameCanvases:
-  - {fileID: 1886847519}
-  - {fileID: 1944820593}
-  - {fileID: 1900287320}
-  - {fileID: 852947456}
-  - {fileID: 1996817003}
-  - {fileID: 922052505}
-  - {fileID: 1806072981}
-  - {fileID: 186257156}
-  - {fileID: 947792694}
-  - {fileID: 202311061}
 --- !u!1 &370816752
 GameObject:
   m_ObjectHideFlags: 0
@@ -7607,7 +7495,6 @@ GameObject:
   m_Component:
   - component: {fileID: 439607328}
   - component: {fileID: 439607330}
-  - component: {fileID: 439607329}
   m_Layer: 5
   m_Name: TimerContainer
   m_TagString: Untagged
@@ -7637,32 +7524,6 @@ RectTransform:
   m_AnchoredPosition: {x: 110, y: 126}
   m_SizeDelta: {x: 128.0828, y: 91.5752}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &439607329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439607327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ef0897ff78f584bab36b9689e27c79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StoryCanvas: {fileID: 592831593}
-  StartMenuCanvas: {fileID: 959465337}
-  FinishCanvas: {fileID: 86490927}
-  GameCanvases:
-  - {fileID: 1886847519}
-  - {fileID: 1944820593}
-  - {fileID: 1900287320}
-  - {fileID: 852947456}
-  - {fileID: 1996817003}
-  - {fileID: 922052505}
-  - {fileID: 1806072981}
-  - {fileID: 186257156}
-  - {fileID: 947792694}
-  - {fileID: 202311061}
 --- !u!114 &439607330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7677,7 +7538,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerContainer: {fileID: 439607327}
   countTimerUI: {fileID: 294405252}
-  asianMonkUI: {fileID: 1945518229}
 --- !u!1 &440837532
 GameObject:
   m_ObjectHideFlags: 0
@@ -8152,7 +8012,6 @@ GameObject:
   m_Component:
   - component: {fileID: 466292337}
   - component: {fileID: 466292339}
-  - component: {fileID: 466292338}
   m_Layer: 5
   m_Name: TimerContainer
   m_TagString: Untagged
@@ -8182,32 +8041,6 @@ RectTransform:
   m_AnchoredPosition: {x: 110, y: 126}
   m_SizeDelta: {x: 128.0828, y: 91.5752}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &466292338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 466292336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ef0897ff78f584bab36b9689e27c79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StoryCanvas: {fileID: 592831593}
-  StartMenuCanvas: {fileID: 959465337}
-  FinishCanvas: {fileID: 86490927}
-  GameCanvases:
-  - {fileID: 1886847519}
-  - {fileID: 1944820593}
-  - {fileID: 1900287320}
-  - {fileID: 852947456}
-  - {fileID: 1996817003}
-  - {fileID: 922052505}
-  - {fileID: 1806072981}
-  - {fileID: 186257156}
-  - {fileID: 947792694}
-  - {fileID: 202311061}
 --- !u!114 &466292339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8222,7 +8055,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerContainer: {fileID: 466292336}
   countTimerUI: {fileID: 1032098200}
-  asianMonkUI: {fileID: 1945518229}
 --- !u!1 &468211685
 GameObject:
   m_ObjectHideFlags: 0
@@ -12670,7 +12502,6 @@ GameObject:
   m_Component:
   - component: {fileID: 770131441}
   - component: {fileID: 770131443}
-  - component: {fileID: 770131442}
   m_Layer: 5
   m_Name: TimerContainer
   m_TagString: Untagged
@@ -12700,32 +12531,6 @@ RectTransform:
   m_AnchoredPosition: {x: 110, y: 126}
   m_SizeDelta: {x: 128.0828, y: 91.5752}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &770131442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 770131440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ef0897ff78f584bab36b9689e27c79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StoryCanvas: {fileID: 592831593}
-  StartMenuCanvas: {fileID: 959465337}
-  FinishCanvas: {fileID: 86490927}
-  GameCanvases:
-  - {fileID: 1886847519}
-  - {fileID: 1944820593}
-  - {fileID: 1900287320}
-  - {fileID: 852947456}
-  - {fileID: 1996817003}
-  - {fileID: 922052505}
-  - {fileID: 1806072981}
-  - {fileID: 186257156}
-  - {fileID: 947792694}
-  - {fileID: 202311061}
 --- !u!114 &770131443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12740,7 +12545,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerContainer: {fileID: 770131440}
   countTimerUI: {fileID: 1936409457}
-  asianMonkUI: {fileID: 1945518229}
 --- !u!1 &771281564
 GameObject:
   m_ObjectHideFlags: 0
@@ -17097,7 +16901,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125762690}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ef0897ff78f584bab36b9689e27c79, type: 3}
   m_Name: 
@@ -25071,7 +24875,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1721578029}
   - component: {fileID: 1721578031}
-  - component: {fileID: 1721578030}
   m_Layer: 5
   m_Name: TimerContainer
   m_TagString: Untagged
@@ -25101,32 +24904,6 @@ RectTransform:
   m_AnchoredPosition: {x: 110, y: 126}
   m_SizeDelta: {x: 128.0828, y: 91.5752}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1721578030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1721578028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ef0897ff78f584bab36b9689e27c79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StoryCanvas: {fileID: 592831593}
-  StartMenuCanvas: {fileID: 959465337}
-  FinishCanvas: {fileID: 86490927}
-  GameCanvases:
-  - {fileID: 1886847519}
-  - {fileID: 1944820593}
-  - {fileID: 1900287320}
-  - {fileID: 852947456}
-  - {fileID: 1996817003}
-  - {fileID: 922052505}
-  - {fileID: 1806072981}
-  - {fileID: 186257156}
-  - {fileID: 947792694}
-  - {fileID: 202311061}
 --- !u!114 &1721578031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25141,7 +24918,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerContainer: {fileID: 1721578028}
   countTimerUI: {fileID: 269136215}
-  asianMonkUI: {fileID: 1945518229}
 --- !u!1 &1725884261
 GameObject:
   m_ObjectHideFlags: 0
@@ -28309,7 +28085,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961972347}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ef0897ff78f584bab36b9689e27c79, type: 3}
   m_Name: 
@@ -28717,7 +28493,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2008543219}
   - component: {fileID: 2008543221}
-  - component: {fileID: 2008543220}
   m_Layer: 5
   m_Name: TimerContainer
   m_TagString: Untagged
@@ -28747,32 +28522,6 @@ RectTransform:
   m_AnchoredPosition: {x: 110, y: 126}
   m_SizeDelta: {x: 128.0828, y: 91.5752}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2008543220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2008543218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ef0897ff78f584bab36b9689e27c79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StoryCanvas: {fileID: 592831593}
-  StartMenuCanvas: {fileID: 959465337}
-  FinishCanvas: {fileID: 86490927}
-  GameCanvases:
-  - {fileID: 1886847519}
-  - {fileID: 1944820593}
-  - {fileID: 1900287320}
-  - {fileID: 852947456}
-  - {fileID: 1996817003}
-  - {fileID: 922052505}
-  - {fileID: 1806072981}
-  - {fileID: 186257156}
-  - {fileID: 947792694}
-  - {fileID: 202311061}
 --- !u!114 &2008543221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28787,7 +28536,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerContainer: {fileID: 2008543218}
   countTimerUI: {fileID: 717175073}
-  asianMonkUI: {fileID: 1945518229}
 --- !u!1 &2010827727
 GameObject:
   m_ObjectHideFlags: 0
@@ -30093,7 +29841,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2114545357}
   - component: {fileID: 2114545359}
-  - component: {fileID: 2114545358}
   m_Layer: 5
   m_Name: TimerContainer
   m_TagString: Untagged
@@ -30123,32 +29870,6 @@ RectTransform:
   m_AnchoredPosition: {x: 110, y: 126}
   m_SizeDelta: {x: 128.0828, y: 91.5752}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2114545358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2114545356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16ef0897ff78f584bab36b9689e27c79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StoryCanvas: {fileID: 592831593}
-  StartMenuCanvas: {fileID: 959465337}
-  FinishCanvas: {fileID: 86490927}
-  GameCanvases:
-  - {fileID: 1886847519}
-  - {fileID: 1944820593}
-  - {fileID: 1900287320}
-  - {fileID: 852947456}
-  - {fileID: 1996817003}
-  - {fileID: 922052505}
-  - {fileID: 1806072981}
-  - {fileID: 186257156}
-  - {fileID: 947792694}
-  - {fileID: 202311061}
 --- !u!114 &2114545359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30163,7 +29884,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerContainer: {fileID: 2114545356}
   countTimerUI: {fileID: 121391616}
-  asianMonkUI: {fileID: 1945518229}
 --- !u!1 &2121835558
 GameObject:
   m_ObjectHideFlags: 0

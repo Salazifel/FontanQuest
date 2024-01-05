@@ -5575,7 +5575,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2080695329}
+      objectReference: {fileID: 1945518229}
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -11222,7 +11222,7 @@ PrefabInstance:
     - target: {fileID: 6086335913410556584, guid: 56eb807adda66094d8da290e2ada4e7a,
         type: 3}
       propertyPath: m_text
-      value: Level 1
+      value: Menu
       objectReference: {fileID: 0}
     - target: {fileID: 6086335913410556584, guid: 56eb807adda66094d8da290e2ada4e7a,
         type: 3}
@@ -17160,9 +17160,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1125762693}
+      - m_Target: {fileID: 1945518229}
         m_TargetAssemblyTypeName: AsianMonkUI, Assembly-CSharp
-        m_MethodName: ChangeToMenu
+        m_MethodName: ChangeToStory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29519,7 +29519,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1961972349}
+      objectReference: {fileID: 1945518229}
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -29832,7 +29832,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080695320}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16ef0897ff78f584bab36b9689e27c79, type: 3}
   m_Name: 

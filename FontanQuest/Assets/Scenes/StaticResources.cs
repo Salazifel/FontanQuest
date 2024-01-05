@@ -4,7 +4,8 @@ public static class StaticResources
 
     public static int getNumOfCoins()
     {
-        SaveGameObjects.GameData gameData = (SaveGameObjects.GameData)SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.MainSaveObject(), "gameData", 1);
+        SaveGameObjects.GameData gameData = (SaveGameObjects.GameData)SaveGameMechanic.getSaveGameObjectByPrimaryKey("gameData", 1);
+        if (gameData == null) {gameData = (SaveGameObjects.GameData) SaveGameObjects.CreateSaveGameObject("GameData");}
         coins = gameData.coins;
         return gameData.coins;
     }

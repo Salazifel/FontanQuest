@@ -25,15 +25,13 @@ public class AsianMonkUI : MonoBehaviour
                 GameCanvases[i].gameObject.SetActive(false);
             }
         }
-
-        // Load or create Asian Monk game data
-        asianMonkSavingGame = (SaveGameObjects.AsianMonkSavingGame)SaveGameMechanic.getSaveGameObjectByPrimaryKey(
-            new SaveGameObjects.AsianMonkSavingGame(0), "AsianMonkSavingGame", 1);
+        // Load Asian Monk game data
+        asianMonkSavingGame = (SaveGameObjects.AsianMonkSavingGame)SaveGameMechanic.getSaveGameObjectByPrimaryKey("AsianMonkSavingGame", 1);
 
         if (asianMonkSavingGame == null)
         {
             // If no saved data is found, create a new instance
-            asianMonkSavingGame = new SaveGameObjects.AsianMonkSavingGame(0);
+            asianMonkSavingGame = (SaveGameObjects.AsianMonkSavingGame) SaveGameObjects.CreateSaveGameObject("AsianMonkSavingGame");
         }
 
     }

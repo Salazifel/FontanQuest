@@ -17,13 +17,12 @@ public class FitnessBoxingUI : MonoBehaviour
         GameCanvas.gameObject.SetActive(false);
         FinishCanvas.gameObject.SetActive(false);
 
-        fitnessBoxingSavingGame = (SaveGameObjects.FitnessBoxingSavingGame)SaveGameMechanic.getSaveGameObjectByPrimaryKey(
-            new SaveGameObjects.FitnessBoxingSavingGame(0), "FitnessBoxingSavingGame", 1);
+        fitnessBoxingSavingGame = (SaveGameObjects.FitnessBoxingSavingGame)SaveGameMechanic.getSaveGameObjectByPrimaryKey("FitnessBoxingSavingGame", 1);
 
         if (fitnessBoxingSavingGame == null)
         {
             // If no saved data is found, create a new instance
-            fitnessBoxingSavingGame = new SaveGameObjects.FitnessBoxingSavingGame(0);
+            fitnessBoxingSavingGame = (SaveGameObjects.FitnessBoxingSavingGame) SaveGameObjects.CreateSaveGameObject("FitnessBoxingSavingGame");
         }
 
     }

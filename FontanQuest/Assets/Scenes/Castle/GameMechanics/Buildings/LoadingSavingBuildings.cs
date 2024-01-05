@@ -19,9 +19,9 @@ public class LoadingSavingBuildings : MonoBehaviour
 
     public void LoadBuildings()
     {
-        SaveGameObjects.BuiltBuildings builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.BuiltBuildings(false, false, false, false), "builtBuildings", 1);
-        if (builtBuildings == null) { builtBuildings = new SaveGameObjects.BuiltBuildings(false, false, false, false); }
-        
+        SaveGameObjects.BuiltBuildings builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameMechanic.getSaveGameObjectByPrimaryKey("BuiltBuildings", 1);
+        if (builtBuildings == null) { builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameObjects.CreateSaveGameObject("BuiltBuildings"); }
+        builtBuildings.Print();
         // now checking each building
         if (builtBuildings.CityWalls == true) { ActivateCityWalls(); }
         if (builtBuildings.Castle == true) { }

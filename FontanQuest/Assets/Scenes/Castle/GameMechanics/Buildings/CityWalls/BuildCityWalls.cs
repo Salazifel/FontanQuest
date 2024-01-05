@@ -34,8 +34,9 @@ public class BuildCityWalls : MonoBehaviour
                 rightAction,
                 null, // If you want a middle button, provide the text
                 null,
-                MessageWindow.Character_options.Character_Male_Peasant_01,
-                AnimationLibrary.Animations.Talk 
+                MessageWindow.Character_options.Character_Male_Rouge_01,
+                AnimationLibrary.Animations.Talk,
+                "audios/Emil_StadtMauerBauen_"
             );
         }
         else
@@ -49,11 +50,11 @@ public class BuildCityWalls : MonoBehaviour
         if (StaticResources.reduceNumOfCoins(BuildingCosts.CityWallCost) != 1)
         {
             // loading in the existing BuiltBuildings-Block
-            SaveGameObjects.BuiltBuildings builtBuildings = (SaveGameObjects.BuiltBuildings)SaveGameMechanic.getSaveGameObjectByPrimaryKey(new SaveGameObjects.BuiltBuildings(false, false, false, false), "builtBuildings", 1);
-            if (builtBuildings == null) { builtBuildings = new SaveGameObjects.BuiltBuildings(false, false, false, false);}
+            SaveGameObjects.BuiltBuildings builtBuildings = (SaveGameObjects.BuiltBuildings)SaveGameMechanic.getSaveGameObjectByPrimaryKey("BuiltBuildings", 1);
+            if (builtBuildings == null) { builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameObjects.CreateSaveGameObject("BuiltBuildings");}
             builtBuildings.CityWalls = true;
             GameObject.Find("GameData").GetComponent<LoadingSavingBuildings>().ActivateCityWalls();
-            SaveGameMechanic.saveSaveGameObject(builtBuildings, "builtBuildings", 1);
+            SaveGameMechanic.saveSaveGameObject(builtBuildings, "BuiltBuildings", 1);
             castleMainUIScript.DeactivateMessageWindow();
    
 
@@ -66,8 +67,9 @@ public class BuildCityWalls : MonoBehaviour
                 null,
                 "Gerne",
                 messageWindow.DeactivateMessageWindow,
-                MessageWindow.Character_options.Character_Male_Peasant_01,
-                AnimationLibrary.Animations.Talk
+                MessageWindow.Character_options.Character_Male_Rouge_01,
+                AnimationLibrary.Animations.Talk,
+                null
             ));
 
         } else {

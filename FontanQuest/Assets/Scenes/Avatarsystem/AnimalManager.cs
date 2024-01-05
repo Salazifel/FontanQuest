@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using System;
 
 public class AnimalManager : MonoBehaviour
 {   
+    private Pet_UI_Management pet_UI_Management;
     public SaveGameObjects.PetSystem petSystem;
     void Start()
     {   
-
+        pet_UI_Management = GameObject.Find("MainCanvas").GetComponent <Pet_UI_Management>(); 
         DeactivateAllAnimals();
         GameObject pet = GameObject.Find("Pet");
         AnimalManager animalManager = pet.GetComponent<AnimalManager>();
@@ -112,10 +114,11 @@ public class AnimalManager : MonoBehaviour
 
     public void setPet()
     {   
-        petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey("PetSystem", 1);
+        
         var enumValues = (DefaultCubsToSelect[])Enum.GetValues(typeof(DefaultCubsToSelect));
         Debug.Log(enumValues[currentArrayPosition]);
-        petSystem.selectedAnimal = enumValues[currentArrayPosition].ToString();
+        pet_UI_Management.petSystem.animalSelected = true;
+        pet_UI_Management.petSystem.selectedAnimal = enumValues[currentArrayPosition].ToString();
         Debug.Log(petSystem.selectedAnimal);
         savePetSystem();
         

@@ -72,13 +72,12 @@ public class Pet_UI_Management : MonoBehaviour
     }
         void LateUpdate()
     {   
-
-        if (petSystem != null) 
+        if (petSystem != null)
         loadPetSystem();
         // Debug.Log("Loaded");
         // Debug.Log("is " + petSystem + " null?");
         {
-            if (!petSystem.animalSelected && pet_CameraIntro.AnimationIsDone)
+            if (!petSystem.onBoardingDone && pet_CameraIntro.AnimationIsDone)
             {
                 messageWindow.SetupMessageWindow(
                     "Dein Tier",
@@ -128,7 +127,7 @@ public class Pet_UI_Management : MonoBehaviour
     private void SelectPetMiddleButtonClick()
     {
         messageWindow.DeactivateMessageWindow();
-        petSystem.animalSelected = true;
+        petSystem.onBoardingDone = true;
         savePetSystem();
         Debug.Log("Saved");
         ToggleVisibiliyAnimalSelectionButtons(true);
@@ -139,7 +138,7 @@ public class Pet_UI_Management : MonoBehaviour
     private void SelectGameMiddleButtonClick()
     {
         messageWindow.DeactivateMessageWindow();
-        petSystem.onBoardingDone = true;
+        petSystem.animalSelected = true;
         savePetSystem();
         Debug.Log("Saved");
         ToggleVisibiliyAnimalSelectionButtons(false);

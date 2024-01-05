@@ -38,12 +38,6 @@ public class AsianMonkUI : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ChangeToMenu()
     {
         StoryCanvas.gameObject.SetActive(false);

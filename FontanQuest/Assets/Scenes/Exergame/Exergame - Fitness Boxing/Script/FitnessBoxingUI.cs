@@ -62,6 +62,7 @@ public class FitnessBoxingUI : MonoBehaviour
 
         if (currentLevel >= 0 && currentLevel < GameCanvases.Length)
         {
+            
             // Activate the specified level canvas
             SetGameCanvasActive(currentLevel);
 

@@ -220,8 +220,15 @@ public class SaveGameObjects : MonoBehaviour
     public class PetSystem : MainSaveObject
     {
         public Boolean onBoardingDone;
+        public Boolean Fuettern_onBoardingDone;
+        //onboarding for the rest of the games will be implemented
+        // public Boolean Fuettern_onBoardingDone;
+        // public Boolean Fuettern_onBoardingDone;
         public Boolean animalSelected;
         public string selectedAnimal;
+
+        public Boolean selectionComplete;
+        public Boolean gameSelected;
 
 
         public override void Print()

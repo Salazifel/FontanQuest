@@ -329,6 +329,12 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Pet/Pet.unity
+    guid: 8199a9f03ae29594db95ba524c62e805
+  - enabled: 1
+    path: Assets/Scenes/Pet/Fuettern.unity
+    guid: d54e8623e3d225f43b53c9e48152a766
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 254f22ba6035e6d4398b0fed5896fd9a,
       type: 2}

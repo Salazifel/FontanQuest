@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pet_UI_Management : MonoBehaviour
 {
@@ -16,11 +17,10 @@ public class Pet_UI_Management : MonoBehaviour
     GameObject rennenGameButton;
     GameObject reselectButton;
     MessageWindow messageWindow;
-    private Pet_CameraIntro pet_CameraIntro;
+    public Pet_CameraIntro pet_CameraIntro;
     // Start is called before the first frame update
     void Start()
     {   
-        Debug.Log("is " + petSystem + " null?");
         // Get MainCameraScript
         pet_CameraIntro = GameObject.Find("Main Camera").GetComponent<Pet_CameraIntro>();
         // Get PetSelectionButtons
@@ -66,16 +66,16 @@ public class Pet_UI_Management : MonoBehaviour
                 null
             );
         } else 
-        {
-            pet_CameraIntro.ActivateCameraAnimation();
+        {   
+            petSystem.gameSelected = false;
+            messageWindow.DeactivateMessageWindow();
+            pet_CameraIntro.ActivateCameraAnimation(false);
         }
     }
         void LateUpdate()
     {   
         if (petSystem != null)
-        loadPetSystem();
-        // Debug.Log("Loaded");
-        // Debug.Log("is " + petSystem + " null?");
+
         {
             if (!petSystem.onBoardingDone && pet_CameraIntro.AnimationIsDone)
             {
@@ -88,41 +88,46 @@ public class Pet_UI_Management : MonoBehaviour
                     null,
                     "Ok",
                     SelectPetMiddleButtonClick,
-                    MessageWindow.Character_options.none,
+                    MessageWindow.Character_options.Character_Male_Rouge_01,
                     AnimationLibrary.Animations.Talk,
                     null
                 );
             }
-            if (petSystem.animalSelected && petSystem.selectedAnimal != null)
+            if (petSystem.animalSelected && petSystem.selectedAnimal != null && !petSystem.selectionComplete)
             {
                 messageWindow.SetupMessageWindow(
                     "Wahlen",
-                    "Clicke ein spiel, um sich um dein Tier zu kümmern.",
+                    "Clicke ein spiel, um sich um dein Tier zu kuemmern.",
                     null,
                     null,
                     null,
                     null,
                     "Ok",
                     SelectGameMiddleButtonClick,
-                    MessageWindow.Character_options.none,
+                    MessageWindow.Character_options.Character_Male_Rouge_01,
                     AnimationLibrary.Animations.Talk,
                     null
                 );
             }
 
             else {
-                //here it will be implemented the 
+                if (pet_CameraIntro.AnimationIsDone && petSystem.animalSelected && !petSystem.gameSelected)
+                {
+                ToggleVisibiliyGameSelectionButtons(true);
+                }
+                if (pet_CameraIntro.AnimationIsDone && !petSystem.animalSelected && petSystem.onBoardingDone){
+                ToggleVisibiliyAnimalSelectionButtons(true);
+                }
+                if (petSystem.gameSelected && pet_CameraIntro.AnimationIsDone){
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("Fuettern", LoadSceneMode.Single);
+                }
             }
         }
     }
     private void StartMessageMiddleButtonClick()
     {
         messageWindow.DeactivateMessageWindow();
-        pet_CameraIntro.ActivateCameraAnimation();
-        savePetSystem();
-        Debug.Log("Saved");
-        loadPetSystem();
-        Debug.Log("Loaded");
+        pet_CameraIntro.ActivateCameraAnimation(false);
     }
     private void SelectPetMiddleButtonClick()
     {
@@ -130,7 +135,6 @@ public class Pet_UI_Management : MonoBehaviour
         petSystem.onBoardingDone = true;
         savePetSystem();
         Debug.Log("Saved");
-        ToggleVisibiliyAnimalSelectionButtons(true);
         Debug.Log("AnimalSelectButtons activated!");
         loadPetSystem();
         Debug.Log("Loaded");
@@ -138,12 +142,9 @@ public class Pet_UI_Management : MonoBehaviour
     private void SelectGameMiddleButtonClick()
     {
         messageWindow.DeactivateMessageWindow();
-        petSystem.animalSelected = true;
+        petSystem.selectionComplete = true;
         savePetSystem();
         Debug.Log("Saved");
-        ToggleVisibiliyAnimalSelectionButtons(false);
-        Debug.Log("AnimalSelectButtons deactivated!");
-        ToggleVisibiliyGameSelectionButtons(true);
         Debug.Log("GameSelectButtons activated!");
         loadPetSystem();
         Debug.Log("Loaded");
@@ -161,13 +162,13 @@ public class Pet_UI_Management : MonoBehaviour
 
     }
 
-    void ToggleVisibiliyAnimalSelectionButtons(Boolean setBoolean)
+    public void ToggleVisibiliyAnimalSelectionButtons(Boolean setBoolean)
     {
         nextPetButton.SetActive(setBoolean);
         previousPetButton.SetActive(setBoolean);
         PetSelectionDoneButton.SetActive(setBoolean);
     }
-    void ToggleVisibiliyGameSelectionButtons(Boolean setBoolean)
+    public void ToggleVisibiliyGameSelectionButtons(Boolean setBoolean)
     {
         fuetternGameButton.SetActive(setBoolean);
         spielenGameButton.SetActive(setBoolean);

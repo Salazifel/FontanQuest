@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 using System;
@@ -16,11 +17,6 @@ public class AnimalManager : MonoBehaviour
         AnimalManager animalManager = pet.GetComponent<AnimalManager>();
         animalManager.ActivateAnimal("Bear_Cub_8");
 
-        // if (petSystem == null)
-        // {
-        //     petSystem = (SaveGameObjects.PetSystem) SaveGameObjects.CreateSaveGameObject("PetSystem");
-        // }
-        // int petSystem_Key = SaveGameMechanic.saveSaveGameObject(new SaveGameObjects.PetSystem(false,false), "petSystem", 1);
     }
 
     void DeactivateAllAnimals()
@@ -120,14 +116,31 @@ public class AnimalManager : MonoBehaviour
         pet_UI_Management.petSystem.animalSelected = true;
         pet_UI_Management.petSystem.selectedAnimal = enumValues[currentArrayPosition].ToString();
         Debug.Log(petSystem.selectedAnimal);
-        savePetSystem();
-        
+        pet_UI_Management.ToggleVisibiliyAnimalSelectionButtons(false);
+       
     }
 
-        public void savePetSystem()
-    {
-        SaveGameMechanic.saveSaveGameObject(petSystem, "PetSystem", 1);
+    public void reSelect()
+    {   
+        pet_UI_Management.ToggleVisibiliyGameSelectionButtons(false);
+        pet_UI_Management.petSystem.animalSelected = false;
+        pet_UI_Management.petSystem.selectedAnimal = null;
+        pet_UI_Management.petSystem.selectionComplete = false;
+        pet_UI_Management.petSystem.gameSelected = false;
+        pet_UI_Management.savePetSystem();
+        pet_UI_Management.loadPetSystem();
+        pet_UI_Management.ToggleVisibiliyAnimalSelectionButtons(true);
     }
+
+    public void selectGame()
+    {   
+        pet_UI_Management.petSystem.gameSelected = true;
+        Debug.Log("selectGamePressed");                    
+        pet_UI_Management.ToggleVisibiliyGameSelectionButtons(false);
+        pet_UI_Management.pet_CameraIntro.ActivateCameraAnimation(true);
+        pet_UI_Management.savePetSystem();
+    }
+
 
     public void setCubByArray(int arrayPosition)
     {

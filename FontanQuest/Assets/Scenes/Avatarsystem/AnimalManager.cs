@@ -8,14 +8,48 @@ using System;
 public class AnimalManager : MonoBehaviour
 {   
     private Pet_UI_Management pet_UI_Management;
+
+    private Pet_UI_Management_GameSet gameSet;
     public SaveGameObjects.PetSystem petSystem;
     void Start()
     {   
+        string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        if (currentSceneName == "Pet"){
         pet_UI_Management = GameObject.Find("MainCanvas").GetComponent <Pet_UI_Management>(); 
+        petSystem = pet_UI_Management.petSystem;
+        }
+        else if (currentSceneName == "Fuettern"){
+        gameSet = GameObject.Find("Test").GetComponent <Pet_UI_Management_GameSet>();
+        petSystem = gameSet.petSystem;
+        }
+        else
+        {
+            // Default case or handle other scenes
+            Debug.Log("You are in a different scene");
+            // Execute default actions or handle other scenes
+        }
+
         DeactivateAllAnimals();
         GameObject pet = GameObject.Find("Pet");
         AnimalManager animalManager = pet.GetComponent<AnimalManager>();
-        animalManager.ActivateAnimal("Bear_Cub_8");
+        
+
+        if (petSystem != null)
+        {
+            if (petSystem.animalSelected == true && petSystem.selectedAnimal != null)
+            {
+                animalManager.ActivateAnimal(petSystem.selectedAnimal);
+            }
+            else
+            {
+            animalManager.ActivateAnimal("Bear_Cub_8");
+            }
+        }
+        else
+        {
+            animalManager.ActivateAnimal("Bear_Cub_8");
+        }
+
 
     }
 
@@ -140,6 +174,7 @@ public class AnimalManager : MonoBehaviour
         pet_UI_Management.pet_CameraIntro.ActivateCameraAnimation(true);
         pet_UI_Management.savePetSystem();
     }
+
 
 
     public void setCubByArray(int arrayPosition)

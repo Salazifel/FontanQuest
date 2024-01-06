@@ -18,9 +18,11 @@ public class Pet_UI_Management : MonoBehaviour
     GameObject reselectButton;
     MessageWindow messageWindow;
     public Pet_CameraIntro pet_CameraIntro;
+    private AnimalManager animalManager;
     // Start is called before the first frame update
     void Start()
     {   
+        animalManager = GameObject.Find("Pet").GetComponent <AnimalManager>();
         // Get MainCameraScript
         pet_CameraIntro = GameObject.Find("Main Camera").GetComponent<Pet_CameraIntro>();
         // Get PetSelectionButtons
@@ -39,6 +41,10 @@ public class Pet_UI_Management : MonoBehaviour
 
         petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey("PetSystem", 1);
         
+        if (petSystem != null)
+        {
+            animalManager.ActivateAnimal(petSystem.selectedAnimal);
+        }
         if (petSystem == null)
         {
             petSystem = (SaveGameObjects.PetSystem) SaveGameObjects.CreateSaveGameObject("PetSystem");

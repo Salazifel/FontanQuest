@@ -13,6 +13,7 @@ public class AnimalManager : MonoBehaviour
     public SaveGameObjects.PetSystem petSystem;
     void Start()
     {   
+
         string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         if (currentSceneName == "Pet"){
         pet_UI_Management = GameObject.Find("MainCanvas").GetComponent <Pet_UI_Management>(); 
@@ -166,9 +167,20 @@ public class AnimalManager : MonoBehaviour
         pet_UI_Management.ToggleVisibiliyAnimalSelectionButtons(true);
     }
 
-    public void selectGame()
+    public void selectGameFuettern()
     {   
         pet_UI_Management.petSystem.gameSelected = true;
+        pet_UI_Management.fuettern = 1;
+        Debug.Log("selectGamePressed");                    
+        pet_UI_Management.ToggleVisibiliyGameSelectionButtons(false);
+        pet_UI_Management.pet_CameraIntro.ActivateCameraAnimation(true);
+        pet_UI_Management.savePetSystem();
+    }
+
+    public void selectGameKuemmern()
+    {   
+        pet_UI_Management.petSystem.gameSelected = true;
+        pet_UI_Managemen.kuemmern = 1;
         Debug.Log("selectGamePressed");                    
         pet_UI_Management.ToggleVisibiliyGameSelectionButtons(false);
         pet_UI_Management.pet_CameraIntro.ActivateCameraAnimation(true);

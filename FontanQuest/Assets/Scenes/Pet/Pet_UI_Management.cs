@@ -19,9 +19,15 @@ public class Pet_UI_Management : MonoBehaviour
     MessageWindow messageWindow;
     public Pet_CameraIntro pet_CameraIntro;
     private AnimalManager animalManager;
+
+    public int fuettern;
+    public int kuemmern;
+
     // Start is called before the first frame update
     void Start()
     {   
+        fuettern = 0;
+        kuemmern = 0;
         animalManager = GameObject.Find("Pet").GetComponent <AnimalManager>();
         // Get MainCameraScript
         pet_CameraIntro = GameObject.Find("Main Camera").GetComponent<Pet_CameraIntro>();
@@ -125,7 +131,12 @@ public class Pet_UI_Management : MonoBehaviour
                 ToggleVisibiliyAnimalSelectionButtons(true);
                 }
                 if (petSystem.gameSelected && pet_CameraIntro.AnimationIsDone){
+                    if (fuettern == 1){
                     UnityEngine.SceneManagement.SceneManager.LoadScene("Fuettern", LoadSceneMode.Single);
+                    }
+                    if (kuemmern == 1){
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("Kuemmern", LoadSceneMode.Single);
+                    }
                 }
             }
         }

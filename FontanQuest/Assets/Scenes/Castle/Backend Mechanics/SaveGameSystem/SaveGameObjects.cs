@@ -221,6 +221,8 @@ public class SaveGameObjects : MonoBehaviour
     {
         public Boolean onBoardingDone;
         public Boolean Fuettern_onBoardingDone;
+
+        // public Vector3 currentScale;
         //onboarding for the rest of the games will be implemented
         // public Boolean Fuettern_onBoardingDone;
         // public Boolean Fuettern_onBoardingDone;

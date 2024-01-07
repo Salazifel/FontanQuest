@@ -19,7 +19,7 @@ public class AnimalManager : MonoBehaviour
         petSystem = pet_UI_Management.petSystem;
         }
         else if (currentSceneName == "Fuettern"){
-        gameSet = GameObject.Find("Test").GetComponent <Pet_UI_Management_GameSet>();
+        gameSet = GameObject.Find("Script Controller").GetComponent <Pet_UI_Management_GameSet>();
         petSystem = gameSet.petSystem;
         }
         else

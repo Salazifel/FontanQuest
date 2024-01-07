@@ -86,7 +86,7 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         {
             messageWindow.SetupMessageWindow(
                 "Fuettern",
-                "You can feed your pet here, just click on the feed button or drag the hay to the feeder!",
+                "Hier kannst du dein Tier füttern, du musst nur das Heu zum Futterplatz tragen!",
                 null,
                 null,
                 null,
@@ -102,7 +102,7 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         {
             messageWindow.SetupMessageWindow(
                 "Kuemmern",
-                "You can wash and play with your pet here",
+                "Hier kannst du Ihr Haustier waschen und mit ihm spielen",
                 null,
                 null,
                 null,

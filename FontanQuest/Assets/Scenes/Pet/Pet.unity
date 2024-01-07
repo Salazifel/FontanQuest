@@ -32092,12 +32092,12 @@ PrefabInstance:
     - target: {fileID: 6502963981780449918, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_text
-      value: Spielen
+      value: Kuemmern
       objectReference: {fileID: 0}
     - target: {fileID: 6502963981780449918, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6502963981780449918, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
@@ -32107,7 +32107,7 @@ PrefabInstance:
     - target: {fileID: 6502963981780449918, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_enableAutoSizing
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6502963982672909896, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
@@ -32262,7 +32262,7 @@ PrefabInstance:
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectGame
+      value: selectGameKuemmern
       objectReference: {fileID: 0}
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
@@ -39162,12 +39162,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7ed96c09436e2d4bb8989d2ec922008, type: 3}
---- !u!1 &1033047092 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7392196180565178165, guid: c7ed96c09436e2d4bb8989d2ec922008,
-    type: 3}
-  m_PrefabInstance: {fileID: 1033047091}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1033073790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47990,7 +47984,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1033047092}
+      objectReference: {fileID: 1829686775}
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -47999,17 +47993,17 @@ PrefabInstance:
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: selectGameFuettern
       objectReference: {fileID: 0}
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: 
+      value: AnimalManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: 
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69c9c5ac08640d749993080989d71314, type: 3}
@@ -50113,6 +50107,8 @@ MonoBehaviour:
     selectionComplete: 0
     gameSelected: 0
   pet_CameraIntro: {fileID: 0}
+  fuettern: 0
+  kuemmern: 0
 --- !u!1001 &1350401777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66062,7 +66058,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1033047091}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033047092}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fd8fabc42785af4f8446e400db2ff03, type: 3}

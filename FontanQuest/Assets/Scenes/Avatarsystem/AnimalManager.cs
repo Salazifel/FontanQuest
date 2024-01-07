@@ -180,7 +180,7 @@ public class AnimalManager : MonoBehaviour
     public void selectGameKuemmern()
     {   
         pet_UI_Management.petSystem.gameSelected = true;
-        pet_UI_Managemen.kuemmern = 1;
+        pet_UI_Management.kuemmern = 1;
         Debug.Log("selectGamePressed");                    
         pet_UI_Management.ToggleVisibiliyGameSelectionButtons(false);
         pet_UI_Management.pet_CameraIntro.ActivateCameraAnimation(true);

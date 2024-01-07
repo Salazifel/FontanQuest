@@ -19,7 +19,7 @@ public static class AddGameDataObjects
 
     public static int getNumOfHay()
     {
-        return 1;
+        return 4;
         //2do
     }
 }

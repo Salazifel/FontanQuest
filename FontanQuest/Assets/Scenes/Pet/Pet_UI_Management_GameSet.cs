@@ -6,8 +6,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Pet_UI_Management_GameSet : MonoBehaviour
-{
+{   
+    int numofHay;
     public SaveGameObjects.PetSystem petSystem;
+
     GameObject messageWindowObject;
     // GameObject nextPetButton;
     // GameObject previousPetButton;
@@ -22,7 +24,8 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
     private AnimalManager animalManager;
     // Start is called before the first frame update
     void Start()
-    {    
+    {   
+
         Debug.Log("Script is Active!");
         animalManager = GameObject.Find("Pet").GetComponent <AnimalManager>();
         // Get MainCameraScript
@@ -85,10 +88,12 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         }
     }
         void LateUpdate(){
+            
             if (!petSystem.gameSelected && pet_CameraIntro.AnimationIsDone)
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Pet", LoadSceneMode.Single);
             }
+
         }
     
     private void StartMessageMiddleButtonClick()

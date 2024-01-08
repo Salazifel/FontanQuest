@@ -45973,6 +45973,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1829686775}
@@ -45983,8 +45988,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: selectGame
+      value: selectGameRennen
       objectReference: {fileID: 0}
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
@@ -50109,6 +50119,7 @@ MonoBehaviour:
   pet_CameraIntro: {fileID: 0}
   fuettern: 0
   kuemmern: 0
+  rennen: 0
 --- !u!1001 &1350401777
 PrefabInstance:
   m_ObjectHideFlags: 0

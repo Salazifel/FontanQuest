@@ -22,12 +22,14 @@ public class Pet_UI_Management : MonoBehaviour
 
     public int fuettern;
     public int kuemmern;
+    public int rennen;
 
     // Start is called before the first frame update
     void Start()
     {   
         fuettern = 0;
         kuemmern = 0;
+        rennen = 0;
         animalManager = GameObject.Find("Pet").GetComponent <AnimalManager>();
         // Get MainCameraScript
         pet_CameraIntro = GameObject.Find("Main Camera").GetComponent<Pet_CameraIntro>();
@@ -136,6 +138,9 @@ public class Pet_UI_Management : MonoBehaviour
                     }
                     if (kuemmern == 1){
                     UnityEngine.SceneManagement.SceneManager.LoadScene("Kuemmern", LoadSceneMode.Single);
+                    }
+                    if (rennen == 1){
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("Rennen", LoadSceneMode.Single);
                     }
                 }
             }

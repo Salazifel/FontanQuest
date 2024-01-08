@@ -19,7 +19,7 @@ public class AnimalManager : MonoBehaviour
         pet_UI_Management = GameObject.Find("MainCanvas").GetComponent <Pet_UI_Management>(); 
         petSystem = pet_UI_Management.petSystem;
         }
-        else if (currentSceneName == "Fuettern"){
+        else if (currentSceneName == "Fuettern" || currentSceneName == "Rennen"){
         gameSet = GameObject.Find("Script Controller").GetComponent <Pet_UI_Management_GameSet>();
         petSystem = gameSet.petSystem;
         }
@@ -187,6 +187,15 @@ public class AnimalManager : MonoBehaviour
         pet_UI_Management.savePetSystem();
     }
 
+    public void selectGameRennen()
+    {   
+        pet_UI_Management.petSystem.gameSelected = true;
+        pet_UI_Management.rennen = 1;
+        Debug.Log("selectGamePressed");                    
+        pet_UI_Management.ToggleVisibiliyGameSelectionButtons(false);
+        pet_UI_Management.pet_CameraIntro.ActivateCameraAnimation(true);
+        pet_UI_Management.savePetSystem();
+    }
 
 
     public void setCubByArray(int arrayPosition)

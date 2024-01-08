@@ -21,12 +21,13 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
     GameObject backtoGameButton;
     GameObject washPetButton;
     GameObject playPetButton;
-    MessageWindow messageWindow;
+    private MessageWindow messageWindow;
     public Pet_CameraIntro pet_CameraIntro;
     private AnimalManager animalManager;
     // Start is called before the first frame update
     void Start()
     {   
+        ResumeGame();
         string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         if (currentSceneName == "Kuemmern"){
         gameSet = GameObject.Find("Script Controller").GetComponent <Pet_UI_Management_GameSet>();
@@ -40,7 +41,7 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         ToggleVisibiliyCleanItem(false);
         ToggleVisibiliyPlayItem(false);
         }
-        else if (currentSceneName == "Fuettern" ){
+        else if (currentSceneName == "Fuettern" || currentSceneName == "Rennen" ){
         gameSet = GameObject.Find("Script Controller").GetComponent <Pet_UI_Management_GameSet>();
         petSystem = gameSet.petSystem;
         }
@@ -65,10 +66,11 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         messageWindow = messageWindowObject.GetComponent<MessageWindow>();
 
         petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey("PetSystem", 1);
-        
+
         if (petSystem != null)
         {   
             animalManager.ActivateAnimal(petSystem.selectedAnimal);
+            Debug.Log(petSystem.selectedAnimal);
         }
         if (petSystem == null)
         {
@@ -113,7 +115,24 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
                 AnimationLibrary.Animations.Talk,
                 null
             );
-        } else 
+        }
+        if (currentSceneName == "Rennen")
+            {
+            messageWindow.SetupMessageWindow(
+                "Rennen",
+                "Avoid obstacles with your favorite pet!",
+                null,
+                null,
+                null,
+                null,
+                "Ok",
+                StartMessageRennenMiddleButtonClick,
+                MessageWindow.Character_options.Character_Male_Rouge_01,
+                AnimationLibrary.Animations.Talk,
+                null
+            );
+        } 
+        else 
         {   
             animalManager.ActivateAnimal(petSystem.selectedAnimal);
             messageWindow.DeactivateMessageWindow();
@@ -143,6 +162,12 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         messageWindow.DeactivateMessageWindow();
         pet_CameraIntro.ActivateCameraAnimation(false);
         petSystem.Kuemmern_onBoardingDone = true;
+        savePetSystem();
+    }
+    private void StartMessageRennenMiddleButtonClick()
+    {
+        messageWindow.DeactivateMessageWindow();
+        pet_CameraIntro.ActivateCameraAnimation(false);
         savePetSystem();
     }
     public void savePetSystem()
@@ -201,5 +226,12 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         ToggleVisibiliyPlayItem(true);
     }
 
-    
+    void PauseGame ()
+    {
+        Time.timeScale = 0;
+    }
+    void ResumeGame ()
+    {
+        Time.timeScale = 1;
+    }
 }   

@@ -130,7 +130,6 @@ public class AsianMonkUI : MonoBehaviour
         if (levelIndex >= 0 && levelIndex < GameCanvases.Length && GameCanvases[levelIndex] != null)
         {
             GameCanvases[levelIndex].gameObject.SetActive(true);
-            Debug.Log("Loaded GameCanvas: " + GameCanvases[levelIndex].name);
         }
 
     }

@@ -72,7 +72,7 @@ public class FitnessBoxingUI : MonoBehaviour
             // Increment the current level after setting up the game canvas
             currentLevel++;
 
-            Debug.Log("Current Level: " + currentLevel);
+            
         }
         else
         {

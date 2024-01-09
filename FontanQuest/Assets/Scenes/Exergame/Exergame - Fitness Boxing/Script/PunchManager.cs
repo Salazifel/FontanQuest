@@ -46,12 +46,14 @@ public class PunchManager : MonoBehaviour
         if (NewScore > 1000)
         {
             FinishGame();
+            NewScore = 0;
         }
     }
 
     public void FinishGame()
     {
         fitnessBoxingUI.ChangeToComplete();
-        fitnessBoxingUI.SaveFitnessBoxingData();
+        fitnessBoxingUI.CompleteLevel();
+        // fitnessBoxingUI.SaveFitnessBoxingData();
     }
 }

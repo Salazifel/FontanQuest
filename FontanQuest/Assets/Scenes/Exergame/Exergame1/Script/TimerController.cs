@@ -11,10 +11,13 @@ public class TimerController : MonoBehaviour
     // public float StartAt;
     float accumTime;
     float totalTime;
-    public AsianMonkUI asianMonkUI;
+
+    AsianMonkUI asianMonkUI;
     // Start is called before the first frame update
     void Start()
     {
+        asianMonkUI = GameObject.Find("AsianMonkController").GetComponent<AsianMonkUI>();
+
         //TimerContainer.SetActive(false);
         //countTimerUI.gameObject.SetActive(false);
         totalTime = 90f; // Set the total time in seconds (1 minute and 30 seconds)

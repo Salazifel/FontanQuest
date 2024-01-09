@@ -181,8 +181,7 @@ public class SaveGameObjects : MonoBehaviour
 
 
     [Serializable]
-
-    public class FitnessBoxingSavingGame : MainSaveObject
+    public class FitnessBoxingSavingGame : SaveGameObjects.MainSaveObject
     {
         public int currentLevel;
 
@@ -197,6 +196,7 @@ public class SaveGameObjects : MonoBehaviour
             Debug.Log(primaryKey + " level: " + currentLevel.ToString());
         }
     }
+
 
     [Serializable]
 

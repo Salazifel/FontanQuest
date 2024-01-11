@@ -33,7 +33,7 @@ public class WildPlantGenerator : MonoBehaviour
 
     IEnumerator WaitAndStart()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(7f);
         StartCoroutine(GenerateWildPlantCoroutine());
     }
     IEnumerator GenerateWildPlantCoroutine()

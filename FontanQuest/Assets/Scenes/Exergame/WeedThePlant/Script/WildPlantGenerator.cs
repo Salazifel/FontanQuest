@@ -12,10 +12,11 @@ public class WildPlantGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(GenerateWildPlantCoroutine());
     }
 
     // Update is called once per frame
+    /*
     void Update()
     {
         timeSinceLastSpawn += Time.deltaTime;
@@ -27,6 +28,16 @@ public class WildPlantGenerator : MonoBehaviour
 
         }
     }
+    */
+
+    IEnumerator GenerateWildPlantCoroutine()
+    {
+        while (true)
+        {
+            GenerateWildPlant();
+            yield return new WaitForSeconds(GenerateInterval);
+        }
+    }
 
     void GenerateWildPlant()
     {
@@ -34,12 +45,43 @@ public class WildPlantGenerator : MonoBehaviour
         GameObject NewWildPlant = Instantiate(WildPlants[r], transform);
         NewWildPlant.transform.localPosition = new Vector3(Random.Range(-179, 174), Random.Range(-145, 80), 0);
         TimeLastShows += Time.deltaTime;
-        if (TimeLastShows >= TimePlantShows)
-        {
-            NewWildPlant.SetActive(false);
-            TimeLastShows = 0f;
-        }
+
+        StartCoroutine(DisableAfterTime(NewWildPlant, TimePlantShows));
     }
 
+    IEnumerator DisableAfterTime(GameObject plant, float TimeToShow)
+    {
+        yield return new WaitForSeconds(TimeToShow);
+        plant.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Entered OnTriggerEnter");
+        if (other.gameObject.CompareTag("left"))
+        {
+            Debug.Log("Left");
+        }
+        else if (other.gameObject.CompareTag("right"))
+        {
+            Debug.Log("Right");
+        }
+        else if (other.gameObject.CompareTag("both"))
+        {
+            Debug.Log("Both");
+        }
+        else if (other.gameObject.CompareTag("PlantA"))
+        {
+            Debug.Log("PlantA");
+        }
+        else if (other.gameObject.CompareTag("PlantB"))
+        {
+            Debug.Log("PlantB");
+        }
+        else
+        {
+            Debug.Log("Collided with an unknown tag: " + other.tag);
+        }
+    }
 
 }

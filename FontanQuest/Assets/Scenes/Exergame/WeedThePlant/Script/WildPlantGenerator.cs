@@ -9,10 +9,11 @@ public class WildPlantGenerator : MonoBehaviour
     private float timeSinceLastSpawn = 0f;
     public float TimePlantShows;
     private float TimeLastShows = 0f;
+    private float timer;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(GenerateWildPlantCoroutine());
+        StartCoroutine(WaitAndStart());
     }
 
     // Update is called once per frame
@@ -30,6 +31,11 @@ public class WildPlantGenerator : MonoBehaviour
     }
     */
 
+    IEnumerator WaitAndStart()
+    {
+        yield return new WaitForSeconds(5f);
+        StartCoroutine(GenerateWildPlantCoroutine());
+    }
     IEnumerator GenerateWildPlantCoroutine()
     {
         while (true)

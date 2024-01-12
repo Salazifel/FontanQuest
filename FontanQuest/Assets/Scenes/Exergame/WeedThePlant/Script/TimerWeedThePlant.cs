@@ -12,11 +12,11 @@ public class TimerWeedThePlant : MonoBehaviour
     float accumTime;
     float totalTime;
 
-    AsianMonkUI asianMonkUI;
+    WeedThePlantUi WeedThePlantUI;
     // Start is called before the first frame update
     void Start()
     {
-        asianMonkUI = GameObject.Find("AsianMonkController").GetComponent<AsianMonkUI>();
+        WeedThePlantUI = GameObject.Find("WeedThePlantUI").GetComponent<WeedThePlantUi>();
 
         //TimerContainer.SetActive(false);
         //countTimerUI.gameObject.SetActive(false);
@@ -57,10 +57,12 @@ public class TimerWeedThePlant : MonoBehaviour
         countTimerUI.UpdateCountDown(formattedTime);
     }
 
+    
     void CompleteGame()
     {
-        asianMonkUI.ChangeToComplete();
-        asianMonkUI.SaveAsianMonkData();
+        WeedThePlantUI.ChangeToFinish();
+        // WeedThePlantUI.SaveAsianMonkData();
     }
+    
 }
 

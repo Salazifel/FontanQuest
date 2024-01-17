@@ -223,7 +223,12 @@ public class SaveGameObjects : MonoBehaviour
         public Boolean Fuettern_onBoardingDone;
         public Boolean Kuemmern_onBoardingDone;
         
-
+        public int Pet_Happiness;
+        public int Pet_Cleanliness;
+        public int Pet_Hunger;
+        public DateTime lastLog_Fuettern;
+        public DateTime lastLog_Putzen;
+        public DateTime lastLog_Spielen;
         // public Vector3 currentScale;
         //onboarding for the rest of the games will be implemented
         // public Boolean Fuettern_onBoardingDone;

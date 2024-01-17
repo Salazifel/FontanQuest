@@ -6,7 +6,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Pet_UI_Management : MonoBehaviour
-{
+{   
+    public DateTime timeNow;
     public SaveGameObjects.PetSystem petSystem;
     GameObject messageWindowObject;
     GameObject nextPetButton;
@@ -27,6 +28,7 @@ public class Pet_UI_Management : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
+        timeNow = DateTime.Now;
         fuettern = 0;
         kuemmern = 0;
         rennen = 0;
@@ -84,6 +86,7 @@ public class Pet_UI_Management : MonoBehaviour
             petSystem.gameSelected = false;
             messageWindow.DeactivateMessageWindow();
             pet_CameraIntro.ActivateCameraAnimation(false);
+            CheckPassingTime();
         }
     }
         void LateUpdate()
@@ -128,6 +131,7 @@ public class Pet_UI_Management : MonoBehaviour
                 if (pet_CameraIntro.AnimationIsDone && petSystem.animalSelected && !petSystem.gameSelected)
                 {
                 ToggleVisibiliyGameSelectionButtons(true);
+                timeNow = DateTime.Now;
                 }
                 if (pet_CameraIntro.AnimationIsDone && !petSystem.animalSelected && petSystem.onBoardingDone){
                 ToggleVisibiliyAnimalSelectionButtons(true);
@@ -197,6 +201,27 @@ public class Pet_UI_Management : MonoBehaviour
         rennenGameButton.SetActive(setBoolean);
         reselectButton.SetActive(setBoolean);
     }
+
+public void CheckPassingTime()
+{
+    // Calculate elapsed time for each activity
+    TimeSpan elapsedtime_Fuettern = timeNow - petSystem.lastLog_Fuettern;
+    TimeSpan elapsedtime_Putzen = timeNow - petSystem.lastLog_Putzen;
+    TimeSpan elapsedtime_Spielen = timeNow - petSystem.lastLog_Spielen;
+
+    Debug.Log(elapsedtime_Fuettern.Minutes);
+    // Calculate hunger decrease for each activity
+    int x_hunger_Fuettern = elapsedtime_Fuettern.Minutes / 30;
+    int x_hunger_Putzen = elapsedtime_Putzen.Minutes / 30;
+    int x_hunger_Spielen = elapsedtime_Spielen.Minutes / 30;
+    Debug.Log(x_hunger_Fuettern);
+    // Update hunger based on elapsed time for each activity
+    petSystem.Pet_Hunger -= x_hunger_Fuettern * 5;
+    Debug.Log(petSystem.Pet_Hunger);
+    // Similarly, update hunger for other activities if needed
+    savePetSystem();
+}
+
 
 
 }

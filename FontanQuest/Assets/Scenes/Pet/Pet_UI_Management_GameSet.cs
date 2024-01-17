@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class Pet_UI_Management_GameSet : MonoBehaviour
 {   
+    public DateTime timeNow_GameSet;
+    public string currentSceneName;
     int numofHay;
     public SaveGameObjects.PetSystem petSystem;
 
@@ -17,6 +19,14 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
     GameObject cleanItem2;
     GameObject playItem1;
     GameObject playItem2;
+
+    // these are icons to show the status of the pet's hunger/fun/cleanliness
+    GameObject infoGraph;
+    GameObject moodDead;
+    GameObject moodSad;
+    GameObject moodNeutral;
+    GameObject moodHappy;
+    GameObject moodLaughing;
     
     GameObject backtoGameButton;
     GameObject washPetButton;
@@ -28,16 +38,29 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
     void Start()
     {   
         ResumeGame();
-        string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        //mood-icons
+        infoGraph = GameObject.Find("Info");
+        moodDead = GameObject.Find("Dead");
+        moodSad = GameObject.Find("Sad");
+        moodNeutral = GameObject.Find("Neutral");
+        moodHappy = GameObject.Find("Happy");
+        moodLaughing = GameObject.Find("Laughing");
+        //Toggle all buttons off at the start.
+        ToggleVisibiliyMood(false);
+        infoGraph.SetActive(false);
         if (currentSceneName == "Kuemmern"){
         gameSet = GameObject.Find("Script Controller").GetComponent <Pet_UI_Management_GameSet>();
         petSystem = gameSet.petSystem;
+        //items for play and clean
         cleanItem1 = GameObject.Find("bucket-milk");
         cleanItem2 = GameObject.Find("shrub-flowers");
         playItem1 = GameObject.Find("cat-ball");
         playItem2 = GameObject.Find("soccer-ball");
+        //
         washPetButton = GameObject.Find("WashPetButton");
         playPetButton = GameObject.Find("PlayPetButton");
+        //Toggle all buttons off at the start.
         ToggleVisibiliyCleanItem(false);
         ToggleVisibiliyPlayItem(false);
         }
@@ -136,13 +159,17 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         {   
             animalManager.ActivateAnimal(petSystem.selectedAnimal);
             messageWindow.DeactivateMessageWindow();
+            timeNow_GameSet = DateTime.Now;
             pet_CameraIntro.ActivateCameraAnimation(false);
             ToggleVisibiliyBacktoGame(true);
+            moodDisplay(currentSceneName);
         }
         
     }
         void LateUpdate(){
-            
+            Debug.Log(petSystem.Pet_Hunger);
+            moodDisplay(currentSceneName);
+
             if (!petSystem.gameSelected && pet_CameraIntro.AnimationIsDone)
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Pet", LoadSceneMode.Single);
@@ -192,6 +219,67 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         backtoGameButton.SetActive(setBoolean);
 
     }
+    public void ToggleVisibiliyMood(Boolean setBoolean)
+    {   
+        moodDead.SetActive(setBoolean);
+        moodSad.SetActive(setBoolean);
+        moodNeutral.SetActive(setBoolean);
+        moodHappy.SetActive(setBoolean);
+        moodLaughing.SetActive(setBoolean);
+    }
+
+    public void moodDisplay(string _nameofGame){
+        infoGraph.SetActive(true);
+        if (_nameofGame == "Fuettern"){
+            if (petSystem.Pet_Hunger >= 91){
+                ToggleVisibiliyMood(false);
+                moodLaughing.SetActive(true);
+            }
+            else if (petSystem.Pet_Hunger <= 90 && petSystem.Pet_Hunger >= 70){
+                ToggleVisibiliyMood(false);
+                moodHappy.SetActive(true);
+            }
+            else if (petSystem.Pet_Hunger <= 69 && petSystem.Pet_Hunger >= 40){
+                ToggleVisibiliyMood(false);
+
+                moodNeutral.SetActive(true);
+                Debug.Log(petSystem.Pet_Hunger);
+            }
+            else if (petSystem.Pet_Hunger <= 39 && petSystem.Pet_Hunger >= 10){
+                ToggleVisibiliyMood(false);
+                moodSad.SetActive(true);
+            }
+            else{
+                ToggleVisibiliyMood(false);
+                moodDead.SetActive(true);
+            }
+        }      
+    }
+//     public void moodDisplay(string _nameofGame)
+// {
+//     int hunger = petSystem.Pet_Hunger;
+//     ToggleVisibiliyMood(false); // Assuming this function hides all mood objects
+
+//     switch (_nameofGame)
+//     {
+//         case "Fuettern":
+//             if (hunger >= 91)
+//                 moodLaughing.SetActive(true);
+//             else if (hunger >= 70)
+//                 moodHappy.SetActive(true);
+//             else if (hunger >= 40)
+//                 moodNeutral.SetActive(true);
+//             else if (hunger >= 10)
+//                 moodSad.SetActive(true);
+//             else
+//                 moodDead.SetActive(true);
+//             break;
+//         // Add more cases for other games if needed
+//         default:
+//             // Handle unknown games or provide a default behavior
+//             break;
+//     }
+// }
 
     public void ToggleVisibiliyCleanItem(Boolean setBoolean)
     {
@@ -211,6 +299,10 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         Debug.Log(petSystem.gameSelected);
         ToggleVisibiliyBacktoGame(false);
         pet_CameraIntro.ActivateCameraAnimation(true);
+        // if pet is cleaned and the game is kuemmern set petSystem.lastLog_Putzen = DateTime.Now;
+        // if pet is played and the game is kuemmern set petSystem.lastLog_Spielen = DateTime.Now;
+        // if pet is fed and the game is Fuettern set petSystem.lastLog_Fuettern = DateTime.Now;
+        //or implement these within feed/play and clean functions.
         petSystem.gameSelected = false;
     }
 

@@ -38,7 +38,7 @@ public class CollisionHandler : MonoBehaviour
         {
             Debug.Log("Hay deactivated!");
             hayObject.SetActive(false);
-
+            gameSet.petSystem.Pet_Hunger = gameSet.petSystem.Pet_Hunger + 5;
             if (pet == null)
             {
                 pet = GameObject.Find("Pet");
@@ -55,7 +55,7 @@ public class CollisionHandler : MonoBehaviour
             }
             // gameSet.petSystem.currentScale = pet.transform.localScale;
             hasHayBeenPlaced = false; // Reset the flag
-            // gameSet.savePetSystem();
+            gameSet.savePetSystem();
         }
     }
 }

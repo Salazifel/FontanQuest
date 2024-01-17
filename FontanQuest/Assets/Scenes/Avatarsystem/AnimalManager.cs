@@ -149,6 +149,12 @@ public class AnimalManager : MonoBehaviour
         var enumValues = (DefaultCubsToSelect[])Enum.GetValues(typeof(DefaultCubsToSelect));
         Debug.Log(enumValues[currentArrayPosition]);
         pet_UI_Management.petSystem.animalSelected = true;
+        pet_UI_Management.petSystem.Pet_Happiness = 50;
+        pet_UI_Management.petSystem.Pet_Cleanliness = 50;
+        pet_UI_Management.petSystem.Pet_Hunger = 50;
+        pet_UI_Management.petSystem.lastLog_Fuettern = DateTime.Now;
+        pet_UI_Management.petSystem.lastLog_Putzen = DateTime.Now;
+        pet_UI_Management.petSystem.lastLog_Spielen = DateTime.Now;
         pet_UI_Management.petSystem.selectedAnimal = enumValues[currentArrayPosition].ToString();
         Debug.Log(petSystem.selectedAnimal);
         pet_UI_Management.ToggleVisibiliyAnimalSelectionButtons(false);

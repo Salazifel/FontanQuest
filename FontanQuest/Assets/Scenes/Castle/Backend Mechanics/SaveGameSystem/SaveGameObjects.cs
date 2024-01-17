@@ -222,7 +222,9 @@ public class SaveGameObjects : MonoBehaviour
         public Boolean onBoardingDone;
         public Boolean Fuettern_onBoardingDone;
         public Boolean Kuemmern_onBoardingDone;
-        
+        public float petScaleX;
+        public float petScaleY;
+        public float petScaleZ;
         public int Pet_Happiness;
         public int Pet_Cleanliness;
         public int Pet_Hunger;

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Pet_UI_Management_GameSet : MonoBehaviour
 {   
+
     public DateTime timeNow_GameSet;
     public string currentSceneName;
     int numofHay;
@@ -31,10 +32,13 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
     GameObject backtoGameButton;
     GameObject washPetButton;
     GameObject playPetButton;
+
+    private int initialFeedStat; // variable to store initial feed level.
     private MessageWindow messageWindow;
     public Pet_CameraIntro pet_CameraIntro;
     private AnimalManager animalManager;
     // Start is called before the first frame update
+    public GameObject pet_GameSet;
     void Start()
     {   
         ResumeGame();
@@ -67,6 +71,8 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         else if (currentSceneName == "Fuettern" || currentSceneName == "Rennen" ){
         gameSet = GameObject.Find("Script Controller").GetComponent <Pet_UI_Management_GameSet>();
         petSystem = gameSet.petSystem;
+        initialFeedStat = petSystem.Pet_Hunger;
+
         }
         else
         {
@@ -83,12 +89,15 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         
         backtoGameButton = GameObject.Find("BackButton");
 
+        
 
         // Get MessageWindow
         messageWindowObject = GameObject.Find("MessageWindow");
         messageWindow = messageWindowObject.GetComponent<MessageWindow>();
 
         petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey("PetSystem", 1);
+
+        pet_GameSet = GameObject.Find("Pet");
 
         if (petSystem != null)
         {   
@@ -163,10 +172,13 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
             pet_CameraIntro.ActivateCameraAnimation(false);
             ToggleVisibiliyBacktoGame(true);
             moodDisplay(currentSceneName);
+            pet_GameSet.transform.localScale = new Vector3(petSystem.petScaleX, petSystem.petScaleY, petSystem.petScaleZ);
+            
         }
         
     }
         void LateUpdate(){
+
             Debug.Log(petSystem.Pet_Hunger);
             moodDisplay(currentSceneName);
 
@@ -192,7 +204,8 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         savePetSystem();
     }
     private void StartMessageRennenMiddleButtonClick()
-    {
+    {   
+        pet_GameSet.transform.localScale = new Vector3(petSystem.petScaleX, petSystem.petScaleY, petSystem.petScaleZ);
         messageWindow.DeactivateMessageWindow();
         pet_CameraIntro.ActivateCameraAnimation(false);
         savePetSystem();
@@ -299,9 +312,11 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         Debug.Log(petSystem.gameSelected);
         ToggleVisibiliyBacktoGame(false);
         pet_CameraIntro.ActivateCameraAnimation(true);
-        // if pet is cleaned and the game is kuemmern set petSystem.lastLog_Putzen = DateTime.Now;
-        // if pet is played and the game is kuemmern set petSystem.lastLog_Spielen = DateTime.Now;
-        // if pet is fed and the game is Fuettern set petSystem.lastLog_Fuettern = DateTime.Now;
+        petSystem.lastLog_Fuettern = DateTime.Now;
+        petSystem.petScaleX = pet_GameSet.transform.localScale.x;
+        petSystem.petScaleY = pet_GameSet.transform.localScale.y;
+        petSystem.petScaleZ = pet_GameSet.transform.localScale.z;
+        savePetSystem();
         //or implement these within feed/play and clean functions.
         petSystem.gameSelected = false;
     }

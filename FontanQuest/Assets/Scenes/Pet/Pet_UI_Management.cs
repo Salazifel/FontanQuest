@@ -17,6 +17,7 @@ public class Pet_UI_Management : MonoBehaviour
     GameObject spielenGameButton;
     GameObject rennenGameButton;
     GameObject reselectButton;
+    GameObject approveButton;
     MessageWindow messageWindow;
     public Pet_CameraIntro pet_CameraIntro;
     private AnimalManager animalManager;
@@ -25,10 +26,12 @@ public class Pet_UI_Management : MonoBehaviour
     public int kuemmern;
     public int rennen;
 
-    // Start is called before the first frame update
+    public GameObject pet;
     void Start()
     {   
+        
         timeNow = DateTime.Now;
+        Debug.Log(timeNow);
         fuettern = 0;
         kuemmern = 0;
         rennen = 0;
@@ -43,6 +46,8 @@ public class Pet_UI_Management : MonoBehaviour
         spielenGameButton = GameObject.Find("SpielenGameButton");
         rennenGameButton= GameObject.Find("RennenGameButton");
         reselectButton = GameObject.Find("ReselectButton");
+        approveButton = GameObject.Find("ApproveButton");
+        ToggleApproveButton(false);
         ToggleVisibiliyAnimalSelectionButtons(false);
         ToggleVisibiliyGameSelectionButtons(false);
         // Get MessageWindow
@@ -50,7 +55,7 @@ public class Pet_UI_Management : MonoBehaviour
         messageWindow = messageWindowObject.GetComponent<MessageWindow>();
 
         petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey("PetSystem", 1);
-        
+        pet = GameObject.Find("Pet");
         if (petSystem != null)
         {
             animalManager.ActivateAnimal(petSystem.selectedAnimal);
@@ -82,16 +87,19 @@ public class Pet_UI_Management : MonoBehaviour
                 null
             );
         } else 
-        {   
+        {   Debug.Log(petSystem.lastLog_Fuettern);
             petSystem.gameSelected = false;
             messageWindow.DeactivateMessageWindow();
             pet_CameraIntro.ActivateCameraAnimation(false);
             CheckPassingTime();
+            
+
         }
     }
         void LateUpdate()
     {   
         if (petSystem != null)
+
 
         {
             if (!petSystem.onBoardingDone && pet_CameraIntro.AnimationIsDone)
@@ -130,6 +138,7 @@ public class Pet_UI_Management : MonoBehaviour
             else {
                 if (pet_CameraIntro.AnimationIsDone && petSystem.animalSelected && !petSystem.gameSelected)
                 {
+                RefreshScale();
                 ToggleVisibiliyGameSelectionButtons(true);
                 timeNow = DateTime.Now;
                 }
@@ -166,7 +175,7 @@ public class Pet_UI_Management : MonoBehaviour
         Debug.Log("Loaded");
     }
     private void SelectGameMiddleButtonClick()
-    {
+    {   
         messageWindow.DeactivateMessageWindow();
         petSystem.selectionComplete = true;
         savePetSystem();
@@ -209,19 +218,30 @@ public void CheckPassingTime()
     TimeSpan elapsedtime_Putzen = timeNow - petSystem.lastLog_Putzen;
     TimeSpan elapsedtime_Spielen = timeNow - petSystem.lastLog_Spielen;
 
-    Debug.Log(elapsedtime_Fuettern.Minutes);
+    Debug.Log(petSystem.lastLog_Fuettern);
+    Debug.Log(elapsedtime_Fuettern);
+
     // Calculate hunger decrease for each activity
-    int x_hunger_Fuettern = elapsedtime_Fuettern.Minutes / 30;
-    int x_hunger_Putzen = elapsedtime_Putzen.Minutes / 30;
-    int x_hunger_Spielen = elapsedtime_Spielen.Minutes / 30;
+    int x_hunger_Fuettern = (elapsedtime_Fuettern.Hours *60 + elapsedtime_Fuettern.Minutes) / 120;
+    int x_hunger_Putzen = (elapsedtime_Putzen.Hours *60 + elapsedtime_Putzen.Minutes) / 120;
+    int x_hunger_Spielen = (elapsedtime_Spielen.Hours *60 + elapsedtime_Spielen.Minutes) / 120;
     Debug.Log(x_hunger_Fuettern);
     // Update hunger based on elapsed time for each activity
     petSystem.Pet_Hunger -= x_hunger_Fuettern * 5;
+    if (petSystem.Pet_Hunger < 0){
+        petSystem.Pet_Hunger = 0;
+    }
     Debug.Log(petSystem.Pet_Hunger);
     // Similarly, update hunger for other activities if needed
     savePetSystem();
 }
 
+public void ToggleApproveButton(Boolean setBoolean){
+    approveButton.SetActive(setBoolean);
+}
 
+public void RefreshScale(){
+    pet.transform.localScale = new Vector3(petSystem.petScaleX, petSystem.petScaleY, petSystem.petScaleZ);
+}
 
 }

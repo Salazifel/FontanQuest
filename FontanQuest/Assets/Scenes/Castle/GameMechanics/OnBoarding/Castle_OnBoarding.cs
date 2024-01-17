@@ -127,7 +127,6 @@ public class Castle_OnBoarding : MonoBehaviour
     }
 
     private void StartKingOnBoardingSimulation() {
-        CastleMainUI castleMainUI = GameObject.Find("MainCanvas").GetComponent<CastleMainUI>();
-        castleMainUI.DeactivateMessageWindow();
+        messageWindow.DeactivateMessageWindow();
     }
 }

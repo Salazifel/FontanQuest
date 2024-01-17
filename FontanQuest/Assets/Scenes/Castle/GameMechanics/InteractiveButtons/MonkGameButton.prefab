@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 7722206676481883654}
   - component: {fileID: 7722206676481883653}
   m_Layer: 0
-  m_Name: BuildButton
+  m_Name: MonkGameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,7 +158,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 046b0e7a9d844b94f978c57cec2fc2e2, type: 2}
+  - {fileID: 2100000, guid: 83b87903507dac64cb3e5c5f8eb62786, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -24,6 +24,9 @@ public class MessageWindow : MonoBehaviour
 
     // Audio
     private AudioSource audioSource;
+    private AudioSource backgroundMusic;
+    private float backgroundMusicVolume;
+    private float backgroundMusicMessageReducedVolume = 0.2f;
 
     // all characters
     private GameObject CharacterDisplayRawImage;
@@ -47,6 +50,9 @@ public class MessageWindow : MonoBehaviour
     }
 
     public void SetupMessageWindowWorkerFunction(MessageObjectBlueprint.messageObject messageObject) {
+        // activate the object so all changes can be made
+        this.gameObject.SetActive(true);
+
         // Set headline and main text
         AdjustHeadline(messageObject.headlineText);
         AdjustMainText(messageObject.mainTextContent);
@@ -86,7 +92,7 @@ public class MessageWindow : MonoBehaviour
         ActivateAudioSource(messageObject.audioClipPath);
 
         // Display Message
-        this.gameObject.SetActive(true);
+        
         if (CharacterDisplayRawImage) {
             CharacterDisplayRawImage.SetActive(true);
         }
@@ -130,7 +136,14 @@ public class MessageWindow : MonoBehaviour
         {
             return; // no audio is supposed to be played
         }
+
         AudioClip clip = Resources.Load<AudioClip>(audioClipPath);
+
+        // deactivate background music
+        if (backgroundMusic != null)
+        {
+            backgroundMusic.volume = backgroundMusicMessageReducedVolume;
+        }
     
         if (clip != null)
         {
@@ -215,6 +228,13 @@ public class MessageWindow : MonoBehaviour
         DeactivateAllButtons();
 
         audioSource = transform.Find("MessageWindowAudioSource").GetComponent<AudioSource>();
+        try {
+            backgroundMusic = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>();
+            backgroundMusicVolume = backgroundMusic.volume;
+        } catch {
+            // no background music available in this scene
+            backgroundMusic = null;
+        }
 
         leftButton.onClick.AddListener(DefaultLeftButtonClick);
         rightButton.onClick.AddListener(DefaultRightButtonClick);
@@ -289,6 +309,11 @@ public class MessageWindow : MonoBehaviour
 
     public void DeactivateMessageWindow()
     {
+        if (backgroundMusic != null)
+        {
+            backgroundMusic.volume = backgroundMusicVolume;
+        }
+
         this.gameObject.SetActive(false);
         if (CharacterDisplayRawImage) {
             CharacterDisplayRawImage.SetActive(false);

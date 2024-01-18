@@ -110,6 +110,7 @@ public class SaveGameObjects : MonoBehaviour
         public int daysPlayed;
         public string nameOfPlayer;
         public int numOfHay;
+        public DateTime firstDayOfPlaying; // save the first time 2DOs
 
         public GameData(int _coins)
         {

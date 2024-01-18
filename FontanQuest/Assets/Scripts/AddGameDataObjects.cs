@@ -18,7 +18,7 @@ public static class AddGameDataObjects
         SaveGameMechanic.saveSaveGameObject(gameData, "GameData", 1);
     }
 
-    public static bool checkPurchase(int change_value)
+    public static bool checkHayPurchase(int change_value)
     {
         SaveGameObjects.GameData gameData = getGameData();
         if (gameData.numOfHay + change_value > 0) 

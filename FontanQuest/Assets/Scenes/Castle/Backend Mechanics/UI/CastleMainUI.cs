@@ -34,7 +34,7 @@ public class CastleMainUI : MonoBehaviour
 
 
 
-        // ------------------------------ ROTATION OF CAMERA ----------------------------------------
+    // ------------------------------ ROTATION OF CAMERA ----------------------------------------
     // The distance from the camera to the target point
     private float distanceToTarget = 50.0f;
     // The angle to rotate by

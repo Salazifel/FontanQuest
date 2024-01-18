@@ -13,6 +13,8 @@ public class CameraMovement : MonoBehaviour
 
     private Vector3 startPos;
 
+    public bool allowCameraMovement = true;
+
     void Awake()
     {
         // Set the boundaries using in-scene objects
@@ -32,73 +34,76 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        // MOVING THE CAMERA AROUND 
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (allowCameraMovement == true)
         {
-            startPos = Input.GetTouch(0).position;
-        }
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-        {
-            Vector2 touchDelta = Input.GetTouch(0).deltaPosition;
-
-            // Reverse the movement
-            touchDelta = -touchDelta;
-
-            // Calculate the new position based on input
-            Quaternion yRotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
-            Vector3 forwardMovement = yRotation * Vector3.forward * touchDelta.y * panSpeed * Time.deltaTime;
-            Vector3 rightMovement = yRotation * Vector3.right * touchDelta.x * panSpeed * Time.deltaTime;
-            Vector3 newPosition = transform.position + forwardMovement + rightMovement;
-
-            // Clamp the new position to the bounds
-            newPosition.x = Mathf.Clamp(newPosition.x, minBoundary.x, maxBoundary.x);
-            newPosition.z = Mathf.Clamp(newPosition.z, minBoundary.z, maxBoundary.z);
-
-            // Y position could be clamped as well if needed
-            // newPosition.y = Mathf.Clamp(newPosition.y, minBounds.y, maxBounds.y);
-
-            // Apply the clamped position to the camera
-            transform.position = newPosition;
-        }
-
-        // ZOOMING
-        if (Input.touchCount == 2)
-        {
-            // Store both touches.
-            Touch touchZero = Input.GetTouch(0);
-            Touch touchOne = Input.GetTouch(1);
-
-            // Find the position in the previous frame of each touch.
-            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
-
-            // Find the magnitude of the vector (the distance) between the touches in each frame.
-            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
-
-            // Find the difference in the distances between each frame.
-            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
-
-            // If the camera is orthographic...
-            if (Camera.main.orthographic)
+            // MOVING THE CAMERA AROUND 
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                // ... change the orthographic size based on the change in distance between the touches.
-                Camera.main.orthographicSize += deltaMagnitudeDiff * zoomSpeed;
-                // Clamp the orthographic size to ensure it's between the min and max zoom levels.
-                Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, minBoundary.y, maxBoundary.y);
+                startPos = Input.GetTouch(0).position;
             }
-            else // If the camera uses a perspective view...
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
             {
-                // ... change the position based on the change in distance between the touches.
-                Vector3 newPosition = transform.position;
-                newPosition.y -= deltaMagnitudeDiff * zoomSpeed * Time.deltaTime;
-                newPosition.y = Mathf.Clamp(newPosition.y, minBoundary.y, maxBoundary.y);
+                Vector2 touchDelta = Input.GetTouch(0).deltaPosition;
 
-                // Clamp the new position to ensure the camera stays within the x and z bounds as well
+                // Reverse the movement
+                touchDelta = -touchDelta;
+
+                // Calculate the new position based on input
+                Quaternion yRotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+                Vector3 forwardMovement = yRotation * Vector3.forward * touchDelta.y * panSpeed * Time.deltaTime;
+                Vector3 rightMovement = yRotation * Vector3.right * touchDelta.x * panSpeed * Time.deltaTime;
+                Vector3 newPosition = transform.position + forwardMovement + rightMovement;
+
+                // Clamp the new position to the bounds
                 newPosition.x = Mathf.Clamp(newPosition.x, minBoundary.x, maxBoundary.x);
                 newPosition.z = Mathf.Clamp(newPosition.z, minBoundary.z, maxBoundary.z);
 
+                // Y position could be clamped as well if needed
+                // newPosition.y = Mathf.Clamp(newPosition.y, minBounds.y, maxBounds.y);
+
+                // Apply the clamped position to the camera
                 transform.position = newPosition;
+            }
+
+            // ZOOMING
+            if (Input.touchCount == 2)
+            {
+                // Store both touches.
+                Touch touchZero = Input.GetTouch(0);
+                Touch touchOne = Input.GetTouch(1);
+
+                // Find the position in the previous frame of each touch.
+                Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+                Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+                // Find the magnitude of the vector (the distance) between the touches in each frame.
+                float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+                float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+                // Find the difference in the distances between each frame.
+                float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+
+                // If the camera is orthographic...
+                if (Camera.main.orthographic)
+                {
+                    // ... change the orthographic size based on the change in distance between the touches.
+                    Camera.main.orthographicSize += deltaMagnitudeDiff * zoomSpeed;
+                    // Clamp the orthographic size to ensure it's between the min and max zoom levels.
+                    Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, minBoundary.y, maxBoundary.y);
+                }
+                else // If the camera uses a perspective view...
+                {
+                    // ... change the position based on the change in distance between the touches.
+                    Vector3 newPosition = transform.position;
+                    newPosition.y -= deltaMagnitudeDiff * zoomSpeed * Time.deltaTime;
+                    newPosition.y = Mathf.Clamp(newPosition.y, minBoundary.y, maxBoundary.y);
+
+                    // Clamp the new position to ensure the camera stays within the x and z bounds as well
+                    newPosition.x = Mathf.Clamp(newPosition.x, minBoundary.x, maxBoundary.x);
+                    newPosition.z = Mathf.Clamp(newPosition.z, minBoundary.z, maxBoundary.z);
+
+                    transform.position = newPosition;
+                }
             }
         }
     }

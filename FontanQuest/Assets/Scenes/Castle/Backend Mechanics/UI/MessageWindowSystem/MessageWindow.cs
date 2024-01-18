@@ -10,6 +10,7 @@ using UnityEditor;
 
 public class MessageWindow : MonoBehaviour
 {
+    private CameraMovement cameraMovement;
     private TextMeshProUGUI headline; // Assuming you are using TextMeshPro UGUI
     private TextMeshProUGUI mainText; // Assuming you are using TextMeshPro UGUI
 
@@ -95,6 +96,11 @@ public class MessageWindow : MonoBehaviour
         
         if (CharacterDisplayRawImage) {
             CharacterDisplayRawImage.SetActive(true);
+        }
+
+        if (cameraMovement != null)
+        {
+            cameraMovement.allowCameraMovement = false;
         }
     }
 
@@ -236,6 +242,12 @@ public class MessageWindow : MonoBehaviour
             backgroundMusic = null;
         }
 
+        try {
+            cameraMovement = GameObject.Find("GameCamera").GetComponent<CameraMovement>();
+        } catch {
+            cameraMovement = null;
+        }
+
         leftButton.onClick.AddListener(DefaultLeftButtonClick);
         rightButton.onClick.AddListener(DefaultRightButtonClick);
         middleButton.onClick.AddListener(DefaultMiddleButtonClick);
@@ -309,15 +321,21 @@ public class MessageWindow : MonoBehaviour
 
     public void DeactivateMessageWindow()
     {
+        if (cameraMovement != null)
+        {
+            cameraMovement.allowCameraMovement = true;
+        }
+
         if (backgroundMusic != null)
         {
             backgroundMusic.volume = backgroundMusicVolume;
         }
 
-        this.gameObject.SetActive(false);
         if (CharacterDisplayRawImage) {
             CharacterDisplayRawImage.SetActive(false);
         }
+
+        this.gameObject.SetActive(false);
     }
 
     void DeactivateAllButtons()

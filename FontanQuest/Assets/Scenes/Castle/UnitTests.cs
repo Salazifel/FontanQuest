@@ -5,6 +5,6 @@ using UnityEngine;
 public class UnitTests : MonoBehaviour
 {
     void LateUpdate() {
-        StaticResources.addNumOfCoins(5);
+        //StaticResources.addNumOfCoins(5);
     }
 }

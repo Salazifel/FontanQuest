@@ -8,6 +8,11 @@ using UnityEngine.SceneManagement;
 public class Pet_UI_Management_GameSet : MonoBehaviour
 {   
 
+    public GameObject stats;
+    public GameObject hungerParent; // GameObject representing the first set
+    public GameObject funParent; // GameObject representing the second set
+    public GameObject cleanParent; // GameObject representing the third set
+
     public DateTime timeNow_GameSet;
     public string currentSceneName;
     int numofHay;
@@ -22,12 +27,12 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
     GameObject playItem2;
 
     // these are icons to show the status of the pet's hunger/fun/cleanliness
-    GameObject infoGraph;
-    GameObject moodDead;
-    GameObject moodSad;
-    GameObject moodNeutral;
-    GameObject moodHappy;
-    GameObject moodLaughing;
+    // GameObject infoGraph;
+    // GameObject moodDead;
+    // GameObject moodSad;
+    // GameObject moodNeutral;
+    // GameObject moodHappy;
+    // GameObject moodLaughing;
     
     GameObject backtoGameButton;
     GameObject washPetButton;
@@ -41,18 +46,25 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
     public GameObject pet_GameSet;
     void Start()
     {   
+        stats = GameObject.Find("Stats");
+        
+        hungerParent = GameObject.Find("HungerInfo");
+        
+        funParent = GameObject.Find("FunInfo");
+        
+        cleanParent = GameObject.Find("CleanInfo");
         ResumeGame();
         currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         //mood-icons
-        infoGraph = GameObject.Find("Info");
-        moodDead = GameObject.Find("Dead");
-        moodSad = GameObject.Find("Sad");
-        moodNeutral = GameObject.Find("Neutral");
-        moodHappy = GameObject.Find("Happy");
-        moodLaughing = GameObject.Find("Laughing");
+        // infoGraph = GameObject.Find("Info");
+        // moodDead = GameObject.Find("Dead");
+        // moodSad = GameObject.Find("Sad");
+        // moodNeutral = GameObject.Find("Neutral");
+        // moodHappy = GameObject.Find("Happy");
+        // moodLaughing = GameObject.Find("Laughing");
         //Toggle all buttons off at the start.
-        ToggleVisibiliyMood(false);
-        infoGraph.SetActive(false);
+        // ToggleVisibiliyMood(false);
+        // infoGraph.SetActive(false);
         if (currentSceneName == "Kuemmern"){
         gameSet = GameObject.Find("Script Controller").GetComponent <Pet_UI_Management_GameSet>();
         petSystem = gameSet.petSystem;
@@ -171,7 +183,9 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
             timeNow_GameSet = DateTime.Now;
             pet_CameraIntro.ActivateCameraAnimation(false);
             ToggleVisibiliyBacktoGame(true);
-            moodDisplay(currentSceneName);
+            UpdateMoodUI(petSystem.Pet_Hunger, hungerParent);
+            UpdateMoodUI(petSystem.Pet_Happiness, funParent);
+            UpdateMoodUI(petSystem.Pet_Cleanliness, cleanParent);
             pet_GameSet.transform.localScale = new Vector3(petSystem.petScaleX, petSystem.petScaleY, petSystem.petScaleZ);
             
         }
@@ -180,7 +194,10 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         void LateUpdate(){
 
             Debug.Log(petSystem.Pet_Hunger);
-            moodDisplay(currentSceneName);
+            // moodDisplay(currentSceneName);
+            UpdateMoodUI(petSystem.Pet_Hunger, hungerParent);
+                UpdateMoodUI(petSystem.Pet_Happiness, funParent);
+                UpdateMoodUI(petSystem.Pet_Cleanliness, cleanParent);
 
             if (!petSystem.gameSelected && pet_CameraIntro.AnimationIsDone)
             {
@@ -234,65 +251,84 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
     }
     public void ToggleVisibiliyMood(Boolean setBoolean)
     {   
-        moodDead.SetActive(setBoolean);
-        moodSad.SetActive(setBoolean);
-        moodNeutral.SetActive(setBoolean);
-        moodHappy.SetActive(setBoolean);
-        moodLaughing.SetActive(setBoolean);
+        stats.SetActive(setBoolean);
+        // moodDead.SetActive(setBoolean);
+        // moodSad.SetActive(setBoolean);
+        // moodNeutral.SetActive(setBoolean);
+        // moodHappy.SetActive(setBoolean);
+        // moodLaughing.SetActive(setBoolean);
     }
 
-    public void moodDisplay(string _nameofGame){
-        infoGraph.SetActive(true);
-        if (_nameofGame == "Fuettern"){
-            if (petSystem.Pet_Hunger >= 91){
-                ToggleVisibiliyMood(false);
-                moodLaughing.SetActive(true);
-            }
-            else if (petSystem.Pet_Hunger <= 90 && petSystem.Pet_Hunger >= 70){
-                ToggleVisibiliyMood(false);
-                moodHappy.SetActive(true);
-            }
-            else if (petSystem.Pet_Hunger <= 69 && petSystem.Pet_Hunger >= 40){
-                ToggleVisibiliyMood(false);
+    // public void moodDisplay(string _nameofGame){
+    //     infoGraph.SetActive(true);
+    //     if (_nameofGame == "Fuettern"){
+    //         if (petSystem.Pet_Hunger >= 91){
+    //             ToggleVisibiliyMood(false);
+    //             moodLaughing.SetActive(true);
+    //         }
+    //         else if (petSystem.Pet_Hunger <= 90 && petSystem.Pet_Hunger >= 70){
+    //             ToggleVisibiliyMood(false);
+    //             moodHappy.SetActive(true);
+    //         }
+    //         else if (petSystem.Pet_Hunger <= 69 && petSystem.Pet_Hunger >= 40){
+    //             ToggleVisibiliyMood(false);
 
-                moodNeutral.SetActive(true);
-                Debug.Log(petSystem.Pet_Hunger);
-            }
-            else if (petSystem.Pet_Hunger <= 39 && petSystem.Pet_Hunger >= 10){
-                ToggleVisibiliyMood(false);
-                moodSad.SetActive(true);
-            }
-            else{
-                ToggleVisibiliyMood(false);
-                moodDead.SetActive(true);
-            }
-        }      
+    //             moodNeutral.SetActive(true);
+    //             Debug.Log(petSystem.Pet_Hunger);
+    //         }
+    //         else if (petSystem.Pet_Hunger <= 39 && petSystem.Pet_Hunger >= 10){
+    //             ToggleVisibiliyMood(false);
+    //             moodSad.SetActive(true);
+    //         }
+    //         else{
+    //             ToggleVisibiliyMood(false);
+    //             moodDead.SetActive(true);
+    //         }
+    //     }      
+    // }
+public void UpdateMoodUI(int parameterValue, GameObject set)
+    {
+        ToggleVisibilityMood(set, false,"");
+
+        if (parameterValue >= 91)
+        {
+            ToggleVisibilityMood(set, true, "Laughing");
+        }
+        else if (parameterValue <= 90 && parameterValue >= 70)
+        {
+            ToggleVisibilityMood(set, true, "Happy");
+        }
+        else if (parameterValue <= 69 && parameterValue >= 40)
+        {
+            ToggleVisibilityMood(set, true, "Neutral");
+        }
+        else if (parameterValue <= 39 && parameterValue >= 10)
+        {
+            ToggleVisibilityMood(set, true, "Sad");
+        }
+        else
+        {
+            ToggleVisibilityMood(set, true, "Dead");
+        }
     }
-//     public void moodDisplay(string _nameofGame)
-// {
-//     int hunger = petSystem.Pet_Hunger;
-//     ToggleVisibiliyMood(false); // Assuming this function hides all mood objects
 
-//     switch (_nameofGame)
-//     {
-//         case "Fuettern":
-//             if (hunger >= 91)
-//                 moodLaughing.SetActive(true);
-//             else if (hunger >= 70)
-//                 moodHappy.SetActive(true);
-//             else if (hunger >= 40)
-//                 moodNeutral.SetActive(true);
-//             else if (hunger >= 10)
-//                 moodSad.SetActive(true);
-//             else
-//                 moodDead.SetActive(true);
-//             break;
-//         // Add more cases for other games if needed
-//         default:
-//             // Handle unknown games or provide a default behavior
-//             break;
-//     }
-// }
+public void ToggleVisibilityMood(GameObject set, bool visibility, string nameofChild)
+{
+    foreach (Transform moodObject in set.transform)
+    {
+        if (moodObject.name == nameofChild)
+        {
+            moodObject.gameObject.SetActive(visibility);
+        }
+        else if (string.IsNullOrEmpty(nameofChild))
+        {
+            moodObject.gameObject.SetActive(visibility);
+        }
+        else{
+            Debug.Log("No such child exist!");
+        }
+    }
+}
 
     public void ToggleVisibiliyCleanItem(Boolean setBoolean)
     {

@@ -7,6 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class Pet_UI_Management : MonoBehaviour
 {   
+    //moodsets/statsets
+    private int timeInterval;
+    public GameObject stats;
+    public GameObject hungerParent; // GameObject representing the first set
+    public GameObject funParent; // GameObject representing the second set
+    public GameObject cleanParent; // GameObject representing the third set
+    //timenow
     public DateTime timeNow;
     public SaveGameObjects.PetSystem petSystem;
     GameObject messageWindowObject;
@@ -18,6 +25,7 @@ public class Pet_UI_Management : MonoBehaviour
     GameObject rennenGameButton;
     GameObject reselectButton;
     GameObject approveButton;
+    
     MessageWindow messageWindow;
     public Pet_CameraIntro pet_CameraIntro;
     private AnimalManager animalManager;
@@ -29,7 +37,15 @@ public class Pet_UI_Management : MonoBehaviour
     public GameObject pet;
     void Start()
     {   
+        timeInterval = 360; // in every "stated minutes" the stats and scale drop by according to a function. 
+        stats = GameObject.Find("Stats");
         
+        hungerParent = GameObject.Find("HungerInfo");
+        
+        funParent = GameObject.Find("FunInfo");
+        
+        cleanParent = GameObject.Find("CleanInfo");
+
         timeNow = DateTime.Now;
         Debug.Log(timeNow);
         fuettern = 0;
@@ -140,6 +156,9 @@ public class Pet_UI_Management : MonoBehaviour
                 {
                 RefreshScale();
                 ToggleVisibiliyGameSelectionButtons(true);
+                UpdateMoodUI(petSystem.Pet_Hunger, hungerParent);
+                UpdateMoodUI(petSystem.Pet_Happiness, funParent);
+                UpdateMoodUI(petSystem.Pet_Cleanliness, cleanParent);
                 timeNow = DateTime.Now;
                 }
                 if (pet_CameraIntro.AnimationIsDone && !petSystem.animalSelected && petSystem.onBoardingDone){
@@ -204,7 +223,8 @@ public class Pet_UI_Management : MonoBehaviour
         PetSelectionDoneButton.SetActive(setBoolean);
     }
     public void ToggleVisibiliyGameSelectionButtons(Boolean setBoolean)
-    {
+    {   
+        stats.SetActive(setBoolean);
         fuetternGameButton.SetActive(setBoolean);
         spielenGameButton.SetActive(setBoolean);
         rennenGameButton.SetActive(setBoolean);
@@ -222,14 +242,21 @@ public void CheckPassingTime()
     Debug.Log(elapsedtime_Fuettern);
 
     // Calculate hunger decrease for each activity
-    int x_hunger_Fuettern = (elapsedtime_Fuettern.Hours *60 + elapsedtime_Fuettern.Minutes) / 120;
-    int x_hunger_Putzen = (elapsedtime_Putzen.Hours *60 + elapsedtime_Putzen.Minutes) / 120;
-    int x_hunger_Spielen = (elapsedtime_Spielen.Hours *60 + elapsedtime_Spielen.Minutes) / 120;
+    int x_hunger_Fuettern = (elapsedtime_Fuettern.Hours *60 + elapsedtime_Fuettern.Minutes) / timeInterval;
+    int x_hunger_Putzen = (elapsedtime_Putzen.Hours *60 + elapsedtime_Putzen.Minutes) / timeInterval;
+    int x_hunger_Spielen = (elapsedtime_Spielen.Hours *60 + elapsedtime_Spielen.Minutes) / timeInterval;
     Debug.Log(x_hunger_Fuettern);
-    // Update hunger based on elapsed time for each activity
+    // Update hunger and scale based on elapsed time for each activity
     petSystem.Pet_Hunger -= x_hunger_Fuettern * 5;
-    if (petSystem.Pet_Hunger < 0){
+    petSystem.petScaleX -= x_hunger_Fuettern * 0.25f;
+    petSystem.petScaleY -= x_hunger_Fuettern * 0.25f;
+    petSystem.petScaleZ -= x_hunger_Fuettern * 0.25f;
+
+    if (petSystem.Pet_Hunger < 0 || petSystem.petScaleX <= 1.0f){
         petSystem.Pet_Hunger = 0;
+        petSystem.petScaleX = 1.0f;
+        petSystem.petScaleY = 1.0f;
+        petSystem.petScaleZ = 1.0f;
     }
     Debug.Log(petSystem.Pet_Hunger);
     // Similarly, update hunger for other activities if needed
@@ -242,6 +269,51 @@ public void ToggleApproveButton(Boolean setBoolean){
 
 public void RefreshScale(){
     pet.transform.localScale = new Vector3(petSystem.petScaleX, petSystem.petScaleY, petSystem.petScaleZ);
+}
+
+
+public void UpdateMoodUI(int parameterValue, GameObject set)
+    {
+        ToggleVisibilityMood(set, false,"");
+
+        if (parameterValue >= 91)
+        {
+            ToggleVisibilityMood(set, true, "Laughing");
+        }
+        else if (parameterValue <= 90 && parameterValue >= 70)
+        {
+            ToggleVisibilityMood(set, true, "Happy");
+        }
+        else if (parameterValue <= 69 && parameterValue >= 40)
+        {
+            ToggleVisibilityMood(set, true, "Neutral");
+        }
+        else if (parameterValue <= 39 && parameterValue >= 10)
+        {
+            ToggleVisibilityMood(set, true, "Sad");
+        }
+        else
+        {
+            ToggleVisibilityMood(set, true, "Dead");
+        }
+    }
+
+public void ToggleVisibilityMood(GameObject set, bool visibility, string nameofChild)
+{
+    foreach (Transform moodObject in set.transform)
+    {
+        if (moodObject.name == nameofChild)
+        {
+            moodObject.gameObject.SetActive(visibility);
+        }
+        else if (string.IsNullOrEmpty(nameofChild))
+        {
+            moodObject.gameObject.SetActive(visibility);
+        }
+        else{
+            Debug.Log("No such child exist!");
+        }
+    }
 }
 
 }

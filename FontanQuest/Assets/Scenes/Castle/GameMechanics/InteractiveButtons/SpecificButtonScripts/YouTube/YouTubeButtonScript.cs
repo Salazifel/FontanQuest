@@ -16,6 +16,6 @@ public class YouTubeButtonScript : MonoBehaviour
 
     private void rightButtonClick()
     {
-        SceneManager.Load("");
+        SceneManager.Load("Demo1.2 - Fullscreen");
     }
 }

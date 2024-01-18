@@ -64,6 +64,8 @@ public class SaveGameObjects : MonoBehaviour
                 return new PetSystem(false, false);
             case "CastleOnBoardingSystem":
                 return new CastleOnBoardingSystem(false);
+            case "YouTubeData":
+                return new YouTubeData();
             default:
                 throw new ArgumentException("Unknown SaveGameObject. Please declare the initialization of an empty SaveGameObject above as a new case.");
         }
@@ -245,6 +247,17 @@ public class SaveGameObjects : MonoBehaviour
         public CastleOnBoardingSystem (Boolean _onBoardingDone)
         {
             onBoardingDone = _onBoardingDone;
+        }
+    }
+
+    [Serializable]
+    public class YouTubeData : MainSaveObject
+    {
+        public string videoToBePlayed;
+
+        public YouTubeData()
+        {
+            videoToBePlayed = null;
         }
     }
 }

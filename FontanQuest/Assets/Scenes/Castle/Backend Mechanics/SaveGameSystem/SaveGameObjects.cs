@@ -261,4 +261,19 @@ public class SaveGameObjects : MonoBehaviour
             videoToBePlayed = null;
         }
     }
+
+    [Serializable]
+    public class MarketOffer : MainSaveObject
+    {
+        public static string nameOfOffer;
+        public static string pathToIcon;
+        public static int costOfOffer;
+
+        public MarketOffer(string _nameOfOffer, string _pathToIcon, int _costOfOffer)
+        {
+            nameOfOffer = _nameOfOffer;
+            pathToIcon = _pathToIcon;
+            costOfOffer = _costOfOffer;
+        }
+    }
 }

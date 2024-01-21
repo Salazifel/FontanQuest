@@ -7,15 +7,22 @@ public class MonkWelcomeButton : MonoBehaviour
 {
     MessageWindow messageWindow;
     NavMeshAgent monkNavMeshAgent;
+    Transform posOfmonk;
     void Awake()
     {
         messageWindow = GameObject.Find("MessageWindow").GetComponent<MessageWindow>();
         monkNavMeshAgent = GameObject.Find("MonkCharacter").GetComponent<NavMeshAgent>();
+        posOfmonk = transform.parent.transform;
+    }
+
+    void Update()
+    {
+
     }
 
     public void ActivateMonkGameButton() 
     {
-        monkNavMeshAgent.destination.Set(29.7f, -38.8f, 269.8f);
+        //monkNavMeshAgent.destination.Set(136.503f, 12.568f, 231.98f);
     }
     public void OpenBuildWindow()
     {

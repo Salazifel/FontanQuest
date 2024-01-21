@@ -6,7 +6,7 @@ public class YouTubeHouseScript : MonoBehaviour
 {
     MessageWindow messageWindow;
     public string typeOfButton;
-    void Start()
+    void Awake()
     {
         messageWindow = GameObject.Find("MessageWindow").GetComponent<MessageWindow>();
     }

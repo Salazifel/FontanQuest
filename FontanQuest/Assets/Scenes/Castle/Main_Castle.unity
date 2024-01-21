@@ -5951,9 +5951,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9542876, guid: 534b7b0f42c1d304299f3f3762536fb4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9542876, guid: 534b7b0f42c1d304299f3f3762536fb4, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: eb79e3fd0dd669f40a90a984b92a0ccf, type: 2}
+      objectReference: {fileID: 9100000, guid: a8555c0cff30527479e32562cef9141f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 534b7b0f42c1d304299f3f3762536fb4, type: 3}
 --- !u!4 &507499520 stripped
@@ -9811,7 +9815,7 @@ PrefabInstance:
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: resetSaveFile
+      value: AddDay
       objectReference: {fileID: 0}
     - target: {fileID: 6502963982672909902, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
@@ -25321,7 +25325,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909057282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.7, y: -38.8, z: 269.8}
+  m_LocalPosition: {x: 136.503, y: 12.568, z: 231.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

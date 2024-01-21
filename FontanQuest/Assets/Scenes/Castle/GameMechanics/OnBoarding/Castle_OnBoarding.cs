@@ -8,7 +8,7 @@ public class Castle_OnBoarding : MonoBehaviour
     private CameraMovementAnimation cameraMovementAnimation;
     private SaveGameObjects.CastleOnBoardingSystem castleOnBoardingSystem;
     private GameObject RotateButton;
-
+    private GameObject StepButton;
     private MessageWindow messageWindow;
 
     private int stepCounter = 0;
@@ -26,11 +26,17 @@ public class Castle_OnBoarding : MonoBehaviour
             castleOnBoardingSystem = (SaveGameObjects.CastleOnBoardingSystem) SaveGameObjects.CreateSaveGameObject("CastleOnBoardingSystem");
         }
 
+        StepButton = GameObject.Find("StepButton");
+
         if (castleOnBoardingSystem.onBoardingDone == false)
         {
             cameraMovementAnimation.initializeAnimation();
             RotateButton = GameObject.Find("RotateButton");
             RotateButton.SetActive(false);
+            StepButton.SetActive(true);
+        } else 
+        {
+            StepButton.SetActive(false);
         }
     }
 

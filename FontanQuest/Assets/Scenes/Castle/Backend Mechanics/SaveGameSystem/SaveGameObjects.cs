@@ -66,6 +66,8 @@ public class SaveGameObjects : MonoBehaviour
                 return new CastleOnBoardingSystem(false);
             case "YouTubeData":
                 return new YouTubeData();
+            case "DayActivity":
+                return new DayActivity();
             default:
                 throw new ArgumentException("Unknown SaveGameObject. Please declare the initialization of an empty SaveGameObject above as a new case.");
         }
@@ -88,6 +90,17 @@ public class SaveGameObjects : MonoBehaviour
     }
 
     */
+    [Serializable]
+
+    public class DayActivity : MainSaveObject
+    {
+        public bool wasActivity;
+
+        public void DaysActivity()
+        {
+            wasActivity = false;
+        }
+    }
 
     [Serializable]
 

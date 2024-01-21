@@ -51,7 +51,7 @@ public class SaveGameObjects : MonoBehaviour
             case "GameData":
                 return new GameData(0);
             case "BuiltBuildings":
-                return new BuiltBuildings(false, false, false, false);
+                return new BuiltBuildings(false, false, false, false, false);
             case "AvatarSystem":
                 return new AvatarSystem(false);
             case "TreeClimber":
@@ -131,14 +131,16 @@ public class SaveGameObjects : MonoBehaviour
         public Boolean Castle;
         public Boolean Temple;
         public Boolean Stables;
+        public Boolean YouTubeHouse;
 
-        public BuiltBuildings(Boolean CityWallsActive, Boolean CastleActive, Boolean TempleActive, Boolean StablesActive)
+        public BuiltBuildings(Boolean CityWallsActive, Boolean CastleActive, Boolean TempleActive, Boolean StablesActive, Boolean YouTubeHouseActive)
         {
             GameSaveObjectType = "BuiltBuildings";
             CityWalls = CityWallsActive;
             Castle = CastleActive;
             Temple = TempleActive;
             Stables = StablesActive;
+            YouTubeHouse = YouTubeHouseActive;
         }
 
         public override void Print()

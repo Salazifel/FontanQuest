@@ -123,6 +123,9 @@ public class Castle_OnBoarding : MonoBehaviour
                 AnimationLibrary.Animations.Talk,
                 null
             ));
+
+            castleOnBoardingSystem.onBoardingDone = true;
+            SaveGameMechanic.saveSaveGameObject(castleOnBoardingSystem, "CastleOnBoardingSystem", 1);
         }
     }
 

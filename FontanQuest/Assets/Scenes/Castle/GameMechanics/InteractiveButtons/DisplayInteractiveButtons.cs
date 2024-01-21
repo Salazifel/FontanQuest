@@ -11,12 +11,16 @@ public class DisplayInteractiveButtons : MonoBehaviour
     GameObject buildCityWall;
     GameObject wanderingMonk;
     GameObject monkGameButton;
+    GameObject YouTubeBuildBuilding;
+    GameObject YouTubeStartGame;
 
     void Start()
     {
         buildCityWall = GameObject.Find("BuildCityWall");
         wanderingMonk = GameObject.Find("WanderingMonk");
         monkGameButton = GameObject.Find("MonkGameButton");
+        YouTubeBuildBuilding = GameObject.Find("YouTubeBuildBuilding");
+        YouTubeStartGame = GameObject.Find("YouTubeStartGame");
 
         displayAvailableButtons();
     }
@@ -28,18 +32,25 @@ public class DisplayInteractiveButtons : MonoBehaviour
         monkGameButton.SetActive(false);
     }
 
-    public void displayAvailableButtons() {
-        DeactivateInteractiveButtons();
+    public void displayAvailableButtons(int preSetDay = -1) {
 
         builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameMechanic.getSaveGameObjectByPrimaryKey("BuiltBuildings", 1);
         gameData = (SaveGameObjects.GameData) SaveGameMechanic.getSaveGameObjectByPrimaryKey("GameData", 1);
 
         Debug.Log(gameData.daysPlayed.ToString());
 
-        switch (gameData.daysPlayed)
+        if (preSetDay == -1)
+        {
+            DeactivateInteractiveButtons();
+            preSetDay = gameData.daysPlayed;
+        }
+
+        switch (preSetDay)
         {
             case 0:
+                // City Wall
                 if (builtBuildings.CityWalls == false) {buildCityWall.SetActive(true);} else {}
+                // Monk
                 if (builtBuildings.Temple == false) 
                 {
                     wanderingMonk.SetActive(true);
@@ -48,8 +59,47 @@ public class DisplayInteractiveButtons : MonoBehaviour
                     monkGameButton.SetActive(true);
                 }
                 break;
+            case 1:
+                displayPreviousCases(1);
+                // YouTubeHouse
+                if (builtBuildings.YouTubeHouse == false) {YouTubeBuildBuilding.SetActive(true);} else {YouTubeStartGame.SetActive(true);}
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
             default:
                 break;
+        }
+    }
+
+    private void displayPreviousCases(int prevCases)
+    {
+        for (int i = 0; i < prevCases; i++)
+        {
+            displayAvailableButtons(i);
         }
     }
 }

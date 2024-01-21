@@ -7,13 +7,14 @@ public class LoadingSavingBuildings : MonoBehaviour
     private GameObject CityWalls;
     private GameObject Castle;
     private GameObject Temple;
+    private GameObject YouTubeHouse;
 
     void Awake()
     {
         CityWalls = GameObject.Find("W A L L S");
         Castle = GameObject.Find("C A S T L E");
         Temple = GameObject.Find("monk_temple");
-        
+        YouTubeHouse = GameObject.Find("YouTubeHouse");        
 
         displayBuiltBuildings();
     }
@@ -33,6 +34,7 @@ public class LoadingSavingBuildings : MonoBehaviour
         if (builtBuildings.CityWalls == true) { ActivateCityWalls(); }
         if (builtBuildings.Castle == true) { }
         if (builtBuildings.Temple == true) { Temple.SetActive(true);}
+        if (builtBuildings.YouTubeHouse == true) {YouTubeHouse.SetActive(true);}
     }
 
     public void ActivateCityWalls() 
@@ -40,10 +42,16 @@ public class LoadingSavingBuildings : MonoBehaviour
         CityWalls.SetActive(true);
     }
 
+    public void ActivateYouTubeHouse()
+    {
+        YouTubeHouse.SetActive(true);
+    }
+
     public void DeactivateAllBuildings()
     {
         CityWalls.SetActive(false);
         Castle.SetActive(false);
         Temple.SetActive(false);
+        YouTubeHouse.SetActive(false);
     }
 }

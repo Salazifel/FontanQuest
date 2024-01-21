@@ -56,38 +56,35 @@ public class VideoSelectionScript : MonoBehaviour
         videoLinks.Add(10, "https://www.youtube.com/watch?v=0qXOMzNynns");
         thumbnailPaths.Add(10, "YouTubeThumbnails/Löwenbaby");
 
-        videoLinks.Add(11, "https://www.youtube.com/watch?v=DoutubK4kPqfdF2c");
-        thumbnailPaths.Add(11, "YouTubeThumbnails/Gute Laune mit Regenbogen");
+        videoLinks.Add(11, "https://www.youtube.com/watch?v=l1GeISlO0-s");
+        thumbnailPaths.Add(11, "YouTubeThumbnails/Dschungel");
 
-        videoLinks.Add(12, "https://www.youtube.com/watch?v=l1GeISlO0-s");
-        thumbnailPaths.Add(12, "YouTubeThumbnails/Dschungel");
+        videoLinks.Add(12, "https://www.youtube.com/watch?v=cw6SEsP__6E");
+        thumbnailPaths.Add(12, "YouTubeThumbnails/Disko");
 
-        videoLinks.Add(13, "https://www.youtube.com/watch?v=cw6SEsP__6E");
-        thumbnailPaths.Add(13, "YouTubeThumbnails/Disko");
+        videoLinks.Add(13, "https://www.youtube.com/watch?v=WEXigS7n-10");
+        thumbnailPaths.Add(13, "YouTubeThumbnails/Mutter Kind Workout 1");
 
-        videoLinks.Add(14, "https://www.youtube.com/watch?v=WEXigS7n-10");
-        thumbnailPaths.Add(14, "YouTubeThumbnails/Mutter Kind Workout 1");
+        videoLinks.Add(14, "https://www.youtube.com/watch?v=qjFGGE5QYRc");
+        thumbnailPaths.Add(14, "YouTubeThumbnails/Mutter Kind Workout 2");
 
-        videoLinks.Add(15, "https://www.youtube.com/watch?v=qjFGGE5QYRc");
-        thumbnailPaths.Add(15, "YouTubeThumbnails/Mutter Kind Workout 2");
+        videoLinks.Add(15, "https://www.youtube.com/watch?v=kRn8wD6UwSY");
+        thumbnailPaths.Add(15, "YouTubeThumbnails/Mutter Kind Workout 3");
 
-        videoLinks.Add(16, "https://www.youtube.com/watch?v=kRn8wD6UwSY");
-        thumbnailPaths.Add(16, "YouTubeThumbnails/Mutter Kind Workout 3");
+        videoLinks.Add(16, "https://www.youtube.com/watch?v=UAOqH4F3zrw");
+        thumbnailPaths.Add(16, "YouTubeThumbnails/Daddy Kind Workout 1");
 
-        videoLinks.Add(17, "https://www.youtube.com/watch?v=UAOqH4F3zrw");
-        thumbnailPaths.Add(17, "YouTubeThumbnails/Daddy Kind Workout 1");
+        videoLinks.Add(17, "https://www.youtube.com/watch?v=UioQfnyKPZw");
+        thumbnailPaths.Add(17, "YouTubeThumbnails/Daddy Kind Workout 2");
 
-        videoLinks.Add(18, "https://www.youtube.com/watch?v=UioQfnyKPZw");
-        thumbnailPaths.Add(18, "YouTubeThumbnails/Daddy Kind Workout 2");
+        videoLinks.Add(18, "https://www.youtube.com/watch?v=Jxyl2RYe1gs");
+        thumbnailPaths.Add(18, "YouTubeThumbnails/Taylor Swift Workout");
 
-        videoLinks.Add(19, "https://www.youtube.com/watch?v=Jxyl2RYe1gs");
-        thumbnailPaths.Add(19, "YouTubeThumbnails/Taylor Swift Workout");
+        videoLinks.Add(19, "https://www.youtube.com/watch?v=ymigWt5TOV8");
+        thumbnailPaths.Add(19, "YouTubeThumbnails/Zumba Tanz Workout");
 
-        videoLinks.Add(20, "https://www.youtube.com/watch?v=ymigWt5TOV8");
-        thumbnailPaths.Add(20, "YouTubeThumbnails/Zumba Tanz Workout");
-
-        videoLinks.Add(21, "https://www.youtube.com/watch?v=m9C5fu493Ok");
-        thumbnailPaths.Add(21, "YouTubeThumbnails/Zumba Tanz Workout Wellermann");
+        videoLinks.Add(20, "https://www.youtube.com/watch?v=m9C5fu493Ok");
+        thumbnailPaths.Add(20, "YouTubeThumbnails/Zumba Tanz Workout Wellermann");
 
         videoList = new List<string>();
 
@@ -104,7 +101,7 @@ public class VideoSelectionScript : MonoBehaviour
 
         while (uniqueInts.Count < 4)
         {
-            int num = rand.Next(min, max + 1);
+            int num = rand.Next(min, max);
             uniqueInts.Add(num);
         }
 
@@ -145,7 +142,7 @@ public class VideoSelectionScript : MonoBehaviour
         if (youTubeData == null) {
             youTubeData = (SaveGameObjects.YouTubeData) SaveGameObjects.CreateSaveGameObject("YouTubeData");
         }
-        youTubeData.videoToBePlayed = videoList[videoSelector];
+        youTubeData.videoToBePlayed = videoList[videoSelector - 1];
         SaveGameMechanic.saveSaveGameObject(youTubeData, "YouTubeData", 1);
         SceneManager.Load("Demo1.2 - Fullscreen");
     }

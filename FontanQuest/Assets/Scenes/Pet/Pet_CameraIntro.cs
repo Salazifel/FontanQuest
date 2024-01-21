@@ -6,35 +6,56 @@ public class Pet_CameraIntro : MonoBehaviour
 {
     public Transform targetTransform; // Assign the target transform in the inspector
     private Vector3 startPosition;
+    private Vector3 bucketPosition;
     private Quaternion startRotation;
     private float transitionTime = 3.0f; // Duration of the transition in seconds
     private float elapsedTime = 0.0f;
     public bool AnimationIsDone;
     private bool StartAnimation = false;
 
+    private Boolean reverseAnimation;
     // Post Processing
     public PostProcessVolume postProcessVolume;
     private DepthOfField depthOfField;
     private float startFocusDistance = 10f;
     private float endFocusDistance = 2.6f;
 
-    public void ActivateCameraAnimation()
+    private void Start()
     {
-        StartAnimation = true;
-    }
-    void Start()
-    {
-        // PostProcessing
-        postProcessVolume = GameObject.Find("PostProcessing").GetComponent<PostProcessVolume>();
-        depthOfField = postProcessVolume.profile.GetSetting<DepthOfField>();
+        // PostProcessing setup remains the same
 
         AnimationIsDone = false;
+        reverseAnimation = false;
         // Get Target Position
         GameObject targetCamera = GameObject.Find("FinalPositionOfCamera");
         targetTransform = targetCamera.transform;
         // Store the start position and rotation
         startPosition = transform.position;
         startRotation = transform.rotation;
+    }
+
+    public void ActivateCameraAnimation(bool _reverseAnimation)
+    {
+        reverseAnimation = _reverseAnimation;
+
+        // Adjust the positions and transforms based on the flag
+        if (reverseAnimation)
+        {
+            // Swap start and target positions and rotations
+            Vector3 tempPosition = startPosition;
+            startPosition = targetTransform.position;
+            targetTransform.position = tempPosition;
+
+            Quaternion tempRotation = startRotation;
+            startRotation = targetTransform.rotation;
+            targetTransform.rotation = tempRotation;
+
+            // Reset time and animation state
+            elapsedTime = 0f;
+            AnimationIsDone = false;
+        }
+
+        StartAnimation = true;
     }
 
     void Update()
@@ -62,9 +83,11 @@ public class Pet_CameraIntro : MonoBehaviour
             else 
             {
                 AnimationIsDone = true;
+                StartAnimation = false;
             }
         }
     }
+
 
     public static explicit operator ScriptableObject(Pet_CameraIntro v)
     {

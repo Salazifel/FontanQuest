@@ -61,7 +61,7 @@ public class SaveGameObjects : MonoBehaviour
             case "FitnessBoxingSavingGame":
                 return new FitnessBoxingSavingGame(0);
             case "PetSystem":
-                return new PetSystem(false, false);
+                return new PetSystem();
             case "CastleOnBoardingSystem":
                 return new CastleOnBoardingSystem(false);
             case "YouTubeData":
@@ -238,14 +238,27 @@ public class SaveGameObjects : MonoBehaviour
     public class PetSystem : MainSaveObject
     {
         public Boolean onBoardingDone;
+        public Boolean Fuettern_onBoardingDone;
+        public Boolean Kuemmern_onBoardingDone;
+        public float petScaleX;
+        public float petScaleY;
+        public float petScaleZ;
+        public int Pet_Happiness;
+        public int Pet_Cleanliness;
+        public int Pet_Hunger;
+        public DateTime lastLog_Fuettern;
+        public DateTime lastLog_Putzen;
+        public DateTime lastLog_Spielen;
+        // public Vector3 currentScale;
+        //onboarding for the rest of the games will be implemented
+        // public Boolean Fuettern_onBoardingDone;
+        // public Boolean Fuettern_onBoardingDone;
         public Boolean animalSelected;
         public string selectedAnimal;
 
-        public PetSystem(Boolean _onBoardingDone, Boolean _animalSelected)
-        {
-            onBoardingDone = _onBoardingDone;
-            animalSelected = _animalSelected;
-        }
+        public Boolean selectionComplete;
+        public Boolean gameSelected;
+
 
         public override void Print()
         {

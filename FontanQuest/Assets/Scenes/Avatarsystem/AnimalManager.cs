@@ -1,16 +1,72 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+
 using System;
 
 public class AnimalManager : MonoBehaviour
-{
+{   
+    private Pet_UI_Management pet_UI_Management;
+    
+    public GameObject pet;
+    private float originalScaleX;
+    private float originalScaleY;
+    private float originalScaleZ;
+    private Pet_UI_Management_GameSet gameSet;
+    public SaveGameObjects.PetSystem petSystem;
     void Start()
-    {
+    {   
+
+        
+        originalScaleX = 1.0f;
+        originalScaleY = 1.0f;
+        originalScaleZ = 1.0f;
+
+        string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        if (currentSceneName == "Pet"){
+        pet_UI_Management = GameObject.Find("MainCanvas").GetComponent <Pet_UI_Management>(); 
+        petSystem = pet_UI_Management.petSystem;
+        }
+        else if (currentSceneName == "Fuettern" || currentSceneName == "Rennen"){
+        gameSet = GameObject.Find("Script Controller").GetComponent <Pet_UI_Management_GameSet>();
+        petSystem = gameSet.petSystem;
+        }
+        else
+        {
+            // Default case or handle other scenes
+            Debug.Log("You are in a different scene");
+            // Execute default actions or handle other scenes
+        }
+
         DeactivateAllAnimals();
-        GameObject pet = GameObject.Find("Pet");
+        pet = GameObject.Find("Pet");
         AnimalManager animalManager = pet.GetComponent<AnimalManager>();
-        animalManager.ActivateAnimal("Bear_Cub_8");
+        
+
+        if (petSystem != null)
+        {
+            if (petSystem.animalSelected == true && petSystem.selectedAnimal != null)
+            {
+            animalManager.ActivateAnimal(petSystem.selectedAnimal);
+            }
+            else
+            {
+            animalManager.ActivateAnimal("Bear_Cub_8");
+            }
+        }
+        else
+        {
+            animalManager.ActivateAnimal("Bear_Cub_8");
+        }
+
+
+            // Display the original scale values (optional)
+            Debug.Log("Original Scale X: " + originalScaleX);
+            Debug.Log("Original Scale Y: " + originalScaleY);
+            Debug.Log("Original Scale Z: " + originalScaleZ);
+
+
     }
 
     void DeactivateAllAnimals()
@@ -45,7 +101,11 @@ public class AnimalManager : MonoBehaviour
         {
             if (child.name == animalName)
             {
-                child.gameObject.SetActive(true);
+                child.gameObject.SetActive(true);                    
+                originalScaleX = child.gameObject.transform.localScale.x;
+                originalScaleY = child.gameObject.transform.localScale.y;
+                originalScaleZ = child.gameObject.transform.localScale.z;
+                // Save the original scale values
                 return true; // Animal found and activated
             }
 
@@ -53,6 +113,7 @@ public class AnimalManager : MonoBehaviour
             {
                 return true; // Animal found in sub-children
             }
+
         }
         return false; // Animal not found in this branch
     }
@@ -103,16 +164,85 @@ public class AnimalManager : MonoBehaviour
     }
 
     public void setPet()
-    {
-        SaveGameObjects.PetSystem petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey("PetSystem", 1);
-        var enumValues = (DefaultCubsToSelect[])Enum.GetValues(typeof(DefaultCubsToSelect));
-        petSystem.selectedAnimal = enumValues[currentArrayPosition].ToString();
-        petSystem.animalSelected = true;
-        SaveGameMechanic.getSaveGameObjectByPrimaryKey("PetSytem", 1);
-
-        // new let's deactivate the buttons
+    {   
         
+        var enumValues = (DefaultCubsToSelect[])Enum.GetValues(typeof(DefaultCubsToSelect));
+        Debug.Log(enumValues[currentArrayPosition]);
+        pet_UI_Management.petSystem.animalSelected = true;
+        pet_UI_Management.petSystem.Pet_Happiness = 50;
+        pet_UI_Management.petSystem.Pet_Cleanliness = 50;
+        pet_UI_Management.petSystem.Pet_Hunger = 50;
+        pet_UI_Management.petSystem.petScaleX = originalScaleX;
+        pet_UI_Management.petSystem.petScaleY = originalScaleY;
+        pet_UI_Management.petSystem.petScaleZ = originalScaleZ;
+        pet_UI_Management.petSystem.lastLog_Fuettern = DateTime.Now;
+        pet_UI_Management.petSystem.lastLog_Putzen = DateTime.Now;
+        pet_UI_Management.petSystem.lastLog_Spielen = DateTime.Now;
+        pet_UI_Management.petSystem.selectedAnimal = enumValues[currentArrayPosition].ToString();
+        Debug.Log(petSystem.selectedAnimal);
+        pet_UI_Management.ToggleVisibiliyAnimalSelectionButtons(false);
+       
     }
+
+    public void areUsure(Boolean setBoolean){
+        if (setBoolean == true){
+        pet_UI_Management.ToggleVisibiliyGameSelectionButtons(false);
+        pet_UI_Management.ToggleApproveButton(true);
+        }
+        else{
+        pet_UI_Management.ToggleVisibiliyGameSelectionButtons(true);
+        pet_UI_Management.ToggleApproveButton(false);
+        }
+
+    }
+
+    public void reSelect()
+    {   
+        pet_UI_Management.ToggleApproveButton(false);
+        pet_UI_Management.ToggleVisibiliyGameSelectionButtons(false);
+        pet_UI_Management.petSystem.animalSelected = false;
+        pet_UI_Management.petSystem.selectedAnimal = null;
+        pet_UI_Management.petSystem.selectionComplete = false;
+        pet_UI_Management.petSystem.gameSelected = false;
+        pet_UI_Management.petSystem.petScaleX = originalScaleX;
+        pet_UI_Management.petSystem.petScaleY = originalScaleY;
+        pet_UI_Management.petSystem.petScaleZ = originalScaleZ;
+        pet_UI_Management.RefreshScale();
+        pet_UI_Management.savePetSystem();
+        pet_UI_Management.loadPetSystem();
+        pet_UI_Management.ToggleVisibiliyAnimalSelectionButtons(true);
+    }
+
+    public void selectGameFuettern()
+    {   
+        pet_UI_Management.petSystem.gameSelected = true;
+        pet_UI_Management.fuettern = 1;
+        Debug.Log("selectGamePressed");                    
+        pet_UI_Management.ToggleVisibiliyGameSelectionButtons(false);
+        pet_UI_Management.pet_CameraIntro.ActivateCameraAnimation(true);
+        pet_UI_Management.savePetSystem();
+    }
+
+    public void selectGameKuemmern()
+    {   
+        pet_UI_Management.petSystem.gameSelected = true;
+        pet_UI_Management.kuemmern = 1;
+        Debug.Log("selectGamePressed");                    
+        pet_UI_Management.ToggleVisibiliyGameSelectionButtons(false);
+        pet_UI_Management.pet_CameraIntro.ActivateCameraAnimation(true);
+        pet_UI_Management.savePetSystem();
+    }
+
+    public void selectGameRennen()
+    {   
+        pet_UI_Management.petSystem.gameSelected = true;
+        pet_UI_Management.rennen = 1;
+        Debug.Log("selectGamePressed");                    
+        pet_UI_Management.ToggleVisibiliyGameSelectionButtons(false);
+        pet_UI_Management.pet_CameraIntro.ActivateCameraAnimation(true);
+        pet_UI_Management.savePetSystem();
+    }
+
 
     public void setCubByArray(int arrayPosition)
     {

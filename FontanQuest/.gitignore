@@ -9,9 +9,10 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
-/FontanQuest/UserSettings/
 /[Uu]ser[Ss]ettings/
-/[Pp]roject[Ss]ettings/
+/FontanQuest/UserSettings/
+/FontanQuest/ProjectSettings/
+FontanQuest/UserSettings/Layouts/default-2021.dwlt
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -60,4 +61,3 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-

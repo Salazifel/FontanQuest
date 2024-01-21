@@ -30,7 +30,11 @@ public class MonkWelcomeButton : MonoBehaviour
     private void rightButtonClick()
     {
         SaveGameObjects.BuiltBuildings builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameMechanic.getSaveGameObjectByPrimaryKey("BuiltBuildings", 1);
-        builtBuildings.YouTubeHouse = true;
+        if (builtBuildings == null)
+        {
+            builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameObjects.CreateSaveGameObject("BuiltBuildings");
+        }
+        builtBuildings.Temple = true;
         SaveGameMechanic.saveSaveGameObject(builtBuildings, "BuiltBuildings", 1);
         GameObject.Find("GameData").GetComponent<DisplayInteractiveButtons>().displayAvailableButtons();
         GameObject.Find("GameData").GetComponent<LoadingSavingBuildings>().displayBuiltBuildings();

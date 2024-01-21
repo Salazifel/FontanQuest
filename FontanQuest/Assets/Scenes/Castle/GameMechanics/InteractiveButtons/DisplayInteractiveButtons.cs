@@ -14,31 +14,42 @@ public class DisplayInteractiveButtons : MonoBehaviour
     GameObject YouTubeBuildBuilding;
     GameObject YouTubeStartGame;
 
-    void Start()
+    void Awake()
     {
         buildCityWall = GameObject.Find("BuildCityWall");
         wanderingMonk = GameObject.Find("WanderingMonk");
         monkGameButton = GameObject.Find("MonkGameButton");
         YouTubeBuildBuilding = GameObject.Find("YouTubeBuildBuilding");
-        YouTubeStartGame = GameObject.Find("YouTubeStartGame");
-
-        displayAvailableButtons();
+        YouTubeStartGame = GameObject.Find("YouTubeStartGame");   
     }
 
+    void Start()
+    {
+        displayAvailableButtons();
+    }
     public void DeactivateInteractiveButtons()
     {
         buildCityWall.SetActive(false);
         wanderingMonk.SetActive(false);
         monkGameButton.SetActive(false);
+        YouTubeBuildBuilding.SetActive(false);
+        YouTubeStartGame.SetActive(false);
     }
 
     public void displayAvailableButtons(int preSetDay = -1) {
 
         builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameMechanic.getSaveGameObjectByPrimaryKey("BuiltBuildings", 1);
+        if (builtBuildings == null)
+        {
+            builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameObjects.CreateSaveGameObject("BuiltBuildings");
+        }
+
         gameData = (SaveGameObjects.GameData) SaveGameMechanic.getSaveGameObjectByPrimaryKey("GameData", 1);
-
-        Debug.Log(gameData.daysPlayed.ToString());
-
+        if (gameData == null)
+        {
+            gameData = (SaveGameObjects.GameData) SaveGameObjects.CreateSaveGameObject("GameData");
+        }
+        
         if (preSetDay == -1)
         {
             DeactivateInteractiveButtons();

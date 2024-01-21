@@ -35,13 +35,17 @@ public class YouTubeHouseScript : MonoBehaviour
 
     public void buildYouTubeBuilding()
     {
-        messageWindow.SetupMessageWindow("Filmpalast", "Schaust du auch so gerne Videos, wie ich? Ich habe gehört der König mag es auch? Ich kann gerne mit meinem Kino hierher ziehen!", null, null, null, null, "Klasse!", buildYouTubeBuildingRightButtonClick, MessageWindow.Character_options.Character_Female_Druid, AnimationLibrary.Animations.Talk, null);    
+        messageWindow.SetupMessageWindow("Filmpalast", "Schaust du auch so gerne Videos, wie ich? Ich habe gehoert der Koenig mag es auch? Ich kann gerne mit meinem Kino hierher ziehen!", null, null, null, null, "Klasse!", buildYouTubeBuildingRightButtonClick, MessageWindow.Character_options.Character_Female_Druid, AnimationLibrary.Animations.Talk, null);    
     }
 
     private void buildYouTubeBuildingRightButtonClick()
     {
         SaveGameObjects.BuiltBuildings builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameMechanic.getSaveGameObjectByPrimaryKey("BuiltBuildings", 1);
-        builtBuildings.Temple = true;
+        if (builtBuildings == null)
+        {
+            builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameObjects.CreateSaveGameObject("BuiltBuildings");
+        }
+        builtBuildings.YouTubeHouse = true;
         SaveGameMechanic.saveSaveGameObject(builtBuildings, "BuiltBuildings", 1);
         GameObject.Find("GameData").GetComponent<DisplayInteractiveButtons>().displayAvailableButtons();
         GameObject.Find("GameData").GetComponent<LoadingSavingBuildings>().displayBuiltBuildings();

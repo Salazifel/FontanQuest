@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "19ac7eb40403",
+    "m_SelectedDeviceId": "MUN0218A31002671",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "MUN0218A31002671",
+        "name": "com.DefaultCompany.FontanQuest",
+        "processId": 19015,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -18,6 +18,12 @@
             "deviceId": "19ac7eb40403",
             "name": "com.android.settings",
             "processId": 20839,
+            "exited": false
+        },
+        {
+            "deviceId": "MUN0218A31002671",
+            "name": "com.DefaultCompany.FontanQuest",
+            "processId": 19015,
             "exited": false
         }
     ],

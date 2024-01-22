@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Castle/Main_Castle.unity
+    guid: d8c2ccdce3b015f4ba43d1298ff313a7
+  - enabled: 1
     path: Assets/Scenes/WorkoutsAndMiniGames(Alisa)/Scenes/chooseAction.unity
     guid: b31d574766a579147be3a64ca4d18dae
   - enabled: 1
@@ -60,17 +63,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Exergame/DoodleJump/Scene/DoodleJumpStoryScene.unity
     guid: 0fff0bf7ed50ef646ba18796a55800e0
   - enabled: 1
-    path: Assets/Scenes/Castle/Main_Castle.unity
-    guid: d8c2ccdce3b015f4ba43d1298ff313a7
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
     path: Assets/LightShaft/Scenes/Demo1.2 - Fullscreen.unity
     guid: 444e84e99fbe36e419a6a200170efa2b
   - enabled: 1
     path: Assets/Scenes/YouTube/VideoSelection/VideoSelection.unity
     guid: 889e8b051e01e9f44a4f15001690d95a
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 254f22ba6035e6d4398b0fed5896fd9a,
       type: 2}

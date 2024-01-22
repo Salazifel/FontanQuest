@@ -68,6 +68,8 @@ public class SaveGameObjects : MonoBehaviour
                 return new YouTubeData();
             case "DayActivity":
                 return new DayActivity();
+            case "MarketOffer":
+                return new MarketOffer(null, null, 0, 0);
             default:
                 throw new ArgumentException("Unknown SaveGameObject. Please declare the initialization of an empty SaveGameObject above as a new case.");
         }
@@ -296,12 +298,14 @@ public class SaveGameObjects : MonoBehaviour
         public static string nameOfOffer;
         public static string pathToIcon;
         public static int costOfOffer;
+        public static int numOfAvailableTokens;
 
-        public MarketOffer(string _nameOfOffer, string _pathToIcon, int _costOfOffer)
+        public MarketOffer(string _nameOfOffer, string _pathToIcon, int _costOfOffer, int _numOfAvailableTokens)
         {
             nameOfOffer = _nameOfOffer;
             pathToIcon = _pathToIcon;
             costOfOffer = _costOfOffer;
+            numOfAvailableTokens = _numOfAvailableTokens;
         }
     }
 }

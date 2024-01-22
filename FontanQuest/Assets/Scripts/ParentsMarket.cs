@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ParentsMarket : MonoBehaviour
 {
+    // currency system 2DO
+    // notification, dass die Kinder etwas gekauft haben 2DO
+
     private int numOfDefaultOffers = 1;
     public void addMarketOffer(SaveGameObjects.MarketOffer marketOffer)
     {
@@ -30,7 +33,7 @@ public class ParentsMarket : MonoBehaviour
 
     public void saveMarketOffers(List<SaveGameObjects.MarketOffer> marketOffers)
     {
-        SaveGameMechanic.deleteGameSaveType(new SaveGameObjects.MarketOffer(null, null, 0), "MarketOffer");
+        SaveGameMechanic.deleteGameSaveType(new SaveGameObjects.MarketOffer(null, null, 0, 0), "MarketOffer");
         for (int i = 0; i < marketOffers.Count; i++)
         {
             SaveGameMechanic.saveSaveGameObject(marketOffers[i], "MarketOffers");            
@@ -41,7 +44,9 @@ public class ParentsMarket : MonoBehaviour
     {
         List<SaveGameObjects.MarketOffer> marketOffers = new List<SaveGameObjects.MarketOffer>();
 
-        marketOffers.Add(new SaveGameObjects.MarketOffer("PC spielen", "ParentsmarketIcons/PC", 5));
+        // change num of Default offers
+        marketOffers.Add(new SaveGameObjects.MarketOffer("PC spielen", "ParentsmarketIcons/PC", 5, 0));
+    
 
         return marketOffers;
     }

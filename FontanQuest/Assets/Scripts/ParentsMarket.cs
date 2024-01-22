@@ -4,8 +4,40 @@ using UnityEngine;
 
 public class ParentsMarket : MonoBehaviour
 {
-    // currency system 2DO
-    // notification, dass die Kinder etwas gekauft haben 2DO
+    // ------------------------------ Currency Elements
+
+    public bool changeNumOfCoins(int changeVal)
+    {
+        SaveGameObjects.GameData gameData = (SaveGameObjects.GameData)SaveGameMechanic.getSaveGameObjectByPrimaryKey("GameData", 1);
+        if (gameData == null)
+        {
+            gameData = (SaveGameObjects.GameData)SaveGameObjects.CreateSaveGameObject("GameData");
+        }
+        
+        if ((gameData.coins + changeVal) < 0)
+        {
+            return false;
+        } 
+        else 
+        {
+            gameData.coins = gameData.coins + changeVal;
+            SaveGameMechanic.saveSaveGameObject(gameData, "GameData", 1);
+            return true;
+        }
+    }
+
+    public int getNumOfCoins()
+    {
+        SaveGameObjects.GameData gameData = (SaveGameObjects.GameData)SaveGameMechanic.getSaveGameObjectByPrimaryKey("GameData", 1);
+        if (gameData == null)
+        {
+            gameData = (SaveGameObjects.GameData)SaveGameObjects.CreateSaveGameObject("GameData");
+        }
+        return gameData.coins;
+    }
+
+
+    // ------------------------------ MARKET ELEMENTS 
 
     private int numOfDefaultOffers = 1;
     public void addMarketOffer(SaveGameObjects.MarketOffer marketOffer)

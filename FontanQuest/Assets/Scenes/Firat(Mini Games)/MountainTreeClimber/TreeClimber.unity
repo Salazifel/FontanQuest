@@ -138,7 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 18242507}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bd46795a7a3fc64d9b49df05a55c0ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 83692f3eade9e824d9f871d95afbb886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 5
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 127639122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bd46795a7a3fc64d9b49df05a55c0ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 83692f3eade9e824d9f871d95afbb886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 5
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 316263687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bd46795a7a3fc64d9b49df05a55c0ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 83692f3eade9e824d9f871d95afbb886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 5
@@ -298,7 +298,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 316263687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af9667bc36757cc4c986dae1adbc6acc, type: 3}
+  m_Script: {fileID: 11500000, guid: 594f2c33e1fd7e7458d6d70c1a52575d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedVar: 5
+  xValueAut: 0
+  yValueAut: 0
+--- !u!114 &316263694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316263687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80b179a8fc3d2804a8083290f5145690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxDetectionDistance: 25
@@ -446,7 +461,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 589895099}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bd46795a7a3fc64d9b49df05a55c0ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 83692f3eade9e824d9f871d95afbb886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 5
@@ -538,7 +553,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 785198192}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bd46795a7a3fc64d9b49df05a55c0ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 83692f3eade9e824d9f871d95afbb886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 5
@@ -1489,7 +1504,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1764814684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bd46795a7a3fc64d9b49df05a55c0ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 83692f3eade9e824d9f871d95afbb886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 5
@@ -1656,10 +1671,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1845555457}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bd46795a7a3fc64d9b49df05a55c0ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 594f2c33e1fd7e7458d6d70c1a52575d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 5
+  xValueAut: 0
+  yValueAut: 0
 --- !u!95 &1845555460
 Animator:
   serializedVersion: 4
@@ -1719,12 +1736,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1845555457}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb87dfeb100af154583ca93990f17766, type: 3}
+  m_Script: {fileID: 11500000, guid: 80b179a8fc3d2804a8083290f5145690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 5
-  xValueAut: 0
-  yValueAut: 0
+  maxDetectionDistance: 25
+  rockTag: Rock_Positions
 --- !u!1 &1876972762
 GameObject:
   m_ObjectHideFlags: 0

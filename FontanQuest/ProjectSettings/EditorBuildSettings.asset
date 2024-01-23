@@ -36,10 +36,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Village (Hannes)/Experimental Scene/SampleScene.unity
     guid: c850ee8c3b14cc8459e7e186857cf567
   - enabled: 1
-    path: Assets/Scenes/UI (Laura)/Main Screen.unity
+    path: Assets/Scenes/UI (Laura)/Laura_old/Main Screen.unity
     guid: a99c398694727ef45b615d80569ac0d8
   - enabled: 1
-    path: Assets/Scenes/UI (Laura)/Parental Mode 1.unity
+    path: Assets/Scenes/UI (Laura)/Laura_old/Parental Mode 1.unity
     guid: 77c80c10a60e7684bb3fe72994b2750b
   - enabled: 1
     path: Assets/Scenes/UI (Laura)/Activity ideas/Actrivity idea - canvas.unity
@@ -71,6 +71,42 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/UI (Laura)/StatistikParentSection.unity
+    guid: e5190141993040c479b53692805ef64e
+  - enabled: 1
+    path: Assets/Scenes/UI (Laura)/ParentsOnboarding4.unity
+    guid: 701fbfa53f4eba1429a7922bb63ac5cf
+  - enabled: 1
+    path: Assets/Scenes/UI (Laura)/ParentsOnboarding3.unity
+    guid: 5b09fa4babb54d4408f4a5f6dce0e5c4
+  - enabled: 1
+    path: Assets/Scenes/UI (Laura)/ParentsOnboarding2.unity
+    guid: 1aa24335632627c44a4e1dc22136caa7
+  - enabled: 1
+    path: Assets/Scenes/UI (Laura)/ParentsOnboarding1.unity
+    guid: 90b6efcb364375d44a5cb25d045c800d
+  - enabled: 1
+    path: Assets/Scenes/UI (Laura)/ParentsOnboarding0.unity
+    guid: 38950c4bacc05024fad67c5294b1c77a
+  - enabled: 1
+    path: Assets/Scenes/UI (Laura)/ParentsHilfe.unity
+    guid: 3d720a72e67299a43b465c9b81da041a
+  - enabled: 1
+    path: Assets/Scenes/UI (Laura)/OutdoorIdeen.unity
+    guid: 8880a992979bd124a9bedcf002ab6340
+  - enabled: 1
+    path: Assets/Scenes/UI (Laura)/HomeParentSection.unity
+    guid: 4bfc66066f687994e8f99f2a792b720e
+  - enabled: 1
+    path: Assets/Scenes/UI (Laura)/ErkundenParentSection.unity
+    guid: e1dee3a14c9461a499b91219d5d5c303
+  - enabled: 1
+    path: Assets/Scenes/UI (Laura)/EinstellungenParentSection.unity
+    guid: 9f22396ecf51f50459290da3cc0fdf50
+  - enabled: 1
+    path: Assets/Scenes/UI (Laura)/Datenschutz.unity
+    guid: 05380d5da988d264cba9b4e2b2c66f86
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 254f22ba6035e6d4398b0fed5896fd9a,
       type: 2}

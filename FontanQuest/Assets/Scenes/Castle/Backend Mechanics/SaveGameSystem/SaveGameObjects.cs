@@ -131,6 +131,7 @@ public class SaveGameObjects : MonoBehaviour
         {
             GameSaveObjectType = "gameData";
             coins = _coins;
+            firstDayOfPlaying = System.DateTime.Now;
         }
 
         public override void Print()

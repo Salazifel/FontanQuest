@@ -14,6 +14,14 @@ public class DatePrefab : MonoBehaviour
 
     void Start()
     {
+        SaveGameObjects.GameData gameData = (SaveGameObjects.GameData)SaveGameMechanic.getSaveGameObjectByPrimaryKey("GameData", 1);
+        if (gameData == null)
+        {
+            gameData = (SaveGameObjects.GameData)SaveGameObjects.CreateSaveGameObject("GameData");
+        }
+
+        // gameData.firstDayOfPlaying.DayOfWeek;
+
         if (prefab == null || panel == null)
         {
             Debug.LogError("Prefab or panel is not assigned!");

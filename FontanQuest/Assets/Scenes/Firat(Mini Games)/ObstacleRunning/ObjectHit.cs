@@ -37,7 +37,7 @@ public class ObjectHit : MonoBehaviour
         Time.timeScale = 0.2f;
         Debug.Log("Bumped");
         animator.SetTrigger("Collision");
-        Invoke("DelayedAction", 3.0f);
+        Invoke("DelayedAction", 1.0f);
         Time.timeScale = 1.0f;
         }
 

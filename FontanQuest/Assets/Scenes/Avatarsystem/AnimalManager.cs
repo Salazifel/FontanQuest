@@ -196,6 +196,9 @@ public class AnimalManager : MonoBehaviour
 
     }
 
+    public void BacktoCaste(){
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main_Castle", LoadSceneMode.Single);
+    }
     public void reSelect()
     {   
         pet_UI_Management.ToggleApproveButton(false);

@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class DailyActivityPanel : MonoBehaviour
+public class WeeklyActivityPanel : MonoBehaviour
 {
     public TextMeshProUGUI activity1Text;
     public TextMeshProUGUI activity2Text;

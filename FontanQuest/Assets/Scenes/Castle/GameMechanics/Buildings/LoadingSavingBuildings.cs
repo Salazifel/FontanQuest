@@ -42,6 +42,36 @@ public class LoadingSavingBuildings : MonoBehaviour
         CityWalls.SetActive(true);
     }
 
+    public void ActivateFarm()
+    {
+
+    }
+
+    public void ActiveTemple()
+    {
+
+    }
+
+    public void ActivateClimber()
+    {
+
+    }
+
+    public void ActivateWitch()
+    {
+
+    }
+
+    public void ActivateWoodCutter()
+    {
+
+    }
+
+    public void ActivateMining()
+    {
+        
+    }
+
     public void ActivateYouTubeHouse()
     {
         YouTubeHouse.SetActive(true);

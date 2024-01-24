@@ -12,39 +12,31 @@ public class BuildCityWalls : MonoBehaviour
     MessageWindow messageWindow;
 
     GameObject backgroundMusic;
+
+    void Awake()
+    {
+        messageWindow = GameObject.Find("MessageWindow").GetComponent<MessageWindow>();
+    }
     void OpenBuildWindow()
     {
         // Find the MessageWindow instance in the current scene
         mainCanvas = GameObject.Find("MainCanvas");
         castleMainUIScript = mainCanvas.GetComponent<CastleMainUI>();
-        messageWindowObject = castleMainUIScript.GetMessageWindow();
-        messageWindow = messageWindowObject.GetComponent<MessageWindow>();
 
-        if (messageWindow != null)
-        {
-            // Prepare the callback actions
-            UnityEngine.Events.UnityAction leftAction = messageWindow.DeactivateMessageWindow;
-            UnityEngine.Events.UnityAction rightAction = RightButtonClicked;
-
-            // Call the SetupMessageWindow function
-            messageWindow.SetupMessageWindow(
-                "Mauer",
-                "Sollen wir eine Stadtmauer bauen?",
-                "Abrechen",
-                leftAction,
-                "Bauen",
-                rightAction,
-                null, // If you want a middle button, provide the text
-                null,
-                MessageWindow.Character_options.Character_Male_Rouge_01,
-                AnimationLibrary.Animations.Talk,
-                "audios/Emil_StadtMauerBauen_"
-            );
-        }
-        else
-        {
-            Debug.LogError("MessageWindow instance was not found in the scene.");
-        }
+        // Call the SetupMessageWindow function
+        messageWindow.SetupMessageWindow(
+            "Mauer",
+            "Sollen wir eine Stadtmauer bauen?",
+            "Abrechen",
+            messageWindow.DeactivateMessageWindow,
+            "Bauen",
+            RightButtonClicked,
+            null, // If you want a middle button, provide the text
+            null,
+            MessageWindow.Character_options.Character_Male_Rouge_01,
+            AnimationLibrary.Animations.Talk,
+            "audios/Emil_StadtMauerBauen_"
+        );
     }
 
     private void RightButtonClicked()

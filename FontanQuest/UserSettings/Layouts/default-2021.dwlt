@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Simulator
+  m_Title: Project
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 68
+  controlID: 139
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 389
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 19
+  controlID: 140
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 20
+  controlID: 141
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SimulatorWindow
+  m_Name: SceneView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -268,15 +268,15 @@ MonoBehaviour:
     y: 0
     width: 1152
     height: 574
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 12}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
   - {fileID: 13}
   - {fileID: 12}
-  m_Selected: 2
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 2
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_UseMipMap: 0
   m_SimulatorState:
     controlPanelVisible: 0
-    controlPanelWidth: 0
+    controlPanelWidth: NaN
     controlPanelFoldoutKeys:
     - UnityEditor.AdaptivePerformance.Editor.AdaptivePerformanceUIExtension
     - UnityEditor.AdaptivePerformance.Samsung.Android.Editor.AdaptivePerformanceVRRUIExtension
@@ -414,22 +414,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/Castle
+    - Assets/Scenes/Castle/Backend Mechanics/SaveGameSystem
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes/Castle
+  - Assets/Scenes/Castle/Backend Mechanics/SaveGameSystem
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Eigene Ablage\SharedFolderVM\FontanQuest\FontanQuest\FontanQuest
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 1231}
-    m_SelectedIDs: f63c0500
-    m_LastClickedID: 343286
-    m_ExpandedIDs: 00000000d83c0500e43c0500e83c0500ee3c0500f63c0500fa3c0500fc3c0500023d0500f0560500f2560500b8570500308c0500328c050048c0050064c0050068c0050082c005008ac00500a4c00500aac00500b8c0050000ca9a3b
+    m_SelectedIDs: ca7b0000
+    m_LastClickedID: 31690
+    m_ExpandedIDs: 00000000f67a0000f87a0000fa7a0000fc7a0000fe7a0000007b0000027b0000047b0000067b0000087b00000a7b00000c7b00000e7b0000107b0000127b0000147b0000167b0000187b00001a7b00001c7b00001e7b0000207b0000227b0000247b0000267b0000407b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -457,7 +457,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 
+    m_ExpandedIDs: 00000000f67a0000f87a0000fa7a0000fc7a0000fe7a0000007b0000027b0000047b0000067b0000087b00000a7b00000c7b00000e7b0000107b0000127b0000147b0000167b0000187b00001a7b00001c7b00001e7b0000207b0000227b0000247b0000267b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -549,7 +549,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 215
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -587,9 +587,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 98090000
       m_LastClickedID: 0
-      m_ExpandedIDs: 1c8bf9ff6e8bf9ffcc8ef9ff4290f9ff7690f9ff9890f9ffde90f9ff4695f9fff296f9ffc898f9ff7c9af9ff8e9af9ffa89af9ffb4a0f9ffcca2f9ff68a7f9ffe6a9f9ffc6aef9ff44b0f9ffe6b2f9ffa2b5f9ffd4b9f9ff16cbf9ff00e9f9ff20ebf9ffdcebf9ff0402faff6c0afaffbe0afaffd20afaff340cfaff620cfaff7e0cfaffb20cfaff0811faffb012faff7a14faff2416faff3216faff4416faff2a1cfaff361efaffca22faff3825faff082afaff7a2bfaff182efaffc630faffd834faff0446faffc24afaff144bfaff6e4efaffe04ffaff1050faff2e50faff7050faffcc54faff7456faff4658fafff659faff045afaff1a5afaff2260faff3662faffce66faff4869faff246efaff9e6ffaff3c72fafff474faff1879faff448afaff5293faffa293fafffc96faff6e98faff9aa9faffcaa9faffe8a9faff2aaafaff86aefaff2eb0faff00b2faffb0b3faffbeb3faffd4b3faffdcb9fafff0bbfaff88c0faff02c3faffdec7faff58c9fafff6cbfaffaecefaffd2d2faff5493fbffa8a1fbffb6c8fbffec5705001c580500905b0500b25c0500ba5d050090260800ee260800
+      m_ExpandedIDs: eafafffffc6600007a6a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -872,9 +872,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 207.5145, y: 13.045837, z: 123.3475}
+    m_Target: {x: 173.68196, y: -30.760529, z: 66.032036}
     speed: 2
-    m_Value: {x: 207.5145, y: 13.045837, z: 123.3475}
+    m_Value: {x: 173.68196, y: -30.760529, z: 66.032036}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -921,13 +921,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.03865657, y: 0.7658312, z: -0.046244647, w: 0.6402227}
+    m_Target: {x: 0.10589301, y: 0.8541165, z: -0.19172212, w: 0.47173724}
     speed: 2
-    m_Value: {x: 0.038656276, y: 0.76582533, z: -0.046244293, w: 0.64021784}
+    m_Value: {x: 0.106599316, y: 0.8538187, z: -0.193001, w: 0.47157276}
   m_Size:
-    m_Target: 53.722755
+    m_Target: 15.494142
     speed: 2
-    m_Value: 53.722755
+    m_Value: 14.82693
   m_Ortho:
     m_Target: 0
     speed: 2

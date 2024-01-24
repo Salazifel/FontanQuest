@@ -596,6 +596,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6502963981780449913, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502963981780449913, guid: 69c9c5ac08640d749993080989d71314,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1042,6 +1047,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: StoryControll, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 8577376150307932559, guid: 13e5d2f36e90f774eb2900deb7f68965,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13e5d2f36e90f774eb2900deb7f68965, type: 3}
 --- !u!223 &635410108 stripped
@@ -1071,6 +1081,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: HikkingStoryPartCanvasManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016180197936812481, guid: 9f89ae16e9bbbe64ea3bfd691b263b28,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 2016180197960189154, guid: 9f89ae16e9bbbe64ea3bfd691b263b28,
         type: 3}
@@ -1492,6 +1507,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6502963981780449913, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502963981780449913, guid: 69c9c5ac08640d749993080989d71314,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1633,7 +1653,7 @@ PrefabInstance:
     - target: {fileID: 6502963982672909897, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 10.832642
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6502963982672909897, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
@@ -3040,6 +3060,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2139916505}
     m_Modifications:
+    - target: {fileID: 6502963981780449913, guid: 69c9c5ac08640d749993080989d71314,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6502963981780449913, guid: 69c9c5ac08640d749993080989d71314,
         type: 3}
       propertyPath: m_AnchoredPosition.x

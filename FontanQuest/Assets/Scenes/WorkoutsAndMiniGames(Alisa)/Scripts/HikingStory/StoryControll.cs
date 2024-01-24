@@ -32,9 +32,9 @@ public class StoryControll : MonoBehaviour
 
     public void Quit()
     {
-        SceneManager.Load(SceneManager.Scene.chooseAction);
         StoryTeller.freshStart = true;
         ResetstoryScenes();
+        SceneManager.Load("Main_Castle");
     }
 
     public void Continue()

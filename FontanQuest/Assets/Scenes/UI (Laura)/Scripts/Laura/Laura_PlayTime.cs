@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public class PlayTime : MonoBehaviour
+public class Laura_PlayTime : MonoBehaviour
 {
     public int playtime;
     public int seconds;

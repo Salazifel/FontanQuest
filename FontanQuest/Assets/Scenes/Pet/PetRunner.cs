@@ -6,10 +6,10 @@ public class PetRunner : MonoBehaviour
 {
    
     // private Animator animator;
-    public float speedVar = 1.0f;
-    Vector3 RespawnPosition;
-    Vector3 InitialPosition;
-    Vector3 TriggerPosition;
+    public float speedVar = 5.0f;
+    private Vector3 RespawnPosition;
+    private Vector3 InitialPosition;
+    private Vector3 TriggerPosition;
     float zValue = 0.0f;
 
     float xValue = 0.0f;
@@ -53,23 +53,21 @@ public class PetRunner : MonoBehaviour
         if (gameObject.name != "Pet")
         {
             zValue =+ 1.0f * Time.deltaTime * speedVar;
-            
-            transform.Translate(xValue, 0, -zValue); // Move at a constant speed
-            if (gameObject.tag == "Obstacles")
-            {
-                if (Mathf.Abs(transform.position.z - TriggerPosition.z) < 0.1f){
-                    transform.position = RespawnPosition;
-                }
+            if(gameObject.name == "Last_Tile"){
+                gameObject.SetActive(false);
             }
+            transform.Translate(xValue, 0, -zValue); // Move at a constant speed
+            // if (gameObject.tag == "Obstacles")
+            // {
+            //     if (Mathf.Abs(transform.position.z - TriggerPosition.z) < 0.1f){
+            //         transform.position = RespawnPosition;
+            //     }
+            // }
             if  (gameObject.tag =="Tiles"){
-                if (Mathf.Abs(transform.position.z - TriggerPosition.z) < 0.1f && gameObject.name != "Last_Tile")
+                if ((transform.position.z - TriggerPosition.z) < 0.1f && gameObject.name != "Last_Tile")
             {
                 transform.position = RespawnPosition;
             }
-            }
-            else
-            {
-                LastTile.SetActive(false);
             }
         }
         if (gameObject.name == "Pet")

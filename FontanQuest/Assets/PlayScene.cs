@@ -11,6 +11,6 @@ public class PlayScene : MonoBehaviour
 
     public void OpenGameScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main_Castle");
     }
 }

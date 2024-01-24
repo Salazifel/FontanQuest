@@ -2,16 +2,15 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
-
-public class CalendarBuilder : MonoBehaviour
+    
+    public class CalendarPrefab : MonoBehaviour
 {
     public GameObject prefab;
     public GameObject panel;
-    public int numberOfInstances = 14;
+    public int numberOfInstances = 14; // 14 instances for 14 days
+
     public Sprite checkmarkImage; // Reference to the Checkmark2 sprite
     public Sprite closeImage;     // Reference to the Close sprite
-    public Color checkmarkColor = new Color(0.611f, 0.761f, 0.369f); // Color for Checkmark2 (9CC35E)
-    public Color closeColor = Color.black; // Color for Close (000000)
 
     void Start()
     {
@@ -29,27 +28,22 @@ public class CalendarBuilder : MonoBehaviour
             GameObject instance = Instantiate(prefab, panel.transform);
 
             TMP_Text textComponent = instance.GetComponentInChildren<TMP_Text>();
-            Image imageComponent = instance.GetComponentInChildren<Image>();
+            Image imageComponent = instance.GetComponentInChildren<Image>(); // For the image component
 
             if (textComponent != null && imageComponent != null)
             {
-                int dayNumber = today.Day + i;
-                if (dayNumber > daysInMonth)
-                {
-                    dayNumber -= daysInMonth; // Adjust for month rollover
-                }
+                int dayNumber = (today.Day + i) % daysInMonth;
+                dayNumber = dayNumber == 0 ? daysInMonth : dayNumber;
                 textComponent.text = dayNumber.ToString();
 
                 // Randomly select an image
                 if (UnityEngine.Random.value > 0.5f)
                 {
                     imageComponent.sprite = checkmarkImage;
-                    //imageComponent.color = checkmarkColor; // Uncomment if color issue is resolved
                 }
                 else
                 {
                     imageComponent.sprite = closeImage;
-                    //imageComponent.color = closeColor; // Uncomment if color issue is resolved
                 }
             }
             else

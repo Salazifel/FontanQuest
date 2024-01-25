@@ -61,9 +61,9 @@ public class WildPlantGenerator : MonoBehaviour
         plant.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Entered OnTriggerEnter");
+        Debug.Log("Entered OnTriggerEnter2D");
         if (other.gameObject.CompareTag("left"))
         {
             Debug.Log("Left");

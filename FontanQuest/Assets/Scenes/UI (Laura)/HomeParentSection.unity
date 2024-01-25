@@ -797,8 +797,6 @@ GameObject:
   - component: {fileID: 144133510}
   - component: {fileID: 144133513}
   - component: {fileID: 144133512}
-  - component: {fileID: 144133511}
-  - component: {fileID: 144133514}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -828,30 +826,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &144133511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144133509}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 0, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
 --- !u!114 &144133512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -890,25 +864,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144133509}
   m_CullTransparentMesh: 1
---- !u!114 &144133514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144133509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41766fbf2e1509546802b428d208c499, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  panel: {fileID: 0}
-  numberOfInstances: 14
-  checkmarkImage: {fileID: 0}
-  closeImage: {fileID: 0}
-  checkmarkColor: {r: 0.611, g: 0.761, b: 0.369, a: 1}
-  closeColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &182537678
 GameObject:
   m_ObjectHideFlags: 0
@@ -6371,7 +6326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1222717262
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6585,7 +6540,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223241014}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 997e536c7cc3f78498f6c08a037b3274, type: 3}
   m_Name: 
@@ -6600,7 +6555,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223241014}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c30cc942c48d0a84ba97d71c9ac36ca2, type: 3}
   m_Name: 

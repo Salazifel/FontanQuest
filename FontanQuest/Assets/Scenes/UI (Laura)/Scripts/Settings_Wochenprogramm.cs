@@ -23,6 +23,8 @@ public class Settings_Wochenprogramm : MonoBehaviour
         {
             string[] lines = File.ReadAllLines(filePath);
             int totalMinutes = 0;
+            bool activity1Found = false;
+            bool activity2Found = false;
             string selectedDate = date.ToString("dd.MM.yyyy");
 
             foreach (string line in lines)
@@ -32,20 +34,35 @@ public class Settings_Wochenprogramm : MonoBehaviour
                     if (line.Contains("Activity1 = "))
                     {
                         totalMinutes += UpdateTMPText(line, activity1Text);
+                        activity1Found = true;
                     }
                     else if (line.Contains("Activity2 = "))
                     {
                         totalMinutes += UpdateTMPText(line, activity2Text);
+                        activity2Found = true;
                     }
                 }
             }
 
-            // Update DayProgress text
-            dayProgressText.text = $"Aufgezeichnete Aktivitätszeit: {totalMinutes} Minuten";
+            if (!activity1Found)
+            {
+                activity1Text.text = "Kein Programm für diesen Tag";
+            }
+
+            if (!activity2Found)
+            {
+                activity2Text.text = "";
+            }
+
+            // Update DayProgress text only if the date is not in the future
+            dayProgressText.text = date.Date <= DateTime.Now.Date ? $"Aufgezeichnete Aktivitätszeit: {totalMinutes} Minuten" : "";
         }
         else
         {
             Debug.LogError("File not found: " + filePath);
+            activity1Text.text = "Kein Programm für diesen Tag";
+            activity2Text.text = "";
+            dayProgressText.text = "";
         }
     }
 

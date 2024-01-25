@@ -11,6 +11,7 @@ public class Settings_DateButtonPrefab : MonoBehaviour
     public GameObject panel;
     public int numberOfInstances = 14;
     public Settings_Wochenprogramm activityPanel;
+    private TextMeshProUGUI currentlySelectedText; // Track the selected TextMeshProUGUI
 
     void Start()
     {
@@ -20,8 +21,9 @@ public class Settings_DateButtonPrefab : MonoBehaviour
             return;
         }
 
+        DateTime startDate = DateTime.Now; // Declare startDate here
+
         string filePath = @"C:\Users\Chris\Documents\WS23-24\FontanQuest\FirstDayTest.txt";
-        DateTime startDate = DateTime.Now; // Default to today
 
         if (File.Exists(filePath))
         {
@@ -55,8 +57,28 @@ public class Settings_DateButtonPrefab : MonoBehaviour
             Button button = dateButtonInstance.GetComponent<Button>();
             if (button != null)
             {
-                button.onClick.AddListener(() => activityPanel.LoadActivitiesForDate(buttonDate));
+                button.onClick.AddListener(() => OnDateButtonClicked(textMesh, buttonDate));
             }
         }
+    }
+
+    private void OnDateButtonClicked(TextMeshProUGUI clickedText, DateTime buttonDate)
+    {
+        if (currentlySelectedText != null)
+        {
+            // Reset the color of the previously selected text
+            currentlySelectedText.color = Color.white; // if default color is white
+        }
+
+        Color customBlue = new Color(30 / 255f, 30 / 255f, 108 / 255f);
+
+        // Update the color of the newly selected text
+        clickedText.color = customBlue;
+
+        // Set the clicked text as the current selection
+        currentlySelectedText = clickedText;
+
+        // Load the activities for the selected date
+        activityPanel.LoadActivitiesForDate(buttonDate);
     }
 }

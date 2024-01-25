@@ -49,7 +49,7 @@ public class WildPlantGenerator : MonoBehaviour
     {
         int r = Random.Range(0, WildPlants.Length);
         GameObject NewWildPlant = Instantiate(WildPlants[r], transform);
-        NewWildPlant.transform.localPosition = new Vector3(Random.Range(-232, 220), Random.Range(-195, 123), 0);
+        NewWildPlant.transform.localPosition = new Vector3(Random.Range(-219, 214), Random.Range(-186, 117), 0);
         TimeLastShows += Time.deltaTime;
 
         StartCoroutine(DisableAfterTime(NewWildPlant, TimePlantShows));

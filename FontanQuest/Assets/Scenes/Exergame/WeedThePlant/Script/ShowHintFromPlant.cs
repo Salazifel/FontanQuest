@@ -35,8 +35,7 @@ public class ShowHintFromPlant : MonoBehaviour
         if (Left.activeSelf && accumTime > timeToShowHint)
         {
             Left.gameObject.SetActive(false);
-            accumTime = 0f;  // Reset accumTime after hiding "Perfekt"
-            // Debug.Log("Hiding Perfekt1");
+            accumTime = 0f; 
         }
     }
 }

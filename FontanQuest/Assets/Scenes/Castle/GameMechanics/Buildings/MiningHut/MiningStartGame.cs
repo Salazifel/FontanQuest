@@ -11,7 +11,7 @@ public class MiningStartGame : MonoBehaviour
     }
     public void OpenBuildWindow()
     {
-        messageWindow.SetupMessageWindow("Der Berg!", "Grüzi! Ich bin Heinrich und haenge ziemlich in den Seilen. Meinst du, du kannst für mich da hoch klettern?", "Spaeter", messageWindow.DeactivateMessageWindow, "Klar!", rightButtonClick, null, null, MessageWindow.Character_options.Character_Male_Sorcerer, AnimationLibrary.Animations.Talk, null);
+        messageWindow.SetupMessageWindow("Der Berg!", "Oh hallo! Nein, ich habe den Drachen noch nicht gefunden aber jede Menge Steine. Meinst du, du koenntest sie zuerschlagen?", "Spaeter", messageWindow.DeactivateMessageWindow, "Klar!", rightButtonClick, null, null, MessageWindow.Character_options.Character_Female_Gypsy, AnimationLibrary.Animations.Talk, null);
     }
 
     public void rightButtonClick()

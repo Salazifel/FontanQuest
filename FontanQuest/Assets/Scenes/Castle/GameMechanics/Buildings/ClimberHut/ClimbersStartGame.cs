@@ -16,6 +16,6 @@ public class ClimbersStartGame : MonoBehaviour
 
     public void rightButtonClick()
     {
-        SceneManager.Load("DoodleJumpStoryScene");
+        SceneManager.Load("TreeClimber");
     }
 }

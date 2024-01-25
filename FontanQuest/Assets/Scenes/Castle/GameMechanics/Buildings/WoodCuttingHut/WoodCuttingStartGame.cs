@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class WoodCuttingStartGame : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    MessageWindow messageWindow; 
+    void Awake()
     {
-        
+        messageWindow = GameObject.Find("MessageWindow").GetComponent<MessageWindow>();
+    }
+    public void OpenBuildWindow()
+    {
+        messageWindow.SetupMessageWindow("Der Berg!", "Grüzi! Ich bin Heinrich und haenge ziemlich in den Seilen. Meinst du, du kannst für mich da hoch klettern?", "Spaeter", messageWindow.DeactivateMessageWindow, "Klar!", rightButtonClick, null, null, MessageWindow.Character_options.Character_Male_Sorcerer, AnimationLibrary.Animations.Talk, null);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void rightButtonClick()
     {
-        
+        SceneManager.Load("WoodChopping");
     }
 }

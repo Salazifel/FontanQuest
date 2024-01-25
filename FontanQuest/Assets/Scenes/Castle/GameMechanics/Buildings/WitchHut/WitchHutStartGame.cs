@@ -16,6 +16,6 @@ public class WitchHutStartGame : MonoBehaviour
 
     public void rightButtonClick()
     {
-        SceneManager.Load("TreeClimber");
+        SceneManager.Load("ObstacleRunning_0");
     }
 }

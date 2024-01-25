@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class flutterConnectStatistik : MonoBehaviour
+public class Laura_flutterConnectStatistik : MonoBehaviour
 {
     public string stepcount;
     public delegate void NewStepValueEvent(string step);

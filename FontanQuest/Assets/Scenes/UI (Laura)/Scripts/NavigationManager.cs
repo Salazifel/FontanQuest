@@ -55,4 +55,15 @@ public class NavigationManager : MonoBehaviour
             Debug.LogError("Serialized scene name is null or empty.");
         }
     }
+
+    public void QuitGame()
+    {
+    #if UNITY_EDITOR
+                // If in Unity editor, stop playing
+                UnityEditor.EditorApplication.isPlaying = false;
+    #else
+            // If in a build, quit application
+            Application.Quit();
+    #endif
+        }
 }

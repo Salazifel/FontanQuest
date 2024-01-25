@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ShowHintFromPlant : MonoBehaviour
 {
+    public GameObject Left;
+    [SerializeField] float timeToShowHint = 2f;
+    float accumTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,20 @@ public class ShowHintFromPlant : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PlantA") || collision.gameObject.CompareTag("PlantB"))
         {
-            Debug.Log("Left");
+            accumTime = 0f;
+            Left.gameObject.SetActive(true);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        accumTime += Time.fixedDeltaTime;
+
+        if (Left.activeSelf && accumTime > timeToShowHint)
+        {
+            Left.gameObject.SetActive(false);
+            accumTime = 0f;  // Reset accumTime after hiding "Perfekt"
+            // Debug.Log("Hiding Perfekt1");
         }
     }
 }

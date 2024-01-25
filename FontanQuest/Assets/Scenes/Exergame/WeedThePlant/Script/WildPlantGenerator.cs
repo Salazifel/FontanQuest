@@ -61,32 +61,37 @@ public class WildPlantGenerator : MonoBehaviour
         plant.SetActive(false);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Entered OnCollisionEnter2D");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Entered OnTriggerEnter2D");
-        if (other.gameObject.CompareTag("left"))
+        if (collision.gameObject.CompareTag("left"))
         {
             Debug.Log("Left");
         }
-        else if (other.gameObject.CompareTag("right"))
+        else if (collision.gameObject.CompareTag("right"))
         {
             Debug.Log("Right");
         }
-        else if (other.gameObject.CompareTag("both"))
+        else if (collision.gameObject.CompareTag("both"))
         {
             Debug.Log("Both");
         }
-        else if (other.gameObject.CompareTag("PlantA"))
+        else if (collision.gameObject.CompareTag("PlantA"))
         {
             Debug.Log("PlantA");
         }
-        else if (other.gameObject.CompareTag("PlantB"))
+        else if (collision.gameObject.CompareTag("PlantB"))
         {
             Debug.Log("PlantB");
         }
         else
         {
-            Debug.Log("Collided with an unknown tag: " + other.tag);
+            Debug.Log("Collided with an unknown tag: " + collision.tag);
         }
     }
 

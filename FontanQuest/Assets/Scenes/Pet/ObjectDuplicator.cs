@@ -9,7 +9,9 @@ public class ObjectDuplicator : MonoBehaviour
     void Start()
     {   
         numofHay = AddGameDataObjects.getNumOfHay();
-
+        if (numofHay <= 0){
+            numofHay = 7; //this part will be removed once gethay function was returning values!!!
+        }
         objectToDuplicate = GameObject.Find("hay-cube");
 
         if (objectToDuplicate != null)

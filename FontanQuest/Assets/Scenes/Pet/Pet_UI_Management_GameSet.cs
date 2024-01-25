@@ -15,7 +15,7 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
 
     public DateTime timeNow_GameSet;
     public string currentSceneName;
-    int numofHay;
+    // int numofHay;
 
 
     public SaveGameObjects.PetSystem petSystem;
@@ -35,7 +35,7 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
     // GameObject moodNeutral;
     // GameObject moodHappy;
     // GameObject moodLaughing;
-    GameObject hayCube;
+    // GameObject hayCube;
     GameObject backtoGameButton;
     GameObject washPetButton;
     GameObject playPetButton;
@@ -86,16 +86,16 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         gameSet = GameObject.Find("Script Controller").GetComponent <Pet_UI_Management_GameSet>();
         petSystem = gameSet.petSystem;
         initialFeedStat = petSystem.Pet_Hunger;
-        if (currentSceneName == "Fuettern"){
-            numofHay = AddGameDataObjects.getNumOfHay();
-            hayCube = GameObject.Find("hay-cube");
-            for (int i = 0; i < numofHay; i++)
-            {
-                // Instantiate hay cubes at the same position
-                Instantiate(hayCube, transform.position, Quaternion.identity);
-            }
+        // if (currentSceneName == "Fuettern"){
+        //     numofHay = AddGameDataObjects.getNumOfHay();
+        //     hayCube = GameObject.Find("hay-cube");
+        //     for (int i = 0; i < numofHay; i++)
+        //     {
+        //         // Instantiate hay cubes at the same position
+        //         Instantiate(hayCube, transform.position, Quaternion.identity);
+        //     }
 
-        }
+        // }
         }
         else
         {
@@ -175,7 +175,7 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
             {
             messageWindow.SetupMessageWindow(
                 "Rennen",
-                "Avoid obstacles with your favorite pet!",
+                "Vermeide Hindernisse mit deinem Lieblingstier!",
                 null,
                 null,
                 null,
@@ -359,6 +359,8 @@ public void ToggleVisibilityMood(GameObject set, bool visibility, string nameofC
         ToggleVisibiliyBacktoGame(false);
         pet_CameraIntro.ActivateCameraAnimation(true);
         petSystem.lastLog_Fuettern = DateTime.Now;
+        petSystem.lastLog_Spielen = DateTime.Now;
+        petSystem.lastLog_Putzen = DateTime.Now;
         petSystem.petScaleX = pet_GameSet.transform.localScale.x;
         petSystem.petScaleY = pet_GameSet.transform.localScale.y;
         petSystem.petScaleZ = pet_GameSet.transform.localScale.z;

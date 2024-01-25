@@ -30,7 +30,7 @@ public static class AddGameDataObjects
     }
 
     public static int getNumOfHay()
-    {
+    {   
         SaveGameObjects.GameData gameData = getGameData();
         return gameData.numOfHay;
     }

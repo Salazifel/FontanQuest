@@ -44,14 +44,22 @@ public class Settings_Wochenprogramm : MonoBehaviour
                 }
             }
 
-            if (!activity1Found)
+            if (!activity1Found && !activity2Found)
             {
                 activity1Text.text = "Kein Programm für diesen Tag";
-            }
-
-            if (!activity2Found)
-            {
                 activity2Text.text = "";
+            }
+            else
+            {
+                if (!activity1Found)
+                {
+                    activity1Text.text = "";
+                }
+
+                if (!activity2Found)
+                {
+                    activity2Text.text = "";
+                }
             }
 
             // Update DayProgress text only if the date is not in the future

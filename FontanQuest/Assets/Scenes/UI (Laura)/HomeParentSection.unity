@@ -574,7 +574,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100 min
+  m_text: 0 min
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -1982,7 +1982,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10 min
+  m_text: 0 min
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -2556,7 +2556,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 110 min
+  m_text: 0 min
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -6540,14 +6540,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223241014}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 997e536c7cc3f78498f6c08a037b3274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2906896001347582534, guid: eb03ad69ba9f6ec4c977896e467105ef, type: 3}
+  prefab: {fileID: 2906896001347582534, guid: bf7b361957f76c34fa951960ce1b7fd8, type: 3}
   panel: {fileID: 1223241014}
   numberOfInstances: 14
+  completedDayImage: {fileID: 0}
 --- !u!114 &1223241020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6555,16 +6556,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223241014}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c30cc942c48d0a84ba97d71c9ac36ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2906896001347582534, guid: eb03ad69ba9f6ec4c977896e467105ef, type: 3}
+  prefab: {fileID: 2906896001347582534, guid: bf7b361957f76c34fa951960ce1b7fd8, type: 3}
   panel: {fileID: 1223241014}
   numberOfInstances: 14
-  checkmarkImage: {fileID: 21300000, guid: 5c2b41875b27b2e419c1ce2c635dea37, type: 3}
-  closeImage: {fileID: 21300000, guid: 953c9a0b9b8f5994f8036670c103cdb3, type: 3}
 --- !u!1 &1230840237
 GameObject:
   m_ObjectHideFlags: 0
@@ -8889,6 +8888,7 @@ GameObject:
   - component: {fileID: 1624995257}
   - component: {fileID: 1624995259}
   - component: {fileID: 1624995258}
+  - component: {fileID: 1624995260}
   m_Layer: 5
   m_Name: Last7DaysPanel
   m_TagString: Untagged
@@ -8960,6 +8960,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624995256}
   m_CullTransparentMesh: 1
+--- !u!114 &1624995260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624995256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e403c77457ea7a445b7000563beea3e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastSevenDaysText: {fileID: 128256254}
 --- !u!1 &1641943916
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,8 +2,10 @@ using UnityEngine;
 using TMPro;
 using System;
 using System.Collections.Generic;
+using System.IO; // Added for file operations
+using System.Linq; // Added for Linq operations
 
-public class CalendarPrefab1 : MonoBehaviour
+public class CalendarPrefab : MonoBehaviour
 {
     public GameObject prefab;
     public GameObject panel;
@@ -25,8 +27,8 @@ public class CalendarPrefab1 : MonoBehaviour
         lineRenderer = lineRendererObject.AddComponent<LineRenderer>(); // Add LineRenderer component
         ConfigureLineRenderer(); // Configure the LineRenderer
 
-        DateTime today = DateTime.Today;
-        int daysInMonth = DateTime.DaysInMonth(today.Year, today.Month);
+        DateTime startDate = GetStartDateFromFile(@"C:\Users\Chris\Documents\WS23-24\FontanQuest\TodaysActivity.txt");
+        int daysInMonth = DateTime.DaysInMonth(startDate.Year, startDate.Month);
 
         for (int i = 0; i < numberOfInstances; i++)
         {
@@ -37,7 +39,7 @@ public class CalendarPrefab1 : MonoBehaviour
 
             if (textComponent != null)
             {
-                int dayNumber = (today.Day + i) % daysInMonth;
+                int dayNumber = (startDate.Day + i) % daysInMonth;
                 dayNumber = dayNumber == 0 ? daysInMonth : dayNumber; // Adjust for end of month
                 textComponent.text = dayNumber.ToString();
 
@@ -65,5 +67,45 @@ public class CalendarPrefab1 : MonoBehaviour
     {
         lineRenderer.positionCount = prefabPositions.Count;
         lineRenderer.SetPositions(prefabPositions.ToArray());
+    }
+
+    private DateTime GetStartDateFromFile(string filePath)
+    {
+        if (File.Exists(filePath))
+        {
+            string[] lines = File.ReadAllLines(filePath);
+            if (lines.Length > 0)
+            {
+                var dates = lines
+                    .Select(line => ParseDateFromLine(line))
+                    .Where(date => date != DateTime.MaxValue)
+                    .OrderBy(date => date);
+
+                if (dates.Any())
+                {
+                    return dates.First();
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("File not found or empty, using current date: " + filePath);
+        }
+
+        return DateTime.Today; // Default to today if file is not found or empty
+    }
+
+    private DateTime ParseDateFromLine(string line)
+    {
+        string[] parts = line.Split(',');
+        if (parts.Length > 0)
+        {
+            string dateString = parts[0].Trim();
+            if (DateTime.TryParseExact(dateString, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime date))
+            {
+                return date;
+            }
+        }
+        return DateTime.MaxValue;
     }
 }

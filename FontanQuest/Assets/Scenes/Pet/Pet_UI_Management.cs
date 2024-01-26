@@ -122,7 +122,7 @@ public class Pet_UI_Management : MonoBehaviour
             {
                 messageWindow.SetupMessageWindow(
                     "Dein Tier",
-                    "Clicke nach links oder rechts, um dein Tier auszuwaehlen.",
+                    "Klicke nach links oder rechts, um dein Tier zu wählen.",
                     null,
                     null,
                     null,
@@ -137,8 +137,8 @@ public class Pet_UI_Management : MonoBehaviour
             if (petSystem.animalSelected && petSystem.selectedAnimal != null && !petSystem.selectionComplete)
             {
                 messageWindow.SetupMessageWindow(
-                    "Wahlen",
-                    "Clicke ein spiel, um sich um dein Tier zu kuemmern.",
+                    "SpielWahl",
+                    "Wähle ein Spiel für dein Tier aus.",
                     null,
                     null,
                     null,

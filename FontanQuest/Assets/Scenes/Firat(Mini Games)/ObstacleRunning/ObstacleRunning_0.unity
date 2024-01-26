@@ -3347,6 +3347,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 89ce2bdb18a920041b37c0bfb1c39ea1, type: 2}
+    - target: {fileID: 13700000, guid: 7e6b7e5a403c67742b19e5c6c5df390c, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: 7e6b7e5a403c67742b19e5c6c5df390c, type: 3}
+      propertyPath: m_SkinnedMotionVectors
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e6b7e5a403c67742b19e5c6c5df390c, type: 3}
 --- !u!1 &477279331 stripped

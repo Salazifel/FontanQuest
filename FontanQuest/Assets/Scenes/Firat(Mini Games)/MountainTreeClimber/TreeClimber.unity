@@ -854,17 +854,17 @@ PrefabInstance:
     - target: {fileID: 881003440518661540, guid: 709041188436c4a41b971bb07ed6c1f5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.016742416
+      value: -0.278
       objectReference: {fileID: 0}
     - target: {fileID: 881003440518661540, guid: 709041188436c4a41b971bb07ed6c1f5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000012516975
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 881003440518661540, guid: 709041188436c4a41b971bb07ed6c1f5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.04716906
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 881003440518661540, guid: 709041188436c4a41b971bb07ed6c1f5,
         type: 3}
@@ -971,6 +971,26 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 89ce2bdb18a920041b37c0bfb1c39ea1, type: 2}
+    - target: {fileID: 881003440532362458, guid: 709041188436c4a41b971bb07ed6c1f5,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 8e9da6ea829de164a80fbccacbfb4bc7, type: 3}
+    - target: {fileID: 881003440532362458, guid: 709041188436c4a41b971bb07ed6c1f5,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 881003440532362458, guid: 709041188436c4a41b971bb07ed6c1f5,
+        type: 3}
+      propertyPath: m_SkinnedMotionVectors
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 881003440532362458, guid: 709041188436c4a41b971bb07ed6c1f5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f4e9cb52113ca564aabbb1ddc0c25fa3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 709041188436c4a41b971bb07ed6c1f5, type: 3}
 --- !u!1 &1063600681

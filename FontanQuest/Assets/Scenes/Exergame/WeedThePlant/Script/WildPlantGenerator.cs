@@ -10,10 +10,14 @@ public class WildPlantGenerator : MonoBehaviour
     public float TimePlantShows;
     private float TimeLastShows = 0f;
     private float timer;
+    [SerializeField] GameObject SquatDown;
+    [SerializeField] GameObject SquatDownWord;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(WaitAndStart());
+        SquatDown.SetActive(false);
+        SquatDownWord.SetActive(false);
     }
 
     // Update is called once per frame
@@ -52,6 +56,9 @@ public class WildPlantGenerator : MonoBehaviour
         NewWildPlant.transform.localPosition = new Vector3(Random.Range(-219, 217), Random.Range(-189, 121), 0);
         TimeLastShows += Time.deltaTime;
 
+        SquatDown.SetActive(true);
+        SquatDownWord.SetActive(true);
+
         StartCoroutine(DisableAfterTime(NewWildPlant, TimePlantShows));
     }
 
@@ -59,6 +66,9 @@ public class WildPlantGenerator : MonoBehaviour
     {
         yield return new WaitForSeconds(TimeToShow);
         plant.SetActive(false);
+
+        SquatDown.SetActive(false);
+        SquatDownWord.SetActive(false);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

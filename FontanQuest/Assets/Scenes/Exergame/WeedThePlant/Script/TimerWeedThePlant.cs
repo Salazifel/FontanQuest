@@ -61,7 +61,7 @@ public class TimerWeedThePlant : MonoBehaviour
     void CompleteGame()
     {
         WeedThePlantUI.ChangeToFinish();
-        // WeedThePlantUI.SaveAsianMonkData();
+        WeedThePlantUI.SaveWeedThePlantData();
     }
     
 }

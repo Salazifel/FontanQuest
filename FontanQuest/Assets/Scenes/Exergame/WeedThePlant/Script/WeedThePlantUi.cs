@@ -6,15 +6,34 @@ public class WeedThePlantUi : MonoBehaviour
 {
     public Canvas StoryCanvas;
     public Canvas IntroCanvas;
-    public Canvas GameCanvas;
+    public Canvas[] GameCanvases;
     public Canvas FinishCanvas;
+
+    private SaveGameObjects.WeedThePlantSavingGame weedThePlantSavingGame;
+    private int currentLevelIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         StoryCanvas.gameObject.SetActive(true);
         IntroCanvas.gameObject.SetActive(false);
-        GameCanvas.gameObject.SetActive(false);
+        // Deactivate all levels
+        for (int i = 0; i < GameCanvases.Length; i++)
+        {
+            if (GameCanvases[i] != null)
+            {
+                GameCanvases[i].gameObject.SetActive(false);
+            }
+        }
+
+        weedThePlantSavingGame = (SaveGameObjects.WeedThePlantSavingGame)SaveGameMechanic.getSaveGameObjectByPrimaryKey("WeedThePlantSavingGame", 1);
+
+        if (weedThePlantSavingGame == null)
+        {
+            // If no saved data is found, create a new instance
+            weedThePlantSavingGame = (SaveGameObjects.WeedThePlantSavingGame)SaveGameObjects.CreateSaveGameObject("WeedThePlantSavingGame");
+        }
+
         FinishCanvas.gameObject.SetActive(false);
     }
 
@@ -28,7 +47,14 @@ public class WeedThePlantUi : MonoBehaviour
     {
         StoryCanvas.gameObject.SetActive(true);
         IntroCanvas.gameObject.SetActive(false);
-        GameCanvas.gameObject.SetActive(false);
+        // Deactivate all levels
+        for (int i = 0; i < GameCanvases.Length; i++)
+        {
+            if (GameCanvases[i] != null)
+            {
+                GameCanvases[i].gameObject.SetActive(false);
+            }
+        }
         FinishCanvas.gameObject.SetActive(false);
     }
 
@@ -36,7 +62,14 @@ public class WeedThePlantUi : MonoBehaviour
     {
         StoryCanvas.gameObject.SetActive(false);
         IntroCanvas.gameObject.SetActive(true);
-        GameCanvas.gameObject.SetActive(false);
+        // Deactivate all levels
+        for (int i = 0; i < GameCanvases.Length; i++)
+        {
+            if (GameCanvases[i] != null)
+            {
+                GameCanvases[i].gameObject.SetActive(false);
+            }
+        }
         FinishCanvas.gameObject.SetActive(false);
     }
 
@@ -44,7 +77,14 @@ public class WeedThePlantUi : MonoBehaviour
     {
         StoryCanvas.gameObject.SetActive(false);
         IntroCanvas.gameObject.SetActive(false);
-        GameCanvas.gameObject.SetActive(true);
+        LoadGameLevel(currentLevelIndex);
+        currentLevelIndex++;
+
+        if (currentLevelIndex >= GameCanvases.Length)
+        {
+            currentLevelIndex = 0; // Reset to the first level if there are no more levels
+            Debug.LogWarning("No more levels available. Resetting to the first level.");
+        }
         FinishCanvas.gameObject.SetActive(false);
     }
 
@@ -52,7 +92,40 @@ public class WeedThePlantUi : MonoBehaviour
     {
         StoryCanvas.gameObject.SetActive(false);
         IntroCanvas.gameObject.SetActive(false);
-        GameCanvas.gameObject.SetActive(false);
+        // Deactivate all levels
+        for (int i = 0; i < GameCanvases.Length; i++)
+        {
+            if (GameCanvases[i] != null)
+            {
+                GameCanvases[i].gameObject.SetActive(false);
+            }
+        }
         FinishCanvas.gameObject.SetActive(true);
+        SaveWeedThePlantData();
+    }
+
+    private void LoadGameLevel(int levelIndex)
+    {
+        // Deactivate all levels
+        for (int i = 0; i < GameCanvases.Length; i++)
+        {
+            if (GameCanvases[i] != null)
+            {
+                GameCanvases[i].gameObject.SetActive(false);
+            }
+        }
+
+        // Activate the current level
+        if (levelIndex >= 0 && levelIndex < GameCanvases.Length && GameCanvases[levelIndex] != null)
+        {
+            GameCanvases[levelIndex].gameObject.SetActive(true);
+        }
+
+    }
+
+    public void SaveWeedThePlantData()
+    {
+        // Save Asian Monk game data
+        SaveGameMechanic.saveSaveGameObject(weedThePlantSavingGame, "WeedThePlantSavingGame", weedThePlantSavingGame.primaryKey);
     }
 }

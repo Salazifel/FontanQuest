@@ -60,6 +60,8 @@ public class SaveGameObjects : MonoBehaviour
                 return new AsianMonkSavingGame(0);
             case "FitnessBoxingSavingGame":
                 return new FitnessBoxingSavingGame(0);
+            case "WeedThePlantSavingGame":
+                return new WeedThePlantSavingGame(0);
             case "PetSystem":
                 return new PetSystem();
             case "CastleOnBoardingSystem":
@@ -210,7 +212,7 @@ public class SaveGameObjects : MonoBehaviour
 
 
     [Serializable]
-    public class FitnessBoxingSavingGame : SaveGameObjects.MainSaveObject
+    public class FitnessBoxingSavingGame : MainSaveObject
     {
         public int currentLevel;
 
@@ -220,6 +222,22 @@ public class SaveGameObjects : MonoBehaviour
             GameSaveObjectType = "FitnessBoxingSavingGame";
         }
 
+        public override void Print()
+        {
+            Debug.Log(primaryKey + " level: " + currentLevel.ToString());
+        }
+    }
+
+
+    [Serializable]
+    public class WeedThePlantSavingGame : MainSaveObject
+    {
+        public int currentLevel;
+        public WeedThePlantSavingGame(int _currentLevel)
+        {
+            currentLevel = _currentLevel;
+            GameSaveObjectType = "WeedThePlantSavingGame";
+        }
         public override void Print()
         {
             Debug.Log(primaryKey + " level: " + currentLevel.ToString());

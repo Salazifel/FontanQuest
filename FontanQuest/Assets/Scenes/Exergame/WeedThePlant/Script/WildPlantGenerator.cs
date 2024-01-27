@@ -6,7 +6,6 @@ public class WildPlantGenerator : MonoBehaviour
 {
     public GameObject[] WildPlants;
     public float GenerateInterval;
-    private float timeSinceLastSpawn = 0f;
     public float TimePlantShows;
     private float TimeLastShows = 0f;
     private float timer;

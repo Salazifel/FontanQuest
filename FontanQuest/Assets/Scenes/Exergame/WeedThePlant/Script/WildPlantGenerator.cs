@@ -67,8 +67,6 @@ public class WildPlantGenerator : MonoBehaviour
         yield return new WaitForSeconds(TimeToShow);
         plant.SetActive(false);
 
-        SquatDown.SetActive(false);
-        SquatDownWord.SetActive(false);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

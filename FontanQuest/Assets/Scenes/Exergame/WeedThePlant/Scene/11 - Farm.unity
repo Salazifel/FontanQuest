@@ -37246,7 +37246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Left: {fileID: 385015917}
-  timeToShowHint: 6
+  timeToShowHint: 7
 --- !u!1001 &835413309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59962,7 +59962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Both: {fileID: 1633978841}
-  timeToShowHint: 6
+  timeToShowHint: 7
 --- !u!1001 &1348399997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91692,8 +91692,8 @@ MonoBehaviour:
   WildPlants:
   - {fileID: 5999626021138132597, guid: 988091525060af945aea05e99b970bfa, type: 3}
   - {fileID: 6222929797323066007, guid: 1ff28676581c57842aa36714f23a4904, type: 3}
-  GenerateInterval: 6
-  TimePlantShows: 6
+  GenerateInterval: 7
+  TimePlantShows: 7
   SquatDown: {fileID: 2053681318}
   SquatDownWord: {fileID: 1326330704}
 --- !u!1001 &2075099722
@@ -94724,7 +94724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Right: {fileID: 179720698}
-  timeToShowHint: 6
+  timeToShowHint: 7
 --- !u!1 &2123326616
 GameObject:
   m_ObjectHideFlags: 0

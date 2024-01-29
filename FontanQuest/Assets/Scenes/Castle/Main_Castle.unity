@@ -1139,7 +1139,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -15529,7 +15529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1144206338
 AudioSource:
   m_ObjectHideFlags: 0
@@ -30020,6 +30020,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1207276448}
     m_Modifications:
+    - target: {fileID: 240124616801421147, guid: e7591223e98112145825dd24bdba63b2,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 240124616801421147, guid: e7591223e98112145825dd24bdba63b2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 240124616801421147, guid: e7591223e98112145825dd24bdba63b2,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 240124616801421147, guid: e7591223e98112145825dd24bdba63b2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -251
+      objectReference: {fileID: 0}
+    - target: {fileID: 240124616801421147, guid: e7591223e98112145825dd24bdba63b2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -69
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928465514669223685, guid: e7591223e98112145825dd24bdba63b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4129206815449888732, guid: e7591223e98112145825dd24bdba63b2,
         type: 3}
       propertyPath: m_RootOrder
@@ -30079,6 +30109,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MessageWindowAudioSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735714009179449345, guid: e7591223e98112145825dd24bdba63b2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735714009179449345, guid: e7591223e98112145825dd24bdba63b2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 8638466643267766486, guid: e7591223e98112145825dd24bdba63b2,
         type: 3}

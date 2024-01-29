@@ -99,6 +99,7 @@ public class SaveGameObjects : MonoBehaviour
     public class DayActivity : MainSaveObject
     {
         public bool wasActivity;
+        
 
         public void DaysActivity()
         {

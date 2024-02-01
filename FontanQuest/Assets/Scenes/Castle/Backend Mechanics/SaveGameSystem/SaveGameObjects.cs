@@ -99,21 +99,19 @@ public class SaveGameObjects : MonoBehaviour
 
     public class DayActivity : MainSaveObject
     {
-        public bool wasActivity;
         public DateTime dateTime;
 
-        List<Tuple<string, int>> exercises;
+        List<Tuple<string, int, bool>> exercises;
 
         public DayActivity(DateTime _datetime)
         {
-            wasActivity = false;
             dateTime = _datetime;
-            exercises = new List<Tuple<string, int>>();
+            exercises = new List<Tuple<string, int, bool>>();
         }
 
         public void AddExercise(string ExerciseEnumStringValue, int minutesOfExercise = 0)
         {
-            Tuple<string, int> tuple = new Tuple<string, int> (ExerciseEnumStringValue, minutesOfExercise);
+            Tuple<string, int, bool> tuple = new Tuple<string, int, bool> (ExerciseEnumStringValue, minutesOfExercise, false);
             exercises.Add(tuple);
         }
     }

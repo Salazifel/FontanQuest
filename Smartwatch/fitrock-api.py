@@ -1,8 +1,6 @@
 import requests
 
-url = "https://api.fitrockr.com/v1/status/greet"
-url = "https://api-02.fitrockr.com/"
-streaming_url = "https://api-02.fitrocr.com/ws/websocket"
+url = "https://api-02.fitrockr.com/v1/live/control/ping HTTP/1.1"
 headers = {
     "Content-Type": "application/json",
     "X-Tenant": "fau",
@@ -13,7 +11,6 @@ headers = {
 response = requests.get(url, headers=headers)
 
 if response.status_code == 200:
-    # Print the response content
     print(response.text)
 else:
     print(f"Request failed with status code {response.status_code}")

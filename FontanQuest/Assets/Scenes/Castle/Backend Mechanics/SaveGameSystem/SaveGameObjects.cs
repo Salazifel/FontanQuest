@@ -70,6 +70,8 @@ public class SaveGameObjects : MonoBehaviour
                 return new DayActivity();
             case "MarketOffer":
                 return new MarketOffer(null, null, 0, 0);
+            case "ParentsOnboarding":
+                return new ParentsOnboarding("", "");
             default:
                 throw new ArgumentException("Unknown SaveGameObject. Please declare the initialization of an empty SaveGameObject above as a new case.");
         }
@@ -315,6 +317,23 @@ public class SaveGameObjects : MonoBehaviour
             pathToIcon = _pathToIcon;
             costOfOffer = _costOfOffer;
             numOfAvailableTokens = _numOfAvailableTokens;
+        }
+    }
+
+    [Serializable]
+    public class ParentsOnboarding : MainSaveObject
+    {
+        public string nameParent;
+        public string nameChild;
+
+        public ParentsOnboarding(string _nameParent, string _nameChild)
+        {
+            nameParent = _nameParent;
+            nameChild = _nameChild;
+        }
+        public override void Print()
+        {
+            Debug.Log("Parent's Name: " + nameParent + ", Child's Name: " + nameChild);
         }
     }
 }

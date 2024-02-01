@@ -779,16 +779,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Herzlich Willkomen bei FontanQuest!\n\nWir freuen uns \xFCber Ihre Teilnahme
-    an unserem Programm.\n\nIn den kommenden zwei Wochen werden wir Sie und Ihr Kind
+  m_text: "Herzlich Willkomen bei FontanQuest!\nWir freuen uns \xFCber Ihre Teilnahme
+    an unserem Programm.\nIn den kommenden zwei Wochen werden wir Sie und Ihr Kind
     dabei begleiten, spielerisch mehr physische Aktivit\xE4ten in den Alltag Ihres
-    Kindes zu integrieren.\n\nZahlreiche Studien haben gezeigt, dass regelm\xE4\xDFiger
+    Kindes zu integrieren.\nZahlreiche Studien haben gezeigt, dass regelm\xE4\xDFiger
     Sport die Lebenserwartung und Lebensqualit\xE4t von Fontan-Patienten signifikant
-    und nachhaltig steigern kann.\n\nZusammen mit Fachexperten und \xC4rzten des
-    Universit\xE4tsklinikums Erlangen haben wir daher ein Trainingsprogramm mit effektiven
-    Intervalltrainingseinheiten erarbeitet. Die \xDCbungen sind leicht zu verstehen
-    und als Mini-Spiele verpackt, damit Ihr Kind viel Spa\xDF bei der Durchf\xFChrung
-    hat.\n\nLassen Sie uns beginnen!"
+    und nachhaltig steigern kann.\nZusammen mit Fachexperten und \xC4rzten des Universit\xE4tsklinikums
+    Erlangen haben wir daher ein Trainingsprogramm mit effektiven Intervalltrainingseinheiten
+    erarbeitet. Die \xDCbungen sind leicht zu verstehen und als Mini-Spiele verpackt,
+    damit Ihr Kind viel Spa\xDF bei der Durchf\xFChrung hat.\nLassen Sie uns beginnen!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -829,7 +828,7 @@ MonoBehaviour:
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 100
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4

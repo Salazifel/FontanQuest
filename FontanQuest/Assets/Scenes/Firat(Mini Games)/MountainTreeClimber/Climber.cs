@@ -55,28 +55,74 @@ public class Climber : MonoBehaviour
         // Debug.Log(transform.position.z);
     }
 
-   void Climb()
-    {   
-        if (gameObject.name != "Playa")
-        {
+//    void Climb()
+//     {   
+//         if (gameObject.name != "Playa")
+//         {
 
         
-        yValue = Input.GetAxis("Jump") * Time.deltaTime * speedVar;
-        zValue = Input.GetAxis("Jump") * Time.deltaTime * speedVar;
+//         yValue = Input.GetAxis("Jump") * Time.deltaTime * speedVar;
+//         zValue = Input.GetAxis("Jump") * Time.deltaTime * speedVar;
+//         transform.Translate(0, 0, -zValue);
+
+//         if (Vector3.Distance(transform.position, TriggerPosition) < 0.1f && gameObject.name != "Last_Tile")
+//         {
+//             transform.position = RespawnPosition;
+
+//         }
+//         else
+//         {
+//             LastTile.SetActive(false);
+
+//         }
+//         }
+//         else{
+//         if (Input.GetAxis("Jump") > 0.1f)
+//         {
+//             animator.SetBool("IsMoving", true);
+//         }
+//         else
+//         {
+//             animator.SetBool("IsMoving", false);
+//         }
+//         }
+//     }
+
+void Climb()
+{
+    if (gameObject.name != "Playa")
+    {
+        float climbInput = 0.0f;
+
+        // Check for touch input
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            // Check if the touch phase is ongoing
+            if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
+            {
+                // Set climbInput based on touch position or any other criteria
+                // You might need to adjust this based on your specific requirements
+                climbInput = 1.0f;
+            }
+        }
+
+        yValue = climbInput * Time.deltaTime * speedVar;
+        zValue = climbInput * Time.deltaTime * speedVar;
         transform.Translate(0, 0, -zValue);
 
         if (Vector3.Distance(transform.position, TriggerPosition) < 0.1f && gameObject.name != "Last_Tile")
         {
             transform.position = RespawnPosition;
-
         }
         else
         {
             LastTile.SetActive(false);
-
         }
-        }
-        else{
+    }
+    else
+    {
         if (Input.GetAxis("Jump") > 0.1f)
         {
             animator.SetBool("IsMoving", true);
@@ -85,8 +131,8 @@ public class Climber : MonoBehaviour
         {
             animator.SetBool("IsMoving", false);
         }
-        }
     }
+}
 
     // void UpdateHighScoreText()
     // {

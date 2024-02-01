@@ -29,7 +29,7 @@ public class ObjectHit : MonoBehaviour
 
             Debug.Log("You win!");
             ShowGameMenu(); // Show the game menu on collision
-            WaitForButtonClick(); // Wait for button click
+
             // ExitGame();
         }
         else
@@ -37,7 +37,7 @@ public class ObjectHit : MonoBehaviour
         Time.timeScale = 0.2f;
         Debug.Log("Bumped");
         animator.SetTrigger("Collision");
-        Invoke("DelayedAction", 3.0f);
+        Invoke("DelayedAction", 1.0f);
         Time.timeScale = 1.0f;
         }
 
@@ -66,7 +66,7 @@ public void ExitGame()
 
     // Create the new scene name with the incremented number
     string nextSceneName = $"ObstacleRunning_{sceneNumber}";
-
+    Debug.Log(nextSceneName);
     // Check if the scene exists before loading it
     if (SceneExists(nextSceneName))
     {   
@@ -117,30 +117,5 @@ void ShowGameMenu()
         gameMenuObject.SetActive(true); // Show the game menu
     }
 }
-
-void WaitForButtonClick()
-{
-    StartCoroutine(WaitForInputOrTime());
-}
-
-IEnumerator WaitForInputOrTime()
-{
-    float timer = 0f;
-    const float maxTime = 3.0f; // Maximum time to wait before exiting
-
-    while (!buttonClicked && timer < maxTime)
-    {
-        if (Input.GetButtonDown("Jump")) // Check if the jump input is received
-        {
-            ExitGame(); // Exit the game if jump input is received
-            yield break; // Exit the coroutine
-        }
-
-        timer += Time.deltaTime;
-        yield return null;
-    }
-
-}
-
 
 }

@@ -6,12 +6,12 @@ public class PetRunner : MonoBehaviour
 {
    
     // private Animator animator;
-    public float speedVar = 1.0f;
-    Vector3 RespawnPosition;
-    Vector3 InitialPosition;
-    Vector3 TriggerPosition;
+    public float speedVar = 5.0f;
+    private Vector3 RespawnPosition;
+    private Vector3 InitialPosition;
+    private Vector3 TriggerPosition;
     float zValue = 0.0f;
-
+    public float tiltSpeed = 1.0f;
     float xValue = 0.0f;
     public float Max_xValue = 10.0f;
     
@@ -53,35 +53,61 @@ public class PetRunner : MonoBehaviour
         if (gameObject.name != "Pet")
         {
             zValue =+ 1.0f * Time.deltaTime * speedVar;
-            
-            transform.Translate(xValue, 0, -zValue); // Move at a constant speed
-            if (gameObject.tag == "Obstacles")
-            {
-                if (Mathf.Abs(transform.position.z - TriggerPosition.z) < 0.1f){
-                    transform.position = RespawnPosition;
-                }
+            if(gameObject.name == "Last_Tile"){
+                gameObject.SetActive(false);
             }
+            transform.Translate(xValue, 0, -zValue); // Move at a constant speed
+            // if (gameObject.tag == "Obstacles")
+            // {
+            //     if (Mathf.Abs(transform.position.z - TriggerPosition.z) < 0.1f){
+            //         transform.position = RespawnPosition;
+            //     }
+            // }
             if  (gameObject.tag =="Tiles"){
-                if (Mathf.Abs(transform.position.z - TriggerPosition.z) < 0.1f && gameObject.name != "Last_Tile")
+                if ((transform.position.z - TriggerPosition.z) < 0.1f && gameObject.name != "Last_Tile")
             {
                 transform.position = RespawnPosition;
             }
             }
-            else
-            {
-                LastTile.SetActive(false);
-            }
         }
-        if (gameObject.name == "Pet")
+    //     if (gameObject.name == "Pet")
+    // {
+    //     float xValue = Input.GetAxis("Horizontal") * Time.deltaTime * speedVar;
+
+    //     // Check if the PetObject's X position exceeds Max_xValue or -Max_xValue
+    //     if (Mathf.Abs(PetObject.transform.position.x) > Max_xValue)
+    //     {
+    //         // Stop the movement if it exceeds the limit
+    //         if ((PetObject.transform.position.x > 0 && Input.GetAxis("Horizontal") < 0) ||
+    //             (PetObject.transform.position.x < 0 && Input.GetAxis("Horizontal") > 0))
+    //         {
+    //             // Allow movement in the opposite direction if input changes
+    //             transform.Translate(xValue, 0, 0);
+    //         }
+    //         else
+    //         {
+    //             // Stop movement if within limit and input direction is the same
+    //             xValue = 0f;
+    //         }
+    //     }
+    //     else
+    //     {
+    //         // Move normally within the limits
+    //         transform.Translate(xValue, 0, 0);
+    //     }
+    // }
+    else
     {
-        float xValue = Input.GetAxis("Horizontal") * Time.deltaTime * speedVar;
+        // Use accelerometer for tilt input
+        float xTilt = Input.acceleration.x;
+        float xValue = xTilt * tiltSpeed * Time.deltaTime;
 
         // Check if the PetObject's X position exceeds Max_xValue or -Max_xValue
         if (Mathf.Abs(PetObject.transform.position.x) > Max_xValue)
         {
             // Stop the movement if it exceeds the limit
-            if ((PetObject.transform.position.x > 0 && Input.GetAxis("Horizontal") < 0) ||
-                (PetObject.transform.position.x < 0 && Input.GetAxis("Horizontal") > 0))
+            if ((PetObject.transform.position.x > 0 && xTilt < 0) ||
+                (PetObject.transform.position.x < 0 && xTilt > 0))
             {
                 // Allow movement in the opposite direction if input changes
                 transform.Translate(xValue, 0, 0);
@@ -98,7 +124,6 @@ public class PetRunner : MonoBehaviour
             transform.Translate(xValue, 0, 0);
         }
     }
-
     }
 }
 

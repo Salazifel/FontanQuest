@@ -52,7 +52,7 @@ public class SaveGameObjects : MonoBehaviour
             case "GameData":
                 return new GameData(0);
             case "BuiltBuildings":
-                return new BuiltBuildings(true, false, false, false, false, false, false, false, false);
+                return new BuiltBuildings();
             case "AvatarSystem":
                 return new AvatarSystem(false);
             case "TreeClimber":
@@ -101,7 +101,7 @@ public class SaveGameObjects : MonoBehaviour
     {
         public DateTime dateTime;
 
-        List<Tuple<string, int, bool>> exercises;
+        public List<Tuple<string, int, bool>> x;
 
         public DayActivity(DateTime _datetime)
         {
@@ -155,28 +155,27 @@ public class SaveGameObjects : MonoBehaviour
     [Serializable]
     public class BuiltBuildings : MainSaveObject
     {
-        public Boolean CityWalls;
-        public Boolean Castle;
-        public Boolean Temple;
-        public Boolean Farm;
-        public Boolean YouTubeHouse;
-        public Boolean Witch;
-        public Boolean WoodCutting;
-        public Boolean Climber;
-        public Boolean Mining;
+        // 0 not yet built
+        // 1 built
+        // 2 other message type, but is built 
+        public int CityWalls;
+        public int Castle;
+        public int Temple;
+        public int Farm;
+        public int YouTubeHouse;
+        public int Witch;
+        public int WoodCutting;
+        public int Climber;
+        public int Mining;
+        public int DoodleJumpHouse;
+        public int FitnessBoxingHouse;
+        public int WeedThePlantHouse;
+        public int HikingHouse;
+        public int Market;
 
-        public BuiltBuildings(Boolean CityWallsActive, Boolean CastleActive, Boolean TempleActive, Boolean FarmActive, Boolean YouTubeHouseActive, Boolean WitchActive, Boolean WoodCuttingActive, Boolean ClimberActive, Boolean MiningActive)
+        public BuiltBuildings()
         {
-            GameSaveObjectType = "BuiltBuildings";
-            CityWalls = CityWallsActive;
-            Castle = CastleActive;
-            Temple = TempleActive;
-            Farm = FarmActive;
-            YouTubeHouse = YouTubeHouseActive;
-            Witch = WitchActive;
-            WoodCutting = WoodCuttingActive;
-            Climber = ClimberActive;
-            Mining = MiningActive;
+
         }
 
         public override void Print()

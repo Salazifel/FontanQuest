@@ -3,14 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ActivityManagerPerDay : MonoBehaviour
+public static class ActivityManagerPerDay
 {
-    void Awake()
-    {
-        InitializeDailyActivities();
-    }
-
-    public void InitializeDailyActivities()
+    public static void InitializeDailyActivities()
     {
         // Sportive Activities
 

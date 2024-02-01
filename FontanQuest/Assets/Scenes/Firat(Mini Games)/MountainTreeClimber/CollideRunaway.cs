@@ -11,16 +11,18 @@ public class CollideRunaway : MonoBehaviour
     [SerializeField] int speedVar = 5;
     private float fixedDeltaTime;
     private Animator animator;
-    private bool inputReceived = false;
+    private bool inputReceived;
 
     public float xValueAut;
     public float yValueAut;
 
     void Start()
-    {
+    {   
+        Debug.Log(inputReceived);
         this.fixedDeltaTime = Time.fixedDeltaTime;
         animator = GetComponent<Animator>();
         parentObject = GameObject.FindGameObjectWithTag("ParentPlaya");
+        inputReceived = false;
     }
 
     private void OnCollisionEnter(Collision other)
@@ -30,7 +32,10 @@ public class CollideRunaway : MonoBehaviour
             Time.timeScale = 0.05f;
             Debug.Log("DANGER!!!");
 
+            Debug.Log(inputReceived);
             StartCoroutine(InputTimer());
+
+            
         }
     }
 IEnumerator InputTimer()
@@ -47,7 +52,7 @@ IEnumerator InputTimer()
         // Display countdown message
         Debug.Log($"You have {roundedTime} seconds!");
 
-        if (Input.GetAxis("Fire1") > 0.1f)
+        if (Input.GetAxis("Jump") > 0.1f)
         {
             inputReceived = true;
             break; // Exit the loop if input is received
@@ -56,6 +61,7 @@ IEnumerator InputTimer()
         yield return null;
     }
 
+    Debug.Log(inputReceived);
     if (!inputReceived)
     {
         Debug.Log("Gameover!");

@@ -56,11 +56,10 @@ public class ObjectHit : MonoBehaviour
     }
         public void DelayedAction()
     {   
+        // animator.SetTrigger("Reset");
+        transform.position = initialPosition;
         Time.timeScale = 1.0f;
         gameMenuRedo.SetActive(false);
-        animator.SetTrigger("Reset");
-        transform.position = initialPosition;
-
     //     // constantMoveScript.increm = 0.01f; // Reset the value to its initial state
 
     }

@@ -6,6 +6,8 @@ public class ObjectHit : MonoBehaviour
 {      
 
     GameObject gameMenuObject;
+
+    GameObject gameMenuRedo;
     // public ToggleObject toggleObject; // Reference to the ToggleObject script
     bool buttonClicked = false; // Flag to track button click
     Vector3 initialPosition;
@@ -13,6 +15,7 @@ public class ObjectHit : MonoBehaviour
     void Start()
     {   
         gameMenuObject = GameObject.FindGameObjectWithTag("Game_Menus");
+        gameMenuRedo = GameObject.FindGameObjectWithTag("Game_Menu2");
         initialPosition = transform.position; // Store the initial position
         animator = GetComponent<Animator>();
         // toggleObject = GetComponent<ToggleObject>(); // Get reference to the ToggleObject script
@@ -20,6 +23,12 @@ public class ObjectHit : MonoBehaviour
         {
             gameMenuObject.SetActive(false);
         }
+            if (gameMenuRedo != null){
+            gameMenuRedo.SetActive(false);
+            }
+            else {
+                Debug.Log("There is a problem!");
+            }
     }
     private void OnCollisionEnter(Collision other) 
     {   
@@ -34,19 +43,21 @@ public class ObjectHit : MonoBehaviour
         }
         else
         {
-        Time.timeScale = 0.2f;
+        Time.timeScale = 0.0f;
         Debug.Log("Bumped");
-        animator.SetTrigger("Collision");
-        Invoke("DelayedAction", 1.0f);
-        Time.timeScale = 1.0f;
+        ShowGameMenu1();
+        // Invoke("DelayedAction", 1.0f);
+
         }
 
 
 
 
     }
-        void DelayedAction()
+        public void DelayedAction()
     {   
+        Time.timeScale = 1.0f;
+        gameMenuRedo.SetActive(false);
         animator.SetTrigger("Reset");
         transform.position = initialPosition;
 
@@ -110,6 +121,14 @@ int ExtractSceneNumber(string sceneName)
 
     return 0; // Default value if the number extraction fails
 }
+void ShowGameMenu1()
+{
+    if (gameMenuRedo != null)
+    {
+        gameMenuRedo.SetActive(true); // Show the game menu
+    }
+}
+
 void ShowGameMenu()
 {
     if (gameMenuObject != null)
@@ -117,5 +136,4 @@ void ShowGameMenu()
         gameMenuObject.SetActive(true); // Show the game menu
     }
 }
-
 }

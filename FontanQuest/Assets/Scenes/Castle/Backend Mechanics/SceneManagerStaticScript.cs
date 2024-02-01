@@ -13,6 +13,10 @@ public static class SceneManagerStaticScript
         WoodCuttingExergame,
         PetRewardGame,
         MountainClimberExergame,
+        ObstacleRunning,
+        AsianMonkExergame,
+        FitnessBoxing,
+        WeedThePlant,
 
 
         YouTubeScene,
@@ -23,7 +27,22 @@ public static class SceneManagerStaticScript
 
     public static Dictionary<AvailableScenes, string> sceneDictionary = new Dictionary<AvailableScenes, string>
     {
-        {AvailableScenes.CastleScene, "Main_Castle"}
+        {AvailableScenes.CastleScene, "Main_Castle"},
+        {AvailableScenes.DoodleJumpRewardGame, "DoodleJumpStoryScene"},
+        {AvailableScenes.HikingExergame, "HikkingStoryManager"},
+        {AvailableScenes.StoneCuttingExergame, "StoneCrushing"},
+        {AvailableScenes.WoodCuttingExergame, "WoodChopping"},
+        {AvailableScenes.PetRewardGame, "Pet"},
+        {AvailableScenes.MountainClimberExergame, "TreeClimber"},
+        {AvailableScenes.ObstacleRunning, "ObstacleRunning_0"},
+        {AvailableScenes.AsianMonkExergame, "AM-2D-Game"},
+        {AvailableScenes.FitnessBoxing, "FitnessBoxing"},
+        {AvailableScenes.WeedThePlant, "WeedThePlant"},
+
+        {AvailableScenes.YouTubeScene, "VideoSelection"},
+        {AvailableScenes.ParentsMarketKidsPerspective, "ParentsMarketForChildren"},
+        {AvailableScenes.ParentsMarketParentsPerspective, ""},
+        {AvailableScenes.ParentsScreen, "HomeParentSection"}
     };
 
     public static string GetSceneName(AvailableScenes availableScenes)

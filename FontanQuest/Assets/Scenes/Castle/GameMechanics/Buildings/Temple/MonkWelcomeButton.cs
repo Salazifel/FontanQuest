@@ -41,10 +41,8 @@ public class MonkWelcomeButton : MonoBehaviour
         {
             builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameObjects.CreateSaveGameObject("BuiltBuildings");
         }
-        builtBuildings.Temple = true;
+        builtBuildings.Temple = 1;
         SaveGameMechanic.saveSaveGameObject(builtBuildings, "BuiltBuildings", 1);
-        GameObject.Find("GameData").GetComponent<DisplayInteractiveButtons>().displayAvailableButtons();
-        GameObject.Find("GameData").GetComponent<LoadingSavingBuildings>().displayBuiltBuildings();
         messageWindow.DeactivateMessageWindow();
     }
 }

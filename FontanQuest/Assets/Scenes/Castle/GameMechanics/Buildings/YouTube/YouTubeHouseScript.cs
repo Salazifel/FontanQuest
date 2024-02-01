@@ -45,10 +45,8 @@ public class YouTubeHouseScript : MonoBehaviour
         {
             builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameObjects.CreateSaveGameObject("BuiltBuildings");
         }
-        builtBuildings.YouTubeHouse = true;
+        builtBuildings.YouTubeHouse = 1;
         SaveGameMechanic.saveSaveGameObject(builtBuildings, "BuiltBuildings", 1);
-        GameObject.Find("GameData").GetComponent<DisplayInteractiveButtons>().displayAvailableButtons();
-        GameObject.Find("GameData").GetComponent<LoadingSavingBuildings>().displayBuiltBuildings();
         messageWindow.DeactivateMessageWindow();
     }
 }

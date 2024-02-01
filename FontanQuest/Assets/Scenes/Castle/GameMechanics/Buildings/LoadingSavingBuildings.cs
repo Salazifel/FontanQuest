@@ -18,8 +18,6 @@ public class LoadingSavingBuildings : MonoBehaviour
         ActivityManagerPerDay.InitializeDailyActivities();
         getStartGameButtonGameObjectReferences();
         getGameObjectReferences(); 
-
-        LoadBuildingsAndButtons();
     }
 
     public void getStartGameButtonGameObjectReferences()
@@ -87,7 +85,7 @@ public class LoadingSavingBuildings : MonoBehaviour
         // DISPLAYING THE BUTTONS
         foreach(SaveGameObjects.DayActivity dayActivity in dayActivities)
         {
-            foreach(Tuple<string, int, bool> exercise in dayActivity.exercises)
+            foreach(Tuple<string, int, int> exercise in dayActivity.exercises)
             {
                 if (buttonPointers.TryGetValue(exercise.Item1, out GameObject var)) 
                 {
@@ -171,5 +169,35 @@ public class LoadingSavingBuildings : MonoBehaviour
     public void DeactivateAllBuildings()
     {
 
+    }
+
+    internal void ActivateCityWalls()
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void ActivateClimber()
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void ActivateFarm()
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void ActivateMining()
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void ActivateWoodCutter()
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void ActivateWitch()
+    {
+        throw new NotImplementedException();
     }
 }

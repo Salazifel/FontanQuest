@@ -101,17 +101,20 @@ public class SaveGameObjects : MonoBehaviour
     {
         public DateTime dateTime;
 
-        public List<Tuple<string, int, bool>> x;
+        // string: name of the exercise
+        // int: time in minutes of the exercise (how long the exercise is supposed to last)
+        // bool: whether they have done the exercsie
+        public List<Tuple<string, int, int>> exercises;
 
         public DayActivity(DateTime _datetime)
         {
             dateTime = _datetime;
-            exercises = new List<Tuple<string, int, bool>>();
+            exercises = new List<Tuple<string, int, int>>();
         }
 
         public void AddExercise(string ExerciseEnumStringValue, int minutesOfExercise = 0)
         {
-            Tuple<string, int, bool> tuple = new Tuple<string, int, bool> (ExerciseEnumStringValue, minutesOfExercise, false);
+            Tuple<string, int, int> tuple = new Tuple<string, int, int> (ExerciseEnumStringValue, minutesOfExercise, 0);
             exercises.Add(tuple);
         }
     }

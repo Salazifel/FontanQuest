@@ -19,7 +19,7 @@ public class WitchHutBuildBuilding : MonoBehaviour
         // loading in the existing BuiltBuildings-Block
         SaveGameObjects.BuiltBuildings builtBuildings = (SaveGameObjects.BuiltBuildings)SaveGameMechanic.getSaveGameObjectByPrimaryKey("BuiltBuildings", 1);
         if (builtBuildings == null) { builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameObjects.CreateSaveGameObject("BuiltBuildings");}
-        builtBuildings.Witch = true;
+        builtBuildings.Witch = 1;
         GameObject.Find("GameData").GetComponent<LoadingSavingBuildings>().ActivateWitch();
         SaveGameMechanic.saveSaveGameObject(builtBuildings, "BuiltBuildings", 1);
         messageWindow.DeactivateMessageWindow();
@@ -37,8 +37,5 @@ public class WitchHutBuildBuilding : MonoBehaviour
             AnimationLibrary.Animations.Talk,
             null
         ));
-
-        // deactivate the built button and reloud the available buttons
-        GameObject.Find("GameData").GetComponent<DisplayInteractiveButtons>().displayAvailableButtons();
     }
 }

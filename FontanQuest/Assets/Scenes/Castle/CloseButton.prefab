@@ -122,9 +122,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: OpenLinks, Assembly-CSharp
-        m_MethodName: LoadCastleScene
+      - m_Target: {fileID: 7690737934585792427}
+        m_TargetAssemblyTypeName: CloseButtonScript, Assembly-CSharp
+        m_MethodName: closeCurrentMiniGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

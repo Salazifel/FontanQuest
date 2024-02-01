@@ -44,7 +44,7 @@ public class BuildCityWalls : MonoBehaviour
         // loading in the existing BuiltBuildings-Block
         SaveGameObjects.BuiltBuildings builtBuildings = (SaveGameObjects.BuiltBuildings)SaveGameMechanic.getSaveGameObjectByPrimaryKey("BuiltBuildings", 1);
         if (builtBuildings == null) { builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameObjects.CreateSaveGameObject("BuiltBuildings");}
-        builtBuildings.CityWalls = true;
+        builtBuildings.CityWalls = 1;
         GameObject.Find("GameData").GetComponent<LoadingSavingBuildings>().ActivateCityWalls();
         SaveGameMechanic.saveSaveGameObject(builtBuildings, "BuiltBuildings", 1);
         messageWindow.DeactivateMessageWindow();
@@ -62,8 +62,5 @@ public class BuildCityWalls : MonoBehaviour
             AnimationLibrary.Animations.Talk,
             null
         ));
-
-        // deactivate the built button and reloud the available buttons
-        GameObject.Find("GameData").GetComponent<DisplayInteractiveButtons>().displayAvailableButtons();
     }
 }

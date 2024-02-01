@@ -178,6 +178,12 @@ public class MessageWindow : MonoBehaviour
             return;
         }
 
+        // deactivate all other characters
+        foreach (var pair in CharacterDictionary)
+        {
+            pair.Value.SetActive(false);
+        }
+
         // Find and activate the corresponding GameObject
         if (CharacterDictionary.TryGetValue(characterKey, out GameObject characterPrefab))
         {

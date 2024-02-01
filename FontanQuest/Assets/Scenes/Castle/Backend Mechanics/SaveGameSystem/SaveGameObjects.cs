@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SaveGameObjects : MonoBehaviour
@@ -69,7 +70,7 @@ public class SaveGameObjects : MonoBehaviour
             case "YouTubeData":
                 return new YouTubeData();
             case "DayActivity":
-                return new DayActivity();
+                return new DayActivity(new DateTime());
             case "MarketOffer":
                 return new MarketOffer(null, null, 0, 0);
             default:
@@ -98,11 +99,20 @@ public class SaveGameObjects : MonoBehaviour
 
     public class DayActivity : MainSaveObject
     {
-        public bool wasActivity;
+        public DateTime dateTime;
 
-        public void DaysActivity()
+        List<Tuple<string, int, bool>> exercises;
+
+        public DayActivity(DateTime _datetime)
         {
-            wasActivity = false;
+            dateTime = _datetime;
+            exercises = new List<Tuple<string, int, bool>>();
+        }
+
+        public void AddExercise(string ExerciseEnumStringValue, int minutesOfExercise = 0)
+        {
+            Tuple<string, int, bool> tuple = new Tuple<string, int, bool> (ExerciseEnumStringValue, minutesOfExercise, false);
+            exercises.Add(tuple);
         }
     }
 

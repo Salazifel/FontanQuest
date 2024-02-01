@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class SaveParentName : MonoBehaviour
@@ -10,23 +9,19 @@ public class SaveParentName : MonoBehaviour
     {
         string parentName = parentNameInputField.text;
 
-        // Retrieve or create ParentsOnboarding data
         SaveGameObjects.ParentsOnboarding parentsOnboarding = SaveGameMechanic.getSaveGameObjectByPrimaryKey("ParentsOnboarding", 1) as SaveGameObjects.ParentsOnboarding;
         if (parentsOnboarding == null)
         {
-            Debug.Log("ParentsOnboarding is null. Creating new ParentsOnboarding object.");
-            // Adjust here to pass the required parameters to the constructor
-            parentsOnboarding = new SaveGameObjects.ParentsOnboarding(parentName, ""); // Assuming the second parameter is for the child's name and can be empty or a placeholder
+            // If no existing data, create new with parent name and an empty child name.
+            parentsOnboarding = new SaveGameObjects.ParentsOnboarding(parentName, "");
         }
         else
         {
-            Debug.Log("ParentsOnboarding retrieved successfully.");
+            // Existing data found; only update the parent's name.
+            parentsOnboarding.nameParent = parentName;
         }
 
-        // Update parent's name in case the object already existed
-        parentsOnboarding.nameParent = parentName;
-
-        // Save the updated object using SaveGameMechanic
+        // Save the updated object
         SaveGameMechanic.saveSaveGameObject(parentsOnboarding, "ParentsOnboarding", parentsOnboarding.primaryKey);
     }
 }

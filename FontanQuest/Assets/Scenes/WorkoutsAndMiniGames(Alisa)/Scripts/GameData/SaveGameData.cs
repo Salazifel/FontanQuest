@@ -6,7 +6,12 @@ using UnityEngine;
 
 public class SaveGameData : MonoBehaviour
 {
-    private static string savefile = Application.persistentDataPath + "/MiniGameData.json";
+    private static string savefile;
+
+    void Awake()
+    {
+        savefile = Application.persistentDataPath + "/MiniGameData.json";
+    }
 
 
     public static void Save()

@@ -31,7 +31,6 @@ public class MessageLibrary : MonoBehaviour
         AddWeedThePlantMessage();
         AddHikingExergameMessage();
         AddParentsMarketKidsPerspectiveMessage();
-
     }
 
     void AddParentsMarketKidsPerspectiveMessage()
@@ -474,11 +473,11 @@ public class MessageLibrary : MonoBehaviour
         messageLibrary[SceneManagerStaticScript.AvailableScenes.ObstacleRunning.ToString()].Add(
             new MessageObjectBlueprint.messageObject(
                 "Der Berg!",
-                "Grüzi! Ich bin Heinrich und haenge ziemlich in den Seilen. Meinst du, du kannst für mich da hoch klettern?",
+                "Hallo! Ich bereite gerade noch eine Kleinigkeit fur das Bankett des Koenigs vor. Willst du mein Kaninchen ein bisschen ausfuehren in der Zeit?",
                 "Spaeter", messageWindow.DeactivateMessageWindow, "Klar!",
                 Var1RightButtonClick, // Reference to the Var1RightButtonClick method
                 null, null,
-                MessageWindow.Character_options.Character_Male_Sorcerer,
+                MessageWindow.Character_options.Character_Female_Druid,
                 AnimationLibrary.Animations.Talk,
                 null
             )

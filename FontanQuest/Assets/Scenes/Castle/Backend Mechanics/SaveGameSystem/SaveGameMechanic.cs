@@ -40,7 +40,7 @@ public class SaveGameMechanic : MonoBehaviour
         }
         catch (Exception)
         {
-            Debug.Log("Save File corrupted: " + filePath);
+            Debug.LogError("Save File corrupted: " + filePath);
             return null; // Return null in case of error
         }
 

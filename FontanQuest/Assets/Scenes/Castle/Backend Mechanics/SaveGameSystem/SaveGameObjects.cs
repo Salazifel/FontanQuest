@@ -141,12 +141,14 @@ public class SaveGameObjects : MonoBehaviour
         public string nameOfPlayer;
         public int numOfHay;
         public DateTime firstDayOfPlaying; // save the first time 2DOs
+        public DateTime currentDebugTime;
 
         public GameData(int _coins)
         {
             GameSaveObjectType = "gameData";
             coins = _coins;
             firstDayOfPlaying = System.DateTime.Now;
+            currentDebugTime = DateTime.Today;
         }
 
         public override void Print()
@@ -178,7 +180,20 @@ public class SaveGameObjects : MonoBehaviour
 
         public BuiltBuildings()
         {
-
+            CityWalls = 0;
+            Castle = 0;
+            Temple = 0;
+            Farm = 0;
+            YouTubeHouse = 0;
+            Witch = 0;
+            WoodCutting = 0;
+            Climber = 0;
+            Mining = 0;
+            DoodleJumpHouse = 0;
+            FitnessBoxingHouse = 0;
+            WeedThePlantHouse = 0;
+            HikingHouse = 0;
+            Market = 0;
         }
 
         public override void Print()

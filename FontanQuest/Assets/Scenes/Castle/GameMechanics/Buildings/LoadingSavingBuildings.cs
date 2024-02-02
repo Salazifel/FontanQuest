@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class LoadingSavingBuildings : MonoBehaviour
 {
-    private Dictionary<string, GameObject> buildingPointers;
-    private Dictionary<string, GameObject> buttonPointers;
-
+    private Dictionary<string, GameObject> buildingPointers = new Dictionary<string, GameObject>();
+    private Dictionary<string, GameObject> buttonPointers = new Dictionary<string, GameObject>();
     private Dictionary<string, int> builtBuildingsDic;
+
+    private MessageWindow messageWindow;
 
     public enum additionalBuildingStrings {
         CityWalls,
@@ -17,18 +18,20 @@ public class LoadingSavingBuildings : MonoBehaviour
 
     void Awake()
     {
+        messageWindow = GameObject.Find("MessageWindow").GetComponent<MessageWindow>();
         ActivityManagerPerDay.InitializeDailyActivities();
         getStartGameButtonGameObjectReferences();
         getGameObjectReferences(); 
+    }
 
+    void Start()
+    {
         LoadBuildings();
         LoadButtons();
     }
 
     public void getStartGameButtonGameObjectReferences()
     {
-        buttonPointers = new Dictionary<string, GameObject>();
-
         buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.AsianMonkExergame.ToString(), GameObject.Find("MonkButton"));
         buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.YouTubeScene.ToString(), GameObject.Find("YouTubeButton"));
         buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString(), GameObject.Find("FarmButton"));
@@ -38,18 +41,15 @@ public class LoadingSavingBuildings : MonoBehaviour
         buttonPointers.Add(additionalBuildingStrings.CityWalls.ToString(), GameObject.Find("CityWallButton"));
         buttonPointers.Add(additionalBuildingStrings.Castle.ToString(), GameObject.Find("CastleButton"));
         buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.ObstacleRunning.ToString(), GameObject.Find("WitchHutButton"));
-
         buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString(), GameObject.Find("DoodleJumpButton"));
         buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.FitnessBoxing.ToString(), GameObject.Find("BoxingButton"));
-        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.WeedThePlant.ToString(), GameObject.Find(""));
+        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.WeedThePlant.ToString(), GameObject.Find("WeedThePlantsButton"));
         buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.HikingExergame.ToString(), GameObject.Find("HikingButton"));
-        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString(), GameObject.Find(""));
+        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString(), GameObject.Find("MarketButton"));
     }
 
     public void getGameObjectReferences()
     {
-        buildingPointers = new Dictionary<string, GameObject>();
-
         buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.AsianMonkExergame.ToString(), GameObject.Find("monk_temple"));
         buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.YouTubeScene.ToString(), GameObject.Find("YouTubeHouse"));
         buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString(), GameObject.Find("FarmHouse"));
@@ -62,7 +62,7 @@ public class LoadingSavingBuildings : MonoBehaviour
         buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString(), GameObject.Find("DoodleJumpHouse"));
         buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.FitnessBoxing.ToString(), GameObject.Find("FitnessBoxingHouse"));
         buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.WeedThePlant.ToString(), GameObject.Find("WeedThePlantsBuilding"));
-        buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.HikingExergame.ToString(), GameObject.Find("HikingHouse"));
+        buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.HikingExergame.ToString(), GameObject.Find("HikingBuilding"));
         buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString(), GameObject.Find("MarketBuilding"));
     }
 
@@ -87,13 +87,19 @@ public class LoadingSavingBuildings : MonoBehaviour
         }
 
         // DISPLAYING THE BUTTONS
+        DateTime todaysDate = GameObject.Find("GameData").GetComponent<UnitTests>().getCurrentDebugDate();
+        Debug.Log(todaysDate.ToString());
         foreach(SaveGameObjects.DayActivity dayActivity in dayActivities)
         {
-            foreach(Tuple<string, int, int> exercise in dayActivity.exercises)
+            if (dayActivity.dateTime.Date == todaysDate.Date)
             {
-                if (buttonPointers.TryGetValue(exercise.Item1, out GameObject var)) 
+                foreach(Tuple<string, int, int> exercise in dayActivity.exercises)
                 {
-                    var.SetActive(true);
+                    if (buttonPointers.TryGetValue(exercise.Item1, out GameObject var)) 
+                    {
+                        Debug.Log("Button activated: " + var.ToString());
+                        var.SetActive(true);
+                    }
                 }
             }
         }
@@ -203,6 +209,6 @@ public class LoadingSavingBuildings : MonoBehaviour
         MessageLibrary messageLibrary = GameObject.Find("GameData").GetComponent<MessageLibrary>();
         messageLibrary.messageLibrary.TryGetValue(buildingType, out List<MessageObjectBlueprint.messageObject> messageObjects);
         builtBuildingsDic.TryGetValue(buildingType, out int var);
-        GameObject.Find("MessageWindow").GetComponent<MessageWindow>().SetupMessageWindowByMessageObject(messageObjects[var]);
+        messageWindow.SetupMessageWindowByMessageObject(messageObjects[var]);
     }
 }

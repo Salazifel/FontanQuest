@@ -200,6 +200,15 @@ public class CastleOnBoardingAnimationManager : MonoBehaviour
     void endScene()
     {
         messageWindowScript.DeactivateMessageWindow();
+
+        SaveGameObjects.CastleOnBoardingSystem castleOnBoardingSystem = (SaveGameObjects.CastleOnBoardingSystem)SaveGameMechanic.getSaveGameObjectByPrimaryKey("CastleOnBoardingSystem", 1);
+        if (castleOnBoardingSystem == null)
+        {
+            castleOnBoardingSystem = (SaveGameObjects.CastleOnBoardingSystem)SaveGameObjects.CreateSaveGameObject("CastleOnBoardingSystem");
+        }
+        castleOnBoardingSystem.onBoardingVideoWatched = true;
+        SaveGameMechanic.saveSaveGameObject(castleOnBoardingSystem, "CastleOnBoardingSystem", 1);
+        
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main_Castle");
     }
 

@@ -38,6 +38,11 @@ public class Castle_OnBoarding : MonoBehaviour
         {
             StepButton.SetActive(false);
         }
+
+        if (castleOnBoardingSystem.onBoardingVideoWatched == false)
+        {
+            SceneManager.Load("CastleOnBoarding");
+        }
     }
 
     public void StepForwardInAnimation()

@@ -13,7 +13,7 @@ public class SaveGameMechanic : MonoBehaviour
         gameSaveObjects = new List<SaveGameObjects.MainSaveObject>()
     };
 
-    private static string savefilePath = Application.persistentDataPath;
+    //private static string savefilePath = Application.persistentDataPath;
 
     private static string savefile;
 
@@ -24,6 +24,8 @@ public class SaveGameMechanic : MonoBehaviour
 
     public static SaveGameObjects.MainSaveObject getSaveGameObjectByPrimaryKey(string SaveGameObjectName, int primaryKey)
     {
+        string savefilePath = Application.persistentDataPath;
+
         SaveGameObjects.MainSaveObject emptyMainSaveObject = SaveGameObjects.CreateSaveGameObject(SaveGameObjectName);
         string filePath = savefilePath + "/" + SaveGameObjectName + "/" + emptyMainSaveObject.GetType() + ".json";
 
@@ -59,6 +61,7 @@ public class SaveGameMechanic : MonoBehaviour
 
     public static List<SaveGameObjects.MainSaveObject> getAllSaveGameObjectsOfType(string SaveGameObjectName, string saveFileName)
     {
+        string savefilePath = Application.persistentDataPath;
         SaveGameObjects.MainSaveObject emptyMainSaveObject = SaveGameObjects.CreateSaveGameObject(SaveGameObjectName);
 
         string filePath = savefilePath + "/" + saveFileName + "/" + emptyMainSaveObject.GetType() + ".json";
@@ -86,6 +89,7 @@ public class SaveGameMechanic : MonoBehaviour
 
     public static void deleteGameSaveType(SaveGameObjects.MainSaveObject emptyMainSaveObject, string saveFileName)
     {
+        string savefilePath = Application.persistentDataPath;
         string filePath = savefilePath + "/" + saveFileName + "/" + emptyMainSaveObject.GetType() + ".json";
 
         // Check if the file exists
@@ -109,6 +113,7 @@ public class SaveGameMechanic : MonoBehaviour
 
     public static void deleteBySaveFileName(string saveFileName)
     {
+        string savefilePath = Application.persistentDataPath;
         string folderPath = savefilePath + "/" + saveFileName;
 
         // Check if the directory exists
@@ -134,6 +139,7 @@ public class SaveGameMechanic : MonoBehaviour
 
     public static void CleanUpSaveFiles()
     {
+        string savefilePath = Application.persistentDataPath;
         Debug.Log(savefilePath);
         string directoryPath = savefilePath + "/"; // The directory containing all your save files
 
@@ -178,6 +184,7 @@ public class SaveGameMechanic : MonoBehaviour
 
     public static int saveSaveGameObject(SaveGameObjects.MainSaveObject mainSaveObject, string saveFileName, int OverridePrimaryKey = 0)
     {
+        string savefilePath = Application.persistentDataPath;
         string filePath = savefilePath + "/" + saveFileName;
         EnsureFoldersExist(filePath);
         filePath = filePath + "/" + mainSaveObject.GetType() + ".json";
@@ -251,7 +258,7 @@ public class SaveGameMechanic : MonoBehaviour
 
     public static void deleteSaveGameObject(SaveGameObjects.MainSaveObject emptyMainSaveObject, string saveFileName, int primaryKey)
     {
-
+        string savefilePath = Application.persistentDataPath;
         string filePath = savefilePath + "/" + saveFileName;
         filePath = filePath + "/" + emptyMainSaveObject.GetType() + ".json";
 

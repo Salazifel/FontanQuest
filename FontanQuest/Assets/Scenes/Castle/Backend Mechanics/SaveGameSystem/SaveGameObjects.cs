@@ -330,10 +330,12 @@ public class SaveGameObjects : MonoBehaviour
     public class CastleOnBoardingSystem: MainSaveObject
     {
         public Boolean onBoardingDone;
+        public Boolean onBoardingVideoWatched;
 
         public CastleOnBoardingSystem (Boolean _onBoardingDone)
         {
             onBoardingDone = _onBoardingDone;
+            onBoardingVideoWatched = false;
         }
     }
 

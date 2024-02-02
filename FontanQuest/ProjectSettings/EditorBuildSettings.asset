@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/UI (Laura)/Laura_old/Main Screen.unity
+    guid: a99c398694727ef45b615d80569ac0d8
+  - enabled: 1
     path: Assets/Scenes/Castle/Main_Castle.unity
     guid: d8c2ccdce3b015f4ba43d1298ff313a7
   - enabled: 1
@@ -35,9 +38,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Village (Hannes)/Experimental Scene/SampleScene.unity
     guid: c850ee8c3b14cc8459e7e186857cf567
-  - enabled: 1
-    path: Assets/Scenes/UI (Laura)/Laura_old/Main Screen.unity
-    guid: a99c398694727ef45b615d80569ac0d8
   - enabled: 1
     path: Assets/Scenes/UI (Laura)/Laura_old/Parental Mode 1.unity
     guid: 77c80c10a60e7684bb3fe72994b2750b
@@ -105,7 +105,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu/Parent's section/Parent's section.unity
     guid: 6d1bc383f2c04ac4da5bb44fa0d0efd6
   - enabled: 1
-    path: Assets/Scenes/ParentsMarket/ParentsMarket.unity
+    path: Assets/Scenes/ParentsMarket/ParentsMarketForChildren.unity
     guid: 0bfbf61481f4381489599c7a8e3e1984
   - enabled: 1
     path: Assets/Scenes/Pet/Fuettern.unity
@@ -161,6 +161,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UI (Laura)/Impressum.unity
     guid: aa06d408fb2ce63409500092932dd0a2
+  - enabled: 1
+    path: Assets/Scenes/Castle/Animations/CastleOnBoarding.unity
+    guid: dfcd1cad415f631458e7ee67eb8763b2
+  - enabled: 1
+    path: Assets/Scenes/UI (Laura)/HomeParentSection.unity
+    guid: 4bfc66066f687994e8f99f2a792b720e
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 254f22ba6035e6d4398b0fed5896fd9a,
       type: 2}

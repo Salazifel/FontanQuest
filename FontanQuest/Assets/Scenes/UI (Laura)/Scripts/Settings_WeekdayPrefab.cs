@@ -4,7 +4,7 @@ using System;
 using System.IO;
 using System.Globalization;
 
-public class Settings_DatePrefab : MonoBehaviour
+public class Settings_WeekdayPrefab : MonoBehaviour
 {
     public GameObject prefab;
     public GameObject panel;

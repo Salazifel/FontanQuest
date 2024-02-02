@@ -8,6 +8,8 @@ public class LoadingSavingBuildings : MonoBehaviour
     private Dictionary<string, GameObject> buildingPointers;
     private Dictionary<string, GameObject> buttonPointers;
 
+    private Dictionary<string, int> builtBuildingsDic;
+
     public enum additionalBuildingStrings {
         CityWalls,
         Castle
@@ -18,26 +20,29 @@ public class LoadingSavingBuildings : MonoBehaviour
         ActivityManagerPerDay.InitializeDailyActivities();
         getStartGameButtonGameObjectReferences();
         getGameObjectReferences(); 
+
+        LoadBuildings();
+        LoadButtons();
     }
 
     public void getStartGameButtonGameObjectReferences()
     {
         buttonPointers = new Dictionary<string, GameObject>();
 
-        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.AsianMonkExergame.ToString(), GameObject.Find("monk_temple"));
-        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.YouTubeScene.ToString(), GameObject.Find("YouTubeHouse"));
-        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString(), GameObject.Find("FarmHouse"));
-        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.MountainClimberExergame.ToString(), GameObject.Find("ClimbersHutBuilding"));
-        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.WoodCuttingExergame.ToString(), GameObject.Find("WoodCutterBuilding"));
-        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.StoneCuttingExergame.ToString(), GameObject.Find("MiningBuilding"));
-        buttonPointers.Add(additionalBuildingStrings.CityWalls.ToString(), GameObject.Find("W A L L S"));
-        buttonPointers.Add(additionalBuildingStrings.Castle.ToString(), GameObject.Find("C A S T L E"));
-        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.ObstacleRunning.ToString(), GameObject.Find("WitchHutBuilding"));
+        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.AsianMonkExergame.ToString(), GameObject.Find("MonkButton"));
+        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.YouTubeScene.ToString(), GameObject.Find("YouTubeButton"));
+        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString(), GameObject.Find("FarmButton"));
+        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.MountainClimberExergame.ToString(), GameObject.Find("ClimbersButton"));
+        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.WoodCuttingExergame.ToString(), GameObject.Find("WoodCuttingButton"));
+        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.StoneCuttingExergame.ToString(), GameObject.Find("MiningButton"));
+        buttonPointers.Add(additionalBuildingStrings.CityWalls.ToString(), GameObject.Find("CityWallButton"));
+        buttonPointers.Add(additionalBuildingStrings.Castle.ToString(), GameObject.Find("CastleButton"));
+        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.ObstacleRunning.ToString(), GameObject.Find("WitchHutButton"));
 
-        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString(), GameObject.Find(""));
-        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.FitnessBoxing.ToString(), GameObject.Find(""));
+        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString(), GameObject.Find("DoodleJumpButton"));
+        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.FitnessBoxing.ToString(), GameObject.Find("BoxingButton"));
         buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.WeedThePlant.ToString(), GameObject.Find(""));
-        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.HikingExergame.ToString(), GameObject.Find(""));
+        buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.HikingExergame.ToString(), GameObject.Find("HikingButton"));
         buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString(), GameObject.Find(""));
     }
 
@@ -51,15 +56,14 @@ public class LoadingSavingBuildings : MonoBehaviour
         buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.MountainClimberExergame.ToString(), GameObject.Find("ClimbersHutBuilding"));
         buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.WoodCuttingExergame.ToString(), GameObject.Find("WoodCutterBuilding"));
         buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.StoneCuttingExergame.ToString(), GameObject.Find("MiningBuilding"));
-        buildingPointers.Add(additionalBuildingStrings.CityWalls.ToString(), GameObject.Find("W A L L S"));
-        buildingPointers.Add(additionalBuildingStrings.Castle.ToString(), GameObject.Find("C A S T L E"));
+        buildingPointers.Add(additionalBuildingStrings.CityWalls.ToString(), GameObject.Find("Walls_building"));
+        buildingPointers.Add(additionalBuildingStrings.Castle.ToString(), GameObject.Find("Castle_building"));
         buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.ObstacleRunning.ToString(), GameObject.Find("WitchHutBuilding"));
-
-        buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString(), GameObject.Find(""));
-        buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.FitnessBoxing.ToString(), GameObject.Find(""));
-        buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.WeedThePlant.ToString(), GameObject.Find(""));
-        buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.HikingExergame.ToString(), GameObject.Find(""));
-        buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString(), GameObject.Find(""));
+        buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString(), GameObject.Find("DoodleJumpHouse"));
+        buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.FitnessBoxing.ToString(), GameObject.Find("FitnessBoxingHouse"));
+        buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.WeedThePlant.ToString(), GameObject.Find("WeedThePlantsBuilding"));
+        buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.HikingExergame.ToString(), GameObject.Find("HikingHouse"));
+        buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString(), GameObject.Find("MarketBuilding"));
     }
 
     public void LoadButtons()
@@ -89,7 +93,7 @@ public class LoadingSavingBuildings : MonoBehaviour
             {
                 if (buttonPointers.TryGetValue(exercise.Item1, out GameObject var)) 
                 {
-                    
+                    var.SetActive(true);
                 }
             }
         }
@@ -97,11 +101,15 @@ public class LoadingSavingBuildings : MonoBehaviour
 
     public void DeactivateAllButtons()
     {
-
+        foreach (var pair in buttonPointers)
+        {
+            pair.Value.SetActive(false);
+        }
     }
 
     public void LoadBuildings()
     {
+        builtBuildingsDic = new Dictionary<string, int>();
         DeactivateAllBuildings();
 
         SaveGameObjects.BuiltBuildings builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameMechanic.getSaveGameObjectByPrimaryKey("BuiltBuildings", 1);
@@ -164,40 +172,37 @@ public class LoadingSavingBuildings : MonoBehaviour
         {
             marketObject.SetActive(true);
         }
+
+        // filling the dictionary with values 
+        builtBuildingsDic.Add(additionalBuildingStrings.CityWalls.ToString(), builtBuildings.CityWalls);
+        builtBuildingsDic.Add(additionalBuildingStrings.Castle.ToString(), builtBuildings.Castle);
+        builtBuildingsDic.Add(SceneManagerStaticScript.AvailableScenes.AsianMonkExergame.ToString(), builtBuildings.Temple);
+        builtBuildingsDic.Add(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString(), builtBuildings.Farm);
+        builtBuildingsDic.Add(SceneManagerStaticScript.AvailableScenes.YouTubeScene.ToString(), builtBuildings.YouTubeHouse);
+        builtBuildingsDic.Add(SceneManagerStaticScript.AvailableScenes.ObstacleRunning.ToString(), builtBuildings.Witch);
+        builtBuildingsDic.Add(SceneManagerStaticScript.AvailableScenes.WoodCuttingExergame.ToString(), builtBuildings.WoodCutting);
+        builtBuildingsDic.Add(SceneManagerStaticScript.AvailableScenes.MountainClimberExergame.ToString(), builtBuildings.Climber);
+        builtBuildingsDic.Add(SceneManagerStaticScript.AvailableScenes.StoneCuttingExergame.ToString(), builtBuildings.Mining);
+        builtBuildingsDic.Add(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString(), builtBuildings.DoodleJumpHouse);
+        builtBuildingsDic.Add(SceneManagerStaticScript.AvailableScenes.FitnessBoxing.ToString(), builtBuildings.FitnessBoxingHouse);
+        builtBuildingsDic.Add(SceneManagerStaticScript.AvailableScenes.WeedThePlant.ToString(), builtBuildings.WeedThePlantHouse);
+        builtBuildingsDic.Add(SceneManagerStaticScript.AvailableScenes.HikingExergame.ToString(), builtBuildings.HikingHouse);
+        builtBuildingsDic.Add(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString(), builtBuildings.Market);
     }
 
     public void DeactivateAllBuildings()
     {
-
+        foreach (var pair in buildingPointers)
+        {
+            pair.Value.SetActive(false);
+        }
     }
 
-    internal void ActivateCityWalls()
+    internal void interactiveButtonClick(string buildingType)
     {
-        throw new NotImplementedException();
-    }
-
-    internal void ActivateClimber()
-    {
-        throw new NotImplementedException();
-    }
-
-    internal void ActivateFarm()
-    {
-        throw new NotImplementedException();
-    }
-
-    internal void ActivateMining()
-    {
-        throw new NotImplementedException();
-    }
-
-    internal void ActivateWoodCutter()
-    {
-        throw new NotImplementedException();
-    }
-
-    internal void ActivateWitch()
-    {
-        throw new NotImplementedException();
+        MessageLibrary messageLibrary = GameObject.Find("GameData").GetComponent<MessageLibrary>();
+        messageLibrary.messageLibrary.TryGetValue(buildingType, out List<MessageObjectBlueprint.messageObject> messageObjects);
+        builtBuildingsDic.TryGetValue(buildingType, out int var);
+        GameObject.Find("MessageWindow").GetComponent<MessageWindow>().SetupMessageWindowByMessageObject(messageObjects[var]);
     }
 }

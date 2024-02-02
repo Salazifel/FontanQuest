@@ -108,6 +108,8 @@ EditorBuildSettings:
     path: Assets/Scenes/UI (Laura)/Impressum.unity
     guid: aa06d408fb2ce63409500092932dd0a2
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 254f22ba6035e6d4398b0fed5896fd9a,
+      type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000,
       guid: a60b664058f0f0d4496ec6cfbedb9a0f, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,

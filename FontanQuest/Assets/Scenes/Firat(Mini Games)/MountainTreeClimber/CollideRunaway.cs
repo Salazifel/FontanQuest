@@ -12,12 +12,17 @@ public class CollideRunaway : MonoBehaviour
     private float fixedDeltaTime;
     private Animator animator;
     private bool inputReceived;
-
+    
     public float xValueAut;
     public float yValueAut;
 
+    private int tapCount = 0;
+    private float lastTapTime = 0f;
+    public float tapThreshold = 0.5f; // Adjust this threshold as needed
+    CameraSwitcher cameraSwitcher;
     void Start()
     {   
+        cameraSwitcher = GameObject.Find("Playa").GetComponent <CameraSwitcher>();
         Debug.Log(inputReceived);
         this.fixedDeltaTime = Time.fixedDeltaTime;
         animator = GetComponent<Animator>();
@@ -33,15 +38,16 @@ public class CollideRunaway : MonoBehaviour
             Debug.Log("DANGER!!!");
 
             Debug.Log(inputReceived);
+            cameraSwitcher.SwitchCameras();
             StartCoroutine(InputTimer());
 
-            
+
         }
     }
 IEnumerator InputTimer()
 {
     float startTime = Time.realtimeSinceStartup;
-    float maxTime = 5f; // Adjust the time frame here (in seconds)
+    float maxTime = 20f; // Adjust the time frame here (in seconds)
     float timeLeft = maxTime;
 
     while (Time.realtimeSinceStartup - startTime < maxTime)
@@ -52,8 +58,8 @@ IEnumerator InputTimer()
         // Display countdown message
         Debug.Log($"You have {roundedTime} seconds!");
 
-        if (Input.GetAxis("Jump") > 0.1f)
-        {
+        if (DetectTripleTap())
+        {   
             inputReceived = true;
             break; // Exit the loop if input is received
         }
@@ -68,7 +74,8 @@ IEnumerator InputTimer()
         Time.timeScale = 0.0f; // Reset the time scale back to normal
     }
     else
-    {
+    {   
+        cameraSwitcher.SwitchCameras();
         Debug.Log("You avoided the obstacle perfectly, game continues...");
         float direction = (parentObject.transform.position.x < 0) ? 1f : -1f;
         StartCoroutine(SlideObject(direction));
@@ -99,6 +106,39 @@ IEnumerator SlideObject(float direction)
     Time.timeScale = 1.0f; // Reset the time scale back to normal
 }
 
+  bool DetectTripleTap()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
 
+            if (touch.phase == TouchPhase.Began)
+            {
+                float timeSinceLastTap = Time.time - lastTapTime;
+
+                if (timeSinceLastTap < tapThreshold)
+                {
+                    tapCount++;
+
+                    if (tapCount >= 3)
+                    {
+                        // Reset tap count for future detections
+                        tapCount = 0;
+                        return true;
+                    }
+                }
+                else
+                {
+                    // Reset tap count if there was a delay between taps
+                    tapCount = 1;
+                }
+
+                // Record the time of the current tap
+                lastTapTime = Time.time;
+            }
+        }
+
+        return false;
+    }
 
 }

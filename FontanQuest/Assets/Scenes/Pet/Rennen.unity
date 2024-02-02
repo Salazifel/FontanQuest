@@ -457,6 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 10
+  tiltSpeed: 1
   Max_xValue: 10
 --- !u!4 &209599266 stripped
 Transform:
@@ -623,6 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 10
+  tiltSpeed: 1
   Max_xValue: 10
 --- !u!4 &244698129 stripped
 Transform:
@@ -878,6 +880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 10
+  tiltSpeed: 1
   Max_xValue: 10
 --- !u!4 &320127123 stripped
 Transform:
@@ -2762,6 +2765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 10
+  tiltSpeed: 1
   Max_xValue: 10
 --- !u!1 &890204574
 GameObject:
@@ -2929,6 +2933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 10
+  tiltSpeed: 1
   Max_xValue: 10
 --- !u!4 &949735410 stripped
 Transform:
@@ -2955,6 +2960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 10
+  tiltSpeed: 1
   Max_xValue: 10
 --- !u!1 &993313438
 GameObject:
@@ -3910,6 +3916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 10
+  tiltSpeed: 1
   Max_xValue: 10
 --- !u!4 &1274695577 stripped
 Transform:
@@ -4182,6 +4189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 10
+  tiltSpeed: 1
   Max_xValue: 10
 --- !u!4 &1313907945 stripped
 Transform:
@@ -5605,6 +5613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 10
+  tiltSpeed: 1
   Max_xValue: 10
 --- !u!1 &1796668497
 GameObject:
@@ -5921,6 +5930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedVar: 10
+  tiltSpeed: 1
   Max_xValue: 10
 --- !u!4 &1896068279 stripped
 Transform:
@@ -6285,7 +6295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa40f5bb58be1d459acdcd1ebc90e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedVar: 8
+  speedVar: 10
+  tiltSpeed: 3
   Max_xValue: 10
 --- !u!54 &1944321293
 Rigidbody:

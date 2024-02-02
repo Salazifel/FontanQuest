@@ -1275,7 +1275,7 @@ GameObject:
   - component: {fileID: 675879413}
   - component: {fileID: 675879412}
   m_Layer: 5
-  m_Name: Benachrichtigungen Button
+  m_Name: Impressum Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1345,7 +1345,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 675879413}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 878996403}
+        m_TargetAssemblyTypeName: NavigationManager, Assembly-CSharp
+        m_MethodName: OpenSerialized
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Impressum
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &675879413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1868,7 +1880,7 @@ GameObject:
   - component: {fileID: 795149963}
   - component: {fileID: 795149962}
   m_Layer: 5
-  m_Name: Benachrichtigungen (TMP)
+  m_Name: Impressum (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1914,7 +1926,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Benachrichtigungen
+  m_text: Impressum
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -2003,9 +2015,9 @@ GameObject:
   - component: {fileID: 878996399}
   - component: {fileID: 878996398}
   - component: {fileID: 878996397}
-  - component: {fileID: 878996401}
   - component: {fileID: 878996402}
   - component: {fileID: 878996403}
+  - component: {fileID: 878996404}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2097,18 +2109,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &878996401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 878996396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1897d8e900dcb5541b97fc094b151a14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &878996402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2134,6 +2134,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainMenuPanel: {fileID: 0}
+--- !u!114 &878996404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878996396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1748a010e5a21db44915c67669db6486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &918736987
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,7 +2318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -0.000061035156, y: 85.35664}
+  m_AnchoredPosition: {x: 0, y: 85.35663}
   m_SizeDelta: {x: 0, y: 170.7132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &926623344

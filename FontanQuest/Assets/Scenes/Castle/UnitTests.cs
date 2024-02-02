@@ -8,6 +8,10 @@ public class UnitTests : MonoBehaviour
     public DateTime currentDebugDate;
     void Awake() {
         SaveGameObjects.GameData gameData = (SaveGameObjects.GameData)SaveGameMechanic.getSaveGameObjectByPrimaryKey("GameData", 1);
+        if (gameData == null)
+        {
+            gameData = (SaveGameObjects.GameData)SaveGameObjects.CreateSaveGameObject("GameData");
+        }
         currentDebugDate = gameData.currentDebugTime;
     }
 

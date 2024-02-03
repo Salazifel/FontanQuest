@@ -33,13 +33,10 @@ const wss = new WebSocket.Server({ noServer: true });
 
 wss.on('connection', (ws) => {
     ws.on('message', (data) => {
-        //console.log('Received raw message:', data);
-        // ws.send(data);
-
-        // Convert Buffer to string
         const message = data.toString('utf8');
-        console.log('data received \n', message);
-        ws.send(message);
+        
+        // Implement Stomp protocol handling here
+        handleStompMessage(ws, message);
     });
 
     ws.on('close', () => {
@@ -58,3 +55,22 @@ server.on('upgrade', (request, socket, head) => {
 server.listen(3000, () => {
     console.log('Server listening on port 3000');
 });
+
+function handleStompMessage(ws, message) {
+    // Implement Stomp protocol handling
+    // Parse Stomp message and handle accordingly
+    // This depends on the specific requirements of Fitrockr's Stomp protocol
+    // For simplicity, let's assume you need to handle CONNECT, SUBSCRIBE, and SEND frames
+
+    if (message.includes('CONNECT')) {
+        // Handle CONNECT frame
+        ws.send('CONNECTED\nversion:1.2\n\n\0');
+    } else if (message.includes('SUBSCRIBE')) {
+        // Handle SUBSCRIBE frame
+        ws.send('MESSAGE\ndestination:/topic/live\ncontent-type:application/json\n\n{"example": "data"}\0');
+    } else if (message.includes('SEND')) {
+        // Handle SEND frame
+        // Extract and process the message data
+        console.log(`Received Stomp message: ${message}`);
+    }
+}

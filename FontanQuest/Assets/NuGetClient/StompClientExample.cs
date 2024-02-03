@@ -1,18 +1,22 @@
 using UnityEngine;
+using System.Collections.Generic;
+
 
 public class StompClientExample : MonoBehaviour
 {
-    private StompClient stompClient;
+    public FitrockrIntegration.StompClient stompClient;
 
     void Start()
     {
         // Initialize Stomp client
-        stompClient = new StompClient("ws://localhost:3000");
+        stompClient = new FitrockrIntegration.StompClient("ws://localhost:3000");
         Debug.Log("Stomp client initialized.");
 
         // Connect to Stomp server
-        stompClient.Connect();
-        Debug.Log("Stomp client connecting...");
+        stompClient.Connect(
+            new Dictionary<string, string>(),
+            () => Debug.Log("Stomp client connecting...")
+        );
     }
 
     void Update()

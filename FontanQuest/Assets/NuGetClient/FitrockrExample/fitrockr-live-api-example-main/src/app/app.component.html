@@ -1,0 +1,29 @@
+<h1 style="text-align: center">Fitrockr Live API Sample</h1>
+<p style="text-align: center">Status<br><span *ngIf="connected" style="font-weight: bold; color: #44ee44">Connected</span><span *ngIf="!connected" style="font-weight: bold; color: #ee4444">Not connected</span></p>
+
+<div style="text-align: center">
+  <button *ngIf="!connected" (click)="connect()">Connect</button>
+  <button *ngIf="connected" (click)="disconnect()">Disconnect</button>
+  <button *ngIf="connected" (click)="ping()">Ping</button>
+  <button *ngIf="connected" (click)="start()">Start</button>
+  <button *ngIf="connected" (click)="stop()">Stop</button>
+</div>
+
+<h3 style="text-align: center; margin-top: 50px">Events</h3>
+<div *ngFor="let message of messages" style="display: flex;flex-wrap: wrap">
+  <div style="flex-grow: 1; width: 20%;">{{message?.liveData?.timestamp | date: 'hh:MM:ss.SSS'}}</div>
+  <div style="flex-grow: 1; width: 20%;">{{message?.liveData?.identifier}}</div>
+  <div style="flex-grow: 1; width: 20%;">{{message?.liveData?.macAddress}}</div>
+  <div style="flex-grow: 1; width: 20%;">{{message?.liveData?.dataType}}</div>
+  <div style="flex-grow: 1; width: 20%;text-align: right">{{message?.liveData?.value | number: '0.0-1'}}</div>
+</div>
+<p style="text-align: center" *ngIf="messages.length === 0">No Events published, yet!</p>
+
+<h3 style="text-align: center; margin-top: 50px">Devices</h3>
+<div *ngFor="let device of devices" style="display: flex;flex-wrap: wrap">
+  <div style="flex-grow: 1; width: 20%;">{{device?.deviceName}}</div>
+  <div style="flex-grow: 1; width: 20%;">{{device?.userName}}</div>
+  <div style="flex-grow: 1; width: 20%;">{{device?.trackerAddress}}</div>
+  <div style="flex-grow: 1; width: 20%;">{{device?.trackerName}}</div>
+</div>
+<p style="text-align: center" *ngIf="devices.length === 0">No Devices found.</p>

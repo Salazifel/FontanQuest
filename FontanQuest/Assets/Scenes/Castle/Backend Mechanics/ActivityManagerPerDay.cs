@@ -90,56 +90,97 @@ public static class ActivityManagerPerDay
         // DAY 1
         SaveGameObjects.DayActivity RewardActivity1 = new SaveGameObjects.DayActivity(DateTime.Today);
         RewardActivity1.AddExercise(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString());
-        SaveGameMechanic.saveSaveGameObject(RewardActivity1, "RewardGame");
         // DAY 2
         SaveGameObjects.DayActivity RewardActivity2 = new SaveGameObjects.DayActivity(DateTime.Today.AddDays(1));
-        RewardActivity1.AddExercise(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString());
-        SaveGameMechanic.saveSaveGameObject(RewardActivity2, "RewardGame");
+        RewardActivity2.AddExercise(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString());
         // DAY 3
         SaveGameObjects.DayActivity RewardActivity3 = new SaveGameObjects.DayActivity(DateTime.Today.AddDays(2));
-        RewardActivity1.AddExercise(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString());
-        SaveGameMechanic.saveSaveGameObject(RewardActivity3, "RewardGame");
+        RewardActivity3.AddExercise(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString());
         // DAY 4
         SaveGameObjects.DayActivity RewardActivity4 = new SaveGameObjects.DayActivity(DateTime.Today.AddDays(3));
-        SaveGameMechanic.saveSaveGameObject(RewardActivity4, "RewardGame");
+        RewardActivity4.AddExercise(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString());
         // DAY 5
         SaveGameObjects.DayActivity RewardActivity5 = new SaveGameObjects.DayActivity(DateTime.Today.AddDays(4));
-        RewardActivity1.AddExercise(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString());
-        SaveGameMechanic.saveSaveGameObject(RewardActivity5, "RewardGame");
+        RewardActivity5.AddExercise(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString());
         // DAY 6
         SaveGameObjects.DayActivity RewardActivity6 = new SaveGameObjects.DayActivity(DateTime.Today.AddDays(5));
-        RewardActivity1.AddExercise(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString());
-        SaveGameMechanic.saveSaveGameObject(RewardActivity6, "RewardGame");
+        RewardActivity6.AddExercise(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString());
         // DAY 7
         SaveGameObjects.DayActivity RewardActivity7 = new SaveGameObjects.DayActivity(DateTime.Today.AddDays(6));
-        RewardActivity1.AddExercise(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString());
-        SaveGameMechanic.saveSaveGameObject(RewardActivity7, "RewardGame");
+        RewardActivity7.AddExercise(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString());
         // DAY 8
         SaveGameObjects.DayActivity RewardActivity8 = new SaveGameObjects.DayActivity(DateTime.Today.AddDays(7));
-        RewardActivity1.AddExercise(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString());
-        SaveGameMechanic.saveSaveGameObject(RewardActivity8, "RewardGame");
+        RewardActivity8.AddExercise(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString());
         // DAY 9
         SaveGameObjects.DayActivity RewardActivity9 = new SaveGameObjects.DayActivity(DateTime.Today.AddDays(8));
-        SaveGameMechanic.saveSaveGameObject(RewardActivity9, "RewardGame");
         // DAY 10
         SaveGameObjects.DayActivity RewardActivity10 = new SaveGameObjects.DayActivity(DateTime.Today.AddDays(9));
-        RewardActivity1.AddExercise(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString());
-        SaveGameMechanic.saveSaveGameObject(RewardActivity10, "RewardGame");
+        RewardActivity10.AddExercise(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString());
         // DAY 11
         SaveGameObjects.DayActivity RewardActivity11 = new SaveGameObjects.DayActivity(DateTime.Today.AddDays(10));
-        RewardActivity1.AddExercise(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString());
-        SaveGameMechanic.saveSaveGameObject(RewardActivity11, "RewardGame");
+        RewardActivity11.AddExercise(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString());
         // DAY 12
         SaveGameObjects.DayActivity RewardActivity12 = new SaveGameObjects.DayActivity(DateTime.Today.AddDays(11));
-        RewardActivity1.AddExercise(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString());
-        SaveGameMechanic.saveSaveGameObject(RewardActivity12, "RewardGame");
+        RewardActivity12.AddExercise(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString());
         // DAY 13
         SaveGameObjects.DayActivity RewardActivity13 = new SaveGameObjects.DayActivity(DateTime.Today.AddDays(12));
-        RewardActivity1.AddExercise(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString());
-        SaveGameMechanic.saveSaveGameObject(RewardActivity13, "RewardGame");
+        RewardActivity13.AddExercise(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString());
         // DAY 14
         SaveGameObjects.DayActivity RewardActivity14 = new SaveGameObjects.DayActivity(DateTime.Today.AddDays(13));
-        RewardActivity1.AddExercise(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString());
+        RewardActivity14.AddExercise(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString());
+
+        // Parent's market
+        SaveGameObjects.GameData gameData = (SaveGameObjects.GameData)SaveGameMechanic.getSaveGameObjectByPrimaryKey("GameData", 1);
+        if (gameData == null)
+        {
+            gameData = (SaveGameObjects.GameData)SaveGameObjects.CreateSaveGameObject("GameData");
+        }
+        if (gameData.parentMarketActivated == true)
+        {
+            // DAY 1
+            RewardActivity1.AddExercise(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString());
+            // DAY 2
+            RewardActivity2.AddExercise(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString());
+            // DAY 3
+            RewardActivity3.AddExercise(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString());
+            // DAY 4
+            RewardActivity4.AddExercise(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString());
+            // DAY 5
+            RewardActivity5.AddExercise(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString());
+            // DAY 6
+            RewardActivity6.AddExercise(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString());
+            // DAY 7
+            RewardActivity7.AddExercise(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString());
+            // DAY 8
+            RewardActivity8.AddExercise(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString());
+            // DAY 9
+            RewardActivity9.AddExercise(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString());
+            // DAY 10
+            RewardActivity10.AddExercise(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString());
+            // DAY 11
+            RewardActivity11.AddExercise(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString());
+            // DAY 12
+            RewardActivity12.AddExercise(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString());
+            // DAY 13
+            RewardActivity13.AddExercise(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString());
+            // DAY 14
+            RewardActivity14.AddExercise(SceneManagerStaticScript.AvailableScenes.ParentsMarketKidsPerspective.ToString());
+        }
+
+        // saving the Reward Games
+        SaveGameMechanic.saveSaveGameObject(RewardActivity1, "RewardGame");
+        SaveGameMechanic.saveSaveGameObject(RewardActivity2, "RewardGame");
+        SaveGameMechanic.saveSaveGameObject(RewardActivity3, "RewardGame");
+        SaveGameMechanic.saveSaveGameObject(RewardActivity4, "RewardGame");
+        SaveGameMechanic.saveSaveGameObject(RewardActivity5, "RewardGame");
+        SaveGameMechanic.saveSaveGameObject(RewardActivity6, "RewardGame");
+        SaveGameMechanic.saveSaveGameObject(RewardActivity7, "RewardGame");
+        SaveGameMechanic.saveSaveGameObject(RewardActivity8, "RewardGame");
+        SaveGameMechanic.saveSaveGameObject(RewardActivity9, "RewardGame");
+        SaveGameMechanic.saveSaveGameObject(RewardActivity10, "RewardGame");
+        SaveGameMechanic.saveSaveGameObject(RewardActivity11, "RewardGame");
+        SaveGameMechanic.saveSaveGameObject(RewardActivity12, "RewardGame");
+        SaveGameMechanic.saveSaveGameObject(RewardActivity13, "RewardGame");
         SaveGameMechanic.saveSaveGameObject(RewardActivity14, "RewardGame");
     }
 }

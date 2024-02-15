@@ -144,6 +144,7 @@ public class SaveGameObjects : MonoBehaviour
         public int numOfHay;
         public DateTime firstDayOfPlaying; // save the first time 2DOs
         public DateTime currentDebugTime;
+        public Boolean parentMarketActivated;
 
         public GameData(int _coins)
         {
@@ -151,6 +152,7 @@ public class SaveGameObjects : MonoBehaviour
             coins = _coins;
             firstDayOfPlaying = System.DateTime.Now;
             currentDebugTime = DateTime.Today;
+            parentMarketActivated = true;
         }
 
         public override void Print()

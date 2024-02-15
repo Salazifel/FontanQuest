@@ -63,7 +63,13 @@ public class UnitTests : MonoBehaviour
         {
             gameData = (SaveGameObjects.GameData) SaveGameObjects.CreateSaveGameObject("GameData");
         }
+        
         gameData.daysPlayed ++;
+        if (gameData.daysPlayed > 14) 
+        {
+            gameData.daysPlayed = 1;
+            currentDebugDate = DateTime.Today;
+        }
 
         currentDebugDate = currentDebugDate.AddDays(1);
 

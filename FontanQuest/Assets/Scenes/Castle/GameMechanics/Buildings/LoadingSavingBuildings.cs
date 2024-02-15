@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LoadingSavingBuildings : MonoBehaviour
@@ -79,12 +80,13 @@ public class LoadingSavingBuildings : MonoBehaviour
             dayActivities.Add((SaveGameObjects.DayActivity)mainSaveObject);
         }
 
-        mainSaveObjects = SaveGameMechanic.getAllSaveGameObjectsOfType("DayActivity", "DayActivity");
-        List<SaveGameObjects.DayActivity> RewardActivity = new List<SaveGameObjects.DayActivity>();
+        mainSaveObjects = SaveGameMechanic.getAllSaveGameObjectsOfType("DayActivity", "RewardGame");
         foreach (SaveGameObjects.MainSaveObject mainSaveObject in mainSaveObjects)
         {
             dayActivities.Add((SaveGameObjects.DayActivity)mainSaveObject);
         }
+        
+        Debug.LogError(dayActivities.Count());
 
         // DISPLAYING THE BUTTONS
         DateTime todaysDate = GameObject.Find("GameData").GetComponent<UnitTests>().getCurrentDebugDate();

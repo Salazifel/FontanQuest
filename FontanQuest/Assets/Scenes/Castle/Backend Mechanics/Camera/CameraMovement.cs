@@ -17,6 +17,7 @@ public class CameraMovement : MonoBehaviour
 
     void Awake()
     {
+        allowCameraMovement = true;
         // Set the boundaries using in-scene objects
         GameObject minBoundObj = GameObject.Find("CameraBoundMin");
         GameObject maxBoundObj = GameObject.Find("CameraBoundMax");

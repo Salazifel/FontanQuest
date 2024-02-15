@@ -197,7 +197,7 @@ public class CastleOnBoardingAnimationManager : MonoBehaviour
         ));
     }
 
-    void endScene()
+    public void endScene()
     {
         messageWindowScript.DeactivateMessageWindow();
 

@@ -11,12 +11,14 @@ public class DragAndDrop : MonoBehaviour
     public float maxZ = 20f; // Define maximum Z position
     private float zPosition;
 
+    public float sensitivityFactor = 1f; // Adjust sensitivity factor here
+
     private void Start(){
         zPosition = gameObject.transform.position.z;
     }
     private void OnMouseDown()
     {   
-        offset = gameObject.transform.position - GetMouseWorldPosition();
+        offset = (gameObject.transform.position - GetMouseWorldPosition()) / sensitivityFactor;
     }
 
     private void OnMouseDrag()

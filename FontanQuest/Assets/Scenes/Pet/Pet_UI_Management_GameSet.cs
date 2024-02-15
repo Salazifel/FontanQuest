@@ -40,6 +40,11 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
     GameObject washPetButton;
     GameObject playPetButton;
 
+    private float initialX;
+    
+    private float initialY;
+    
+    private float initialZ;
     private int initialFeedStat; // variable to store initial feed level.
     private MessageWindow messageWindow;
     public Pet_CameraIntro pet_CameraIntro;
@@ -233,6 +238,15 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         messageWindow.DeactivateMessageWindow();
         pet_CameraIntro.ActivateCameraAnimation(false);
         savePetSystem();
+        if (petSystem.petScaleX < 3.0f)
+        {
+            initialX = petSystem.petScaleX;
+            
+            initialY = petSystem.petScaleY;
+            
+            initialZ = petSystem.petScaleZ;
+            pet_GameSet.transform.localScale = new Vector3(petSystem.petScaleX*3.0f, petSystem.petScaleY*3.0f, petSystem.petScaleZ*3.0f);
+        }
     }
     public void savePetSystem()
     {
@@ -352,6 +366,11 @@ public void ToggleVisibilityMood(GameObject set, bool visibility, string nameofC
     }
 
     public void GameScene(){
+        
+        if (currentSceneName == "Rennen"){
+            pet_GameSet.transform.localScale = new Vector3(initialX, initialY, initialZ);
+        }
+
         Debug.Log(petSystem.gameSelected);
         ToggleVisibiliyBacktoGame(false);
         pet_CameraIntro.ActivateCameraAnimation(true);

@@ -15,7 +15,7 @@ public class PetRunner : MonoBehaviour
     float xValue = 0.0f;
     public float Max_xValue = 10.0f;
     
-    float Min_xValue = -2.1f;
+    // float Min_xValue = -2.1f;
     GameObject FirstTile;
     GameObject LastTile;
     GameObject PetObject;

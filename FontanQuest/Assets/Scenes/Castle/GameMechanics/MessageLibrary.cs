@@ -31,6 +31,22 @@ public class MessageLibrary : MonoBehaviour
         AddWeedThePlantMessage();
         AddHikingExergameMessage();
         AddParentsMarketKidsPerspectiveMessage();
+        AddCastleMessage();
+    }
+
+    void AddCastleMessage()
+    {
+        messageLibrary[SceneManagerStaticScript.AvailableScenes.CastleScene.ToString()].Add(
+            new MessageObjectBlueprint.messageObject(
+            "Burg",
+            "Was willst du denn schon hier. Du sollst doch noch mehr Leute für mein Festmahl finden?",
+            null, null, null, null, "Na gut",
+            messageWindow.DeactivateMessageWindow,
+            MessageWindow.Character_options.Character_Female_Peasant_01,
+            AnimationLibrary.Animations.Talk,
+            null
+            ) 
+        );
     }
 
     void AddParentsMarketKidsPerspectiveMessage()
@@ -52,7 +68,8 @@ public class MessageLibrary : MonoBehaviour
         // Local function for the Var1 right button click action
         void Var1RightButtonClick()
         {
-            SceneManager.Load("ParentsMarketForChildren");
+            messageWindow.SetupMessageWindow("To be done", "Hey! Das ist leider noch nicht entwickelt", null, null, null, null, "Ok", messageWindow.DeactivateMessageWindow, MessageWindow.Character_options.Character_Male_King, AnimationLibrary.Animations.Talk, null);
+            //SceneManager.Load("ParentsMarketForChildren");
         }
 
         // Ensure the list for this scene is initialized in the dictionary

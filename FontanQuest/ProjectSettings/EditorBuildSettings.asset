@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Pet/Pet.unity
+    guid: 8199a9f03ae29594db95ba524c62e805
+  - enabled: 1
+    path: Assets/Scenes/Pet/Fuettern.unity
+    guid: d54e8623e3d225f43b53c9e48152a766
+  - enabled: 1
+    path: Assets/Scenes/Pet/Kuemmern.unity
+    guid: 2e3de7c373acffb44b0a03fe5d0ef4d0
+  - enabled: 1
+    path: Assets/Scenes/Pet/Rennen.unity
+    guid: 79b24d251849fce41935d309df75b0af
+  - enabled: 1
     path: Assets/Scenes/UI (Laura)/Laura_old/Main Screen.unity
     guid: a99c398694727ef45b615d80569ac0d8
   - enabled: 1
@@ -35,6 +47,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WorkoutsAndMiniGames(Alisa)/Scenes/HikkingStorry/SolveTheRiddle.unity
     guid: d177a0a72965ddc43b1f91d71051c501
+  - enabled: 1
+    path: Assets/Scenes/Exergame/Fitness Boxing/Scene/FitnessBoxing.unity
+    guid: 414b53f7571e5ea4086acc953d58dfb6
   - enabled: 1
     path: Assets/Scenes/Village (Hannes)/Experimental Scene/SampleScene.unity
     guid: c850ee8c3b14cc8459e7e186857cf567
@@ -69,9 +84,6 @@ EditorBuildSettings:
     path: Assets/Scenes/YouTube/VideoSelection/VideoSelection.unity
     guid: 889e8b051e01e9f44a4f15001690d95a
   - enabled: 1
-    path: Assets/Scenes/Pet/Pet.unity
-    guid: 8199a9f03ae29594db95ba524c62e805
-  - enabled: 1
     path: Assets/Scenes/Firat(Mini Games)/MountainTreeClimber/TreeClimber.unity
     guid: 07eb38ba69e20154cbe7d11ff42417ae
   - enabled: 1
@@ -83,9 +95,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ParentsMarket/ParentsMarketForChildren.unity
     guid: 0bfbf61481f4381489599c7a8e3e1984
-  - enabled: 1
-    path: Assets/Scenes/Pet/Kuemmern.unity
-    guid: 2e3de7c373acffb44b0a03fe5d0ef4d0
   - enabled: 1
     path: Assets/Scenes/Firat(Mini Games)/ObstacleRunning/ObstacleRunning_0.unity
     guid: 27a729a69536fc8419b6d38b081a12f2
@@ -107,18 +116,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ParentsMarket/ParentsMarketForChildren.unity
     guid: 0bfbf61481f4381489599c7a8e3e1984
-  - enabled: 1
-    path: Assets/Scenes/Pet/Fuettern.unity
-    guid: d54e8623e3d225f43b53c9e48152a766
-  - enabled: 1
-    path: Assets/Scenes/Pet/Kuemmern.unity
-    guid: 2e3de7c373acffb44b0a03fe5d0ef4d0
-  - enabled: 1
-    path: Assets/Scenes/Pet/Pet.unity
-    guid: 8199a9f03ae29594db95ba524c62e805
-  - enabled: 1
-    path: Assets/Scenes/Pet/Rennen.unity
-    guid: 79b24d251849fce41935d309df75b0af
   - enabled: 1
     path: Assets/Scenes/UI (Laura)/EinstellungenParentSection.unity
     guid: 9f22396ecf51f50459290da3cc0fdf50
@@ -167,6 +164,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UI (Laura)/HomeParentSection.unity
     guid: 4bfc66066f687994e8f99f2a792b720e
+  - enabled: 1
+    path: Assets/Scenes/Pet/Pet.unity
+    guid: 8199a9f03ae29594db95ba524c62e805
+  - enabled: 1
+    path: Assets/Scenes/Pet/Fuettern.unity
+    guid: d54e8623e3d225f43b53c9e48152a766
+  - enabled: 1
+    path: Assets/Scenes/Pet/Kuemmern.unity
+    guid: 2e3de7c373acffb44b0a03fe5d0ef4d0
+  - enabled: 1
+    path: Assets/Scenes/Pet/Rennen.unity
+    guid: 79b24d251849fce41935d309df75b0af
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 254f22ba6035e6d4398b0fed5896fd9a,
       type: 2}

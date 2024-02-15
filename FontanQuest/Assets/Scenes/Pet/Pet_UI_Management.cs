@@ -72,14 +72,13 @@ public class Pet_UI_Management : MonoBehaviour
 
         petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey("PetSystem", 1);
         pet = GameObject.Find("Pet");
-        if (petSystem != null)
-        {
-            animalManager.ActivateAnimal(petSystem.selectedAnimal);
-        }
+
         if (petSystem == null)
         {
             petSystem = (SaveGameObjects.PetSystem) SaveGameObjects.CreateSaveGameObject("PetSystem");
         }
+
+        animalManager.ActivateAnimal(petSystem.selectedAnimal);
 
         if (petSystem.animalSelected == true && petSystem.selectedAnimal == null)
         {
@@ -103,13 +102,14 @@ public class Pet_UI_Management : MonoBehaviour
                 null
             );
         } else 
-        {   Debug.Log(petSystem.lastLog_Fuettern);
+
+        {   
+            animalManager.ActivateAnimal(petSystem.selectedAnimal);
+            Debug.Log(petSystem.lastLog_Fuettern);
             petSystem.gameSelected = false;
             messageWindow.DeactivateMessageWindow();
             pet_CameraIntro.ActivateCameraAnimation(false);
             CheckPassingTime();
-            
-
         }
     }
         void LateUpdate()

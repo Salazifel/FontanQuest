@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Window_GraphVo2max : MonoBehaviour
+public class GraphExtended_Vo2Max : MonoBehaviour
 {
     [SerializeField] private Sprite circleSprite;
     private RectTransform graphContainer;
@@ -15,7 +15,7 @@ public class Window_GraphVo2max : MonoBehaviour
         // Sample values and time stamps
         int[,] data = new int[,] {
             { 5, 98, 56, 45, 30, 22, 17, 15, 13, 17, 25, 37, 40, 36, 33 },
-            // Add more rows as needed
+            
         };
 
         ShowGraph(data);
@@ -23,46 +23,27 @@ public class Window_GraphVo2max : MonoBehaviour
 
     private void ShowGraph(int[,] data)
     {
+        float graphWidth = graphContainer.sizeDelta.x;
+        float yMaximum = 100f;
+        float xSize = 100f; // You might want to adjust this based on your landscape width
+        float labelYPosition = -100f; // Adjusted starting Y position for the labels in landscape
+
+        // Calculate the total height of the graph
         float graphHeight = graphContainer.sizeDelta.y;
-        float yMaximum = 50f;
-        float xSize = 100f;
-        float labelXPosition = -350f; // Fixed starting X position for the labels
 
-        // Limit to the most recent 7 data points
-        int numberOfPointsToShow = 7;
-        int dataLength = data.GetLength(1);
-        int startIndex = Mathf.Max(dataLength - numberOfPointsToShow, 0);
-
-        // Calculate the total width of the graph for 7 data points or less
-        float graphWidth = xSize * Math.Min(numberOfPointsToShow, dataLength);
-
-        // Adjustments for scaling and positioning
-        if (graphWidth > graphContainer.sizeDelta.x)
-        {
-            float scaleRatio = graphContainer.sizeDelta.x / graphWidth;
-            graphWidth *= scaleRatio;
-            xSize *= scaleRatio;
-        }
-
-        float distanceToBorder = (graphContainer.sizeDelta.x - graphWidth) / 2f;
-        float firstCircleX = distanceToBorder;
-        float lastCircleX = graphContainer.sizeDelta.x - distanceToBorder;
-
-        // Adjust the even spacing calculation for the actual number of points to display
-        float evenSpacing = (lastCircleX - firstCircleX) / (Math.Min(numberOfPointsToShow, dataLength) - 1);
+        // Adjust for the wider graph area
+        float xMaximum = data.GetLength(1) - 1;
+        float ySize = graphHeight / yMaximum;
 
         GameObject lastCircleGameObject = null;
 
-        // Adjust loop to start from startIndex and ensure it only iterates through the last 7 data points
-        // Inside the for loop that iterates over the data points
-        for (int i = startIndex; i < dataLength; i++)
+        for (int i = 0; i < data.GetLength(1); i++)
         {
-            float xPosition = firstCircleX + (i - startIndex) * evenSpacing;
-
+            float normalizedXPosition = (i / xMaximum) * graphWidth;
             for (int j = 0; j < data.GetLength(0); j++)
             {
-                float yPosition = (data[j, i] / yMaximum) * graphHeight;
-                GameObject circleGameObject = CreateCircle(new Vector2(xPosition, yPosition));
+                float normalizedYPosition = (data[j, i] / yMaximum) * graphHeight;
+                GameObject circleGameObject = CreateCircle(new Vector2(normalizedXPosition, normalizedYPosition));
 
                 if (lastCircleGameObject != null)
                 {
@@ -72,14 +53,11 @@ public class Window_GraphVo2max : MonoBehaviour
                 lastCircleGameObject = circleGameObject;
             }
 
-            // Use xPosition for placing the label directly below the corresponding dot
-            string timeStamp = GenerateTimeStamp(dataLength - 1 - i);
-
-            // Adjust the yPosition as needed to place the label below the graph dots
-            CreateLabel(new Vector2(xPosition, -20f), timeStamp); // No longer using labelXPosition, directly using xPosition
+            // Adjust label positioning for landscape orientation
+            CreateLabel(new Vector2(normalizedXPosition, labelYPosition), GenerateTimeStamp(data.GetLength(1) - 1 - i));
         }
-
     }
+
 
     private GameObject CreateCircle(Vector2 anchoredPosition)
     {
@@ -92,7 +70,7 @@ public class Window_GraphVo2max : MonoBehaviour
 
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = anchoredPosition;
-        rectTransform.sizeDelta = new Vector2(12, 12);
+        rectTransform.sizeDelta = new Vector2(11, 11);
         rectTransform.anchorMin = new Vector2(0, 0);
         rectTransform.anchorMax = new Vector2(0, 0);
 
@@ -135,21 +113,18 @@ public class Window_GraphVo2max : MonoBehaviour
         Text labelText = label.GetComponent<Text>();
         labelText.text = text;
         labelText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
-        labelText.fontSize = 18;
+        labelText.fontSize = 10;
         labelText.alignment = TextAnchor.MiddleCenter;
         labelText.color = Color.white;
 
         RectTransform rectTransform = label.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = anchoredPosition;
-        rectTransform.sizeDelta = new Vector2(70f, 25f);
-        // Set the anchor and pivot to bottom-left
-        rectTransform.anchorMin = new Vector2(0, 0);
-        rectTransform.anchorMax = new Vector2(0, 0);
-        rectTransform.pivot = new Vector2(0, 0); // This sets the pivot to the bottom-left
+        rectTransform.sizeDelta = new Vector2(50f, 20f);
+        rectTransform.anchorMin = new Vector2(0.5f, 0);
+        rectTransform.anchorMax = new Vector2(0.5f, 0);
 
         return label;
     }
-
 
     private string GenerateTimeStamp(int index)
     {

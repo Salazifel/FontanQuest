@@ -85,6 +85,10 @@ public class AnimalManager : MonoBehaviour
 
     public void ActivateAnimal(string animalName)
     {
+        if (animalName == null)
+        {
+            animalName = "Bear_Cub_8";
+        }
         Debug.Log("Activating " + animalName);
         DeactivateAllAnimals(); // First, deactivate all animals
 
@@ -181,6 +185,7 @@ public class AnimalManager : MonoBehaviour
         pet_UI_Management.petSystem.selectedAnimal = enumValues[currentArrayPosition].ToString();
         Debug.Log(petSystem.selectedAnimal);
         pet_UI_Management.ToggleVisibiliyAnimalSelectionButtons(false);
+        pet_UI_Management.savePetSystem();
        
     }
 

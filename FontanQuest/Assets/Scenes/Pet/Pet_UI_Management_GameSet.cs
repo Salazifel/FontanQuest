@@ -119,19 +119,16 @@ public class Pet_UI_Management_GameSet : MonoBehaviour
         messageWindow = messageWindowObject.GetComponent<MessageWindow>();
 
         petSystem = (SaveGameObjects.PetSystem) SaveGameMechanic.getSaveGameObjectByPrimaryKey("PetSystem", 1);
-
+        
         pet_GameSet = GameObject.Find("Pet");
 
-        if (petSystem != null)
-        {   
-            animalManager.ActivateAnimal(petSystem.selectedAnimal);
-            Debug.Log(petSystem.selectedAnimal);
-        }
         if (petSystem == null)
         {
             petSystem = (SaveGameObjects.PetSystem) SaveGameObjects.CreateSaveGameObject("PetSystem");
-    
         }
+
+        animalManager.ActivateAnimal(petSystem.selectedAnimal);
+        Debug.Log(petSystem.selectedAnimal);
 
         if (petSystem.animalSelected == true && petSystem.selectedAnimal == null)
         {

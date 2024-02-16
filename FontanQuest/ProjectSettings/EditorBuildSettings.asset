@@ -176,6 +176,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pet/Rennen.unity
     guid: 79b24d251849fce41935d309df75b0af
+  - enabled: 1
+    path: Assets/Scenes/UI (Laura)/Datenschutz.unity
+    guid: 05380d5da988d264cba9b4e2b2c66f86
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 254f22ba6035e6d4398b0fed5896fd9a,
       type: 2}

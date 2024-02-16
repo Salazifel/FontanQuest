@@ -16,27 +16,24 @@ public class ShowPerfekt : MonoBehaviour
     {
         Debug.Log("Steps: " + SmartWatchData.pastStepActivitiy.ToString() + " STEPCOUNT: " + SmartWatchData.steps.ToString() + "HRBOOL " + SmartWatchData.pastHeartActivity.ToString() + " HR: " + SmartWatchData.heartRate.ToString());
 
+
+        Green.gameObject.SetActive(false);
+        Yellow.gameObject.SetActive(false);
+        Red.gameObject.SetActive(true);
+  
+        if (SmartWatchData.pastHeartActivity6sec == true || SmartWatchData.pastStepActivitiy6sec == true)
+        {
+            Green.gameObject.SetActive(false);
+            Yellow.gameObject.SetActive(true);
+            Red.gameObject.SetActive(false);
+        }
+
         if (SmartWatchData.pastHeartActivity == true || SmartWatchData.pastStepActivitiy == true)
         {
             Green.gameObject.SetActive(true);
             Yellow.gameObject.SetActive(false);
             Red.gameObject.SetActive(false);
         }
-        else if (SmartWatchData.pastHeartActivity6sec == true || SmartWatchData.pastStepActivitiy6sec == true)
-        {
-            Green.gameObject.SetActive(false);
-            Yellow.gameObject.SetActive(true);
-            Red.gameObject.SetActive(false);
-        }
-        else
-        {
-            Green.gameObject.SetActive(false);
-            Yellow.gameObject.SetActive(false);
-            Red.gameObject.SetActive(true);
-        }
-
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

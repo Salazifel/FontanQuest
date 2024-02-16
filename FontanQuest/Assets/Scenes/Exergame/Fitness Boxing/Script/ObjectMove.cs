@@ -23,18 +23,33 @@ public class ObjectMove : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "SmallCube1")
+        if (SmartWatchData.pastHeartActivity == true || SmartWatchData.pastStepActivitiy == true)
         {
-            gameObject.SetActive(false);
-            transform.parent.GetComponent<PunchManager>().SpawnPunch1();
-            transform.parent.GetComponent<PunchManager>().UpdateScore(20);
+            if (collision.gameObject.tag == "SmallCube1")
+            {
+                gameObject.SetActive(false);
+                transform.parent.GetComponent<PunchManager>().SpawnPunch1();
+            }
+            else if (collision.gameObject.tag == "SmallCube2")
+            {
+                gameObject.SetActive(false);
+                transform.parent.GetComponent<PunchManager>().SpawnPunch2();
+            }
         }
-        else if (collision.gameObject.tag == "SmallCube2")
+        else if (SmartWatchData.pastHeartActivity6sec == true && SmartWatchData.pastStepActivitiy6sec == true)
         {
-            gameObject.SetActive(false);
-            transform.parent.GetComponent<PunchManager>().SpawnPunch2();
-            transform.parent.GetComponent<PunchManager>().UpdateScore(20);
+            if (collision.gameObject.tag == "SmallCube1")
+            {
+                gameObject.SetActive(false);
+                transform.parent.GetComponent<PunchManager>().SpawnPunch1();
+            }
+            else if (collision.gameObject.tag == "SmallCube2")
+            {
+                gameObject.SetActive(false);
+                transform.parent.GetComponent<PunchManager>().SpawnPunch2();
+            }
         }
+
     }
 
 }

@@ -7,7 +7,9 @@ public class FitnessBoxingUI : MonoBehaviour
     public Canvas StoryCanvas;
     public Canvas[] GameCanvases;
     public Canvas FinishCanvas;
+    public Canvas FailCanvas;
     SaveGameObjects.FitnessBoxingSavingGame fitnessBoxingSavingGame;
+    private double oldStepCount;
 
     private int currentLevel = 0; // Track the current level
 
@@ -21,7 +23,7 @@ public class FitnessBoxingUI : MonoBehaviour
         {
             gameCanvas.gameObject.SetActive(false);
         }
-
+        FailCanvas.gameObject.SetActive(false);
         FinishCanvas.gameObject.SetActive(false);
 
         fitnessBoxingSavingGame = (SaveGameObjects.FitnessBoxingSavingGame)SaveGameMechanic.getSaveGameObjectByPrimaryKey("FitnessBoxingSavingGame", 1);
@@ -68,6 +70,7 @@ public class FitnessBoxingUI : MonoBehaviour
 
             StoryCanvas.gameObject.SetActive(false);
             FinishCanvas.gameObject.SetActive(false);
+            FailCanvas.gameObject.SetActive(false);
 
             // Increment the current level after setting up the game canvas
             currentLevel++;
@@ -87,7 +90,21 @@ public class FitnessBoxingUI : MonoBehaviour
         {
             gameCanvas.gameObject.SetActive(false);
         }
-        FinishCanvas.gameObject.SetActive(true);
+        if (oldStepCount != 0)
+        {
+            if ((SmartWatchData.pastHeartActivity == true) || (SmartWatchData.pastStepActivitiy == true))
+            {
+                FailCanvas.gameObject.SetActive(false);
+                FinishCanvas.gameObject.SetActive(true);
+            }
+            else
+            {
+                FailCanvas.gameObject.SetActive(true);
+                FinishCanvas.gameObject.SetActive(false);
+            }
+        }
+
+        oldStepCount = SmartWatchData.steps;
     }
 
     public void ChangeToStory()
@@ -97,6 +114,7 @@ public class FitnessBoxingUI : MonoBehaviour
         {
             gameCanvas.gameObject.SetActive(false);
         }
+        FailCanvas.gameObject.SetActive(false);
         FinishCanvas.gameObject.SetActive(false);
     }
 

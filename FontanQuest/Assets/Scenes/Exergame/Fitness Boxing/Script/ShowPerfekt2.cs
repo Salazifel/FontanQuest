@@ -15,8 +15,23 @@ public class ShowPerfekt2 : MonoBehaviour
         if (collision.gameObject.tag == "Punch1" || collision.gameObject.tag == "Punch2")
         {
             accumTime = 0f;  // Reset accumTime before showing "Perfekt"
-            Perfekt2.gameObject.SetActive(true);
-            Punch1.Play();
+            if (SmartWatchData.pastHeartActivity == true || SmartWatchData.pastStepActivitiy)
+            {
+                Perfekt2.gameObject.SetActive(true);
+                Punch1.Play();
+            }
+            else if (SmartWatchData.pastHeartActivity6sec == true && SmartWatchData.pastStepActivitiy6sec)
+            {
+                Perfekt2.gameObject.SetActive(Random.Range(0, 2) == 0); // 0 or 1
+                if (Perfekt2.gameObject.activeSelf == true)
+                {
+                    Punch1.Play();
+                }
+            }
+            else
+            {
+                Perfekt2.gameObject.SetActive(false);
+            }    
             // gameObject.SetActive(false);
             // Debug.Log("SmallCube2 collision");
         }

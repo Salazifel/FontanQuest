@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 7815960}
-  m_IndirectSpecularColor: {r: 0.18207744, g: 0.22441034, b: 0.28788435, a: 1}
+  m_IndirectSpecularColor: {r: 0.18207699, g: 0.22440967, b: 0.2878833, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11289,10 +11289,10 @@ RectTransform:
   m_Father: {fileID: 1752292550}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 306, y: 185}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 224.11, y: 123.5528}
+  m_SizeDelta: {x: 150.69, y: 176.3147}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &146087723
 MonoBehaviour:
@@ -14088,7 +14088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.7372549}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.65882355}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -46369,7 +46369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1022884461
 RectTransform:
   m_ObjectHideFlags: 0
@@ -46387,8 +46387,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -49.452423, y: -47.983288}
-  m_SizeDelta: {x: 714.9049, y: 1046.5553}
+  m_AnchoredPosition: {x: 224.11194, y: 125.04889}
+  m_SizeDelta: {x: 150.688, y: 166.2298}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1022884462
 MonoBehaviour:
@@ -46403,7 +46403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.29059726, g: 0.8113208, b: 0.11372549, a: 0.34901962}
+  m_Color: {r: 0.29059726, g: 0.8113208, b: 0.11372549, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -64282,10 +64282,10 @@ RectTransform:
   m_Father: {fileID: 1752292550}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 306, y: 185}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 224.11, y: 124.9837}
+  m_SizeDelta: {x: 150.69, y: 166.7752}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1317875955
 MonoBehaviour:

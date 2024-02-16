@@ -18,6 +18,7 @@ public class ShowPerfekt2 : MonoBehaviour
             if (SmartWatchData.pastHeartActivity == true || SmartWatchData.pastStepActivitiy)
             {
                 Perfekt2.gameObject.SetActive(true);
+                transform.parent.GetComponent<PunchManager>().UpdateScore(20);
                 Punch1.Play();
             }
             else if (SmartWatchData.pastHeartActivity6sec == true && SmartWatchData.pastStepActivitiy6sec)
@@ -26,6 +27,7 @@ public class ShowPerfekt2 : MonoBehaviour
                 if (Perfekt2.gameObject.activeSelf == true)
                 {
                     Punch1.Play();
+                    transform.parent.GetComponent<PunchManager>().UpdateScore(20);
                 }
             }
             else

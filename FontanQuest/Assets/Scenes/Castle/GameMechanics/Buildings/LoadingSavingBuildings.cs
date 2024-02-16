@@ -14,7 +14,7 @@ public class LoadingSavingBuildings : MonoBehaviour
 
     public enum additionalBuildingStrings {
         CityWalls,
-        Castle
+        CastleScene
     }
 
     void Awake()
@@ -40,7 +40,7 @@ public class LoadingSavingBuildings : MonoBehaviour
         buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.WoodCuttingExergame.ToString(), GameObject.Find("WoodCuttingButton"));
         buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.StoneCuttingExergame.ToString(), GameObject.Find("MiningButton"));
         buttonPointers.Add(additionalBuildingStrings.CityWalls.ToString(), GameObject.Find("CityWallButton"));
-        buttonPointers.Add(additionalBuildingStrings.Castle.ToString(), GameObject.Find("CastleButton"));
+        buttonPointers.Add(additionalBuildingStrings.CastleScene.ToString(), GameObject.Find("CastleButton"));
         buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.ObstacleRunning.ToString(), GameObject.Find("WitchHutButton"));
         buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString(), GameObject.Find("DoodleJumpButton"));
         buttonPointers.Add(SceneManagerStaticScript.AvailableScenes.FitnessBoxing.ToString(), GameObject.Find("BoxingButton"));
@@ -58,7 +58,7 @@ public class LoadingSavingBuildings : MonoBehaviour
         buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.WoodCuttingExergame.ToString(), GameObject.Find("WoodCutterBuilding"));
         buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.StoneCuttingExergame.ToString(), GameObject.Find("MiningBuilding"));
         buildingPointers.Add(additionalBuildingStrings.CityWalls.ToString(), GameObject.Find("Walls_building"));
-        buildingPointers.Add(additionalBuildingStrings.Castle.ToString(), GameObject.Find("Castle_building"));
+        buildingPointers.Add(additionalBuildingStrings.CastleScene.ToString(), GameObject.Find("Castle_building"));
         buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.ObstacleRunning.ToString(), GameObject.Find("WitchHutBuilding"));
         buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.DoodleJumpRewardGame.ToString(), GameObject.Find("DoodleJumpHouse"));
         buildingPointers.Add(SceneManagerStaticScript.AvailableScenes.FitnessBoxing.ToString(), GameObject.Find("FitnessBoxingHouse"));
@@ -85,8 +85,6 @@ public class LoadingSavingBuildings : MonoBehaviour
         {
             dayActivities.Add((SaveGameObjects.DayActivity)mainSaveObject);
         }
-        
-        Debug.LogError(dayActivities.Count());
 
         // DISPLAYING THE BUTTONS
         DateTime todaysDate = GameObject.Find("GameData").GetComponent<UnitTests>().getCurrentDebugDate();
@@ -124,11 +122,11 @@ public class LoadingSavingBuildings : MonoBehaviour
         if (builtBuildings == null) { builtBuildings = (SaveGameObjects.BuiltBuildings) SaveGameObjects.CreateSaveGameObject("BuiltBuildings"); }
         
         // now checking each building
-        if (builtBuildings.CityWalls > 0 && buildingPointers.TryGetValue(additionalBuildingStrings.CityWalls.ToString(), out GameObject cityWallsObject)) 
+        if (/*builtBuildings.CityWalls > 0 &&*/ buildingPointers.TryGetValue(additionalBuildingStrings.CityWalls.ToString(), out GameObject cityWallsObject)) 
         {
             cityWallsObject.SetActive(true);
         }
-        if (builtBuildings.Castle > 0 && buildingPointers.TryGetValue(additionalBuildingStrings.Castle.ToString(), out GameObject castleObject)) 
+        if (/*builtBuildings.Castle > 0 &&*/ buildingPointers.TryGetValue(additionalBuildingStrings.CastleScene.ToString(), out GameObject castleObject)) 
         {
             castleObject.SetActive(true);
         }
@@ -183,7 +181,7 @@ public class LoadingSavingBuildings : MonoBehaviour
 
         // filling the dictionary with values 
         builtBuildingsDic.Add(additionalBuildingStrings.CityWalls.ToString(), builtBuildings.CityWalls);
-        builtBuildingsDic.Add(additionalBuildingStrings.Castle.ToString(), builtBuildings.Castle);
+        builtBuildingsDic.Add(additionalBuildingStrings.CastleScene.ToString(), builtBuildings.Castle);
         builtBuildingsDic.Add(SceneManagerStaticScript.AvailableScenes.AsianMonkExergame.ToString(), builtBuildings.Temple);
         builtBuildingsDic.Add(SceneManagerStaticScript.AvailableScenes.PetRewardGame.ToString(), builtBuildings.Farm);
         builtBuildingsDic.Add(SceneManagerStaticScript.AvailableScenes.YouTubeScene.ToString(), builtBuildings.YouTubeHouse);

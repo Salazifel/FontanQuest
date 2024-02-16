@@ -95,7 +95,7 @@ void DeserializeMessage(string stompMessage)
     string jsonPayload = parts[1]; // The JSON part is after the first blank line
     //Debug.Log("JSON Payload: " + jsonPayload);
 
-    Debug.Log(SmartWatchData.pastHeartActivity.ToString());
+    //Debug.Log(SmartWatchData.pastHeartActivity.ToString());
     CalcPastData();
 
     try

@@ -36,6 +36,11 @@ public class MessageLibrary : MonoBehaviour
 
     void AddCastleMessage()
     {
+        if (!messageLibrary.ContainsKey(SceneManagerStaticScript.AvailableScenes.CastleScene.ToString()))
+        {
+            messageLibrary.Add(SceneManagerStaticScript.AvailableScenes.CastleScene.ToString(), new List<MessageObjectBlueprint.messageObject>());
+        }
+
         messageLibrary[SceneManagerStaticScript.AvailableScenes.CastleScene.ToString()].Add(
             new MessageObjectBlueprint.messageObject(
             "Burg",

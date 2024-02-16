@@ -52,12 +52,12 @@ public class AnimalManager : MonoBehaviour
             }
             else
             {
-            animalManager.ActivateAnimal("bear_Cub_1");
+            animalManager.ActivateAnimal("bear_Cub_8");
             }
         }
         else
         {
-            animalManager.ActivateAnimal("bear_Cub_1");
+            animalManager.ActivateAnimal("bear_Cub_8");
         }
 
 
@@ -87,7 +87,7 @@ public class AnimalManager : MonoBehaviour
     {
         if (animalName == null)
         {
-            animalName = "bear_Cub_1";
+            animalName = "bear_Cub_8";
         }
         Debug.Log("Activating " + animalName);
         DeactivateAllAnimals(); // First, deactivate all animals

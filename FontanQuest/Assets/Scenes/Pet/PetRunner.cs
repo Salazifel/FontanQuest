@@ -6,7 +6,7 @@ public class PetRunner : MonoBehaviour
 {
     public Pet_UI_Management_GameSet gameSet;
     // private Animator animator;
-    public float speedVar = 10.0f;
+    public float speedVar = 20.0f;
     private Vector3 RespawnPosition;
     private Vector3 InitialPosition;
     private Vector3 TriggerPosition;
@@ -45,18 +45,10 @@ public class PetRunner : MonoBehaviour
 
     void Update()
     {   
-
-        if (Mathf.Round(score) % 10 == 0 && Mathf.Round(score) != 0)
-        {
-            // Increase speedVar by 10% of the initial value
-            speedVar += speedVar * 0.01f ;
-            Debug.Log(speedVar);
-            Debug.Log(zValue);
-            tiltSpeed += tiltSpeed * 0.01f;
-            Debug.Log("Speed increased to: " + speedVar);
-        }
             Run();
             UpdateScore();
+
+
 
 
 
@@ -149,7 +141,13 @@ public class PetRunner : MonoBehaviour
             gameSet.petSystem.score_running = score;
             gameSet.savePetSystem();
         }
-
+        if (Mathf.Round(score) % 10 == 0 && Mathf.Round(score) != 0)
+        {
+            // Increase speedVar by 10% of the initial value
+            Debug.Log(zValue);
+            tiltSpeed += tiltSpeed * 0.01f;
+            Debug.Log("Speed increased to: " + speedVar);
+        }
     }
 }
 

@@ -14,7 +14,7 @@ public class Window_GraphVo2max : MonoBehaviour
 
         // Sample values and time stamps
         int[,] data = new int[,] {
-            { 5, 98, 56, 45, 30, 22, 17, 15, 13, 17, 25, 37, 40, 36, 33 },
+            { 40, 39, 39, 40, 40, 40, 40, 40, 40, 41, 41, 41, 41, 41, 42 },
             // Add more rows as needed
         };
 
@@ -24,19 +24,14 @@ public class Window_GraphVo2max : MonoBehaviour
     private void ShowGraph(int[,] data)
     {
         float graphHeight = graphContainer.sizeDelta.y;
-        float yMaximum = 50f;
-        float xSize = 100f;
+        float yMaximum = 100f;
+        float xSize = 50f;
         float labelXPosition = -350f; // Fixed starting X position for the labels
 
-        // Limit to the most recent 7 data points
-        int numberOfPointsToShow = 7;
-        int dataLength = data.GetLength(1);
-        int startIndex = Mathf.Max(dataLength - numberOfPointsToShow, 0);
+        // Calculate the total width of the graph
+        float graphWidth = xSize * data.GetLength(1);
 
-        // Calculate the total width of the graph for 7 data points or less
-        float graphWidth = xSize * Math.Min(numberOfPointsToShow, dataLength);
-
-        // Adjustments for scaling and positioning
+        // Scale the graph if it exceeds the container width
         if (graphWidth > graphContainer.sizeDelta.x)
         {
             float scaleRatio = graphContainer.sizeDelta.x / graphWidth;
@@ -44,21 +39,21 @@ public class Window_GraphVo2max : MonoBehaviour
             xSize *= scaleRatio;
         }
 
+        // Calculate the distance to borders
         float distanceToBorder = (graphContainer.sizeDelta.x - graphWidth) / 2f;
         float firstCircleX = distanceToBorder;
         float lastCircleX = graphContainer.sizeDelta.x - distanceToBorder;
 
-        // Adjust the even spacing calculation for the actual number of points to display
-        float evenSpacing = (lastCircleX - firstCircleX) / (Math.Min(numberOfPointsToShow, dataLength) - 1);
+        // Calculate the even spacing between circles
+        float evenSpacing = (lastCircleX - firstCircleX) / (data.GetLength(1) - 1);
 
         GameObject lastCircleGameObject = null;
 
-        // Adjust loop to start from startIndex and ensure it only iterates through the last 7 data points
-        // Inside the for loop that iterates over the data points
-        for (int i = startIndex; i < dataLength; i++)
+        for (int i = 0; i < data.GetLength(1); i++)
         {
-            float xPosition = firstCircleX + (i - startIndex) * evenSpacing;
+            float xPosition = firstCircleX + i * evenSpacing;
 
+            // Iterate through rows to create circles and connections
             for (int j = 0; j < data.GetLength(0); j++)
             {
                 float yPosition = (data[j, i] / yMaximum) * graphHeight;
@@ -72,13 +67,15 @@ public class Window_GraphVo2max : MonoBehaviour
                 lastCircleGameObject = circleGameObject;
             }
 
-            // Use xPosition for placing the label directly below the corresponding dot
-            string timeStamp = GenerateTimeStamp(dataLength - 1 - i);
+            // Calculate the timestamp date by subtracting days from the current date
+            string timeStamp = GenerateTimeStamp(data.GetLength(1) - 1 - i);
 
-            // Adjust the yPosition as needed to place the label below the graph dots
-            CreateLabel(new Vector2(xPosition, -20f), timeStamp); // No longer using labelXPosition, directly using xPosition
+            // CreateLabel with the adjusted labelXPosition
+            CreateLabel(new Vector2(labelXPosition, -20f), timeStamp);
+
+            // Increment labelXPosition for the next label
+            labelXPosition += evenSpacing;
         }
-
     }
 
     private GameObject CreateCircle(Vector2 anchoredPosition)
@@ -92,7 +89,7 @@ public class Window_GraphVo2max : MonoBehaviour
 
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = anchoredPosition;
-        rectTransform.sizeDelta = new Vector2(12, 12);
+        rectTransform.sizeDelta = new Vector2(11, 11);
         rectTransform.anchorMin = new Vector2(0, 0);
         rectTransform.anchorMax = new Vector2(0, 0);
 
@@ -135,21 +132,18 @@ public class Window_GraphVo2max : MonoBehaviour
         Text labelText = label.GetComponent<Text>();
         labelText.text = text;
         labelText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
-        labelText.fontSize = 18;
+        labelText.fontSize = 10;
         labelText.alignment = TextAnchor.MiddleCenter;
         labelText.color = Color.white;
 
         RectTransform rectTransform = label.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = anchoredPosition;
-        rectTransform.sizeDelta = new Vector2(70f, 25f);
-        // Set the anchor and pivot to bottom-left
-        rectTransform.anchorMin = new Vector2(0, 0);
-        rectTransform.anchorMax = new Vector2(0, 0);
-        rectTransform.pivot = new Vector2(0, 0); // This sets the pivot to the bottom-left
+        rectTransform.sizeDelta = new Vector2(50f, 20f);
+        rectTransform.anchorMin = new Vector2(0.5f, 0);
+        rectTransform.anchorMax = new Vector2(0.5f, 0);
 
         return label;
     }
-
 
     private string GenerateTimeStamp(int index)
     {

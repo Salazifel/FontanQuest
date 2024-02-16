@@ -12,6 +12,32 @@ public class ShowPerfekt : MonoBehaviour
     public GameObject Yellow;
     public GameObject Red;
 
+    private void Update()
+    {
+        Debug.Log("Steps: " + SmartWatchData.pastStepActivitiy.ToString() + " STEPCOUNT: " + SmartWatchData.steps.ToString() + "HRBOOL " + SmartWatchData.pastHeartActivity.ToString() + " HR: " + SmartWatchData.heartRate.ToString());
+
+        if (SmartWatchData.pastHeartActivity == true || SmartWatchData.pastStepActivitiy == true)
+        {
+            Green.gameObject.SetActive(true);
+            Yellow.gameObject.SetActive(false);
+            Red.gameObject.SetActive(false);
+        }
+        else if (SmartWatchData.pastHeartActivity6sec == true || SmartWatchData.pastStepActivitiy6sec == true)
+        {
+            Green.gameObject.SetActive(false);
+            Yellow.gameObject.SetActive(true);
+            Red.gameObject.SetActive(false);
+        }
+        else
+        {
+            Green.gameObject.SetActive(false);
+            Yellow.gameObject.SetActive(false);
+            Red.gameObject.SetActive(true);
+        }
+
+
+
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,35 +45,23 @@ public class ShowPerfekt : MonoBehaviour
         {
             accumTime = 0f;  // Reset accumTime before showing "Perfekt"
 
-            Debug.Log("Steps: " + SmartWatchData.pastStepActivitiy.ToString() + " STEPCOUNT: " + SmartWatchData.steps.ToString() + "HRBOOL " + SmartWatchData.pastHeartActivity.ToString() + " HR: " + SmartWatchData.heartRate.ToString());
-
-            if (SmartWatchData.pastHeartActivity == true || SmartWatchData.pastStepActivitiy == true)
-            {
-                Green.gameObject.SetActive(true);
-                Yellow.gameObject.SetActive(false);
-                Red.gameObject.SetActive(false);
+            if (Green.gameObject.activeSelf == true)
+            { 
                 Perfekt1.gameObject.SetActive(true);
                 Punch2.Play();
                 transform.parent.GetComponent<PunchManager>().UpdateScore(20);
             }
-            else if (SmartWatchData.pastHeartActivity6sec == true || SmartWatchData.pastStepActivitiy6sec == true)
+            else if (Yellow.gameObject.activeSelf == true)
             {
-                Green.gameObject.SetActive(false);
-                Yellow.gameObject.SetActive(true);
-                Red.gameObject.SetActive(false);
                 Perfekt1.gameObject.SetActive(Random.Range(0, 2) == 0); // 0 or 1
                 if (Perfekt1.gameObject.activeSelf == true)
                 {
                     Punch2.Play();
                     transform.parent.GetComponent<PunchManager>().UpdateScore(20);
                 }
-
             }
             else
             {
-                Green.gameObject.SetActive(false);
-                Yellow.gameObject.SetActive(false);
-                Red.gameObject.SetActive(true);
                 Perfekt1.gameObject.SetActive(false);
             }
             // gameObject.SetActive(false);

@@ -1105,6 +1105,9 @@ MonoBehaviour:
   Perfekt2: {fileID: 1076419288}
   timeToShowPerfekt: 1
   Punch1: {fileID: 158791288}
+  Green: {fileID: 0}
+  Yellow: {fileID: 0}
+  Red: {fileID: 0}
 --- !u!61 &41918842
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12696,6 +12699,9 @@ MonoBehaviour:
   Perfekt2: {fileID: 611905687}
   timeToShowPerfekt: 1
   Punch1: {fileID: 158791288}
+  Green: {fileID: 0}
+  Yellow: {fileID: 0}
+  Red: {fileID: 0}
 --- !u!61 &166271874
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24706,6 +24712,9 @@ MonoBehaviour:
   Perfekt2: {fileID: 986606213}
   timeToShowPerfekt: 1
   Punch1: {fileID: 158791288}
+  Green: {fileID: 0}
+  Yellow: {fileID: 0}
+  Red: {fileID: 0}
 --- !u!61 &447683275
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25211,6 +25220,9 @@ MonoBehaviour:
   Perfekt2: {fileID: 351718388}
   timeToShowPerfekt: 1
   Punch1: {fileID: 158791288}
+  Green: {fileID: 0}
+  Yellow: {fileID: 0}
+  Red: {fileID: 0}
 --- !u!61 &471109364
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -64477,6 +64489,9 @@ MonoBehaviour:
   Perfekt2: {fileID: 832946391}
   timeToShowPerfekt: 1
   Punch1: {fileID: 158791288}
+  Green: {fileID: 0}
+  Yellow: {fileID: 0}
+  Red: {fileID: 0}
 --- !u!61 &1320768246
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -71537,6 +71552,9 @@ MonoBehaviour:
   Perfekt2: {fileID: 1982194800}
   timeToShowPerfekt: 1
   Punch1: {fileID: 158791288}
+  Green: {fileID: 1022884460}
+  Yellow: {fileID: 1317875953}
+  Red: {fileID: 146087721}
 --- !u!224 &1500912329 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 367844237628963076, guid: 661d34a7f0e097f428046569cad34195,
@@ -84212,6 +84230,9 @@ MonoBehaviour:
   Perfekt2: {fileID: 1187958260}
   timeToShowPerfekt: 1
   Punch1: {fileID: 158791288}
+  Green: {fileID: 0}
+  Yellow: {fileID: 0}
+  Red: {fileID: 0}
 --- !u!61 &1747562246
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -94907,6 +94928,9 @@ MonoBehaviour:
   Perfekt2: {fileID: 155915576}
   timeToShowPerfekt: 1
   Punch1: {fileID: 158791288}
+  Green: {fileID: 0}
+  Yellow: {fileID: 0}
+  Red: {fileID: 0}
 --- !u!61 &1988486253
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -101840,6 +101864,9 @@ MonoBehaviour:
   Perfekt2: {fileID: 1679798116}
   timeToShowPerfekt: 1
   Punch1: {fileID: 158791288}
+  Green: {fileID: 0}
+  Yellow: {fileID: 0}
+  Red: {fileID: 0}
 --- !u!61 &2137935816
 BoxCollider2D:
   m_ObjectHideFlags: 0

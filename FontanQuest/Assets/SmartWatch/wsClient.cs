@@ -151,6 +151,7 @@ public int monitorLastStepSeconds = 3;
 void CalcPastData()
 {
     DateTime tmpDateTime = currentGarminTime;
+    DateTime tmpDateTime2 = currentGarminTime;
 
     if (SmartWatchData.stepTimeStamp >= tmpDateTime.AddSeconds(- monitorLastStepSeconds))
     {
@@ -161,13 +162,24 @@ void CalcPastData()
         SmartWatchData.pastStepActivitiy = false;
     }
 
+    if (SmartWatchData.stepTimeStamp >= tmpDateTime2.AddSeconds(- (monitorLastStepSeconds * 2 )))
+    {
+        SmartWatchData.pastStepActivitiy6sec = true;
+    }
+    else
+    {
+        SmartWatchData.pastStepActivitiy6sec = false;
+    }
+
     if (SmartWatchData.heartRate >= 90)
     {
         SmartWatchData.pastHeartActivity = true;
+        SmartWatchData.pastHeartActivity6sec = true;
     }
     else
     {
         SmartWatchData.pastHeartActivity = false;
+        SmartWatchData.pastHeartActivity6sec = false;
     }
 }
  

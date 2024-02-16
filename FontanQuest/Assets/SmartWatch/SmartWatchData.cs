@@ -14,6 +14,10 @@ public static class SmartWatchData
     public static Boolean pastHeartActivity = false;
     public static Boolean pastStepActivitiy = false;
 
+    public static Boolean pastHeartActivity6sec = false;
+    public static Boolean pastStepActivitiy6sec = false;
+
+
     public static class accelerometerSW
     {
         public static double x;

@@ -18,7 +18,8 @@ public class ShowPerfekt : MonoBehaviour
         if (collision.gameObject.tag == "Punch1" || collision.gameObject.tag == "Punch2")
         {
             accumTime = 0f;  // Reset accumTime before showing "Perfekt"
-            if (SmartWatchData.pastHeartActivity == true || SmartWatchData.pastStepActivitiy)
+            Debug.Log(SmartWatchData.pastHeartActivity.ToString());
+            if (SmartWatchData.pastHeartActivity == true || SmartWatchData.pastStepActivitiy == true)
             {
                 Green.gameObject.SetActive(true);
                 Yellow.gameObject.SetActive(false);
@@ -26,7 +27,7 @@ public class ShowPerfekt : MonoBehaviour
                 Perfekt1.gameObject.SetActive(true);
                 Punch2.Play();
             }
-            else if (SmartWatchData.pastHeartActivity6sec == true && SmartWatchData.pastStepActivitiy6sec)
+            else if (SmartWatchData.pastHeartActivity6sec == true && SmartWatchData.pastStepActivitiy6sec == true)
             {
                 Green.gameObject.SetActive(false);
                 Yellow.gameObject.SetActive(true);

@@ -8,6 +8,8 @@ public class Mover : MonoBehaviour
     [SerializeField] int speedVar = 15;
     private bool isJumping = false;
 
+    private double oldStepCount;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -25,6 +27,16 @@ public class Mover : MonoBehaviour
                 StartCoroutine(Jump());
             }
         }
+
+        if (oldStepCount != 0)
+        {
+            if (SmartWatchData.steps > oldStepCount)
+            {
+                StartCoroutine(Jump());
+            }
+        }
+
+        oldStepCount = SmartWatchData.steps;
     }
 
     IEnumerator Jump()

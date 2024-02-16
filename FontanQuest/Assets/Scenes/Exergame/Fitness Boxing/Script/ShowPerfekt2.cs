@@ -12,6 +12,12 @@ public class ShowPerfekt2 : MonoBehaviour
     public GameObject Yellow;
     public GameObject Red;
 
+    PunchManager punchManager;
+
+    private void Start()
+    {
+        punchManager = GameObject.Find("PunchManager").GetComponent<PunchManager>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,7 +28,7 @@ public class ShowPerfekt2 : MonoBehaviour
             {
                 Perfekt2.gameObject.SetActive(true);
                 Punch1.Play();
-                transform.parent.GetComponent<PunchManager>().UpdateScore(20);
+                punchManager.UpdateScore(20);
             }
             else if (Yellow.gameObject.activeSelf == true)
             {
@@ -30,7 +36,7 @@ public class ShowPerfekt2 : MonoBehaviour
                 if (Perfekt2.gameObject.activeSelf == true)
                 {
                     Punch1.Play();
-                    transform.parent.GetComponent<PunchManager>().UpdateScore(20);
+                    punchManager.UpdateScore(20);
                 }
             }
             else

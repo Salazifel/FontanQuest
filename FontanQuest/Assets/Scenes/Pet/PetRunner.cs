@@ -1,27 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class PetRunner : MonoBehaviour
 {
-   
+    public Pet_UI_Management_GameSet gameSet;
     // private Animator animator;
-    public float speedVar = 5.0f;
+    public float speedVar = 10.0f;
     private Vector3 RespawnPosition;
     private Vector3 InitialPosition;
     private Vector3 TriggerPosition;
     float zValue = 0.0f;
     public float tiltSpeed = 1.0f;
     float xValue = 0.0f;
-    public float Max_xValue = 10.0f;
+    public float Max_xValue = 12.0f;
     
+    [SerializeField] TextMeshProUGUI scoreText;
     // float Min_xValue = -2.1f;
     GameObject FirstTile;
     GameObject LastTile;
     GameObject PetObject;
 
+    private float score = 0.0f;
+
     void Start()
     {   
+        gameSet = GameObject.Find("Script Controller").GetComponent <Pet_UI_Management_GameSet>();
+        score = 0.0f;
         PetObject = GameObject.Find("Pet");
         FirstTile = GameObject.Find("First_Tile");
         if (FirstTile == null){
@@ -39,10 +44,19 @@ public class PetRunner : MonoBehaviour
     }
 
     void Update()
-    {
+    {   
 
+        if (Mathf.Round(score) % 10 == 0 && Mathf.Round(score) != 0)
+        {
+            // Increase speedVar by 10% of the initial value
+            speedVar += speedVar * 0.01f ;
+            Debug.Log(speedVar);
+            Debug.Log(zValue);
+            tiltSpeed += tiltSpeed * 0.01f;
+            Debug.Log("Speed increased to: " + speedVar);
+        }
             Run();
-
+            UpdateScore();
 
 
 
@@ -69,6 +83,7 @@ public class PetRunner : MonoBehaviour
                 transform.position = RespawnPosition;
             }
             }
+            
         }
     //     if (gameObject.name == "Pet")
     // {
@@ -124,6 +139,17 @@ public class PetRunner : MonoBehaviour
             transform.Translate(xValue, 0, 0);
         }
     }
+    }
+
+        void UpdateScore()
+    {
+        score += Time.deltaTime; // Increment the score steadily
+        scoreText.text = "Score: " + Mathf.Round(score).ToString(); // Update the score display on the canvas
+        if(gameSet.petSystem.score_running < score){
+            gameSet.petSystem.score_running = score;
+            gameSet.savePetSystem();
+        }
+
     }
 }
 

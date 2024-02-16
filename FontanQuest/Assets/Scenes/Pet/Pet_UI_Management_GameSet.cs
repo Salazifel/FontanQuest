@@ -360,7 +360,7 @@ public void ToggleVisibilityMood(GameObject set, bool visibility, string nameofC
 
     public void ToggleVisibiliyPlayItem(Boolean setBoolean)
     {
-        playItem1.SetActive(setBoolean);
+        // playItem1.SetActive(setBoolean);
         playItem2.SetActive(setBoolean);
 
     }

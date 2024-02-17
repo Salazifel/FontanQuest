@@ -12,6 +12,13 @@ public class ShowPerfekt : MonoBehaviour
     public GameObject Yellow;
     public GameObject Red;
 
+    PunchManager punchManager;
+
+    private void Start()
+    {
+        punchManager = GameObject.Find("PunchManager").GetComponent<PunchManager>();
+    }
+
     private void Update()
     {
         Debug.Log("Steps: " + SmartWatchData.pastStepActivitiy.ToString() + " STEPCOUNT: " + SmartWatchData.steps.ToString() + "HRBOOL " + SmartWatchData.pastHeartActivity.ToString() + " HR: " + SmartWatchData.heartRate.ToString());
@@ -46,7 +53,7 @@ public class ShowPerfekt : MonoBehaviour
             { 
                 Perfekt1.gameObject.SetActive(true);
                 Punch2.Play();
-                transform.parent.GetComponent<PunchManager>().UpdateScore(20);
+                punchManager.UpdateScore(20);
             }
             else if (Yellow.gameObject.activeSelf == true)
             {
@@ -54,7 +61,7 @@ public class ShowPerfekt : MonoBehaviour
                 if (Perfekt1.gameObject.activeSelf == true)
                 {
                     Punch2.Play();
-                    transform.parent.GetComponent<PunchManager>().UpdateScore(20);
+                    punchManager.UpdateScore(20);
                 }
             }
             else

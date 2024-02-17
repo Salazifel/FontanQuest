@@ -71308,6 +71308,7 @@ MonoBehaviour:
   maxY: 3
   minZ: -20
   maxZ: 20
+  sensitivityFactor: 2
 --- !u!65 &1917176338
 BoxCollider:
   m_ObjectHideFlags: 0

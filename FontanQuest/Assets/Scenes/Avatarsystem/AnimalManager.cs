@@ -28,7 +28,7 @@ public class AnimalManager : MonoBehaviour
         pet_UI_Management = GameObject.Find("MainCanvas").GetComponent <Pet_UI_Management>(); 
         petSystem = pet_UI_Management.petSystem;
         }
-        else if (currentSceneName == "Fuettern" || currentSceneName == "Rennen"){
+        else if (currentSceneName == "Fuettern" || currentSceneName == "Rennen" || currentSceneName == "Kuemmern"){
         gameSet = GameObject.Find("Script Controller").GetComponent <Pet_UI_Management_GameSet>();
         petSystem = gameSet.petSystem;
         }
@@ -52,12 +52,12 @@ public class AnimalManager : MonoBehaviour
             }
             else
             {
-            animalManager.ActivateAnimal("Bear_Cub_8");
+            animalManager.ActivateAnimal("bear_Cub_1");
             }
         }
         else
         {
-            animalManager.ActivateAnimal("Bear_Cub_8");
+            animalManager.ActivateAnimal("bear_Cub_1");
         }
 
 
@@ -87,7 +87,7 @@ public class AnimalManager : MonoBehaviour
     {
         if (animalName == null)
         {
-            animalName = "Bear_Cub_8";
+            animalName = "bear_Cub_1";
         }
         Debug.Log("Activating " + animalName);
         DeactivateAllAnimals(); // First, deactivate all animals

@@ -41,12 +41,42 @@ public class MessageLibrary : MonoBehaviour
             messageLibrary.Add(SceneManagerStaticScript.AvailableScenes.CastleScene.ToString(), new List<MessageObjectBlueprint.messageObject>());
         }
 
+        void Var01RightButtonClick()
+        {
+            SaveGameObjects.BuiltBuildings builtBuildings = (SaveGameObjects.BuiltBuildings)SaveGameMechanic.getSaveGameObjectByPrimaryKey("BuiltBuildings", 1);
+            if (builtBuildings == null)
+            {
+                builtBuildings = (SaveGameObjects.BuiltBuildings)SaveGameObjects.CreateSaveGameObject("BuiltBuildings");
+            }
+            builtBuildings.Castle = 1; // Update the specific building status
+            SaveGameMechanic.saveSaveGameObject(builtBuildings, "BuiltBuildings", 1);
+            GameObject.Find("GameData").GetComponent<LoadingSavingBuildings>().LoadBuildings();
+            messageWindow.DeactivateMessageWindow();
+        }
+
         messageLibrary[SceneManagerStaticScript.AvailableScenes.CastleScene.ToString()].Add(
             new MessageObjectBlueprint.messageObject(
             "Burg",
             "Was willst du denn schon hier. Du sollst doch noch mehr Leute für mein Festmahl finden?",
             null, null, null, null, "Na gut",
-            messageWindow.DeactivateMessageWindow,
+            Var01RightButtonClick,
+            MessageWindow.Character_options.Character_Female_Peasant_01,
+            AnimationLibrary.Animations.Talk,
+            null
+            ) 
+        );
+
+        void Var02RightButtonClick()
+        {
+            SceneManager.Load("CastleParty");
+        }
+
+        messageLibrary[SceneManagerStaticScript.AvailableScenes.CastleScene.ToString()].Add(
+            new MessageObjectBlueprint.messageObject(
+            "Burg",
+            "Oh du hast es geschafft! So viel Sport. Los, lass uns zum Festmahl gehen!",
+            null, null, null, null, "Ja!",
+            Var02RightButtonClick,
             MessageWindow.Character_options.Character_Female_Peasant_01,
             AnimationLibrary.Animations.Talk,
             null

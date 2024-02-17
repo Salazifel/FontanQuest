@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Castle_OnBoarding : MonoBehaviour
@@ -13,8 +15,15 @@ public class Castle_OnBoarding : MonoBehaviour
 
     private int stepCounter = 0;
 
+    private Boolean checkSteps = false;
+
+    TextMeshProUGUI StepDisplay;
+
     void Start()
     {
+        StepDisplay = GameObject.Find("STEPS").GetComponent<TextMeshProUGUI>();
+        initialSteps = SmartWatchData.steps;
+
         messageWindow = GameObject.Find("MessageWindow").GetComponent<MessageWindow>();
 
         onboardingGO = GameObject.Find("On_Boarding_Simulation");
@@ -34,6 +43,7 @@ public class Castle_OnBoarding : MonoBehaviour
             RotateButton = GameObject.Find("RotateButton");
             RotateButton.SetActive(false);
             StepButton.SetActive(true);
+            checkSteps = true;
         } else 
         {
             StepButton.SetActive(false);
@@ -45,11 +55,38 @@ public class Castle_OnBoarding : MonoBehaviour
         }
     }
 
+    private double initialSteps;
+    private double previousStepCount = 0;
+    private double doneSteps = 0;
+    public void Update()
+    {
+        if (initialSteps == 0)
+        {
+            initialSteps = SmartWatchData.steps;
+            return;
+        }
+
+        double tmp = SmartWatchData.steps - initialSteps;
+
+
+        double tmp1 = tmp;
+
+        for (int i = 0; i < tmp - doneSteps;)
+        {
+            StepForwardInAnimation();
+            doneSteps++;
+        }
+
+        previousStepCount = tmp;
+
+        StepDisplay.text = tmp.ToString();
+    }
+
     public void StepForwardInAnimation()
     {
         stepCounter ++;
 
-        if (stepCounter == 1) {
+        if (stepCounter == 10) {
                 messageWindow.SetupMessageWindowByMessageObject(new MessageObjectBlueprint.messageObject(
                 "Willkommen!",
                 "Los lass uns zur Burg gehen. Mache ein paar Schritte",
@@ -65,7 +102,7 @@ public class Castle_OnBoarding : MonoBehaviour
             ));
         }
 
-        if (stepCounter == 3) {
+        if (stepCounter == 30) {
                 messageWindow.SetupMessageWindowByMessageObject(new MessageObjectBlueprint.messageObject(
                 "Willkommen!",
                 "Ja, weiter so!",
@@ -81,7 +118,7 @@ public class Castle_OnBoarding : MonoBehaviour
             ));
         }
 
-        if (stepCounter == 5) {
+        if (stepCounter == 50) {
                 messageWindow.SetupMessageWindowByMessageObject(new MessageObjectBlueprint.messageObject(
                 "Willkommen!",
                 "Uff, das ist anstrenged. Die Haelfte haben wir",
@@ -97,7 +134,7 @@ public class Castle_OnBoarding : MonoBehaviour
             ));
         }
 
-        if (stepCounter == 8) {
+        if (stepCounter == 80) {
                 messageWindow.SetupMessageWindowByMessageObject(new MessageObjectBlueprint.messageObject(
                 "Willkommen!",
                 "Wir haben es fast geschafft!",
@@ -115,7 +152,7 @@ public class Castle_OnBoarding : MonoBehaviour
 
 
 
-        if (cameraMovementAnimation.step_to_target(CameraMovementAnimation.StepOptions.step_count, 10) == "Done")
+        if (cameraMovementAnimation.step_to_target(CameraMovementAnimation.StepOptions.step_count, 100) == "Done")
         {
             // end OnBoarding
             GameObject.Find("StepButton").SetActive(false);
@@ -142,5 +179,13 @@ public class Castle_OnBoarding : MonoBehaviour
 
     private void StartKingOnBoardingSimulation() {
         messageWindow.DeactivateMessageWindow();
+    }
+
+    public void SkipWalking()
+    {
+        for (int i = 0; i < 100; i ++)
+        {
+            StepForwardInAnimation();
+        }
     }
 }

@@ -66,6 +66,7 @@ public class CameraMovement : MonoBehaviour
                 transform.position = newPosition;
             }
 
+            /*
             // ZOOMING
             if (Input.touchCount == 2)
             {
@@ -106,6 +107,7 @@ public class CameraMovement : MonoBehaviour
                     transform.position = newPosition;
                 }
             }
+            */
         }
     }
 }

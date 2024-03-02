@@ -196,5 +196,23 @@ public static class ActivityManagerPerDay
         SaveGameMechanic.saveSaveGameObject(RewardActivity12, "RewardGame");
         SaveGameMechanic.saveSaveGameObject(RewardActivity13, "RewardGame");
         SaveGameMechanic.saveSaveGameObject(RewardActivity14, "RewardGame");
+
+        // Also initialize the daily health data 
+        SaveGameMechanic.deleteBySaveFileName("SportLog");
+
+        SaveGameMechanic.saveSaveGameObject(new SaveGameObjects.SportLog(DateTime.Today, 53, 49, 112), "SportLog");
+        SaveGameMechanic.saveSaveGameObject(new SaveGameObjects.SportLog(DateTime.Today.AddDays(1), 53, 49, 112), "SportLog");
+        SaveGameMechanic.saveSaveGameObject(new SaveGameObjects.SportLog(DateTime.Today.AddDays(2), 56, 44, 132), "SportLog");
+        SaveGameMechanic.saveSaveGameObject(new SaveGameObjects.SportLog(DateTime.Today.AddDays(3), 58, 47, 131), "SportLog");
+        SaveGameMechanic.saveSaveGameObject(new SaveGameObjects.SportLog(DateTime.Today.AddDays(4), 54, 48, 124), "SportLog");
+        SaveGameMechanic.saveSaveGameObject(new SaveGameObjects.SportLog(DateTime.Today.AddDays(5), 55, 49, 127), "SportLog");
+        SaveGameMechanic.saveSaveGameObject(new SaveGameObjects.SportLog(DateTime.Today.AddDays(6), 52, 50, 131), "SportLog");
+        SaveGameMechanic.saveSaveGameObject(new SaveGameObjects.SportLog(DateTime.Today.AddDays(7), 59, 51, 134), "SportLog");
+        SaveGameMechanic.saveSaveGameObject(new SaveGameObjects.SportLog(DateTime.Today.AddDays(8), 51, 45, 129), "SportLog");
+        SaveGameMechanic.saveSaveGameObject(new SaveGameObjects.SportLog(DateTime.Today.AddDays(9), 53, 48, 135), "SportLog");
+        SaveGameMechanic.saveSaveGameObject(new SaveGameObjects.SportLog(DateTime.Today.AddDays(10), 54, 43, 121), "SportLog");
+        SaveGameMechanic.saveSaveGameObject(new SaveGameObjects.SportLog(DateTime.Today.AddDays(11), 56, 42, 126), "SportLog");
+        SaveGameMechanic.saveSaveGameObject(new SaveGameObjects.SportLog(DateTime.Today.AddDays(12), 57, 47, 137), "SportLog");
+        SaveGameMechanic.saveSaveGameObject(new SaveGameObjects.SportLog(DateTime.Today.AddDays(13), 54, 45, 118), "SportLog");
     }
 }

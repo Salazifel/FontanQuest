@@ -97,6 +97,24 @@ public class SaveGameObjects : MonoBehaviour
     }
 
     */
+
+    [Serializable]
+    public class SportLog : MainSaveObject
+    {
+        public DateTime dateTime;
+        public int HR_average;
+        public int HR_min;
+        public int HR_max;
+
+        public SportLog(DateTime _dateTime, int _HR_average, int _HR_min, int _HR_max)
+        {
+            dateTime = _dateTime;
+            HR_average = _HR_average;
+            HR_min = _HR_min;
+            HR_max = _HR_max;
+        }
+    }
+
     [Serializable]
 
     public class DayActivity : MainSaveObject

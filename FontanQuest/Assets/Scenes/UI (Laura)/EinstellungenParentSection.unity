@@ -13186,6 +13186,7 @@ GameObject:
   - component: {fileID: 1806865608}
   - component: {fileID: 1806865607}
   - component: {fileID: 1806865609}
+  - component: {fileID: 1806865610}
   m_Layer: 5
   m_Name: WochenprogrammPanel
   m_TagString: Untagged
@@ -13267,7 +13268,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806865605}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4cc59c57f004af4590d5947bea4043a, type: 3}
   m_Name: 
@@ -13275,6 +13276,18 @@ MonoBehaviour:
   activity1Text: {fileID: 989462761}
   activity2Text: {fileID: 1330242544}
   dayProgressText: {fileID: 834699386}
+--- !u!114 &1806865610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806865605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a371473f5e512f740807cc63d458b64f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1811746487
 GameObject:
   m_ObjectHideFlags: 0

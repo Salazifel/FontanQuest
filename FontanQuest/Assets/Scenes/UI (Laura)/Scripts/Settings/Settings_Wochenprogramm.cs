@@ -8,11 +8,25 @@ public class Settings_Wochenprogramm : MonoBehaviour
     public TextMeshProUGUI activity1Text;
     public TextMeshProUGUI activity2Text;
     public TextMeshProUGUI dayProgressText; // To display the total activity time
+    private DateTime programStartDate = new DateTime(2024, 1, 1); // Example start date
+    private DateTime programEndDate = new DateTime(2024, 1, 14); // Example end date
 
     private void Start()
     {
-        // Optionally, you can call LoadActivitiesForDate(DateTime.Now) here 
-        // to load activities for the current day when the panel is first opened.
+        DateTime today = DateTime.Now;
+        if (IsDateWithinProgram(today))
+        {
+            LoadActivitiesForDate(today);
+        }
+        else
+        {
+            Debug.Log("Today is not part of the 2 weeks program.");
+        }
+    }
+
+    private bool IsDateWithinProgram(DateTime date)
+    {
+        return date >= programStartDate && date <= programEndDate;
     }
 
     public void LoadActivitiesForDate(DateTime date)
@@ -26,6 +40,7 @@ public class Settings_Wochenprogramm : MonoBehaviour
             bool activity1Found = false;
             bool activity2Found = false;
             string selectedDate = date.ToString("dd.MM.yyyy");
+            int activitiesFound = 0; // Track the number of activities found
 
             foreach (string line in lines)
             {
@@ -33,24 +48,33 @@ public class Settings_Wochenprogramm : MonoBehaviour
                 {
                     if (line.Contains("Activity1 = "))
                     {
-                        totalMinutes += UpdateTMPText(line, activity1Text);
+                        totalMinutes += UpdateTMPText(line, activity1Found || activity2Found ? activity2Text : activity1Text);
                         activity1Found = true;
+                        activitiesFound++;
                     }
                     else if (line.Contains("Activity2 = "))
                     {
-                        totalMinutes += UpdateTMPText(line, activity2Text);
+                        totalMinutes += UpdateTMPText(line, activity1Found ? activity2Text : activity1Text);
                         activity2Found = true;
+                        activitiesFound++;
                     }
                 }
             }
 
-            if (!activity1Found && !activity2Found)
+            // Adjust text based on the number of activities found
+            if (activitiesFound == 0)
             {
                 activity1Text.text = "Kein Programm für diesen Tag";
                 activity2Text.text = "";
             }
+            else if (activitiesFound == 1)
+            {
+                // If only one activity was found, ensure the second activity text is cleared
+                activity2Text.text = "";
+            }
             else
             {
+                // If both activities are found, no change is needed here
                 if (!activity1Found)
                 {
                     activity1Text.text = "";

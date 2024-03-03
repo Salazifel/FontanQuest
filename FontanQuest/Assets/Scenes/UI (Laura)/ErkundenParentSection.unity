@@ -2347,8 +2347,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TestTEstTestTest TEstTestTestTEstTestTest TEstTestTest TEstTestTestTEstTestTestTEstTest
-    TestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTest
+  m_text: Lorem Ipsum
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4105,8 +4104,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TestTEstTestTest TEstTestTestTEstTestTest TEstTestTest TEstTestTestTEstTestTestTEstTest
-    TestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTestTestTEstTest
+  m_text: "Was genau ist der Elternmarkt? Im Tutorial wurde der Eternmarkt erw\xE4hnt,
+    und auf der Einstellungsseite k\xF6nnen Sie den Elternmarkt aktivieren oder deaktivieren.\nDer
+    Elternmarkt funktioniert wie ein virtueller Marktplatz: \nImmer wenn Ihr Kind
+    die App benutzt und \xDCbungen erfolgreich abschlie\xDFt, \"verdient\" es Punkte,
+    beziehungsweise Geldeinheiten. Damit kann sich Ihr Kind dann eine Belohnung \"kaufen\".
+    Nat\xFCrlich nur,  falls Sie diese Funktion in den Einstellungen auch aktiviert
+    haben.\nWelche Belohnungen gibt es? Das entscheiden Sie ganz alleine!\nSie kennen
+    Ihr Kind am besten. "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

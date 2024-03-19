@@ -38,7 +38,7 @@ For more information, visit [University of Erlangen-Nürnberg - Chair of Informa
 Feel free to contribute to the project or reach out with any inquiries or feedback. Let's make a positive impact on children's health together!
 
 
-## Photos
+## Some Photos from the Game
 
 [Parent's Section]
 

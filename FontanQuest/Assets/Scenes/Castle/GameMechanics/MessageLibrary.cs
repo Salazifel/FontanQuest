@@ -443,8 +443,8 @@ public class MessageLibrary : MonoBehaviour
         // Local function for the second list entry action
         void Var1RightButtonClick()
         {
-            messageWindow.SetupMessageWindow("GG Bavaria", "Oh. Wir sind gerade auf einer Messe, oder? Da darf ich meine Filme leider nicht zeigen ...", null, null, null, null, "Ok", messageWindow.DeactivateMessageWindow, MessageWindow.Character_options.Character_Female_Witch, AnimationLibrary.Animations.Talk, null);
-            //SceneManager.Load("Demo1.2 - Fullscreen");
+            //messageWindow.SetupMessageWindow("Dann hereinspaziert ins Kino!", null, null, null, null, null, "Ok", messageWindow.DeactivateMessageWindow, MessageWindow.Character_options.Character_Female_Witch, AnimationLibrary.Animations.Talk, null);
+            SceneManager.Load("VideoSelection");
         }
 
         // Ensure the list for this scene is initialized in the dictionary
